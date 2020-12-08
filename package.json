@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ./src --ext .ts,.tsx"
+    "lint": "eslint ./src --ext .ts,.tsx",
+    "makemessages": "i18next 'src/**/*.{js,jsx,ts,tsx}'"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.4.1",
@@ -16,6 +17,7 @@
     "eslint-plugin-react": "^7.20.3",
     "eslint-plugin-react-hooks": "^4.0.8",
     "next": "10.0.3",
+    "next-i18next": "^7.0.1",
     "next-react-svg": "^1.1.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
@@ -25,6 +27,13 @@
     "@types/node": "^14.14.11",
     "@types/react": "^17.0.0",
     "eslint": "^7.15.0",
+    "i18next-parser": "^3.4.0",
     "typescript": "^4.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint --fix",
+      "pre-push": "yarn tsc"
+    }
   }
 }

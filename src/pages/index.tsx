@@ -1,9 +1,13 @@
 import React from 'react';
 import Head from 'next/head';
 
-import styles from '../styles/Home.module.sass';
+import styles from '@styles/Home.module.sass';
+import SunIcon from '@public/svg/sun.svg';
+import { useTranslation } from '@i18n';
 
-export default function Home() {
+function Home() {
+  const { t } = useTranslation(['common', 'index']);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -13,7 +17,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to
+          {t('Добро пожаловать в')}
           {' '}
           <a href="https://nextjs.org">Next.js!</a>
         </h1>
@@ -49,11 +53,13 @@ export default function Home() {
           >
             <h3>Deploy &rarr;</h3>
             <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+              {t('index:Быстро деплойте ваш Next.js сайт на публичный URL с Vercel')}
             </p>
           </a>
         </div>
       </main>
+
+      <SunIcon style={{ width: '30px', height: '30px' }} />
 
       <footer className={styles.footer}>
         <a
@@ -69,3 +75,9 @@ export default function Home() {
     </div>
   );
 }
+
+Home.getInitialProps = async () => ({
+  namespacesRequired: ['common', 'index'],
+});
+
+export default Home;

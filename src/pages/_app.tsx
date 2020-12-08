@@ -1,9 +1,10 @@
 import React from 'react';
 
-import '../styles/globals.sass';
+import { appWithTranslation } from '@i18n';
+import '@styles/globals.sass';
 
 function MyApp({ Component, pageProps }: any) {
   return <Component {...pageProps} />;
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);

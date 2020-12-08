@@ -23,8 +23,14 @@
       "@layouts/*": [
         "layouts/*"
       ],
+      "@styles/*": [
+        "styles/*",
+      ],
       "@public/*": [
         "../public/*"
+      ],
+      "@i18n": [
+        "../i18n.ts"
       ]
     },
     "lib": [
