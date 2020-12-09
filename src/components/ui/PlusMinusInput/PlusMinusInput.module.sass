@@ -1,0 +1,36 @@
+@import "@styles/variables.module"
+
+.root
+  display: flex
+  height: 28px
+  border: 1px solid #D3AF77
+  border-radius: 8px
+
+.input
+  border: none
+  width: 40px
+  color: $primary-100
+  text-align: center
+  font-family: Montserrat
+
+.button
+  box-shadow: none
+  border: none
+  background-color: transparent
+  outline: none
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 100%
+  width: 34px
+  cursor: pointer
+  &:disabled
+    cursor: not-allowed
+    .icon
+      path
+        fill: $primary-20
+
+.icon
+  path
+    fill: $primary-60
+    transition: fill $animationTime

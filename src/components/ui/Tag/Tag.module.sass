@@ -1,0 +1,59 @@
+@import "@styles/variables.module"
+
+.root
+  position: relative
+  box-shadow: none
+  border: none
+  background-color: transparent
+  outline: none
+  cursor: pointer
+
+.primary
+  background-color: $primary-80
+  border: 1px solid $primary-100
+  color: $background-sand
+  transition: background-color $animationTime, box-shadow $animationTime
+  padding: 8px 12px
+  font-size: 0.875rem
+  line-height: 1.14
+  border-radius: 8px
+  &:hover
+    background-color: $primary-60
+  &:active, &:focus
+    box-shadow: $shadow-primary
+
+.secondary
+  padding: 4px 8px
+  font-size: 0.75rem
+  color: $secondary-80
+  border: 1px solid $primary-40
+  border-radius: 4px
+
+.dark
+  border: 1px solid $secondary-10
+  padding: 8px 12px
+  font-size: 0.875rem
+  line-height: 1.14
+  border-radius: 8px
+  color: $light-60
+  transition: background-color $animationTime, color $animationTime, box-shadow $animationTime
+  &:hover
+    background-color: $secondary-80
+    color: $light-100
+    box-shadow: $shadow-input-primary
+
+.smallPrimary, .smallSecondary
+  padding: 2px 6px
+  font-size: 0.75rem
+  font-weight: 500
+  border-radius: 4px
+  font-family: Cormorant
+
+.smallPrimary
+  background: $gradient-main
+  border: 1px solid $primary-100
+  color: $light-100
+
+.smallSecondary
+  border: 1px solid $primary-100
+  color: $primary-100

@@ -1,0 +1,50 @@
+@import "@styles/variables.module"
+
+.root
+  position: relative
+  box-shadow: none
+  border: none
+  background-color: transparent
+  outline: none
+  cursor: pointer
+  line-height: 1.25
+
+.primary, .secondary
+  width: 100%
+  padding: 14px
+  border-radius: 8px
+  text-align: center
+  font-size: 1rem
+
+.primary
+  background-color: $primary-100
+  color: $background-sand
+  transition: background-color $animationTime, box-shadow $animationTime
+  &:hover
+    background-color: $primary-60
+  &:active, &:focus
+    box-shadow: $shadow-primary
+
+.secondary
+  background: $light-100
+  color: $primary-100
+  border: 1px solid $primary-100
+  transition: border $animationTime, color $animationTime, box-shadow $animationTime
+  svg
+    path
+      fill: $primary-100
+      transition: fill $animationTime
+  &:hover
+    border: 1px solid $primary-60
+    color: $primary-60
+    svg
+      path
+        fill: $primary-60
+  &:active, &:focus
+    box-shadow: $shadow-primary
+
+.clean
+  font-size: 0.875rem
+  color: $primary-100
+  padding: 5px 10px
+  margin: -5px -10px

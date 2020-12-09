@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 
-import { Footer } from "@components/common/Footer";
+import { Footer } from '@components/common/Footer';
 
 import s from './BaseLayout.module.sass';
 

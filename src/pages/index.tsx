@@ -6,7 +6,7 @@ import { BaseLayout } from '@layouts/BaseLayout';
 
 import styles from '@styles/Home.module.sass';
 
-function Home() {
+const Home = () => {
   const { t } = useTranslation(['common', 'index']);
 
   return (
@@ -57,7 +57,7 @@ function Home() {
       </div>
     </BaseLayout>
   );
-}
+};
 
 Home.getInitialProps = async () => ({
   namespacesRequired: ['common', 'index'],
