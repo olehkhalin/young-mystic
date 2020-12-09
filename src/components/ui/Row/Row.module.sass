@@ -1,0 +1,18 @@
+@import "../../../styles/variables.module"
+
+.root
+  display: flex
+  height: 100%
+  padding: 0 32px
+  justify-content: space-between
+  flex-wrap: wrap
+  align-items: center
+
+//@media (max-width: $Lphone)
+@media (max-width: $phone)
+  .root
+    padding: 0 24px
+
+@media (max-width: $Sphone)
+  .root
+    padding: 0 16px
