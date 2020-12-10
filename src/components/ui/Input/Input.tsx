@@ -9,6 +9,7 @@ type InputProps = {
   label?: string
   error?: string
   success?: boolean
+  inputClassName?: string
 } & (React.InputHTMLAttributes<HTMLInputElement>);
 
 const themeClass = {
@@ -22,6 +23,7 @@ export const Input: React.FC<InputProps> = ({
   error = '',
   success = false,
   className,
+  inputClassName,
   value,
   disabled,
   onFocus,
@@ -47,7 +49,7 @@ export const Input: React.FC<InputProps> = ({
       >
         <input
           {...props}
-          className={s.input}
+          className={cx(s.input, inputClassName)}
           onFocus={(e) => {
             setIsFocused(true);
             if (onFocus) {

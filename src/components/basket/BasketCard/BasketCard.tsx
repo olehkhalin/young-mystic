@@ -4,6 +4,7 @@ import cx from 'classnames';
 
 import { PlusMinusInput } from '@ui/PlusMinusInput';
 import { Button } from '@ui/Button';
+
 import s from './BasketCard.module.sass';
 
 type BasketCardProps = {
