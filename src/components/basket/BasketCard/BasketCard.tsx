@@ -28,7 +28,7 @@ export const BasketCard: React.FC<BasketCardProps> = ({
   onAmountChange,
   className,
 }) => (
-  <div className={cx(s.root, className)}>
+  <article className={cx(s.root, className)}>
     <div className={s.top}>
       <div className={s.image}>
         <Image
@@ -38,15 +38,15 @@ export const BasketCard: React.FC<BasketCardProps> = ({
           layout="fill"
         />
       </div>
-      <div className={s.content}>
+      <header className={s.content}>
         <h3 className={s.header}>{title}</h3>
         <p className={s.price}>
           {price.toLocaleString('ru-RU', { style: 'decimal', minimumFractionDigits: 2 })}
           ₴
         </p>
-      </div>
+      </header>
     </div>
-    <div className={s.bottom}>
+    <footer className={s.bottom}>
       <PlusMinusInput
         minValue={minValue}
         maxValue={maxValue}
@@ -59,6 +59,6 @@ export const BasketCard: React.FC<BasketCardProps> = ({
       >
         Удалить
       </Button>
-    </div>
-  </div>
+    </footer>
+  </article>
 );

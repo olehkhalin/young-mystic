@@ -1,0 +1,31 @@
+@import "@styles/variables.module"
+
+.root
+  width: 100%
+  padding: 100px 0 0
+
+.topLine
+  display: flex
+  width: 100vw
+  position: relative
+  left: 50%
+  right: 50%
+  margin-left: -50vw
+  margin-right: -50vw
+  font-size: 24px
+  font-weight: 500
+  font-family: $font-headers
+  margin-bottom: 20px
+
+.span:not(:last-of-type)
+  margin-right: 24px
+
+.images
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  column-gap: 12px
+  row-gap: 12px
+
+.image
+  overflow: hidden
+  border-radius: 4px

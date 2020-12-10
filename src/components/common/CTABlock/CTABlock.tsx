@@ -21,7 +21,7 @@ export const CTABlock: React.FC<CTABlockProps> = ({
   button,
   className,
 }) => (
-  <div
+  <article
     className={cx(s.root, className)}
   >
     <h2 className={s.header}>{title}</h2>
@@ -32,5 +32,5 @@ export const CTABlock: React.FC<CTABlockProps> = ({
     >
       {button.label}
     </Button>
-  </div>
+  </article>
 );

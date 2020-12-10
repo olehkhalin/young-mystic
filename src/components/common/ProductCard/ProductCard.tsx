@@ -53,7 +53,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   if (theme === 'small') {
     return (
-      <div className={compoundClassName}>
+      <article className={compoundClassName}>
         <Link href={link}>
           {/* eslint-disable-next-line jsx-a11y/anchor-has-content,jsx-a11y/anchor-is-valid */}
           <a className={s.link} />
@@ -69,17 +69,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <Image
             src={image}
             alt={title}
-            width={53}
+            width={60}
             height={60}
             layout="responsive"
           />
         </div>
-      </div>
+      </article>
     );
   }
 
   return (
-    <div className={compoundClassName}>
+    <article className={compoundClassName}>
       <Link href={link}>
         {/* eslint-disable-next-line jsx-a11y/anchor-has-content,jsx-a11y/anchor-is-valid */}
         <a className={s.link} />
@@ -93,7 +93,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <Image
           src={image}
           alt={title}
-          width={140}
+          width={160}
           height={160}
           layout="responsive"
         />
@@ -103,6 +103,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         {price.toLocaleString('ru-RU', { style: 'decimal', minimumFractionDigits: 2 })}
         ₴
       </p>
-    </div>
+    </article>
   );
 };

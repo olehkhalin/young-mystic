@@ -4,6 +4,7 @@ import Link from 'next/link';
 import cx from 'classnames';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import Shiitake from 'shiitake';
 
 import { Button } from '@components/ui/Button';
 
@@ -60,7 +61,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
   }
 
   return (
-    <div
+    <article
       className={compoundClassName}
     >
       <Link href={link}>
@@ -76,23 +77,32 @@ export const BlogCard: React.FC<BlogCardProps> = ({
         />
       </div>
       <div className={s.content}>
-        <Button
-          theme="clean"
-          href={category.link}
-          className={s.category}
-        >
-          {category.label}
-        </Button>
-        <span className={s.date}>{finalDate}</span>
-        <h3 className={s.header}>{title}</h3>
-        {theme === 'primary' && <p className={s.description}>{description}</p>}
+        <header className={s.heading}>
+          <Button
+            theme="clean"
+            href={category.link}
+            className={s.category}
+          >
+            {category.label}
+          </Button>
+          <time dateTime={date} title={date} className={s.date}>{finalDate}</time>
+          <Shiitake
+            lines={2}
+            throttleRate={200}
+            className={s.header}
+            tagName="h3"
+          >
+            {title}
+          </Shiitake>
+          {theme === 'primary' && <p className={s.description}>{description}</p>}
+        </header>
         {theme === 'primary' && (
-        <span className={s.button}>
-          Читать далее
-          <ArrowRight className={s.buttonArrow} />
-        </span>
+          <footer className={s.button}>
+            Читать далее
+            <ArrowRight className={s.buttonArrow} />
+          </footer>
         )}
       </div>
-    </div>
+    </article>
   );
 };
