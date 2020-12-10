@@ -1,0 +1,27 @@
+@import "@styles/variables.module"
+
+.root
+  padding: 20px 0 40px
+
+.header
+  font-family: $font-headers
+  font-weight: 700
+  font-size: 1.5rem
+  margin-bottom: 24px
+
+.post:not(:last-of-type)
+  margin-bottom: 16px
+
+.button
+  margin-top: 16px
+  display: flex
+  align-items: center
+  &:hover
+    .icon
+      transform: translateX(5px)
+
+.icon
+  margin-left: 4px
+  transition: transform $animationTime
+  path
+    fill: $primary-100

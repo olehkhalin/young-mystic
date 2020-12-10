@@ -46,7 +46,7 @@ const Home = () => (
             </>
             )}
           button={{
-            link: '/',
+            link: '/oil-life',
             label: 'Узнать подробнее',
           }}
         />

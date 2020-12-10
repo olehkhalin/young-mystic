@@ -66,3 +66,26 @@ export const POSTS = [
     date: '2020-10-23',
   },
 ];
+
+export const TAGS = [
+  {
+    label: 'Красота',
+    link: '/blog-tag',
+  },
+  {
+    label: 'Эфирные масла',
+    link: '/blog-tag',
+  },
+  {
+    label: 'Истории Гери Янга',
+    link: '/blog-tag',
+  },
+  {
+    label: 'Здоровье',
+    link: '/blog-tag',
+  },
+  {
+    label: 'Работа',
+    link: '/blog-tag',
+  },
+];

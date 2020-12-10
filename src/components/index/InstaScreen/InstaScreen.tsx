@@ -59,6 +59,7 @@ export const InstaScreen: React.FC<InstaScreenProps> = ({
             width={158}
             height={158}
             layout="responsive"
+            alt={image.title}
           />
         </a>
       ))}

@@ -136,11 +136,11 @@ export const MenuNavLinks: MenuNavLinksProps = [
     collapse: [
       {
         title: 'Обо мне',
-        link: '/product',
+        link: '/about',
       },
       {
         title: 'Сообщество Young Living',
-        link: '/product',
+        link: '/oil-life',
       },
     ],
   },
