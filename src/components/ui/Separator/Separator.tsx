@@ -10,7 +10,5 @@ type SeparatorProps = {
 export const Separator: React.FC<SeparatorProps> = ({
   className,
 }) => (
-  <div className={cx(s.root, className)}>
-    <div className={s.line} />
-  </div>
+  <div className={cx(s.root, className)} />
 );

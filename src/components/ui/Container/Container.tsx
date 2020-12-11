@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { RefObject } from 'react';
 import cx from 'classnames';
 
 import s from './Container.module.sass';
 
 type ContainerProps = {
-  reference?: RefObject<HTMLDivElement>
   className?: string
   theme?: keyof typeof themeClass
 };
@@ -16,7 +14,6 @@ const themeClass = {
 };
 
 export const Container: React.FC<ContainerProps> = ({
-  reference,
   theme = 'default',
   children,
   className,
@@ -27,7 +24,6 @@ export const Container: React.FC<ContainerProps> = ({
       themeClass[theme],
       className,
     )}
-    ref={reference && reference}
   >
     {children}
   </div>

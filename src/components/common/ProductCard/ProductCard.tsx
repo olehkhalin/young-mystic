@@ -55,7 +55,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     return (
       <div className={compoundClassName}>
         <Link href={link}>
-          {/* eslint-disable-next-line jsx-a11y/anchor-has-content,jsx-a11y/anchor-is-valid */}
           <a className={s.link} />
         </Link>
         <div className={s.content}>
@@ -79,30 +78,28 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   }
 
   return (
-    <div className={compoundClassName}>
-      <Link href={link}>
-        {/* eslint-disable-next-line jsx-a11y/anchor-has-content,jsx-a11y/anchor-is-valid */}
-        <a className={s.link} />
-      </Link>
-      {tags && (
+    <Link href={link}>
+      <a className={compoundClassName}>
+        {tags && (
         <div className={s.tags}>
           {tags}
         </div>
-      )}
-      <div className={s.image}>
-        <Image
-          src={image}
-          alt={title}
-          width={140}
-          height={160}
-          layout="responsive"
-        />
-      </div>
-      <h3 className={s.header}>{title}</h3>
-      <p className={s.price}>
-        {price.toLocaleString('ru-RU', { style: 'decimal', minimumFractionDigits: 2 })}
-        ₴
-      </p>
-    </div>
+        )}
+        <div className={s.image}>
+          <Image
+            src={image}
+            alt={title}
+            width={140}
+            height={160}
+            layout="responsive"
+          />
+        </div>
+        <h3 className={s.header}>{title}</h3>
+        <p className={s.price}>
+          {price.toLocaleString('ru-RU', { style: 'decimal', minimumFractionDigits: 2 })}
+          ₴
+        </p>
+      </a>
+    </Link>
   );
 };
