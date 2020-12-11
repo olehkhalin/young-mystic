@@ -40,7 +40,6 @@ export const Header: React.FC<HeaderProps> = ({
         <Container>
           <Row className={s.row}>
             <Link href="/">
-              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a className={s.logo}>Young Mystic</a>
             </Link>
             <div className={s.right}>

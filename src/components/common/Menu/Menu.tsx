@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import cx from 'classnames';
 
@@ -16,16 +16,15 @@ type MenuProps = {
 };
 
 const menuContent = () => {
-  const final: any[] = [];
+  const final: ReactNode[] = [];
 
   MenuNavLinks.forEach((menuBlock) => {
     if (menuBlock.collapse) {
-      const innerBlock: any[] = [];
+      const innerBlock: ReactNode[] = [];
       menuBlock.collapse.forEach((menuInner) => {
         if (menuInner.link) {
           innerBlock.push(
             <Link href={menuInner.link}>
-              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a className={s.innerLink}>
                 {menuInner.title}
               </a>
@@ -41,7 +40,6 @@ const menuContent = () => {
                     key={`${link.title}-${link.link}`}
                     href={link.link}
                   >
-                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                     <a className={s.blockLink}>
                       {link.title}
                     </a>
@@ -62,7 +60,6 @@ const menuContent = () => {
     } else if (menuBlock.link) {
       final.push(
         <Link href={menuBlock.link}>
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a className={s.topLink}>
             {menuBlock.title}
           </a>
