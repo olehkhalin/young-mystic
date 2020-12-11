@@ -24,8 +24,6 @@ export const Separator: React.FC<SeparatorProps> = ({
   );
 
   return (
-    <div className={compoundClassName}>
-      <div className={s.line} />
-    </div>
+    <div className={compoundClassName} />
   );
 };

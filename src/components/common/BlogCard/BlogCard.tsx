@@ -10,6 +10,8 @@ import { Button } from '@components/ui/Button';
 import ArrowRight from '@public/svg/ArrowRight.svg';
 import s from './BlogCard.module.sass';
 
+dayjs.extend(relativeTime);
+
 type BlogCardProps = {
   theme?: keyof typeof themeClass
   image: string
@@ -40,8 +42,6 @@ export const BlogCard: React.FC<BlogCardProps> = ({
   description,
   className,
 }) => {
-  dayjs.extend(relativeTime);
-
   const compoundClassName = cx(
     s.root,
     themeClass[theme],
@@ -64,7 +64,6 @@ export const BlogCard: React.FC<BlogCardProps> = ({
       className={compoundClassName}
     >
       <Link href={link}>
-        {/* eslint-disable-next-line jsx-a11y/anchor-has-content,jsx-a11y/anchor-is-valid */}
         <a className={s.link} />
       </Link>
       <div className={s.image}>
