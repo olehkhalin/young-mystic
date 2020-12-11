@@ -1,29 +1,29 @@
 @import "@styles/variables.module"
 
 .root
-  width: 1560px
-  min-width: 1560px
+  width: 100%
+  min-width: 100%
   margin: 0 auto
   height: 100%
   position: relative
   &.small
-    min-width: 1000px
-    width: 1000px
+    width: 100%
+    min-width: 100%
 
-@media (max-width: 1560px)
-  .root
-    width: 1280px
-    min-width: 1280px
-
-@media (max-width: $desktop)
+@media (min-width: 1080px)
   .root
     width: 1080px
     min-width: 1080px
 
-@media (max-width: 1080px)
+@media (min-width: $desktop)
   .root
-    width: 100%
-    min-width: 100%
+    width: 1280px
+    min-width: 1280px
+
+@media (min-width: 1560px)
+  .root
+    width: 1560px
+    min-width: 1560px
     &.small
-      width: 100%
-      min-width: 100%
+      min-width: 1000px
+      width: 1000px

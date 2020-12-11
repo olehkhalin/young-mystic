@@ -27,7 +27,6 @@ export const Footer: React.FC = () => (
                     key={`${navItem.title}-${navLink.link}`}
                     href={navLink.link}
                   >
-                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                     <a className={s.navItem}>
                       {navLink.title}
                     </a>
