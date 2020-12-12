@@ -31,6 +31,67 @@ export const PRODUCTS = [
   },
 ];
 
+export const PRODUCTS_BIG = [
+  {
+    id: 0,
+    link: '/',
+    title: 'Эфирное масло Пало Санто',
+    price: 1530,
+    image: '/images/product_1.png',
+  },
+  {
+    id: 1,
+    link: '/',
+    title: 'Эфирное масло Иланг Иланг',
+    price: 1810,
+    image: '/images/product_2.png',
+    isSale: true,
+  },
+  {
+    id: 2,
+    link: '/',
+    title: 'Эфирное масло Полыни',
+    price: 1720,
+    image: '/images/product_3.png',
+    isNew: true,
+  },
+  {
+    id: 3,
+    link: '/',
+    title: 'Эфирное масло Священного Сандала',
+    price: 4290,
+    image: '/images/product_4.png',
+  },
+  {
+    id: 4,
+    link: '/',
+    title: 'Растительные капсулы',
+    price: 330,
+    image: '/images/product_5.png',
+  },
+  {
+    id: 5,
+    link: '/',
+    title: 'Эфирное масло Тимьяна',
+    price: 1510,
+    image: '/images/product_6.png',
+  },
+  {
+    id: 6,
+    link: '/',
+    title: 'Эфирное масло Мяты Кудрявой',
+    price: 470,
+    image: '/images/product_7.png',
+  },
+  {
+    id: 7,
+    link: '/',
+    title: 'Эфирное масло Мандарина',
+    price: 710,
+    image: '/images/product_8.png',
+  },
+];
+
 export const POSTS = [
   {
     id: 0,

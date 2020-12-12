@@ -1,38 +1,42 @@
 import React from 'react';
+import cx from 'classnames';
 
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
 import { CTABlock } from '@components/common/CTABlock';
+
+import s from '@styles/Products.module.sass';
+
 import { PageTitle } from '@components/common/PageTitle';
-import { BlogCard } from '@components/common/BlogCard';
+import { Filters } from '@components/products/Filters';
+import { Separator } from '@ui/Separator';
+import { ProductCard } from '@components/common/ProductCard';
 import { Button } from '@ui/Button';
 import { Pagination } from '@components/common/Pagination';
+import { PRODUCTS_BIG } from '../content';
 
-import s from '@styles/BlogCategory.module.sass';
-
-import { POSTS_BIG } from '../content';
-
-const BlogCategory = () => (
+const ProductsPage = () => (
   <BaseLayout>
     <Container>
       <Row>
         <PageTitle
-          title="Эфирные масла"
+          title="Магазин"
           description="Подзаголовок раздела на одну, две или три строки, рассказывающий о разделе"
-          className={s.header}
+          className={s.title}
         />
-        <div className={s.blog}>
-          {POSTS_BIG.map((post) => (
-            <BlogCard
-              key={post.id}
-              className={s.post}
-              image={post.image}
-              link={post.link}
-              category={post.category}
-              date={post.date}
-              title={post.title}
-              description={post.description}
+        <Filters className={s.filter} />
+        <Separator />
+        <div className={cx(s.products)}>
+          {PRODUCTS_BIG.map((product) => (
+            <ProductCard
+              key={product.id}
+              image={product.image}
+              link={product.link}
+              title={product.title}
+              price={product.price}
+              isSale={product.isSale}
+              isNew={product.isNew}
             />
           ))}
         </div>
@@ -40,10 +44,10 @@ const BlogCategory = () => (
           <Button className={s.loadMore} theme="clean">Показать еще</Button>
           <Pagination
             parentPath="/blog-caregory"
-            nextPage="/blog-caregory/6"
-            previousPage="/blog-caregory/4"
+            nextPage="/blog-caregory/3"
+            previousPage="/blog-caregory/1"
             countOfPages={15}
-            currentPage={5}
+            currentPage={2}
           />
         </div>
         <CTABlock
@@ -60,4 +64,4 @@ const BlogCategory = () => (
   </BaseLayout>
 );
 
-export default BlogCategory;
+export default ProductsPage;

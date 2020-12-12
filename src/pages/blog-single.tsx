@@ -6,7 +6,7 @@ import { Row } from '@ui/Row';
 import { Article } from '@components/blogSingle/Article';
 import { ProductsInArticle } from '@components/blogSingle/ProductsInArticle';
 import { CTABlock } from '@components/common/CTABlock';
-import { SimilarPosts } from '@components/blogSingle/SimilarPosts';
+import { SimilarPosts } from '@components/common/SimilarPosts';
 
 import { POSTS, PRODUCTS, PRODUCTS_TAGS } from '../content';
 

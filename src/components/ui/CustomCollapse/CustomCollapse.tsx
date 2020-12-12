@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { UnmountClosed } from 'react-collapse';
 import cx from 'classnames';
 
@@ -8,7 +8,7 @@ import s from './CustomCollapse.module.sass';
 
 type CustomCollapseProps = {
   theme?: keyof typeof themeClass
-  title: string
+  title: string | ReactNode
   className?: string
 };
 

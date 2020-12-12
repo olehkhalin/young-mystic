@@ -9,8 +9,25 @@
   \:global(.ReactCollapse--content)
     padding: 8px 0 20px
     > p
+      line-height: 1.25
       &:not(:last-of-type)
         margin-bottom: 8px
+    > blockquote
+      padding: 28px 16px 40px
+      background: $primary-20
+      border: 1px solid $primary-100
+      border-radius: 8px
+      margin: 0 0 16px
+      > h3
+        font-weight: 700
+        font-size: 0.875rem
+        margin-top: 0
+        margin-bottom: 8px
+      > p
+        font-size: 0.875rem
+        line-height: 1.14
+        &:not(:last-of-type)
+          margin-bottom: 4px
 
 .title
   display: flex
@@ -22,9 +39,15 @@
   background-color: transparent
   outline: none
   cursor: pointer
+  font-weight: 700
+  > h2
+    font-size: 1.5rem
+    font-weight: 700
+    text-align: left
 
 .icon
   margin-left: 12px
+  min-width: 24px
   transition: transform $animationTime
   path
     fill: $primary-100

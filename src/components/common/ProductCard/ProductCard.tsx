@@ -6,6 +6,7 @@ import cx from 'classnames';
 import { Tag } from '@components/ui/Tag';
 
 import s from './ProductCard.module.sass';
+import { prettyPrice } from '../../../functions';
 
 type ProductCardProps = {
   theme?: keyof typeof themeClass
@@ -59,8 +60,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <div className={s.content}>
           <h3 className={s.header}>{title}</h3>
           <p className={s.price}>
-            {price.toLocaleString('ru-RU', { style: 'decimal', minimumFractionDigits: 2 })}
-            ₴
+            {prettyPrice(price)}
           </p>
         </div>
         <div className={s.image}>
@@ -93,8 +93,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
         <h3 className={s.header}>{title}</h3>
         <p className={s.price}>
-          {price.toLocaleString('ru-RU', { style: 'decimal', minimumFractionDigits: 2 })}
-          ₴
+          {prettyPrice(price)}
         </p>
       </a>
     </Link>
