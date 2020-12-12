@@ -15,6 +15,7 @@ type ProductCardProps = {
   price: number
   isNew?: boolean
   isSale?: boolean
+  isSection?: boolean
   className?: string
 };
 
@@ -31,6 +32,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   price,
   isNew = false,
   isSale = false,
+  isSection = false,
   className,
 }) => {
   const compoundClassName = cx(
@@ -51,12 +53,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     );
   }
 
-  if (theme === 'small') {
-    return (
-      <article className={compoundClassName}>
-        <Link href={link}>
-          <a className={s.link} />
-        </Link>
+  const content = theme === 'small' ? (
+    <Link href={link}>
+      <a className={s.link}>
         <div className={s.content}>
           <h3 className={s.header}>{title}</h3>
           <p className={s.price}>
@@ -73,35 +72,45 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             layout="responsive"
           />
         </div>
-      </article>
+      </a>
+    </Link>
+  ) : (
+    <Link href={link}>
+      <a className={s.link}>
+        {tags && (
+          <div className={s.tags}>
+            {tags}
+          </div>
+        )}
+        <div className={s.image}>
+          <Image
+            src={image}
+            alt={title}
+            width={136}
+            height={160}
+            layout="responsive"
+          />
+        </div>
+        <h3 className={s.header}>{title}</h3>
+        <p className={s.price}>
+          {price.toLocaleString('ru-RU', { style: 'decimal', minimumFractionDigits: 2 })}
+          ₴
+        </p>
+      </a>
+    </Link>
+  );
+
+  if (isSection) {
+    return (
+      <section className={compoundClassName}>
+        {content}
+      </section>
     );
   }
 
   return (
     <article className={compoundClassName}>
-      <Link href={link}>
-        {/* eslint-disable-next-line jsx-a11y/anchor-has-content,jsx-a11y/anchor-is-valid */}
-        <a className={s.link} />
-      </Link>
-      {tags && (
-        <div className={s.tags}>
-          {tags}
-        </div>
-      )}
-      <div className={s.image}>
-        <Image
-          src={image}
-          alt={title}
-          width={160}
-          height={160}
-          layout="responsive"
-        />
-      </div>
-      <h3 className={s.header}>{title}</h3>
-      <p className={s.price}>
-        {price.toLocaleString('ru-RU', { style: 'decimal', minimumFractionDigits: 2 })}
-        ₴
-      </p>
+      {content}
     </article>
   );
 };

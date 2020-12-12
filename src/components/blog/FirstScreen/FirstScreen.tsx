@@ -4,6 +4,7 @@ import cx from 'classnames';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
 import { Tag } from '@ui/Tag';
+import { PageTitle } from '@components/common/PageTitle';
 
 import s from './FirstScreen.module.sass';
 
@@ -23,7 +24,10 @@ export const FirstScreen: React.FC<FirstScreenProps> = ({
 }) => (
   <Container className={cx(s.root, className)}>
     <Row>
-      <h1 className={s.header}>Масла, истории, советы и рекомендации</h1>
+      <PageTitle
+        title="Масла, истории, советы и рекомендации"
+        className={s.header}
+      />
       <div className={s.tags}>
         {tags.map((tag) => (
           <Tag

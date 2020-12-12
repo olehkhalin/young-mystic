@@ -1,18 +1,12 @@
 @import "@styles/variables.module"
 
 .root
-  display: flex
-  position: relative
   width: 100%
-  justify-content: space-between
 
 .link
-  position: absolute
-  top: 0
-  left: 0
-  right: 0
-  bottom: 0
-  z-index: 3
+  display: flex
+  position: relative
+  justify-content: space-between
 
 .header
   font-size: 0.875rem
@@ -26,7 +20,8 @@
   right: 10px
 
 .primary
-  flex-direction: column
+  .link
+    flex-direction: column
   .image
     padding: 10px
     background: $surface-white
@@ -41,10 +36,12 @@
     color: $secondary-80
 
 .small
-  padding: 12px 16px
-  border-radius: 8px
-  background-color: $secondary-80
-  align-items: center
+  .link
+    padding: 12px 16px
+    border-radius: 8px
+    background-color: $secondary-80
+    align-items: center
+    color: $light-100
   .image
     margin-left: 12px
     width: 53px

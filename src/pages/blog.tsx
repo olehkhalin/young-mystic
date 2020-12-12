@@ -39,7 +39,7 @@ const CATEGORIES = [
   },
 ];
 
-const Home = () => (
+const Blog = () => (
   <BaseLayout>
     <FirstScreen tags={TAGS} />
     {CATEGORIES.map((category, index) => (
@@ -72,8 +72,4 @@ const Home = () => (
   </BaseLayout>
 );
 
-Home.getInitialProps = async () => ({
-  namespacesRequired: ['common', 'index'],
-});
-
-export default Home;
+export default Blog;

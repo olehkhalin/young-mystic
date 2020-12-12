@@ -7,7 +7,7 @@ import { CTABlock } from '@components/common/CTABlock';
 import { RecentBlog } from '@components/common/RecentBlog';
 
 import s from '@styles/About.module.sass';
-import { ImageTitle } from '@components/common/ImageTitle';
+import { PageTitle } from '@components/common/PageTitle';
 import { ContentBlock } from '@components/common/ContentBlock';
 import { POSTS } from '../content';
 
@@ -15,7 +15,7 @@ const AboutSingle = () => (
   <BaseLayout>
     <Container>
       <Row>
-        <ImageTitle
+        <PageTitle
           className={s.imageTitle}
           title="Одна большая семья"
         />

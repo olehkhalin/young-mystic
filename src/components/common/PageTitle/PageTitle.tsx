@@ -1,17 +1,19 @@
 import * as React from 'react';
 import Image from 'next/image';
 
-import s from './ImageTitle.module.sass';
+import s from './PageTitle.module.sass';
 
-type ImageTitleProps = {
+type PageTitleProps = {
   image?: string
-  title: string
+  title?: string
+  description?: string
   className?: string
 };
 
-export const ImageTitle: React.FC<ImageTitleProps> = ({
+export const PageTitle: React.FC<PageTitleProps> = ({
   image,
   title,
+  description,
   className,
 }) => (
   <div className={className}>
@@ -26,6 +28,7 @@ export const ImageTitle: React.FC<ImageTitleProps> = ({
         />
       </div>
     )}
-    <h1 className={s.header}>{title}</h1>
+    {title && <h1 className={s.header}>{title}</h1>}
+    {description && <p className={s.description}>{description}</p>}
   </div>
 );

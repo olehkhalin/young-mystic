@@ -5,17 +5,17 @@ import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
 import { CTABlock } from '@components/common/CTABlock';
 import { RecentBlog } from '@components/common/RecentBlog';
+import { PageTitle } from '@components/common/PageTitle';
+import { ContentBlock } from '@components/common/ContentBlock';
 
 import s from '@styles/About.module.sass';
-import { ImageTitle } from '@components/common/ImageTitle';
-import { ContentBlock } from '@components/common/ContentBlock';
 import { POSTS } from '../content';
 
 const AboutSingle = () => (
   <BaseLayout>
     <Container>
       <Row>
-        <ImageTitle
+        <PageTitle
           className={s.imageTitle}
           image="/images/Image_1.jpg"
           title="Ваш наставник в мире масел"

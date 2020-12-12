@@ -10,7 +10,7 @@ import { RecentBlog } from '@components/common/RecentBlog';
 import s from '@styles/About.module.sass';
 import { POSTS } from '../content';
 
-const About = () => (
+const AboutSingle = () => (
   <BaseLayout>
     <Container>
       <Row>
@@ -101,4 +101,4 @@ const About = () => (
   </BaseLayout>
 );
 
-export default About;
+export default AboutSingle;
