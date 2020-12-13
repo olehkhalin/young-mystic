@@ -1,0 +1,86 @@
+@import "@styles/variables.module"
+
+.root
+  display: flex
+  position: relative
+  background: $light-100
+  border-radius: 8px
+  width: 100%
+  overflow: hidden
+  &:hover
+    .buttonArrow
+      transform: translateX(5px)
+
+.link
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: 3
+
+.image
+  overflow: hidden
+  position: relative
+
+.content
+  display: flex
+  flex-direction: column
+
+.date
+  color: $secondary-80
+  font-size: 0.75rem
+  margin-top: 4px
+
+.header
+  color: $secondary-100
+  line-height: 1.25
+
+.description
+  line-height: 1.25
+
+.button
+  margin-top: 16px
+  color: $primary-100
+  font-size: 0.75rem
+  display: flex
+  align-items: center
+
+.buttonArrow
+  width: 20px
+  height: auto
+  margin-left: 4px
+  transition: transform $animationTime
+  path
+    fill: $primary-100
+
+.category
+  z-index: 5
+  position: relative
+  align-self: flex-start
+
+.primary
+  flex-direction: column
+  .image
+    height: 140px
+  .content
+    padding: 16px 16px 28px
+  .header
+    font-size: 1rem
+    margin: 16px 0 8px
+
+.small, .dark
+  .image
+    width: 80px
+  .content
+    padding: 12px 16px
+  .header
+    margin-top: 10px
+    font-size: 0.875rem
+
+.dark
+  background-color: $secondary-80
+  .header
+    color: $light-100
+  .date
+    color: $light-80

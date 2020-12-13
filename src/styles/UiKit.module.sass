@@ -1,0 +1,102 @@
+@import "@styles/variables.module"
+
+.block
+  padding: 50px 0
+
+.dark
+  background-color: $secondary-80
+  color: $light-100
+
+.darken
+  background-color: $secondary-100
+  color: $light-100
+
+.title
+  padding: 80px 0
+
+.input
+  margin-top: 20px
+
+.button
+  margin-top: 10px
+
+.buttonDiscount
+  display: flex
+  align-items: center
+  justify-content: center
+
+.discountIcon
+  margin-right: 4px
+  width: 20px
+  height: auto
+  path
+    fill: $primary-100
+
+.buttonClean
+  margin-top: 10px
+  display: flex
+  align-items: center
+  &:hover
+    .buttonArrow
+      transform: translateX(5px)
+
+.buttonArrow
+  margin-left: 4px
+  width: 20px
+  height: auto
+  transition: transform $animationTime
+  path
+    fill: $primary-100
+
+.titleProducts
+  padding: 80px 0 20px
+
+.products
+  padding: 18px 0
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  column-gap: 12px
+  row-gap: 24px
+
+
+.tags
+  display: flex
+  flex-wrap: wrap
+  width: calc(100% + 16px)
+  margin-right: -16px
+  margin-bottom: -12px
+  padding: 20px 0
+
+.tag
+  margin-right: 16px
+  margin-bottom: 12px
+
+.tagsSecondary
+  display: flex
+  flex-wrap: wrap
+  width: calc(100% + 12px)
+  margin-right: -12px
+  margin-bottom: -12px
+  padding: 20px 0
+  .tag
+    margin-right: 12px
+
+.tagsDark
+  display: flex
+  flex-wrap: wrap
+  width: calc(100% + 12px)
+  margin-right: -12px
+  margin-bottom: -8px
+  padding: 20px 0
+  .tag
+    margin-right: 12px
+    margin-bottom: 8px
+
+.blogCard
+  margin-top: 20px
+
+.productSmall
+  margin-bottom: 8px
+
+.separator
+  margin: 50px 0 40px

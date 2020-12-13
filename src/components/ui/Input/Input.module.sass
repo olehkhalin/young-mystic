@@ -1,0 +1,104 @@
+@import "@styles/variables.module"
+
+.root
+  width: 100%
+
+.wrapper
+  position: relative
+  box-sizing: border-box
+
+.input
+  width: 100%
+  box-shadow: none
+  margin: 0
+  padding: 22px 20px 10px
+  border-radius: 8px
+  font-size: 1rem
+  outline: none
+  transition: box-shadow $animationTime
+
+.label
+  position: absolute
+  top: 50%
+  left: 20px
+  transform: translateY(-50%)
+  transform-origin: left 50%
+  transition: top $animationTime, transform $animationTime, color $animationTime
+
+.errorContainer
+  max-height: 0
+  overflow: hidden
+  transition: max-height $animationTime
+
+.errorText
+  color: $color-error
+  padding-top: 4px
+  padding-left: 20px
+  font-size: 0.75rem
+
+.focused
+  .label
+    transform: scale(.6)
+    top: 5px
+  .input
+    box-shadow: none
+
+.primary
+  .input
+    border: 1px solid $primary-80
+    background-color: $light-100
+    color: $secondary-100
+  .label
+    color: $primary-100
+  .wrapper
+    &:hover
+      .input:not(:disabled)
+        box-shadow: $shadow-input-primary
+  &.focused
+    .label
+      color: $primary-40
+  &.success
+    .input
+      border-color: $secondary-100
+      color: $secondary-100
+  &.disabled
+    .input
+      border-color: $secondary-10
+    .label
+      color: $secondary-10
+
+.dark
+  .input
+    border: 1px solid $secondary-20
+    background-color: $secondary-80
+    color: $light-100
+    transition: box-shadow $animationTime, background-color $animationTime
+  .label
+    color: $light-60
+  .wrapper
+    &:hover
+      .input:not(:disabled)
+        box-shadow: $shadow-input-primary
+        background-color: $secondary-100
+  &.focused
+    .input
+      background-color: $secondary-100
+    .label
+      color: $light-60
+  &.success
+    .input
+      background-color: $secondary-100
+  &.disabled
+    .input
+      border-color: $secondary-60
+    .label
+      color: $secondary-60
+
+
+.error
+  .input
+    border-color: $color-error
+  .input, .label
+    color: $color-error
+  .errorContainer
+    max-height: 20px

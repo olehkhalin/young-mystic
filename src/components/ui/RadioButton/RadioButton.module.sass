@@ -1,0 +1,48 @@
+@import "@styles/variables.module"
+
+.root
+  display: block
+  position: relative
+  cursor: pointer
+  user-select: none
+  width: 100%
+  padding: 6px 0
+  padding-left: 32px
+  &:hover
+    .radio
+      border-color: $primary-100
+  .input:checked
+    ~ .radio
+      border-color: $primary-100
+      .circle
+        opacity: 1
+
+.input
+  position: absolute
+  opacity: 0
+  cursor: pointer
+  height: 0
+  width: 0
+
+.radio
+  position: absolute
+  top: 50%
+  left: 0
+  transform: translateY(-50%)
+  height: 20px
+  width: 20px
+  background-color: $light-100
+  border: 2px solid $primary-80
+  transition: background-color $animationTime, border-color $animationTime
+  border-radius: 50%
+  display: flex
+  justify-content: center
+  align-items: center
+
+.circle
+  width: 14px
+  height: 14px
+  background-color: $primary-100
+  border-radius: 50%
+  opacity: 0
+  transition: opacity $animationTime
