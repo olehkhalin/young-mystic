@@ -4,16 +4,16 @@ import cx from 'classnames';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
+import { Button } from '@ui/Button';
+import { Separator } from '@ui/Separator';
 import { CTABlock } from '@components/common/CTABlock';
+import { PageTitle } from '@components/common/PageTitle';
+import { Filters } from '@components/products/Filters';
+import { ProductCard } from '@components/common/ProductCard';
+import { Pagination } from '@components/common/Pagination';
 
 import s from '@styles/Products.module.sass';
 
-import { PageTitle } from '@components/common/PageTitle';
-import { Filters } from '@components/products/Filters';
-import { Separator } from '@ui/Separator';
-import { ProductCard } from '@components/common/ProductCard';
-import { Button } from '@ui/Button';
-import { Pagination } from '@components/common/Pagination';
 import { PRODUCTS_BIG } from '../content';
 
 const ProductsPage = () => (
@@ -25,7 +25,7 @@ const ProductsPage = () => (
           description="Подзаголовок раздела на одну, две или три строки, рассказывающий о разделе"
           className={s.title}
         />
-        <Filters className={s.filter} />
+        <Filters />
         <Separator />
         <div className={cx(s.products)}>
           {PRODUCTS_BIG.map((product) => (

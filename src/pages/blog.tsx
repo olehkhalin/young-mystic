@@ -16,25 +16,25 @@ const CATEGORIES = [
   {
     id: 0,
     title: 'Эфирные масла',
-    link: '/blog-tag',
+    link: '/blog-category',
     posts: POSTS,
   },
   {
     id: 1,
     title: 'Красота',
-    link: '/blog-tag',
+    link: '/blog-category',
     posts: POSTS,
   },
   {
     id: 2,
     title: 'Истории Гери Янга',
-    link: '/blog-tag',
+    link: '/blog-category',
     posts: POSTS,
   },
   {
     id: 3,
     title: 'Здоровье',
-    link: '/blog-tag',
+    link: '/blog-category',
     posts: POSTS,
   },
 ];

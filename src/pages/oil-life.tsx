@@ -28,7 +28,7 @@ const AboutSingle = () => (
             </p>
           )}
           button={{
-            link: '/vash-nastavnik-v-mire-masel',
+            link: '/chto-takoe-jefirnye-masla-voobshhe',
             label: 'Узнать подробнее',
           }}
         />
@@ -45,7 +45,7 @@ const AboutSingle = () => (
             </p>
           )}
           button={{
-            link: '/nashe-soobshhestvo',
+            link: '/pochemu-young-living',
             label: 'Узнать подробнее',
           }}
         />
@@ -61,7 +61,7 @@ const AboutSingle = () => (
             </p>
           )}
           button={{
-            link: '/nashe-soobshhestvo',
+            link: '/vozmozhnosti-young-living',
             label: 'Узнать подробнее',
           }}
         />

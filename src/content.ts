@@ -1,14 +1,14 @@
 export const PRODUCTS = [
   {
     id: 0,
-    link: '/',
+    link: '/products-single',
     title: 'Эфирное масло Пало Санто',
     price: 1530,
     image: '/images/product_1.png',
   },
   {
     id: 1,
-    link: '/',
+    link: '/products-single',
     title: 'Эфирное масло Иланг Иланг',
     price: 1810,
     image: '/images/product_2.png',
@@ -16,7 +16,7 @@ export const PRODUCTS = [
   },
   {
     id: 2,
-    link: '/',
+    link: '/products-single',
     title: 'Эфирное масло Полыни',
     price: 1720,
     image: '/images/product_3.png',
@@ -24,7 +24,7 @@ export const PRODUCTS = [
   },
   {
     id: 3,
-    link: '/',
+    link: '/products-single',
     title: 'Эфирное масло Священного Сандала',
     price: 4290,
     image: '/images/product_4.png',
@@ -34,14 +34,14 @@ export const PRODUCTS = [
 export const PRODUCTS_BIG = [
   {
     id: 0,
-    link: '/',
+    link: '/products-single',
     title: 'Эфирное масло Пало Санто',
     price: 1530,
     image: '/images/product_1.png',
   },
   {
     id: 1,
-    link: '/',
+    link: '/products-single',
     title: 'Эфирное масло Иланг Иланг',
     price: 1810,
     image: '/images/product_2.png',
@@ -49,7 +49,7 @@ export const PRODUCTS_BIG = [
   },
   {
     id: 2,
-    link: '/',
+    link: '/products-single',
     title: 'Эфирное масло Полыни',
     price: 1720,
     image: '/images/product_3.png',
@@ -57,35 +57,35 @@ export const PRODUCTS_BIG = [
   },
   {
     id: 3,
-    link: '/',
+    link: '/products-single',
     title: 'Эфирное масло Священного Сандала',
     price: 4290,
     image: '/images/product_4.png',
   },
   {
     id: 4,
-    link: '/',
+    link: '/products-single',
     title: 'Растительные капсулы',
     price: 330,
     image: '/images/product_5.png',
   },
   {
     id: 5,
-    link: '/',
+    link: '/products-single',
     title: 'Эфирное масло Тимьяна',
     price: 1510,
     image: '/images/product_6.png',
   },
   {
     id: 6,
-    link: '/',
+    link: '/products-single',
     title: 'Эфирное масло Мяты Кудрявой',
     price: 470,
     image: '/images/product_7.png',
   },
   {
     id: 7,
-    link: '/',
+    link: '/products-single',
     title: 'Эфирное масло Мандарина',
     price: 710,
     image: '/images/product_8.png',
@@ -95,10 +95,10 @@ export const PRODUCTS_BIG = [
 export const POSTS = [
   {
     id: 0,
-    link: '/',
+    link: '/blog-single',
     image: '/images/blog_3.jpg',
     category: {
-      link: '/',
+      link: '/blog-category',
       label: 'Эфирные масла',
     },
     title: 'Откройте свой разум, чтобы начать внутреннее исследование, с эфирными маслами',
@@ -106,10 +106,10 @@ export const POSTS = [
   },
   {
     id: 1,
-    link: '/',
+    link: '/blog-single',
     image: '/images/blog_2.jpg',
     category: {
-      link: '/',
+      link: '/blog-category',
       label: 'Эфирные масла',
     },
     title: 'Использование эфирных масел при беременности',
@@ -117,10 +117,10 @@ export const POSTS = [
   },
   {
     id: 2,
-    link: '/',
+    link: '/blog-single',
     image: '/images/blog_1.jpg',
     category: {
-      link: '/',
+      link: '/blog-category',
       label: 'Эфирные масла',
     },
     title: 'Свяжитесь с эмоциями через письмо и эфирные масла',
@@ -131,10 +131,10 @@ export const POSTS = [
 export const POSTS_BIG = [
   {
     id: 0,
-    link: '/',
+    link: '/blog-single',
     image: '/images/blog_3.jpg',
     category: {
-      link: '/',
+      link: '/blog-category',
       label: 'Эфирные масла',
     },
     title: 'Откройте свой разум, чтобы начать внутреннее исследование, с эфирными маслами',
@@ -143,10 +143,10 @@ export const POSTS_BIG = [
   },
   {
     id: 1,
-    link: '/',
+    link: '/blog-single',
     image: '/images/blog_2.jpg',
     category: {
-      link: '/',
+      link: '/blog-category',
       label: 'Эфирные масла',
     },
     title: 'Использование эфирных масел при беременности',
@@ -155,10 +155,10 @@ export const POSTS_BIG = [
   },
   {
     id: 2,
-    link: '/',
+    link: '/blog-single',
     image: '/images/blog_1.jpg',
     category: {
-      link: '/',
+      link: '/blog-category',
       label: 'Эфирные масла',
     },
     title: 'Свяжитесь с эмоциями через письмо и эфирные масла',
@@ -167,10 +167,10 @@ export const POSTS_BIG = [
   },
   {
     id: 3,
-    link: '/',
+    link: '/blog-single',
     image: '/images/blog_4.jpg',
     category: {
-      link: '/',
+      link: '/blog-category',
       label: 'Эфирные масла',
     },
     title: '7 ответов на самые распространенные вопросы об эфирных маслах',
@@ -179,10 +179,10 @@ export const POSTS_BIG = [
   },
   {
     id: 4,
-    link: '/',
+    link: '/blog-single',
     image: '/images/blog_5.jpg',
     category: {
-      link: '/',
+      link: '/blog-category',
       label: 'Эфирные масла',
     },
     title: 'Как использовать эфирные масла?',
@@ -194,23 +194,23 @@ export const POSTS_BIG = [
 export const TAGS = [
   {
     label: 'Красота',
-    link: '/blog-tag',
+    link: '/blog-category',
   },
   {
     label: 'Эфирные масла',
-    link: '/blog-tag',
+    link: '/blog-category',
   },
   {
     label: 'Истории Гери Янга',
-    link: '/blog-tag',
+    link: '/blog-category',
   },
   {
     label: 'Здоровье',
-    link: '/blog-tag',
+    link: '/blog-category',
   },
   {
     label: 'Работа',
-    link: '/blog-tag',
+    link: '/blog-category',
   },
 ];
 
@@ -218,26 +218,26 @@ export const PRODUCTS_TAGS = [
   {
     id: 0,
     label: 'Красота',
-    link: '/products-tag',
+    link: '/blog-category',
   },
   {
     id: 1,
     label: 'Здоровье',
-    link: '/products-tag',
+    link: '/blog-category',
   },
   {
     id: 2,
     label: 'Здоровье',
-    link: '/products-tag',
+    link: '/blog-category',
   },
   {
     id: 3,
     label: 'Головная боль',
-    link: '/products-tag',
+    link: '/blog-category',
   },
   {
     id: 4,
     label: 'Эфирное масло',
-    link: '/products-tag',
+    link: '/blog-category',
   },
 ];

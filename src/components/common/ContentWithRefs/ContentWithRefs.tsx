@@ -1,4 +1,5 @@
 import React, { ReactNode, useRef } from 'react';
+import cx from 'classnames';
 
 import { ContentBlock } from '@components/common/ContentBlock';
 
@@ -11,10 +12,12 @@ type ContentProps = {
 
 type ContentWithRefsProps = {
   content: ContentProps[]
+  className?: string
 };
 
 export const ContentWithRefs: React.FC<ContentWithRefsProps> = ({
   content,
+  className,
 }) => {
   const sectionsRef = useRef([]);
   sectionsRef.current = [];
@@ -31,21 +34,21 @@ export const ContentWithRefs: React.FC<ContentWithRefsProps> = ({
 
   return (
     <>
-      <nav className={s.nav}>
+      <nav className={cx(s.nav, className)}>
         {content.map((section, index) => (
           <button
-            key={section.title}
+            key={section.title || section.content}
             type="button"
             onClick={() => scrollToSection(index)}
-            className={s.link}
+            className={cx(s.link, { [s.empty]: !section.title })}
           >
-            {section.title}
+            {section.title || ''}
           </button>
         ))}
       </nav>
       {content.map((section) => (
         <ContentBlock
-          key={section.title}
+          key={section.title || section.content}
           ref={addToRefs}
         >
           {section.content}
