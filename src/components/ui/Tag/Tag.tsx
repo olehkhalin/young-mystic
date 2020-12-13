@@ -1,7 +1,7 @@
 import * as React from 'react';
+import Link, { LinkProps } from 'next/link';
 import cx from 'classnames';
 
-import Link, { LinkProps } from 'next/link';
 import s from './Tag.module.sass';
 
 type TagProps = {

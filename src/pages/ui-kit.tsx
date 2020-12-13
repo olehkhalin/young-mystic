@@ -7,21 +7,22 @@ import { Row } from '@ui/Row';
 import { Input } from '@ui/Input';
 import { Button } from '@ui/Button';
 import { Tag } from '@ui/Tag';
+import { Separator } from '@ui/Separator';
+import { CheckBox } from '@ui/CheckBox';
+import { RadioButton } from '@ui/RadioButton';
+import { PlusMinusInput } from '@ui/PlusMinusInput';
+import { CustomCollapse } from '@ui/CustomCollapse';
 import { TitleDescription } from '@components/common/TitleDescription';
 import { ImageTextBig } from '@components/common/ImageTextBig';
 import { CTABlock } from '@components/common/CTABlock';
 import { ProductCard } from '@components/common/ProductCard';
 import { BlogCard } from '@components/common/BlogCard';
+import { ContentBlock } from '@components/common/ContentBlock';
+import { BasketCard } from '@components/basket/BasketCard';
 import ArrowRight from '@public/svg/ArrowRight.svg';
 import Discount from '@public/svg/Discount.svg';
 
 import s from '@styles/UiKit.module.sass';
-import { ContentBlock } from '@components/common/ContentBlock';
-import { Separator } from '@ui/Separator';
-import { CheckBox } from '@ui/CheckBox';
-import { RadioButton } from '@ui/RadioButton';
-import { PlusMinusInput } from '@ui/PlusMinusInput';
-import { BasketCard } from '@components/basket/BasketCard';
 
 const UiKit: React.FC = () => {
   const [inputValue, setInputValue] = useState('');
@@ -108,6 +109,53 @@ const UiKit: React.FC = () => {
               <Tag href="/" theme="secondary" className={s.tag}>Головная боль</Tag>
               <Tag href="/" theme="secondary" className={s.tag}>Эфирное масло</Tag>
             </div>
+            <Separator className={s.separator} />
+            <CustomCollapse title="Способ получения">
+              <p>Паровая дистилляция из цветущих растений.</p>
+              <p>
+                Название “шалфей” происходит от латинского слова “salvere” и означает “исцелять или
+                сохранять”. В средние века Шалфей мускатный называли “очищение для глаз”, в те
+                времена настой из семян использовали для исцеления глазных болезней. Издавна Шалфей
+                мускатный использовали для облегчения женских проблем, связанных с нарушением
+                менструального цикла.
+              </p>
+            </CustomCollapse>
+            <CustomCollapse title="Описание товара">
+              <ul>
+                <li>Нанести 6-8 капель на нижнюю часть спины во время ПМС</li>
+                <li>Для приема внутрь поместить в капсулу, 2 раза в день, если необходимо</li>
+                <li>В массаже Raindrop Technique — послойное нанесение масел</li>
+                <li>
+                  Вдыхать с ладоней или из бутылочки — 5-8 капель в Диффузоре, по 30 мин 3 раза в
+                  день, или по мере необходимости
+                </li>
+                <li>В ванну 5-6 капель на эмульгатор</li>
+                <li>Обогащение косметических средств: 2 капли на 10 мл основы</li>
+              </ul>
+            </CustomCollapse>
+            <CustomCollapse theme="secondary" title="Способ получения">
+              <p>Паровая дистилляция из цветущих растений.</p>
+              <p>
+                Название “шалфей” происходит от латинского слова “salvere” и означает “исцелять или
+                сохранять”. В средние века Шалфей мускатный называли “очищение для глаз”, в те
+                времена настой из семян использовали для исцеления глазных болезней. Издавна Шалфей
+                мускатный использовали для облегчения женских проблем, связанных с нарушением
+                менструального цикла.
+              </p>
+            </CustomCollapse>
+            <CustomCollapse theme="secondary" title="Описание товара">
+              <ul>
+                <li>Нанести 6-8 капель на нижнюю часть спины во время ПМС</li>
+                <li>Для приема внутрь поместить в капсулу, 2 раза в день, если необходимо</li>
+                <li>В массаже Raindrop Technique — послойное нанесение масел</li>
+                <li>
+                  Вдыхать с ладоней или из бутылочки — 5-8 капель в Диффузоре, по 30 мин 3 раза в
+                  день, или по мере необходимости
+                </li>
+                <li>В ванну 5-6 капель на эмульгатор</li>
+                <li>Обогащение косметических средств: 2 капли на 10 мл основы</li>
+              </ul>
+            </CustomCollapse>
             <Separator className={s.separator} />
             <TitleDescription
               title="Эфирные масла"
@@ -364,6 +412,31 @@ const UiKit: React.FC = () => {
                 Бизнеc с Young Living
               </Tag>
             </div>
+            <Separator theme="dark" />
+            <CustomCollapse theme="dark" title="Способ получения">
+              <p>Паровая дистилляция из цветущих растений.</p>
+              <p>
+                Название “шалфей” происходит от латинского слова “salvere” и означает “исцелять или
+                сохранять”. В средние века Шалфей мускатный называли “очищение для глаз”, в те
+                времена настой из семян использовали для исцеления глазных болезней. Издавна Шалфей
+                мускатный использовали для облегчения женских проблем, связанных с нарушением
+                менструального цикла.
+              </p>
+            </CustomCollapse>
+            <CustomCollapse theme="dark" title="Описание товара">
+              <ul>
+                <li>Нанести 6-8 капель на нижнюю часть спины во время ПМС</li>
+                <li>Для приема внутрь поместить в капсулу, 2 раза в день, если необходимо</li>
+                <li>В массаже Raindrop Technique — послойное нанесение масел</li>
+                <li>
+                  Вдыхать с ладоней или из бутылочки — 5-8 капель в Диффузоре, по 30 мин 3 раза в
+                  день, или по мере необходимости
+                </li>
+                <li>В ванну 5-6 капель на эмульгатор</li>
+                <li>Обогащение косметических средств: 2 капли на 10 мл основы</li>
+              </ul>
+            </CustomCollapse>
+            <Separator theme="dark" />
             <ProductCard
               className={s.productSmall}
               theme="small"

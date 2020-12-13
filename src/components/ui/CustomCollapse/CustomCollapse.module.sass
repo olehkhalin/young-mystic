@@ -1,0 +1,78 @@
+@import "@styles/variables.module"
+
+.root
+  display: flex
+  flex-direction: column
+  width: 100%
+  \:global(.ReactCollapse--collapse)
+    transition: height $animationTime
+  \:global(.ReactCollapse--content)
+    padding: 8px 0 20px
+    > p
+      &:not(:last-of-type)
+        margin-bottom: 8px
+
+.title
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 12px 0
+  border: none
+  box-shadow: none
+  background-color: transparent
+  outline: none
+  cursor: pointer
+
+.icon
+  margin-left: 12px
+  transition: transform $animationTime
+  path
+    fill: $primary-100
+  &.active
+    transform: rotate(180deg)
+
+.primary
+  .title
+    font-family: $font-headers
+    font-weight: 700
+    font-size: 1.5rem
+
+.secondary
+  background-color: $light-100
+  border: 1px solid $primary-20
+  border-radius: 8px
+  .title
+    padding: 12px 20px
+    font-size: 0.875rem
+    color: $primary-100
+  \:global(.ReactCollapse--content)
+    padding: 0 20px 20px
+    font-size: 0.875rem
+
+.dark
+  color: $light-100
+  .title
+    color: $light-100
+    text-transform: uppercase
+    font-size: 0.875rem
+    font-weight: 400
+  .icon
+    path
+      fill: $light-100
+  \:global(.ReactCollapse--content)
+    padding-top: 0
+    padding-bottom: 12px
+
+.menu
+  .title
+    font-family: $font-headers
+    font-weight: 500
+    font-size: 1.5rem
+    color: $light-100
+    padding: 16px 0
+    transition: color $animationTime
+    &.active
+      color: $primary-100
+  \:global(.ReactCollapse--content)
+    padding-top: 4px
+    padding-bottom: 16px
