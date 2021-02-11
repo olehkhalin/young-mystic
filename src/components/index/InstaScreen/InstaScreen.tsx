@@ -2,6 +2,8 @@ import * as React from 'react';
 import Image from 'next/image';
 import cx from 'classnames';
 
+import { Container } from '@ui/Container';
+import { Row } from '@ui/Row';
 import s from './InstaScreen.module.sass';
 
 const IMAGES = [
@@ -44,25 +46,29 @@ export const InstaScreen: React.FC<InstaScreenProps> = ({
       <span className={s.span}>@youngliving.ukraine</span>
       <span className={s.span}>@youngliving.ukraine</span>
     </a>
-    <div className={s.images}>
-      {IMAGES.map((image) => (
-        <a
-          key={image.link}
-          className={s.image}
-          href={image.link}
-          target="_blank"
-          rel="noreferrer nofollow"
-          title={image.title}
-        >
-          <Image
-            src={image.image}
-            width={158}
-            height={158}
-            layout="responsive"
-            alt={image.title}
-          />
-        </a>
-      ))}
-    </div>
+    <Container>
+      <Row>
+        <div className={s.images}>
+          {IMAGES.map((image) => (
+            <a
+              key={image.link}
+              className={s.image}
+              href={image.link}
+              target="_blank"
+              rel="noreferrer nofollow"
+              title={image.title}
+            >
+              <Image
+                src={image.image}
+                width={158}
+                height={158}
+                layout="responsive"
+                alt={image.title}
+              />
+            </a>
+          ))}
+        </div>
+      </Row>
+    </Container>
   </div>
 );

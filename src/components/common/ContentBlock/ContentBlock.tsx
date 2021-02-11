@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 import cx from 'classnames';
 
 import s from './ContentBlock.module.sass';
@@ -6,6 +6,7 @@ import s from './ContentBlock.module.sass';
 export type ContentBlockRef = HTMLDivElement;
 
 type ContentBlockProps = {
+  children: ReactNode
   className?: string
 };
 

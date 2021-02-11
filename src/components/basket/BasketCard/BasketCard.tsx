@@ -34,8 +34,9 @@ export const BasketCard: React.FC<BasketCardProps> = ({
         <Image
           src={image}
           alt={title}
-          onjectiveFit="contain"
-          layout="fill"
+          layout="responsive"
+          width={100}
+          height={100}
         />
       </div>
       <header className={s.content}>

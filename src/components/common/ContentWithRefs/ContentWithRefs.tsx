@@ -6,7 +6,7 @@ import { ContentBlock } from '@components/common/ContentBlock';
 import s from './ContentWithRefs.module.sass';
 
 type ContentProps = {
-  title: string
+  title?: string
   content: ReactNode
 };
 
@@ -19,10 +19,9 @@ export const ContentWithRefs: React.FC<ContentWithRefsProps> = ({
   content,
   className,
 }) => {
-  const sectionsRef = useRef([]);
-  sectionsRef.current = [];
+  const sectionsRef = useRef<HTMLDivElement[]>([]);
 
-  const addToRefs = (section) => {
+  const addToRefs = (section: HTMLDivElement) => {
     if (section && !sectionsRef.current.includes(section)) {
       sectionsRef.current.push(section);
     }
@@ -37,7 +36,7 @@ export const ContentWithRefs: React.FC<ContentWithRefsProps> = ({
       <nav className={cx(s.nav, className)}>
         {content.map((section, index) => (
           <button
-            key={section.title || section.content}
+            key={section.title || `button-${index}`}
             type="button"
             onClick={() => scrollToSection(index)}
             className={cx(s.link, { [s.empty]: !section.title })}
@@ -46,9 +45,9 @@ export const ContentWithRefs: React.FC<ContentWithRefsProps> = ({
           </button>
         ))}
       </nav>
-      {content.map((section) => (
+      {content.map((section, index) => (
         <ContentBlock
-          key={section.title || section.content}
+          key={section.title || `section-${index}`}
           ref={addToRefs}
         >
           {section.content}

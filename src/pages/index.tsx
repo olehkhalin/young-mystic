@@ -114,9 +114,9 @@ const Home = () => (
           ))}
         </div>
         <Button href="/blog">Перейти в блог</Button>
-        <InstaScreen />
       </Row>
     </Container>
+    <InstaScreen />
   </BaseLayout>
 );
 
