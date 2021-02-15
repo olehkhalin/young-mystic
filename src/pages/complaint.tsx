@@ -3,16 +3,28 @@ import React from 'react';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
+import { BreadCrumbs } from '@ui/BreadCrumbs';
 import { PageTitle } from '@components/common/PageTitle';
 import { ContentBlock } from '@components/common/ContentBlock';
 import { ContactForm } from '@components/common/ContactForm';
 
 import s from '@styles/SecondaryPages.module.sass';
 
+const navLinks = [
+  {
+    title: 'Главная',
+    link: '/',
+  },
+  {
+    title: 'Рекламации',
+  },
+];
+
 const Complaint = () => (
   <BaseLayout>
-    <Container>
+    <Container theme="small">
       <Row>
+        <BreadCrumbs navLinks={navLinks} />
         <PageTitle title="Рекламации" />
         <ContentBlock className={s.content}>
           <p>

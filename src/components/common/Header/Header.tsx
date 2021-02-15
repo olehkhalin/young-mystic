@@ -8,6 +8,7 @@ import { Menu } from '@components/common/Menu';
 import ShoppingCart from '@public/svg/ShoppingCart.svg';
 import Search from '@public/svg/Search.svg';
 
+import { MenuNavLinks, NavLinks } from '@components/common/Footer/content';
 import s from './Header.module.sass';
 
 type HeaderProps = {
@@ -32,7 +33,7 @@ export const Header: React.FC<HeaderProps> = ({
     className,
   );
 
-  const [isShownMenu, setIsShownMenu] = useState(false);
+  const [isShownMenu, setIsShownMenu] = useState<boolean>(false);
 
   return (
     <>
@@ -43,6 +44,17 @@ export const Header: React.FC<HeaderProps> = ({
               <a className={s.logo}>Young Mystic</a>
             </Link>
             <div className={s.right}>
+              <nav className={s.nav}>
+                {
+                  MenuNavLinks.map((link) => (
+                    <Link key={link.link} href={link.link}>
+                      <a className={s.navLink}>
+                        {link.title}
+                      </a>
+                    </Link>
+                  ))
+                }
+              </nav>
               <button type="button" className={cx(s.cart, { [s.active]: isActiveCart })}>
                 <ShoppingCart />
               </button>

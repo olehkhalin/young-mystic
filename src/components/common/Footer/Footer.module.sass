@@ -23,6 +23,11 @@
   font-size: 0.75rem
   font-weight: 400
 
+.socialsWrapper
+  width: 100%
+  display: flex
+  justify-content: center
+
 .socials
   margin-top: 24px
 
@@ -37,3 +42,48 @@
   text-transform: uppercase
   font-size: 0.75rem
   font-weight: 400
+  width: 100%
+  text-align: center
+
+.navBlockButtonSocials
+  display: none
+
+@media (min-width: $desktop)
+  .footer
+    padding: 40px 0 20px
+  .row
+    max-width: 1116px
+    margin: 0 auto
+    flex-direction: row
+    align-items: flex-start
+  .nav
+    display: flex
+    width: calc(80% + 24px)
+    margin: 0
+  .navBlock
+    width: calc(25% - 24px)
+    margin-right: 24px
+  .navBlockButton
+    padding: 0
+    margin-bottom: 12px
+    min-height: 40px
+    font-size: 1rem !important
+    font-weight: 500 !important
+    align-items: flex-start
+    text-transform: uppercase
+    line-height: 1.25
+  .navBlockButtonSocials
+    display: block
+  .socialsWrapper
+    width: calc(20% - 24px)
+    flex-direction: column
+  .socials
+    display: flex
+    margin-top: -16px
+  .socialLink
+    &:first-of-type
+      margin-left: -16px
+    &:not(:last-of-type)
+      margin-right: 0
+  .seperator
+    margin: 28px 0 20px

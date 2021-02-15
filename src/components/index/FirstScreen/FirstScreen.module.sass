@@ -19,7 +19,7 @@
   text-transform: uppercase
   line-height: .8
   font-size: 48px
-  font-weight: 500
+  font-weight: 400
   font-family: $font-headers
 
 .second
@@ -45,3 +45,38 @@
   height: auto
   margin-left: auto
   margin-top: -50%
+
+.imageDesktop
+  display: none
+
+@media (min-width: $desktop)
+  .root
+    padding: 120px 0 0
+  .header
+    display: block
+    max-width: none
+    text-align: center
+    font-size: 124px
+    line-height: 150px
+    letter-spacing: 0
+    text-transform: none
+  .second
+    margin-left: 0
+  .description
+    font-size: 54px
+    line-height: 68px
+    letter-spacing: 0.16em
+    font-weight: 400
+  .images
+    margin-top: 87px
+  .image1, .image2
+    display: none
+  .imageDesktop
+    display: block
+  .image1
+    width: 912px
+    margin-left: auto
+    margin-right: auto
+  .image2
+    width: 774px
+    margin-top: -30%

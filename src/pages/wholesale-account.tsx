@@ -5,6 +5,7 @@ import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { CustomCollapse } from '@ui/CustomCollapse';
 import { Row } from '@ui/Row';
+import { BreadCrumbs } from '@ui/BreadCrumbs';
 import { ContentWithRefs } from '@components/common/ContentWithRefs';
 import { PageTitle } from '@components/common/PageTitle';
 
@@ -218,10 +219,25 @@ const CONTENT = [
   },
 ];
 
+const navLinks = [
+  {
+    title: 'Главная',
+    link: '/',
+  },
+  {
+    title: 'Oil life',
+    link: '/oil-life',
+  },
+  {
+    title: 'Присоединяйтесь к сообществу Young Living!',
+  },
+];
+
 const OfferAgreement = () => (
   <BaseLayout>
-    <Container>
+    <Container theme="small">
       <Row>
+        <BreadCrumbs navLinks={navLinks} />
         <PageTitle title="Присоединяйтесь к сообществу Young Living!" />
         <ContentWithRefs content={CONTENT} />
       </Row>

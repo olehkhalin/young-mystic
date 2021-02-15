@@ -32,3 +32,38 @@
 
 .blockCta
   margin-top: 20px
+
+@media (min-width: $desktop)
+  .products
+    grid-template-columns: repeat(4, 1fr)
+    column-gap: 24px
+    row-gap: 40px
+    padding-bottom: 60px
+  .blockCta
+    margin-top: 60px
+  .article
+    display: flex
+    width: 100%
+    max-width: 1116px
+    align-items: flex-start
+    position: relative
+  .image
+    width: 50%
+    margin-right: 12px
+    position: sticky
+    top: 138px
+    left: 0
+    margin-bottom: 20px
+  .content
+    width: 50%
+    margin-left: 12px
+  .breadCrumbs
+    margin-bottom: 20px
+  .separatorTop
+    margin-top: 40px
+    margin-bottom: 26px
+  .separatorBottom
+    display: none
+  .title, .breadCrumbs, .separator
+    z-index: 4
+    position: relative

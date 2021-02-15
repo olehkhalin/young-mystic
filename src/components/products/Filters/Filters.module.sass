@@ -1,5 +1,9 @@
 @import "@styles/variables.module"
 
+.wrapper
+  width: 100%
+  position: relative
+
 .root
   display: flex
   width: 100%
@@ -30,3 +34,30 @@
   transition: transform ease-in-out $animationTime * 2
   &.open
     transform: none
+
+@media (min-width: $desktop)
+  .root
+    position: relative
+    z-index: 3
+    background-color: $background-sand
+    &::before
+      content: ''
+      position: absolute
+      bottom: 0
+      width: calc(100% + 60px)
+      left: -30px
+      background-color: $background-sand
+      height: 500px
+      z-index: -1
+  .button
+    font-size: 1rem
+    padding: 18px 0
+  .icon
+    margin-left: 8px
+    transition: transform $animationTime
+  .open
+    .icon
+      transform: rotate(180deg)
+  .filtersScreen
+    z-index: -2
+    transform: translateY(calc(-100% - 40px))

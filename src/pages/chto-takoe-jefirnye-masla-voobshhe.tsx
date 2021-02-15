@@ -3,6 +3,7 @@ import React from 'react';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
+import { BreadCrumbs } from '@ui/BreadCrumbs';
 import { PageTitle } from '@components/common/PageTitle';
 import { SimilarPosts } from '@components/common/SimilarPosts';
 import { CTABlock } from '@components/common/CTABlock';
@@ -64,10 +65,25 @@ const CONTENT = (
   </>
 );
 
+const navLinks = [
+  {
+    title: 'Главная',
+    link: '/',
+  },
+  {
+    title: 'Oil life',
+    link: '/oil-life',
+  },
+  {
+    title: 'Что такое эфирные масла, зачем ими пользоваться и как?',
+  },
+];
+
 const OfferAgreement = () => (
   <BaseLayout>
-    <Container>
+    <Container theme="small">
       <Row>
+        <BreadCrumbs navLinks={navLinks} />
         <PageTitle
           image="/images/Image_2.jpg"
           blockquote="Может показаться, что эфирные масла — это всего лишь масла."

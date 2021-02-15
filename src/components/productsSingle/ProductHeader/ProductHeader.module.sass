@@ -1,12 +1,5 @@
 @import "@styles/variables.module"
 
-.image
-  width: 100%
-  padding: 22px 30px
-  border: 1px solid $primary-20
-  background-color: $light-100
-  border-radius: 8px
-
 .header
   margin-top: 20px
   font-family: $font-headers
@@ -35,3 +28,14 @@
   width: 20px
   height: 20px
   margin-right: 4px
+
+@media (min-width: $desktop)
+  .header
+    font-size: 1.75rem
+  .price
+    font-size: 1.125rem
+  .description
+    padding: 40px 0 50px
+  .button, .buttonSale
+    width: 320px
+    max-width: 320px

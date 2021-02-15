@@ -1,3 +1,8 @@
+@import "../styles/variables.module"
+
+.row
+  flex-direction: column
+
 .title
   padding: 80px 0
 
@@ -23,3 +28,29 @@
 
 .blog
   padding: 18px 0
+
+@media (min-width: $desktop)
+  .title
+    padding: 120px 0 165px
+  .ctaBlock
+    margin-top: 20px
+  .titleProduct
+    padding: 120px 0 0
+  .products
+    grid-template-columns: repeat(4, 1fr)
+    column-gap: 24px
+    padding: 40px 0
+  .titleBlog
+    padding: 120px 0 40px
+  .blog
+    padding: 40px 0
+    max-width: 888px
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    column-gap: 24px
+    row-gap: 20px
+  .blogCard
+    &:not(:last-of-type)
+      margin-bottom: 0
+    &:last-of-type
+      grid-column: 1/3

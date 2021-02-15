@@ -3,17 +3,39 @@ import React from 'react';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
+import { BreadCrumbs } from '@ui/BreadCrumbs';
 import { Article } from '@components/blogSingle/Article';
 import { ProductsInArticle } from '@components/blogSingle/ProductsInArticle';
 import { CTABlock } from '@components/common/CTABlock';
 import { SimilarPosts } from '@components/common/SimilarPosts';
 
+import s from '@styles/BlogSingle.module.sass';
+
 import { POSTS, PRODUCTS, PRODUCTS_TAGS } from '../content';
+
+const navLinks = [
+  {
+    title: 'Главная',
+    link: '/',
+  },
+  {
+    title: 'Блог',
+    link: '/blog',
+  },
+  {
+    title: 'Эфирные масла',
+    link: '/blog-category',
+  },
+  {
+    title: 'Рецепт смеси от головной боли',
+  },
+];
 
 const BlogSingle = () => (
   <BaseLayout>
-    <Container>
+    <Container theme="small">
       <Row>
+        <BreadCrumbs navLinks={navLinks} />
         <Article
           image="/images/Image_2.jpg"
           title="Рецепт смеси от головной боли"
@@ -63,6 +85,7 @@ const BlogSingle = () => (
             label: 'Присоединиться',
             link: '/',
           }}
+          className={s.blockCta}
         />
       </Row>
     </Container>

@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 
@@ -20,6 +21,9 @@ export const Footer: React.FC = () => (
               key={navItem.title}
               theme="dark"
               title={navItem.title}
+              isOpenDesktop
+              className={s.navBlock}
+              buttonClassName={s.navBlockButton}
             >
               <div className={s.navLinks}>
                 {navItem.links.map((navLink) => (
@@ -36,18 +40,21 @@ export const Footer: React.FC = () => (
             </CustomCollapse>
           ))}
         </nav>
-        <div className={s.socials}>
-          {SocialLinks.map((social) => (
-            <a
-              key={social.link}
-              className={s.socialLink}
-              href={social.link}
-              target="_blank"
-              rel="noreferrer nofollow"
-            >
-              {social.icon}
-            </a>
-          ))}
+        <div className={s.socialsWrapper}>
+          <div className={cx(s.navBlockButton, s.navBlockButtonSocials)}>Социальные сети</div>
+          <div className={s.socials}>
+            {SocialLinks.map((social) => (
+              <a
+                key={social.link}
+                className={s.socialLink}
+                href={social.link}
+                target="_blank"
+                rel="noreferrer nofollow"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
         </div>
         <Separator theme="dark" className={s.seperator} />
         <p className={s.copy}>

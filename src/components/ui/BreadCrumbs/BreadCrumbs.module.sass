@@ -1,0 +1,29 @@
+@import "@styles/variables.module"
+
+.root
+  display: none
+
+@media (min-width: $desktop)
+  .root
+    display: flex
+    max-width: 888px
+    width: 100%
+    margin-left: auto
+    margin-right: auto
+    font-size: 0.75rem
+    font-weight: 500
+    align-items: center
+    padding: 5px 0
+    margin-bottom: 40px
+  .link
+    color: $secondary-100
+    transition: color $animationTime
+    padding: 8px 16px
+    margin: 0 -16px
+    display: block
+    &:hover
+      color: $primary-100
+  .current
+    color: $primary-100
+  .separator
+    margin: 0 10px

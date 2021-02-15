@@ -49,7 +49,7 @@ export const FilterScreen: React.FC<FilterScreenProps> = ({
   className,
 }) => (
   <div className={cx(s.root, className)}>
-    <Container>
+    <Container className={s.container}>
       <Row className={s.row}>
         <button
           type="button"
@@ -60,7 +60,7 @@ export const FilterScreen: React.FC<FilterScreenProps> = ({
         </button>
         <div className={s.filters}>
           {CONTENT.map((contentItem) => (
-            <>
+            <div className={s.filter} key={contentItem.title}>
               <span className={s.header}>{contentItem.title}</span>
               {contentItem.filters.map((filter) => (
                 <CheckBox
@@ -68,7 +68,7 @@ export const FilterScreen: React.FC<FilterScreenProps> = ({
                   label={filter}
                 />
               ))}
-            </>
+            </div>
           ))}
           <Button
             theme="clean"
@@ -77,7 +77,15 @@ export const FilterScreen: React.FC<FilterScreenProps> = ({
             Сбросить фильтры
           </Button>
         </div>
-        <Button>Применить фильтры</Button>
+        <div className={s.buttons}>
+          <Button className={s.button}>Применить фильтры</Button>
+          <Button
+            theme="secondary"
+            className={cx(s.button, s.clearButtonDesktop)}
+          >
+            Сбросить фильтры
+          </Button>
+        </div>
       </Row>
     </Container>
   </div>

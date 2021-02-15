@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 import Facebook from '@public/svg/Facebook.svg';
 import Instagram from '@public/svg/Instagram.svg';
@@ -119,7 +118,7 @@ export const NavLinks: NavLinksProps = [
 
 type MenuNavLinksProps = {
   title: string
-  link?: string
+  link: string
   collapse?: {
     title?: string
     link?: string
@@ -133,6 +132,7 @@ type MenuNavLinksProps = {
 export const MenuNavLinks: MenuNavLinksProps = [
   {
     title: 'Обо мне',
+    link: '/about',
     collapse: [
       {
         title: 'Обо мне',
@@ -146,6 +146,7 @@ export const MenuNavLinks: MenuNavLinksProps = [
   },
   {
     title: 'Oil life',
+    link: '/oil-life',
     collapse: [
       {
         title: 'Что такое эфирные масла, зачем их использовать и как?',
@@ -167,6 +168,7 @@ export const MenuNavLinks: MenuNavLinksProps = [
   },
   {
     title: 'Блог',
+    link: '/blog',
     collapse: [
       {
         title: 'Эфирные масла',
@@ -218,6 +220,7 @@ export const MenuNavLinks: MenuNavLinksProps = [
   },
   {
     title: 'Магазин',
+    link: '/product',
     collapse: [
       {
         title: 'Новинки',

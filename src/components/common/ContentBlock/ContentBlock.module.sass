@@ -28,8 +28,36 @@
     border: 1px solid $primary-100
     border-radius: 8px
     margin: 24px 0 0
+    max-width: 450px
     h2
       font-weight: 500
       font-size: 1.5rem
       margin-top: 0
       margin-bottom: 8px
+
+@media (min-width: $desktop)
+  .root
+    font-size: 1.125rem
+    p + div
+      margin-top: 24px !important
+    h2
+      margin-top: 72px
+      margin-bottom: 32px
+      font-size: 1.75rem
+    h3
+      margin-top: 32px
+      margin-bottom: 24px
+      font-size: 1.5rem
+    p
+      &:not(:first-of-type)
+        margin-top: 24px
+    ul
+      margin-top: 24px
+      li:not(:last-of-type)
+        margin-bottom: 16px
+    blockquote
+      padding: 28px 20px 40px
+      margin: 32px 0 0
+      h2
+        font-size: 1.75rem
+        margin-bottom: 16px

@@ -26,6 +26,7 @@
 .content
   display: flex
   flex-direction: column
+  height: 100%
 
 .heading
   display: flex
@@ -39,8 +40,10 @@
 .header
   color: $secondary-100
   line-height: 1.25
+  font-weight: 700
 
 .description
+  display: none
   line-height: 1.25
 
 .button
@@ -82,6 +85,8 @@
   .header
     margin-top: 10px
     font-size: 0.875rem
+  .button
+    display: none
 
 .dark
   background-color: $secondary-80
@@ -89,3 +94,38 @@
     color: $light-100
   .date
     color: $light-80
+
+.isDescription
+  .description
+    display: block
+
+@media (min-width: $desktop)
+  .root
+    flex-direction: column
+  .small, .primary
+    .image
+      min-height: 140px
+      height: 140px
+      width: 100%
+  .small, .dark
+    .header
+      font-size: 1rem
+    .content
+      padding: 16px 16px 28px
+    .header
+      margin: 16px 0 8px
+    .button
+      display: flex
+  .heading
+    flex-grow: 1
+  .description
+    display: block
+    margin-top: auto
+  .isFullWidth
+    flex-direction: row
+    .image
+      width: 58%
+      min-width: 58%
+      height: auto
+    .content
+      padding: 20px 24px

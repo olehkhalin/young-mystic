@@ -3,18 +3,34 @@ import React from 'react';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
+import { BreadCrumbs } from '@ui/BreadCrumbs';
 import { CTABlock } from '@components/common/CTABlock';
 import { RecentBlog } from '@components/common/RecentBlog';
-
-import s from '@styles/About.module.sass';
 import { PageTitle } from '@components/common/PageTitle';
 import { ContentBlock } from '@components/common/ContentBlock';
+
+import s from '@styles/About.module.sass';
 import { POSTS } from '../content';
+
+const navLinks = [
+  {
+    title: 'Главная',
+    link: '/',
+  },
+  {
+    title: 'Обо мне',
+    link: '/about',
+  },
+  {
+    title: 'Одна большая семья',
+  },
+];
 
 const AboutSingle = () => (
   <BaseLayout>
-    <Container>
+    <Container theme="small">
       <Row>
+        <BreadCrumbs navLinks={navLinks} />
         <PageTitle
           className={s.imageTitle}
           title="Одна большая семья"

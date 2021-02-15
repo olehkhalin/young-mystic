@@ -3,6 +3,7 @@ import React from 'react';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
+import { BreadCrumbs } from '@ui/BreadCrumbs';
 import { PageTitle } from '@components/common/PageTitle';
 import { ContentBlock } from '@components/common/ContentBlock';
 
@@ -59,10 +60,21 @@ const CONTENT = (
   </>
 );
 
+const navLinks = [
+  {
+    title: 'Главная',
+    link: '/',
+  },
+  {
+    title: 'Политика конфиденциальности',
+  },
+];
+
 const OfferAgreement = () => (
   <BaseLayout>
-    <Container>
+    <Container theme="small">
       <Row>
+        <BreadCrumbs navLinks={navLinks} />
         <PageTitle title="Политика конфиденциальности" />
         <ContentBlock className={s.content}>
           {CONTENT}

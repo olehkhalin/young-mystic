@@ -13,31 +13,29 @@ type FiltersProps = {
 export const Filters: React.FC<FiltersProps> = ({
   className,
 }) => {
-  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
+  const [isFiltersOpen, setIsFiltersOpen] = useState<boolean>(false);
 
   return (
-    <>
-      <div className={cx(s.root, className)}>
-        <button
-          type="button"
-          className={s.button}
-          onClick={() => setIsFiltersOpen(true)}
-        >
-          Выбрать по
-          <ChewronDown className={s.icon} />
-        </button>
-        <button
-          type="button"
-          className={cx(s.button, s.sort)}
-        >
-          Сортировать
-          <ChewronDown className={s.icon} />
-        </button>
-      </div>
+    <div className={cx(s.root, className)}>
+      <button
+        type="button"
+        className={cx(s.button, { [s.open]: isFiltersOpen })}
+        onClick={() => setIsFiltersOpen(!isFiltersOpen)}
+      >
+        Выбрать по
+        <ChewronDown className={s.icon} />
+      </button>
+      <button
+        type="button"
+        className={cx(s.button, s.sort)}
+      >
+        Сортировать
+        <ChewronDown className={s.icon} />
+      </button>
       <FilterScreen
         onRequestClose={() => setIsFiltersOpen(false)}
         className={cx(s.filtersScreen, { [s.open]: isFiltersOpen })}
       />
-    </>
+    </div>
   );
 };

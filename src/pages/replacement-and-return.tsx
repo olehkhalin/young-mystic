@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
+import { BreadCrumbs } from '@ui/BreadCrumbs';
 import { ContentWithRefs } from '@components/common/ContentWithRefs';
 import { PageTitle } from '@components/common/PageTitle';
 import { ContactForm } from '@components/common/ContactForm';
@@ -149,10 +150,21 @@ const CONTENT = [
   },
 ];
 
+const navLinks = [
+  {
+    title: 'Главная',
+    link: '/',
+  },
+  {
+    title: 'Способы и условия возврата',
+  },
+];
+
 const OfferAgreement = () => (
   <BaseLayout>
-    <Container>
+    <Container theme="small">
       <Row>
+        <BreadCrumbs navLinks={navLinks} />
         <PageTitle title="Способы и условия возврата" />
         <ContentWithRefs content={CONTENT} />
       </Row>

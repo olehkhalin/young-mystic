@@ -19,6 +19,7 @@
   background-color: $primary-100
   color: $background-sand
   transition: background-color $animationTime, box-shadow $animationTime
+  max-width: 328px
   &:hover
     background-color: $primary-60
   &:active, &:focus
@@ -29,6 +30,7 @@
   color: $primary-100
   border: 1px solid $primary-100
   transition: border $animationTime, color $animationTime, box-shadow $animationTime
+  max-width: 288px
   svg
     path
       fill: $primary-100
@@ -47,6 +49,7 @@
   color: $primary-100
   padding: 5px 10px
   margin: -5px -10px
+  font-weight: 500 !important
 
 .dark
   background-color: $secondary-100
@@ -59,3 +62,7 @@
       fill: $light-100
   &:hover
     background-color: $secondary-80
+
+@media (min-width: $desktop)
+  .clean
+    font-size: 1rem

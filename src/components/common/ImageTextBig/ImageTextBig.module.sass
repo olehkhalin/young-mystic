@@ -8,9 +8,10 @@
     &:not(:last-of-type)
       margin-bottom: 8px
 
-.image
-  width: 100%
-  margin-bottom: 20px
+.content
+  display: flex
+  flex-direction: column
+  line-height: 1.25
 
 .category
   text-transform: uppercase
@@ -26,3 +27,28 @@
 
 .button
   margin-top: 28px
+  max-width: none
+
+@media (min-width: $desktop)
+  .root
+    flex-direction: row
+    width: 100%
+    &:nth-child(2n)
+      .content
+        order: -1
+        margin-left: auto
+  .image
+    width: 50%
+    padding-right: 24px
+  .content
+    width: 50%
+    justify-content: center
+  .header
+    max-width: 546px
+  .description
+    max-width: 490px
+  .category
+    margin-top: 0
+  .button
+    max-width: 328px
+    margin-top: 40px

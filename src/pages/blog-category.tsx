@@ -11,12 +11,28 @@ import { Pagination } from '@components/common/Pagination';
 
 import s from '@styles/BlogCategory.module.sass';
 
+import { BreadCrumbs } from '@ui/BreadCrumbs';
 import { POSTS_BIG } from '../content';
+
+const navLinks = [
+  {
+    title: 'Главная',
+    link: '/',
+  },
+  {
+    title: 'Блог',
+    link: '/blog',
+  },
+  {
+    title: 'Эфирные масла',
+  },
+];
 
 const BlogCategory = () => (
   <BaseLayout>
-    <Container>
+    <Container theme="small">
       <Row>
+        <BreadCrumbs navLinks={navLinks} />
         <PageTitle
           title="Эфирные масла"
           description="Подзаголовок раздела на одну, две или три строки, рассказывающий о разделе"
@@ -25,6 +41,7 @@ const BlogCategory = () => (
         <div className={s.blog}>
           {POSTS_BIG.map((post) => (
             <BlogCard
+              isDescription
               key={post.id}
               className={s.post}
               image={post.image}

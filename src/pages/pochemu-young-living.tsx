@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
+import { BreadCrumbs } from '@ui/BreadCrumbs';
 import { ContentWithRefs } from '@components/common/ContentWithRefs';
 import { PageTitle } from '@components/common/PageTitle';
 import { SimilarPosts } from '@components/common/SimilarPosts';
@@ -162,10 +163,25 @@ const CONTENT = [
   },
 ];
 
+const navLinks = [
+  {
+    title: 'Главная',
+    link: '/',
+  },
+  {
+    title: 'Oil life',
+    link: '/oil-life',
+  },
+  {
+    title: 'Почему Young Living',
+  },
+];
+
 const OfferAgreement = () => (
   <BaseLayout>
-    <Container>
+    <Container theme="small">
       <Row>
+        <BreadCrumbs navLinks={navLinks} />
         <PageTitle image="/images/Image_2.jpg" title="Почему Young Living" />
         <ContentWithRefs content={CONTENT} className={s.paymentContent} />
         <SimilarPosts posts={POSTS} className={s.similarContent} />

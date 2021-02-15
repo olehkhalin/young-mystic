@@ -1,3 +1,10 @@
+@import "@styles/variables.module"
+
+.blocks
+  display: flex
+  flex-direction: column
+  width: 100%
+
 .blockImage
   margin-bottom: 60px
 
@@ -9,3 +16,10 @@
 
 .content
   margin-bottom: 60px
+
+@media (min-width: $desktop)
+  .blockImage
+    margin-bottom: 80px
+  .blockCta
+    margin-top: 20px
+    margin-bottom: 80px

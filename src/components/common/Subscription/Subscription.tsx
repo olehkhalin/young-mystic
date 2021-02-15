@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import cx from 'classnames';
 
 import { Container } from '@ui/Container';
@@ -19,10 +19,12 @@ export const Subscription: React.FC<SubscriptionProps> = ({
   <section className={cx(s.root, className)}>
     <Container>
       <Row className={s.row}>
-        <h2 className={s.header}>Подпишитесь на нашу рассылку</h2>
-        <p className={s.subHeader}>
-          Здесь будет текст на две строки с коротким описанием, почему это важно
-        </p>
+        <div className={s.content}>
+          <h2 className={s.header}>Подпишитесь на нашу рассылку</h2>
+          <p className={s.subHeader}>
+            Здесь будет текст на две строки с коротким описанием, почему это важно
+          </p>
+        </div>
         <form className={s.form}>
           <Input theme="dark" type="email" label="Ваш email" inputClassName={s.input} />
           <Button theme="dark" className={s.button}><ArrowRight /></Button>
