@@ -14,4 +14,5 @@ module.exports = {
   parserOptions: {
     project: './tsconfig.json',
   },
+  ignorePatterns: ["graphql.ts"]
 };
