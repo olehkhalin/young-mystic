@@ -5,6 +5,7 @@ import { useTranslation } from '@i18n';
 import { BaseLayout } from '@layouts/BaseLayout';
 
 import styles from '@styles/Home.module.sass';
+import { CountriesListContainer } from '@containers/CountriesList';
 
 const Home = () => {
   const { t } = useTranslation(['common', 'index']);
@@ -55,6 +56,8 @@ const Home = () => {
           </p>
         </a>
       </div>
+
+      <CountriesListContainer />
     </BaseLayout>
   );
 };

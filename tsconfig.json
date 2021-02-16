@@ -31,6 +31,12 @@
       ],
       "@i18n": [
         "../i18n.ts"
+      ],
+      "@client": [
+        "client.tsx"
+      ],
+      "@graphql": [
+        "graphql.ts"
       ]
     },
     "lib": [
