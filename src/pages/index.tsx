@@ -11,6 +11,7 @@ import { ProductCard } from '@components/common/ProductCard';
 import { CTABlock } from '@components/common/CTABlock';
 import { BlogCard } from '@components/common/BlogCard';
 import { InstaScreen } from '@components/index/InstaScreen';
+import { CountriesListContainer } from '@containers/CountriesList';
 
 import s from '@styles/Home.module.sass';
 
@@ -120,6 +121,7 @@ const Home = () => (
       </Row>
     </Container>
     <InstaScreen />
+    <CountriesListContainer />
   </BaseLayout>
 );
 
