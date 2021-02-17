@@ -22,6 +22,7 @@
 .form
   position: relative
   width: 100%
+  max-width: 432px
 
 .input
   padding: 21px 74px 9px 20px
@@ -36,7 +37,16 @@
   justify-content: center
   align-items: center
 
-@media (min-width: $desktop)
+@media (min-width: $tablet)
+  .root
+    padding: 40px 0
+  .header
+    font-size: 1.125rem
+  .subHeader
+    font-size: 1rem
+    max-width: 375px
+
+@media (min-width: $Ltablet)
   .root
     text-align: left
     padding: 55px 0
@@ -51,10 +61,6 @@
     width: 432px
     margin-right: auto
     margin-left: 12px
-  .header
-    font-size: 1.125rem
   .subHeader
     margin-top: 16px
     margin-bottom: 0
-    font-size: 1rem
-    max-width: 375px

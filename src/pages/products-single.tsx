@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
@@ -277,6 +278,10 @@ const ProductsSinglePage = () => (
     <Container>
       <Row>
         <article className={s.article}>
+          <BreadCrumbs
+            className={cx(s.breadCrumbs, s.breadCrumbsTablet)}
+            navLinks={navLinks}
+          />
           <ProductImage
             image="/images/product_1.png"
             title="Эфирное масло Лаванды"

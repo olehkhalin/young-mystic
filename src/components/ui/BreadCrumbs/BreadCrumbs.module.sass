@@ -3,7 +3,7 @@
 .root
   display: none
 
-@media (min-width: $desktop)
+@media (min-width: $tablet)
   .root
     display: flex
     max-width: 888px
@@ -14,7 +14,7 @@
     font-weight: 500
     align-items: center
     padding: 5px 0
-    margin-bottom: 40px
+    margin-bottom: 20px
   .link
     color: $secondary-100
     transition: color $animationTime
@@ -27,3 +27,7 @@
     color: $primary-100
   .separator
     margin: 0 10px
+
+@media (min-width: $Ltablet)
+  .root
+    margin-bottom: 40px

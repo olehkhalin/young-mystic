@@ -99,7 +99,7 @@
   .description
     display: block
 
-@media (min-width: $desktop)
+@media (min-width: $tablet)
   .root
     flex-direction: column
   .small, .primary
@@ -124,8 +124,14 @@
   .isFullWidth
     flex-direction: row
     .image
-      width: 58%
-      min-width: 58%
+      width: 50%
+      min-width: 50%
       height: auto
     .content
       padding: 20px 24px
+
+@media (min-width: $Ltablet)
+  .isFullWidth
+    .image
+      width: 58%
+      min-width: 58%

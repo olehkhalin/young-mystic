@@ -16,6 +16,9 @@
 .separator
   margin: 36px 0
 
+.separatorBottom
+  max-width: 327px
+
 .title
   font-weight: 700
   font-size: 1rem
@@ -41,12 +44,14 @@
   line-height: 1.2
   margin-bottom: 12px
 
-@media (min-width: $desktop)
+@media (min-width: $tablet)
   .row
-    padding-top: 100px
+    padding-top: 60px
   .header
-    font-size: 1.75rem
+    font-size: 1.625rem
   .description, .title
     font-size: 1.125rem
-  .separatorBottom
-    max-width: 327px
+
+@media (min-width: $Ltablet)
+  .header
+    font-size: 1.75rem

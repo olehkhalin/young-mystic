@@ -37,7 +37,7 @@ export const Article: React.FC<ArticleProps> = ({
 
   return (
     <article className={cx(s.root, className)}>
-      <header className={s.header}>
+      <header>
         <PageTitle
           image={image}
           title={title}

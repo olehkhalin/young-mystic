@@ -32,10 +32,12 @@ export const ProductHeader: React.FC<ProductHeaderProps> = ({
     </h1>
     <p className={s.price}>{prettyPrice(price)}</p>
     <p className={s.description}>{description}</p>
-    <Button className={s.button}>В корзину</Button>
-    <Button theme="secondary" className={s.buttonSale}>
-      <Discount className={s.icon} />
-      Купить со скидкой
-    </Button>
+    <div className={s.buttons}>
+      <Button className={s.button}>В корзину</Button>
+      <Button theme="secondary" className={s.buttonSale}>
+        <Discount className={s.icon} />
+        Купить со скидкой
+      </Button>
+    </div>
   </div>
 );

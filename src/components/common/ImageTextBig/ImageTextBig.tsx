@@ -33,9 +33,8 @@ export const ImageTextBig: React.FC<ImageTextBigProps> = ({
       <Image
         src={image}
         alt={title}
-        width={327}
-        height={377}
-        layout="responsive"
+        layout="fill"
+        objectFit="cover"
       />
     </div>
     <div className={s.content}>

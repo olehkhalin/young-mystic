@@ -49,34 +49,50 @@
 .imageDesktop
   display: none
 
-@media (min-width: $desktop)
+@media (min-width: $tablet)
   .root
-    padding: 120px 0 0
+    padding: 60px 0 0
   .header
     display: block
     max-width: none
     text-align: center
-    font-size: 124px
-    line-height: 150px
+    font-size: 86px
+    line-height: 94px
     letter-spacing: 0
     text-transform: none
   .second
     margin-left: 0
   .description
-    font-size: 54px
-    line-height: 68px
+    font-size: 38px
+    line-height: 50px
     letter-spacing: 0.16em
     font-weight: 400
   .images
-    margin-top: 87px
+    margin-top: 60px
   .image1, .image2
     display: none
   .imageDesktop
     display: block
   .image1
-    width: 912px
+    width: 100%
     margin-left: auto
     margin-right: auto
   .image2
-    width: 774px
+    width: 80%
     margin-top: -30%
+
+@media (min-width: $Ltablet)
+  .root
+    padding: 120px 0 0
+  .header
+    font-size: 124px
+    line-height: 150px
+  .description
+    font-size: 54px
+    line-height: 68px
+  .images
+    margin-top: 87px
+  .image1
+    width: 912px
+  .image2
+    width: 774px
