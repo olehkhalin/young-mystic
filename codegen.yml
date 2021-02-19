@@ -1,5 +1,7 @@
 overwrite: true
-schema: "https://countries.trevorblades.com/"
+schema:
+  - "http://localhost:8000/graphql"
+  - "src/local-schema.graphql"
 documents: "src/**/*.graphql"
 generates:
   src/graphql.ts:
@@ -7,3 +9,6 @@ generates:
       - "typescript"
       - "typescript-operations"
       - "typescript-react-apollo"
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"

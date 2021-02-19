@@ -1,0 +1,7 @@
+type CartItemNew {
+    slug: String!
+    quantity: Int!
+}
+extend type Query {
+    cartItems: [CartItemNew!]!
+}

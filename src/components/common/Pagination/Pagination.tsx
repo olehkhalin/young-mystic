@@ -30,11 +30,11 @@ export const Pagination: React.FC<PaginationProps> = ({
       for (let pageNumber = 1; pageNumber <= countOfPages; pageNumber += 1) {
         if (pageNumber === currentPage) {
           pages.push(
-            <span className={cx(s.page, s.currentPage)}>{pageNumber}</span>,
+            <span key={`currentPage-${pageNumber}`} className={cx(s.page, s.currentPage)}>{pageNumber}</span>,
           );
         } else if (pageNumber !== 1) {
           pages.push(
-            <Link href={`${parentPath}/${pageNumber}`}>
+            <Link key={`${parentPath}/${pageNumber}`} href={`${parentPath}/${pageNumber}`}>
               <a className={s.page}>
                 {pageNumber}
               </a>
@@ -42,7 +42,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           );
         } else {
           pages.push(
-            <Link href={`${parentPath}`}>
+            <Link key={parentPath} href={`${parentPath}`}>
               <a className={s.page}>
                 {pageNumber}
               </a>
@@ -53,7 +53,7 @@ export const Pagination: React.FC<PaginationProps> = ({
     } else {
       if (currentPage !== 1) {
         pages.push(
-          <Link href={parentPath}>
+          <Link key={parentPath} href={parentPath}>
             <a className={s.page}>
               1
             </a>
@@ -62,12 +62,12 @@ export const Pagination: React.FC<PaginationProps> = ({
       }
       if (currentPage > 3) {
         pages.push(
-          <span className={cx(s.page, s.dots)}>.....</span>,
+          <span key={`dots-${currentPage}-1`} className={cx(s.page, s.dots)}>.....</span>,
         );
       }
       if (currentPage >= 3) {
         pages.push(
-          <Link href={`${parentPath}/${currentPage - 1}`}>
+          <Link key={`${parentPath}/${currentPage - 1}`} href={`${parentPath}/${currentPage - 1}`}>
             <a className={s.page}>
               {currentPage - 1}
             </a>
@@ -75,11 +75,11 @@ export const Pagination: React.FC<PaginationProps> = ({
         );
       }
       pages.push(
-        <span className={cx(s.page, s.currentPage)}>{currentPage}</span>,
+        <span key={`curP-${currentPage}`} className={cx(s.page, s.currentPage)}>{currentPage}</span>,
       );
       if (countOfPages - currentPage > 1) {
         pages.push(
-          <Link href={`${parentPath}/${currentPage + 1}`}>
+          <Link key={`${parentPath}/${currentPage + 1}`} href={`${parentPath}/${currentPage + 1}`}>
             <a className={s.page}>
               {currentPage + 1}
             </a>
@@ -88,12 +88,12 @@ export const Pagination: React.FC<PaginationProps> = ({
       }
       if (countOfPages - currentPage > 2) {
         pages.push(
-          <span className={cx(s.page, s.dots)}>.....</span>,
+          <span key={`dots-${currentPage}-2`} className={cx(s.page, s.dots)}>.....</span>,
         );
       }
       if (currentPage !== countOfPages) {
         pages.push(
-          <Link href={`${parentPath}/${countOfPages}`}>
+          <Link key={`${parentPath}/${countOfPages}`} href={`${parentPath}/${countOfPages}`}>
             <a className={s.page}>
               {countOfPages}
             </a>

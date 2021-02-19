@@ -1,0 +1,7 @@
+query CategoryInfo($slug: String!) {
+    category(slug: $slug) {
+        title
+        description
+        image
+    }
+}

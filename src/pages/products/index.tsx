@@ -1,5 +1,6 @@
 import React from 'react';
-import cx from 'classnames';
+
+import { Products } from '@containers/Products/Products';
 
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
@@ -10,12 +11,9 @@ import { BreadCrumbs } from '@ui/BreadCrumbs';
 import { CTABlock } from '@components/common/CTABlock';
 import { PageTitle } from '@components/common/PageTitle';
 import { Filters } from '@components/products/Filters';
-import { ProductCard } from '@components/common/ProductCard';
 import { Pagination } from '@components/common/Pagination';
 
 import s from '@styles/Products.module.sass';
-
-import { PRODUCTS_BIG } from '../content';
 
 const navLinks = [
   {
@@ -24,39 +22,25 @@ const navLinks = [
   },
   {
     title: 'Магазин',
-    link: '/products',
-  },
-  {
-    title: 'Эфирные масла',
   },
 ];
 
-const ProductsCategoryPage = () => (
+const ProductsPage = () => (
   <BaseLayout>
     <Container theme="small">
       <Row>
-        <BreadCrumbs navLinks={navLinks} />
+        <BreadCrumbs navLinks={navLinks} className={s.breadCrumbs} />
         <PageTitle
-          image="/images/MainFirst.jpg"
-          title="Эфирные масла"
-          description="Наши эфирные масла бережно собраны на фермах, и подарят вам все свои самые лучшие качества"
+          title="Магазин"
+          description="Подзаголовок раздела на одну, две или три строки, рассказывающий о разделе"
           className={s.title}
         />
-        <Filters className={s.filter} />
+        <Filters />
         <Separator className={s.separator} />
-        <div className={cx(s.products)}>
-          {PRODUCTS_BIG.map((product) => (
-            <ProductCard
-              key={product.id}
-              image={product.image}
-              link={product.link}
-              title={product.title}
-              price={product.price}
-              isSale={product.isSale}
-              isNew={product.isNew}
-            />
-          ))}
-        </div>
+        <Products
+          className={s.products}
+          first={12}
+        />
         <div className={s.buttons}>
           <Button className={s.loadMore} theme="clean">Показать еще</Button>
           <Pagination
@@ -81,4 +65,4 @@ const ProductsCategoryPage = () => (
   </BaseLayout>
 );
 
-export default ProductsCategoryPage;
+export default ProductsPage;

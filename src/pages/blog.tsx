@@ -23,19 +23,19 @@ const CATEGORIES = [
   {
     id: 1,
     title: 'Красота',
-    link: '/blog-category',
+    link: '/blog-category-2',
     posts: POSTS,
   },
   {
     id: 2,
     title: 'Истории Гери Янга',
-    link: '/blog-category',
+    link: '/blog-category-3',
     posts: POSTS,
   },
   {
     id: 3,
     title: 'Здоровье',
-    link: '/blog-category',
+    link: '/blog-category-4',
     posts: POSTS,
   },
 ];

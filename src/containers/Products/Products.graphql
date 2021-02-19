@@ -1,0 +1,13 @@
+query ProductsList($skip: Int, $first: Int, $category: String) {
+    products(skip: $skip, first: $first, category: $category) {
+        slug
+        title
+        description
+        image
+        price
+        category {
+            slug
+            title
+        }
+    }
+}

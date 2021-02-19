@@ -24,7 +24,7 @@ const menuContent = () => {
       menuBlock.collapse.forEach((menuInner) => {
         if (menuInner.link) {
           innerBlock.push(
-            <Link href={menuInner.link}>
+            <Link key={menuInner.link} href={menuInner.link}>
               <a className={s.innerLink}>
                 {menuInner.title}
               </a>
@@ -32,7 +32,7 @@ const menuContent = () => {
           );
         } else {
           innerBlock.push(
-            <div className={s.block}>
+            <div key={menuInner.title} className={s.block}>
               <span className={s.blockTitle}>{menuInner.title}</span>
               <div className={s.blockList}>
                 {menuInner.list?.map((link) => (
@@ -51,7 +51,7 @@ const menuContent = () => {
         }
       });
       final.push(
-        <CustomCollapse theme="menu" title={menuBlock.title}>
+        <CustomCollapse key={menuBlock.title} theme="menu" title={menuBlock.title}>
           <div className={s.innerBlock}>
             {innerBlock}
           </div>
@@ -59,7 +59,7 @@ const menuContent = () => {
       );
     } else if (menuBlock.link) {
       final.push(
-        <Link href={menuBlock.link}>
+        <Link key={menuBlock.link} href={menuBlock.link}>
           <a className={s.topLink}>
             {menuBlock.title}
           </a>

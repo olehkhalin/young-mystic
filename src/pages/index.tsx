@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { Products } from '@containers/Products/Products';
+import { CartItems } from '@containers/Cart/CartItems';
+
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
@@ -7,15 +10,13 @@ import { Button } from '@ui/Button';
 import { FirstScreen } from '@components/index/FirstScreen';
 import { TitleDescription } from '@components/common/TitleDescription';
 import { ImageTextBig } from '@components/common/ImageTextBig';
-import { ProductCard } from '@components/common/ProductCard';
 import { CTABlock } from '@components/common/CTABlock';
 import { BlogCard } from '@components/common/BlogCard';
 import { InstaScreen } from '@components/index/InstaScreen';
-import { CountriesListContainer } from '@containers/CountriesList';
 
 import s from '@styles/Home.module.sass';
 
-import { PRODUCTS, POSTS } from '../content';
+import { POSTS } from '../content';
 
 const Home = () => (
   <BaseLayout>
@@ -82,19 +83,10 @@ const Home = () => (
           description="В магазине вы можете познакомиться с ассортиментом Young Living и узнать, как правильно использовать эфирные масла."
           className={s.titleProduct}
         />
-        <div className={s.products}>
-          {PRODUCTS.map((product) => (
-            <ProductCard
-              key={product.id}
-              image={product.image}
-              link={product.link}
-              title={product.title}
-              price={product.price}
-              isNew={product.isNew || false}
-              isSale={product.isSale || false}
-            />
-          ))}
-        </div>
+        <Products
+          className={s.products}
+          first={4}
+        />
         <Button href="/products">Перейти в магазин</Button>
         <TitleDescription
           title="Статьи в блоге"
@@ -121,7 +113,7 @@ const Home = () => (
       </Row>
     </Container>
     <InstaScreen />
-    <CountriesListContainer />
+    <CartItems />
   </BaseLayout>
 );
 

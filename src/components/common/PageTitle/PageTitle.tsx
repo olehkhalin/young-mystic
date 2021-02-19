@@ -8,7 +8,7 @@ type PageTitleProps = {
   image?: string
   title?: string
   blockquote?: string
-  description?: string
+  description?: string | null
   className?: string
 };
 

@@ -24,7 +24,7 @@ export const BreadCrumbs: React.FC<ContainerProps> = ({
     content.push(
       link.link
         ? (
-          <Link href={link.link} key={link.title}>
+          <Link href={link.link} key={link.link}>
             <a className={s.link}>{link.title}</a>
           </Link>
         )
@@ -36,7 +36,8 @@ export const BreadCrumbs: React.FC<ContainerProps> = ({
     );
     if (index !== navLinks.length - 1) {
       content.push(
-        <span className={s.separator}>/</span>,
+        // eslint-disable-next-line react/no-array-index-key
+        <span key={`seperator-${index}`} className={s.separator}>/</span>,
       );
     }
   });

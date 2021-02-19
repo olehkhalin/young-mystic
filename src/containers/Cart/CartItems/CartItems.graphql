@@ -1,0 +1,6 @@
+query CartItemsList {
+    cartItems @client {
+        slug
+        quantity
+    }
+}

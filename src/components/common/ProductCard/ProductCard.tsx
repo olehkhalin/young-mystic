@@ -3,10 +3,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import cx from 'classnames';
 
+import { prettyPrice } from '@functions';
+
 import { Tag } from '@components/ui/Tag';
 
 import s from './ProductCard.module.sass';
-import { prettyPrice } from '../../../functions';
 
 type ProductCardProps = {
   theme?: keyof typeof themeClass

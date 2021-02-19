@@ -18,7 +18,7 @@ export const Footer: React.FC = () => (
         <nav className={s.nav}>
           {NavLinks.map((navItem) => (
             <CustomCollapse
-              key={navItem.title}
+              key={`footer-nav-${navItem.title}`}
               theme="dark"
               title={navItem.title}
               isOpenDesktop

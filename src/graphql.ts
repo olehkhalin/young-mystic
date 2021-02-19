@@ -1,6 +1,5 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
@@ -12,157 +11,286 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  /** The `Upload` scalar type represents a file upload. */
-  Upload: any;
 };
 
 export type Query = {
   __typename?: 'Query';
-  continents: Array<Continent>;
-  continent?: Maybe<Continent>;
-  countries: Array<Country>;
-  country?: Maybe<Country>;
-  languages: Array<Language>;
-  language?: Maybe<Language>;
+  cartItems: Array<CartItemNew>;
+  category?: Maybe<Category>;
+  product?: Maybe<Product>;
+  products: Array<Product>;
 };
 
-export type QueryContinentsArgs = {
-  filter?: Maybe<ContinentFilterInput>;
+
+export type QueryCategoryArgs = {
+  slug: Scalars['String'];
 };
 
-export type QueryContinentArgs = {
-  code: Scalars['ID'];
+
+export type QueryProductArgs = {
+  slug: Scalars['String'];
 };
 
-export type QueryCountriesArgs = {
-  filter?: Maybe<CountryFilterInput>;
+
+export type QueryProductsArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  first?: Maybe<Scalars['Int']>;
+  category?: Maybe<Scalars['String']>;
+  slugs?: Maybe<Array<Scalars['String']>>;
 };
 
-export type QueryCountryArgs = {
-  code: Scalars['ID'];
+export type Product = {
+  __typename?: 'Product';
+  slug: Scalars['String'];
+  title: Scalars['String'];
+  description: Scalars['String'];
+  firm?: Maybe<Scalars['String']>;
+  capacity?: Maybe<Scalars['Int']>;
+  price: Scalars['Int'];
+  image: Scalars['String'];
+  content: Array<Content>;
+  category: Category;
 };
 
-export type QueryLanguagesArgs = {
-  filter?: Maybe<LanguageFilterInput>;
+export type Category = {
+  __typename?: 'Category';
+  slug: Scalars['String'];
+  title: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  image: Scalars['String'];
 };
 
-export type QueryLanguageArgs = {
-  code: Scalars['ID'];
+export type Content = {
+  __typename?: 'Content';
+  id: Scalars['ID'];
+  title: Scalars['String'];
+  content: Scalars['String'];
 };
 
-export type ContinentFilterInput = {
-  code?: Maybe<StringQueryOperatorInput>;
+export type CartItemNew = {
+  __typename?: 'CartItemNew';
+  slug: Scalars['String'];
+  quantity: Scalars['Int'];
 };
 
-export type StringQueryOperatorInput = {
-  eq?: Maybe<Scalars['String']>;
-  ne?: Maybe<Scalars['String']>;
-  in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  regex?: Maybe<Scalars['String']>;
-  glob?: Maybe<Scalars['String']>;
-};
+export type CartItemsListQueryVariables = Exact<{ [key: string]: never; }>;
 
-export type Continent = {
-  __typename?: 'Continent';
-  code: Scalars['ID'];
-  name: Scalars['String'];
-  countries: Array<Country>;
-};
 
-export type Country = {
-  __typename?: 'Country';
-  code: Scalars['ID'];
-  name: Scalars['String'];
-  native: Scalars['String'];
-  phone: Scalars['String'];
-  continent: Continent;
-  capital?: Maybe<Scalars['String']>;
-  currency?: Maybe<Scalars['String']>;
-  languages: Array<Language>;
-  emoji: Scalars['String'];
-  emojiU: Scalars['String'];
-  states: Array<State>;
-};
-
-export type Language = {
-  __typename?: 'Language';
-  code: Scalars['ID'];
-  name?: Maybe<Scalars['String']>;
-  native?: Maybe<Scalars['String']>;
-  rtl: Scalars['Boolean'];
-};
-
-export type State = {
-  __typename?: 'State';
-  code?: Maybe<Scalars['String']>;
-  name: Scalars['String'];
-  country: Country;
-};
-
-export type CountryFilterInput = {
-  code?: Maybe<StringQueryOperatorInput>;
-  currency?: Maybe<StringQueryOperatorInput>;
-  continent?: Maybe<StringQueryOperatorInput>;
-};
-
-export type LanguageFilterInput = {
-  code?: Maybe<StringQueryOperatorInput>;
-};
-
-export enum CacheControlScope {
-  Public = 'PUBLIC',
-  Private = 'PRIVATE',
-}
-
-export type CountriesListQueryVariables = Exact<{ [key: string]: never; }>;
-
-export type CountriesListQuery = (
+export type CartItemsListQuery = (
   { __typename?: 'Query' }
-  & { countries: Array<(
-    { __typename?: 'Country' }
-    & Pick<Country, 'code' | 'name'>
-    & { continent: (
-      { __typename?: 'Continent' }
-      & Pick<Continent, 'code' | 'name'>
+  & { cartItems: Array<(
+    { __typename?: 'CartItemNew' }
+    & Pick<CartItemNew, 'slug' | 'quantity'>
+  )> }
+);
+
+export type ProductsListQueryVariables = Exact<{
+  skip?: Maybe<Scalars['Int']>;
+  first?: Maybe<Scalars['Int']>;
+  category?: Maybe<Scalars['String']>;
+}>;
+
+
+export type ProductsListQuery = (
+  { __typename?: 'Query' }
+  & { products: Array<(
+    { __typename?: 'Product' }
+    & Pick<Product, 'slug' | 'title' | 'description' | 'image' | 'price'>
+    & { category: (
+      { __typename?: 'Category' }
+      & Pick<Category, 'slug' | 'title'>
     ) }
   )> }
 );
 
-export const CountriesListDocument = gql`
-    query CountriesList {
-  countries {
-    code
-    name
-    continent {
-      code
-      name
+export type ProductInfoQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type ProductInfoQuery = (
+  { __typename?: 'Query' }
+  & { product?: Maybe<(
+    { __typename?: 'Product' }
+    & Pick<Product, 'title' | 'description' | 'firm' | 'capacity' | 'price' | 'image'>
+    & { content: Array<(
+      { __typename?: 'Content' }
+      & Pick<Content, 'title' | 'content'>
+    )>, category: (
+      { __typename?: 'Category' }
+      & Pick<Category, 'slug' | 'title'>
+    ) }
+  )> }
+);
+
+export type CategoryInfoQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type CategoryInfoQuery = (
+  { __typename?: 'Query' }
+  & { category?: Maybe<(
+    { __typename?: 'Category' }
+    & Pick<Category, 'title' | 'description' | 'image'>
+  )> }
+);
+
+
+export const CartItemsListDocument = gql`
+    query CartItemsList {
+  cartItems @client {
+    slug
+    quantity
+  }
+}
+    `;
+
+/**
+ * __useCartItemsListQuery__
+ *
+ * To run a query within a React component, call `useCartItemsListQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCartItemsListQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCartItemsListQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useCartItemsListQuery(baseOptions?: Apollo.QueryHookOptions<CartItemsListQuery, CartItemsListQueryVariables>) {
+        return Apollo.useQuery<CartItemsListQuery, CartItemsListQueryVariables>(CartItemsListDocument, baseOptions);
+      }
+export function useCartItemsListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CartItemsListQuery, CartItemsListQueryVariables>) {
+          return Apollo.useLazyQuery<CartItemsListQuery, CartItemsListQueryVariables>(CartItemsListDocument, baseOptions);
+        }
+export type CartItemsListQueryHookResult = ReturnType<typeof useCartItemsListQuery>;
+export type CartItemsListLazyQueryHookResult = ReturnType<typeof useCartItemsListLazyQuery>;
+export type CartItemsListQueryResult = Apollo.QueryResult<CartItemsListQuery, CartItemsListQueryVariables>;
+export const ProductsListDocument = gql`
+    query ProductsList($skip: Int, $first: Int, $category: String) {
+  products(skip: $skip, first: $first, category: $category) {
+    slug
+    title
+    description
+    image
+    price
+    category {
+      slug
+      title
     }
   }
 }
     `;
 
 /**
- * __useCountriesListQuery__
+ * __useProductsListQuery__
  *
- * To run a query within a React component, call `useCountriesListQuery` and pass it any options that fit your needs.
- * When your component renders, `useCountriesListQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useProductsListQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProductsListQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useCountriesListQuery({
+ * const { data, loading, error } = useProductsListQuery({
  *   variables: {
+ *      skip: // value for 'skip'
+ *      first: // value for 'first'
+ *      category: // value for 'category'
  *   },
  * });
  */
-export function useCountriesListQuery(baseOptions?: Apollo.QueryHookOptions<CountriesListQuery, CountriesListQueryVariables>) {
-  return Apollo.useQuery<CountriesListQuery, CountriesListQueryVariables>(CountriesListDocument, baseOptions);
+export function useProductsListQuery(baseOptions?: Apollo.QueryHookOptions<ProductsListQuery, ProductsListQueryVariables>) {
+        return Apollo.useQuery<ProductsListQuery, ProductsListQueryVariables>(ProductsListDocument, baseOptions);
+      }
+export function useProductsListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProductsListQuery, ProductsListQueryVariables>) {
+          return Apollo.useLazyQuery<ProductsListQuery, ProductsListQueryVariables>(ProductsListDocument, baseOptions);
+        }
+export type ProductsListQueryHookResult = ReturnType<typeof useProductsListQuery>;
+export type ProductsListLazyQueryHookResult = ReturnType<typeof useProductsListLazyQuery>;
+export type ProductsListQueryResult = Apollo.QueryResult<ProductsListQuery, ProductsListQueryVariables>;
+export const ProductInfoDocument = gql`
+    query ProductInfo($slug: String!) {
+  product(slug: $slug) {
+    title
+    description
+    firm
+    capacity
+    price
+    image
+    content {
+      title
+      content
+    }
+    category {
+      slug
+      title
+    }
+  }
 }
-export function useCountriesListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CountriesListQuery, CountriesListQueryVariables>) {
-  return Apollo.useLazyQuery<CountriesListQuery, CountriesListQueryVariables>(CountriesListDocument, baseOptions);
+    `;
+
+/**
+ * __useProductInfoQuery__
+ *
+ * To run a query within a React component, call `useProductInfoQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProductInfoQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProductInfoQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useProductInfoQuery(baseOptions: Apollo.QueryHookOptions<ProductInfoQuery, ProductInfoQueryVariables>) {
+        return Apollo.useQuery<ProductInfoQuery, ProductInfoQueryVariables>(ProductInfoDocument, baseOptions);
+      }
+export function useProductInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProductInfoQuery, ProductInfoQueryVariables>) {
+          return Apollo.useLazyQuery<ProductInfoQuery, ProductInfoQueryVariables>(ProductInfoDocument, baseOptions);
+        }
+export type ProductInfoQueryHookResult = ReturnType<typeof useProductInfoQuery>;
+export type ProductInfoLazyQueryHookResult = ReturnType<typeof useProductInfoLazyQuery>;
+export type ProductInfoQueryResult = Apollo.QueryResult<ProductInfoQuery, ProductInfoQueryVariables>;
+export const CategoryInfoDocument = gql`
+    query CategoryInfo($slug: String!) {
+  category(slug: $slug) {
+    title
+    description
+    image
+  }
 }
-export type CountriesListQueryHookResult = ReturnType<typeof useCountriesListQuery>;
-export type CountriesListLazyQueryHookResult = ReturnType<typeof useCountriesListLazyQuery>;
-export type CountriesListQueryResult = Apollo.QueryResult<CountriesListQuery, CountriesListQueryVariables>;
+    `;
+
+/**
+ * __useCategoryInfoQuery__
+ *
+ * To run a query within a React component, call `useCategoryInfoQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCategoryInfoQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCategoryInfoQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useCategoryInfoQuery(baseOptions: Apollo.QueryHookOptions<CategoryInfoQuery, CategoryInfoQueryVariables>) {
+        return Apollo.useQuery<CategoryInfoQuery, CategoryInfoQueryVariables>(CategoryInfoDocument, baseOptions);
+      }
+export function useCategoryInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CategoryInfoQuery, CategoryInfoQueryVariables>) {
+          return Apollo.useLazyQuery<CategoryInfoQuery, CategoryInfoQueryVariables>(CategoryInfoDocument, baseOptions);
+        }
+export type CategoryInfoQueryHookResult = ReturnType<typeof useCategoryInfoQuery>;
+export type CategoryInfoLazyQueryHookResult = ReturnType<typeof useCategoryInfoLazyQuery>;
+export type CategoryInfoQueryResult = Apollo.QueryResult<CategoryInfoQuery, CategoryInfoQueryVariables>;

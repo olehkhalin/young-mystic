@@ -1,0 +1,16 @@
+@import "@styles/variables.module"
+
+.root
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  column-gap: 12px
+  row-gap: 24px
+
+@media (min-width: $tablet)
+  .root
+    grid-template-columns: repeat(4, 1fr)
+    column-gap: 18px
+
+@media (min-width: $Ltablet)
+  .root
+    column-gap: 24px

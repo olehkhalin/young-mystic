@@ -40,6 +40,12 @@
       ],
       "@graphql": [
         "graphql.ts"
+      ],
+      "@cache": [
+        "cache.ts"
+      ],
+      "@functions": [
+        "functions.ts"
       ]
     },
     "lib": [

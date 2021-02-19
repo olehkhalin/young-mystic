@@ -1,13 +1,24 @@
 import React from 'react';
-
 import {
   ApolloClient,
   ApolloProvider,
+  NormalizedCacheObject,
   HttpLink,
-  InMemoryCache,
 } from '@apollo/client';
 
-let globalApolloClient: ApolloClient<any>;
+import { cache } from '@cache';
+
+let globalApolloClient: ApolloClient<NormalizedCacheObject>;
+
+// export const typeDefs = gql`
+//   type CartItem {
+//     slug: String!
+//     quantity: Int!
+//   }
+//   extend type Query {
+//     cartItems: [CartItem!]!
+//   }
+// `;
 
 function createApolloClient() {
   return new ApolloClient({
@@ -15,7 +26,8 @@ function createApolloClient() {
     link: new HttpLink({
       uri: process.env.NEXT_PUBLIC_APOLLO_CLIENT_ENDPOINT,
     }),
-    cache: new InMemoryCache(),
+    cache,
+    // typeDefs,
   });
 }
 

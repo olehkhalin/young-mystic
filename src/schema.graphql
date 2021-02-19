@@ -1,0 +1,36 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+}
+
+type Category {
+    description: String
+    image: String!
+    slug: String!
+    title: String!
+}
+
+type Content {
+    content: String!
+    id: ID!
+    title: String!
+}
+
+type Product {
+    capacity: Int
+    category: Category!
+    content: [Content!]!
+    description: String!
+    firm: String
+    image: String!
+    price: Int!
+    slug: String!
+    title: String!
+}
+
+type Query {
+    category(slug: String!): Category
+    product(slug: String!): Product
+    products(category: String, first: Int, skip: Int, slugs: [String!]): [Product!]!
+}
