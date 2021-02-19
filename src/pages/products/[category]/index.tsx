@@ -1,8 +1,8 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 
+import { useCategoryInfoQuery } from '@graphql';
 import { Products } from '@containers/Products/Products';
-
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
@@ -15,7 +15,6 @@ import { Filters } from '@components/products/Filters';
 import { Pagination } from '@components/common/Pagination';
 
 import s from '@styles/Products.module.sass';
-import { useCategoryInfoQuery } from '@graphql';
 
 const ProductsCategoryPage = () => {
   const router = useRouter();

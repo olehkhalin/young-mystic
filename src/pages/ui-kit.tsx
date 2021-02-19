@@ -271,6 +271,7 @@ const UiKit: React.FC = () => {
               title="Эфирное масло Эвкалипта Шаровидного (Eucalyptus Globulus), 15 ml"
               price={2110.00}
               onAmountChange={(value) => setPlusMinusInputValue(value)}
+              onRequestDelete={() => { console.log('delete'); }}
             />
             <Separator className={s.separator} />
             <ContentBlock>

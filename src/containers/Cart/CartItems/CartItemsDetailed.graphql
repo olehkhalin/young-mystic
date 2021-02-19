@@ -1,0 +1,11 @@
+query CartItemsList ($slugs: [String!]!) {
+    products(slugs: $slugs) {
+        slug
+        title
+        description
+        image
+        price
+        firm
+        capacity
+    }
+}

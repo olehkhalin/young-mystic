@@ -1,7 +1,8 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
 import parse from 'html-react-parser';
+import { ToastContainer, Slide } from 'react-toastify';
 
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
@@ -14,6 +15,7 @@ import { CTABlock } from '@components/common/CTABlock';
 import { ProductHeader } from '@components/productsSingle/ProductHeader';
 import { SimilarPosts } from '@components/common/SimilarPosts';
 
+import 'react-toastify/dist/ReactToastify.css';
 import s from '@styles/Products.module.sass';
 
 import { useProductInfoQuery } from '@graphql';
@@ -71,54 +73,71 @@ const ProductsSinglePage = () => {
   ];
 
   return (
-    <BaseLayout>
-      <Container>
-        <Row>
-          <article className={s.article}>
-            <BreadCrumbs
-              className={cx(s.breadCrumbs, s.breadCrumbsTablet)}
-              navLinks={navLinks}
-            />
-            <ProductImage
-              image={image}
-              title={title}
-              className={s.image}
-            />
-            <div className={s.content}>
+    <>
+      <BaseLayout>
+        <Container>
+          <Row>
+            <article className={s.article}>
               <BreadCrumbs
-                className={s.breadCrumbs}
+                className={cx(s.breadCrumbs, s.breadCrumbsTablet)}
                 navLinks={navLinks}
               />
-              <ProductHeader
-                slug={slug as string}
+              <ProductImage
+                image={image}
                 title={title}
-                firm={firm}
-                capacity={capacity}
-                price={price}
-                description={description}
+                className={s.image}
               />
-              <Separator className={s.separatorTop} />
-              {content.map((item) => (
-                <CustomCollapse key={`${item.title}`} title={<h2>{item.title}</h2>}>
-                  {parse(item.content)}
-                </CustomCollapse>
-              ))}
-            </div>
-          </article>
-          <Separator className={s.separatorBottom} />
-          <SimilarPosts posts={POSTS} />
-          <CTABlock
-            className={s.blockCta}
-            title="Откройте мир масел вместе с Young Living!"
-            description="Станьте частью нашего сообщества и покупайте товары со скидкой 24% от розничной цены"
-            button={{
-              link: '/',
-              label: 'Присоединиться',
-            }}
-          />
-        </Row>
-      </Container>
-    </BaseLayout>
+              <div className={s.content}>
+                <BreadCrumbs
+                  className={s.breadCrumbs}
+                  navLinks={navLinks}
+                />
+                <ProductHeader
+                  slug={slug as string}
+                  title={title}
+                  image={image}
+                  firm={firm}
+                  capacity={capacity}
+                  price={price}
+                  description={description}
+                />
+                <Separator className={s.separatorTop} />
+                {content.map((item) => (
+                  <CustomCollapse key={`${item.title}`} title={<h2>{item.title}</h2>}>
+                    {parse(item.content)}
+                  </CustomCollapse>
+                ))}
+              </div>
+            </article>
+            <Separator className={s.separatorBottom} />
+            <SimilarPosts posts={POSTS} />
+            <CTABlock
+              className={s.blockCta}
+              title="Откройте мир масел вместе с Young Living!"
+              description="Станьте частью нашего сообщества и покупайте товары со скидкой 24% от розничной цены"
+              button={{
+                link: '/',
+                label: 'Присоединиться',
+              }}
+            />
+          </Row>
+        </Container>
+      </BaseLayout>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar
+        limit={1}
+        draggable={false}
+        closeOnClick={false}
+        closeButton={false}
+        pauseOnHover
+        className={s.toastContainer}
+        toastClassName={s.toast}
+        bodyClassName={s.toastBody}
+        transition={Slide}
+      />
+    </>
   );
 };
 

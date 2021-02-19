@@ -73,14 +73,16 @@ export type CartItemNew = {
   quantity: Scalars['Int'];
 };
 
-export type CartItemsListQueryVariables = Exact<{ [key: string]: never; }>;
+export type CartItemsListQueryVariables = Exact<{
+  slugs: Array<Scalars['String']> | Scalars['String'];
+}>;
 
 
 export type CartItemsListQuery = (
   { __typename?: 'Query' }
-  & { cartItems: Array<(
-    { __typename?: 'CartItemNew' }
-    & Pick<CartItemNew, 'slug' | 'quantity'>
+  & { products: Array<(
+    { __typename?: 'Product' }
+    & Pick<Product, 'slug' | 'title' | 'description' | 'image' | 'price' | 'firm' | 'capacity'>
   )> }
 );
 
@@ -138,10 +140,15 @@ export type CategoryInfoQuery = (
 
 
 export const CartItemsListDocument = gql`
-    query CartItemsList {
-  cartItems @client {
+    query CartItemsList($slugs: [String!]!) {
+  products(slugs: $slugs) {
     slug
-    quantity
+    title
+    description
+    image
+    price
+    firm
+    capacity
   }
 }
     `;
@@ -158,10 +165,11 @@ export const CartItemsListDocument = gql`
  * @example
  * const { data, loading, error } = useCartItemsListQuery({
  *   variables: {
+ *      slugs: // value for 'slugs'
  *   },
  * });
  */
-export function useCartItemsListQuery(baseOptions?: Apollo.QueryHookOptions<CartItemsListQuery, CartItemsListQueryVariables>) {
+export function useCartItemsListQuery(baseOptions: Apollo.QueryHookOptions<CartItemsListQuery, CartItemsListQueryVariables>) {
         return Apollo.useQuery<CartItemsListQuery, CartItemsListQueryVariables>(CartItemsListDocument, baseOptions);
       }
 export function useCartItemsListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CartItemsListQuery, CartItemsListQueryVariables>) {

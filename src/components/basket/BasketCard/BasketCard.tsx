@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import cx from 'classnames';
 
+import { prettyPrice } from '@functions';
 import { PlusMinusInput } from '@ui/PlusMinusInput';
 import { Button } from '@ui/Button';
 
@@ -13,8 +14,11 @@ type BasketCardProps = {
   maxValue: number
   amount: number
   title: string
+  firm?: string
+  capacity?: number
   price: number
   onAmountChange: (val: number) => void
+  onRequestDelete: () => void
   className?: string
 };
 
@@ -24,8 +28,11 @@ export const BasketCard: React.FC<BasketCardProps> = ({
   maxValue,
   amount,
   title,
+  firm,
+  capacity,
   price,
   onAmountChange,
+  onRequestDelete,
   className,
 }) => (
   <article className={cx(s.root, className)}>
@@ -40,10 +47,20 @@ export const BasketCard: React.FC<BasketCardProps> = ({
         />
       </div>
       <header className={s.content}>
-        <h3 className={s.header}>{title}</h3>
+        <h3 className={s.header}>
+          {title}
+          {' '}
+          {firm && `(${firm}),`}
+        </h3>
+        {capacity && (
+        <p className={s.capacity}>
+          {capacity}
+          {' '}
+          ml
+        </p>
+        )}
         <p className={s.price}>
-          {price.toLocaleString('ru-RU', { style: 'decimal', minimumFractionDigits: 2 })}
-          ₴
+          {prettyPrice(price)}
         </p>
       </header>
     </div>
@@ -57,6 +74,7 @@ export const BasketCard: React.FC<BasketCardProps> = ({
       <Button
         theme="clean"
         className={s.button}
+        onClick={onRequestDelete}
       >
         Удалить
       </Button>

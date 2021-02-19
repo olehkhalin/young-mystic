@@ -9,47 +9,60 @@ import { Footer } from '@components/common/Footer';
 import s from './BaseLayout.module.sass';
 
 interface BaseLayoutProps {
-  headerTheme?: 'primary' | 'light'
+  theme?: keyof typeof themeClass
   className?: string
 }
 
+const themeClass = {
+  primary: s.primary,
+  light: s.light,
+};
+
 export const BaseLayout: React.FC<BaseLayoutProps> = ({
-  headerTheme,
+  theme = 'primary',
   className,
   children,
-}) => (
-  <>
-    <Head>
-      <link
-        rel="preload"
-        href="/fonts/Montserrat/Montserrat-Regular.ttf"
-        as="font"
-        crossOrigin=""
-      />
-      <link
-        rel="preload"
-        href="/fonts/Montserrat/Montserrat-SemiBold.ttf"
-        as="font"
-        crossOrigin=""
-      />
-      <link
-        rel="preload"
-        href="/fonts/Cormorant/Cormorant-Regular.ttf"
-        as="font"
-        crossOrigin=""
-      />
-      <link
-        rel="preload"
-        href="/fonts/Cormorant/Cormorant-Medium.ttf"
-        as="font"
-        crossOrigin=""
-      />
-    </Head>
-    <Header theme={headerTheme} />
-    <main className={cx(s.root, className)}>
-      {children}
-    </main>
-    <Subscription />
-    <Footer />
-  </>
-);
+}) => {
+  const compoundClassName = cx(
+    s.root,
+    themeClass[theme],
+    className,
+  );
+
+  return (
+    <>
+      <Head>
+        <link
+          rel="preload"
+          href="/fonts/Montserrat/Montserrat-Regular.ttf"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/Montserrat/Montserrat-SemiBold.ttf"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/Cormorant/Cormorant-Regular.ttf"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/Cormorant/Cormorant-Medium.ttf"
+          as="font"
+          crossOrigin=""
+        />
+      </Head>
+      <Header theme={theme} />
+      <main className={compoundClassName}>
+        {children}
+      </main>
+      <Subscription />
+      <Footer />
+    </>
+  );
+};

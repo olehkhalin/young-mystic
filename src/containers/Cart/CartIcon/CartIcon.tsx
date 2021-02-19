@@ -15,16 +15,17 @@ type CartIconProps = {
 export const CartIcon: React.FC<CartIconProps> = ({
   className,
 }) => {
-  const [isNotEmpty, setIsNotEmpty] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const cartItems = useReactiveVar(cartItemsVar);
-  useEffect(() => {
-    setIsNotEmpty(cartItems.length !== 0);
-  }, [cartItems]);
+  const isNotEmpty = isClient ? cartItems.length !== 0 : false;
 
   return (
-    <button type="button" className={cx(s.cart, { [s.active]: isNotEmpty }, className)}>
+    <a href="/basket" type="button" className={cx(s.cart, { [s.active]: isNotEmpty }, className)}>
       <ShoppingCart />
-    </button>
+    </a>
   );
 };

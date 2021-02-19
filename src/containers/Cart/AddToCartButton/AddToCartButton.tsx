@@ -1,25 +1,47 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { useReactiveVar } from '@apollo/client';
 
 import { cartItemsVar } from '@cache';
-
 import { Button } from '@ui/Button';
+import { BasketNotification } from '@components/basket/BasketNotification';
 
 type AddToCartButtonProps = {
   slug: string
+  image: string
+  title: string
+  firm?: string
+  capacity?: number
+  price: number
   className?: string
 };
 
 export const AddToCartButton: React.FC<AddToCartButtonProps> = ({
   slug,
+  image,
+  title,
+  firm,
+  capacity,
+  price,
   className,
 }) => {
-  const [isInCart, setIsInCart] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const notify = () => toast(
+    <BasketNotification
+      title={title}
+      image={image}
+      firm={firm || undefined}
+      capacity={capacity || undefined}
+      price={price}
+    />,
+  );
 
   const cartItems = useReactiveVar(cartItemsVar);
-  useEffect(() => {
-    setIsInCart(slug ? cartItems.some((item) => item.slug === slug) : false);
-  }, [cartItems]);
+  const isInCart = isClient && slug ? cartItems.some((item) => item.slug === slug) : false;
 
   const onAddToCart = () => {
     if (slug) {
@@ -29,6 +51,9 @@ export const AddToCartButton: React.FC<AddToCartButtonProps> = ({
 
       cartItemsVar(newCartItems);
       localStorage.setItem('CART', JSON.stringify(newCartItems));
+      if (!isInCart) {
+        notify();
+      }
     }
   };
 
