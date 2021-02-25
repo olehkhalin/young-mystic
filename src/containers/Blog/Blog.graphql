@@ -1,0 +1,18 @@
+#query BlogList($category: String) {
+#    posts (include: [$category]) {
+#        edges {
+#            node {
+#                id
+#                slug
+#                primaryTag {
+#                    slug
+#                    name
+#                }
+#                createdAt
+#                title
+#                excerpt
+#                featureImage
+#            }
+#        }
+#    }
+#}

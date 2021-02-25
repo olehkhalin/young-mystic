@@ -29,8 +29,13 @@ type Product {
     title: String!
 }
 
+type ProductsResult {
+    count: Int!
+    data: [Product!]!
+}
+
 type Query {
     category(slug: String!): Category
     product(slug: String!): Product
-    products(category: String, first: Int, skip: Int, slugs: [String!]): [Product!]!
+    products(category: String, limit: Int, offset: Int, slugs: [String!]): ProductsResult
 }

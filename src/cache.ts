@@ -19,6 +19,22 @@ export const cache: InMemoryCache = new InMemoryCache({
             return cartItemsVar();
           },
         },
+        products: {
+          keyArgs: false,
+          merge(existing = { data: [] }, incoming) {
+            const { data: oldData } = existing;
+            const { data: newData } = incoming;
+            console.log('existing', existing);
+            console.log('incoming', incoming);
+            const finalData = [...oldData, ...newData];
+            const finalObject = {
+              count: incoming.count,
+              data: finalData,
+            };
+            console.log('finalData', finalObject);
+            return finalObject;
+          },
+        },
       },
     },
   },

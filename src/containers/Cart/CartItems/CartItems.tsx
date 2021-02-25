@@ -53,7 +53,7 @@ export const CartItems: React.FC<CartItemsProps> = ({
 
   return (
     <div className={className}>
-      {data?.products.map((item) => (
+      {data?.products?.data.map((item) => (
         <BasketCard
           className={s.card}
           key={item.slug}

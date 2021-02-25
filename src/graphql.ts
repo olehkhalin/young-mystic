@@ -15,15 +15,9 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
-  cartItems: Array<CartItemNew>;
-  category?: Maybe<Category>;
   product?: Maybe<Product>;
-  products: Array<Product>;
-};
-
-
-export type QueryCategoryArgs = {
-  slug: Scalars['String'];
+  products?: Maybe<ProductsResult>;
+  category?: Maybe<Category>;
 };
 
 
@@ -33,10 +27,21 @@ export type QueryProductArgs = {
 
 
 export type QueryProductsArgs = {
-  skip?: Maybe<Scalars['Int']>;
-  first?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
   category?: Maybe<Scalars['String']>;
   slugs?: Maybe<Array<Scalars['String']>>;
+};
+
+
+export type QueryCategoryArgs = {
+  slug: Scalars['String'];
+};
+
+export type ProductsResult = {
+  __typename?: 'ProductsResult';
+  count: Scalars['Int'];
+  data: Array<Product>;
 };
 
 export type Product = {
@@ -67,12 +72,6 @@ export type Content = {
   content: Scalars['String'];
 };
 
-export type CartItemNew = {
-  __typename?: 'CartItemNew';
-  slug: Scalars['String'];
-  quantity: Scalars['Int'];
-};
-
 export type CartItemsListQueryVariables = Exact<{
   slugs: Array<Scalars['String']> | Scalars['String'];
 }>;
@@ -80,28 +79,35 @@ export type CartItemsListQueryVariables = Exact<{
 
 export type CartItemsListQuery = (
   { __typename?: 'Query' }
-  & { products: Array<(
-    { __typename?: 'Product' }
-    & Pick<Product, 'slug' | 'title' | 'description' | 'image' | 'price' | 'firm' | 'capacity'>
+  & { products?: Maybe<(
+    { __typename?: 'ProductsResult' }
+    & { data: Array<(
+      { __typename?: 'Product' }
+      & Pick<Product, 'slug' | 'title' | 'description' | 'image' | 'price' | 'firm' | 'capacity'>
+    )> }
   )> }
 );
 
 export type ProductsListQueryVariables = Exact<{
-  skip?: Maybe<Scalars['Int']>;
-  first?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
   category?: Maybe<Scalars['String']>;
 }>;
 
 
 export type ProductsListQuery = (
   { __typename?: 'Query' }
-  & { products: Array<(
-    { __typename?: 'Product' }
-    & Pick<Product, 'slug' | 'title' | 'description' | 'image' | 'price'>
-    & { category: (
-      { __typename?: 'Category' }
-      & Pick<Category, 'slug' | 'title'>
-    ) }
+  & { products?: Maybe<(
+    { __typename?: 'ProductsResult' }
+    & Pick<ProductsResult, 'count'>
+    & { data: Array<(
+      { __typename?: 'Product' }
+      & Pick<Product, 'slug' | 'title' | 'description' | 'image' | 'price'>
+      & { category: (
+        { __typename?: 'Category' }
+        & Pick<Category, 'slug' | 'title'>
+      ) }
+    )> }
   )> }
 );
 
@@ -142,13 +148,15 @@ export type CategoryInfoQuery = (
 export const CartItemsListDocument = gql`
     query CartItemsList($slugs: [String!]!) {
   products(slugs: $slugs) {
-    slug
-    title
-    description
-    image
-    price
-    firm
-    capacity
+    data {
+      slug
+      title
+      description
+      image
+      price
+      firm
+      capacity
+    }
   }
 }
     `;
@@ -179,16 +187,19 @@ export type CartItemsListQueryHookResult = ReturnType<typeof useCartItemsListQue
 export type CartItemsListLazyQueryHookResult = ReturnType<typeof useCartItemsListLazyQuery>;
 export type CartItemsListQueryResult = Apollo.QueryResult<CartItemsListQuery, CartItemsListQueryVariables>;
 export const ProductsListDocument = gql`
-    query ProductsList($skip: Int, $first: Int, $category: String) {
-  products(skip: $skip, first: $first, category: $category) {
-    slug
-    title
-    description
-    image
-    price
-    category {
+    query ProductsList($offset: Int, $limit: Int, $category: String) {
+  products(offset: $offset, limit: $limit, category: $category) {
+    count
+    data {
       slug
       title
+      description
+      image
+      price
+      category {
+        slug
+        title
+      }
     }
   }
 }
@@ -206,8 +217,8 @@ export const ProductsListDocument = gql`
  * @example
  * const { data, loading, error } = useProductsListQuery({
  *   variables: {
- *      skip: // value for 'skip'
- *      first: // value for 'first'
+ *      offset: // value for 'offset'
+ *      limit: // value for 'limit'
  *      category: // value for 'category'
  *   },
  * });

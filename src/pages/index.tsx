@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Products } from '@containers/Products/Products';
-import { CartItems } from '@containers/Cart/CartItems';
 
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
@@ -83,10 +82,7 @@ const Home = () => (
           description="В магазине вы можете познакомиться с ассортиментом Young Living и узнать, как правильно использовать эфирные масла."
           className={s.titleProduct}
         />
-        <Products
-          className={s.products}
-          first={4}
-        />
+        <Products className={s.products} />
         <Button href="/products">Перейти в магазин</Button>
         <TitleDescription
           title="Статьи в блоге"
@@ -113,7 +109,6 @@ const Home = () => (
       </Row>
     </Container>
     <InstaScreen />
-    <CartItems />
   </BaseLayout>
 );
 
