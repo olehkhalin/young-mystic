@@ -22,6 +22,9 @@ export const CartItems: React.FC<CartItemsProps> = ({
     variables: {
       slugs,
     },
+    context: {
+      ghost: false,
+    },
   });
 
   if (loading) {

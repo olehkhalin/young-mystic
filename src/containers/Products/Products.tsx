@@ -34,6 +34,9 @@ export const Products: React.FC<ProductsProps> = ({
       limit: isPagination ? PRODUCTS_PER_PAGE : PRODUCTS_PER_BLOCK,
       category: categorySlug,
     },
+    context: {
+      ghost: false,
+    },
   });
 
   const loadMore = () => {

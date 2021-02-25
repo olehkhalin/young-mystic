@@ -25,6 +25,9 @@ const ProductsCategoryPage = () => {
     variables: {
       slug: category as string,
     },
+    context: {
+      ghost: false,
+    },
   });
 
   if (loading) {
@@ -33,7 +36,7 @@ const ProductsCategoryPage = () => {
   if (error) {
     throw error;
   }
-  if (!data || !data.category) {
+  if (!data?.category) {
     return <>404</>; // TODO: Set 404 page render
   }
   const { title, description, image } = data.category;

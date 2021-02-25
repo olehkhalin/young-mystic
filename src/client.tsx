@@ -5,7 +5,7 @@ import {
   NormalizedCacheObject,
   HttpLink,
 } from '@apollo/client';
-
+import { RetryLink } from '@apollo/client/link/retry';
 import { cache } from '@cache';
 
 let globalApolloClient: ApolloClient<NormalizedCacheObject>;
@@ -20,12 +20,19 @@ let globalApolloClient: ApolloClient<NormalizedCacheObject>;
 //   }
 // `;
 
+const link = new RetryLink().split(
+  (operation) => {
+    console.log('operation', operation.getContext().ghost);
+    return operation.getContext().ghost;
+  },
+  new HttpLink({ uri: 'http://46.101.240.211:4000' }),
+  new HttpLink({ uri: process.env.NEXT_PUBLIC_APOLLO_CLIENT_ENDPOINT }),
+);
+
 function createApolloClient() {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined', // set to true for SSR
-    link: new HttpLink({
-      uri: process.env.NEXT_PUBLIC_APOLLO_CLIENT_ENDPOINT,
-    }),
+    link,
     cache,
     // typeDefs,
   });
