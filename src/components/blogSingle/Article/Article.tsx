@@ -10,17 +10,17 @@ import { prettyDate } from '../../../functions';
 import s from './Article.module.sass';
 
 type TagProps = {
-  id: number
-  label: string
-  link: string
-};
+  id: string
+  name?: string | null
+  visibility?: string | null
+} | null;
 
 type ArticleProps = {
-  image: string
+  image?: string | null
   title: string
-  description: string
-  date: string
-  tags: TagProps[]
+  description?: string | null
+  date?: string | null
+  tags?: TagProps[] | null
   className?: string
 };
 
@@ -33,7 +33,7 @@ export const Article: React.FC<ArticleProps> = ({
   children,
   className,
 }) => {
-  const finalDate = prettyDate(date);
+  const finalTags = tags ? tags.filter((tag) => tag?.visibility === 'internal') : [];
 
   return (
     <article className={cx(s.root, className)}>
@@ -43,36 +43,41 @@ export const Article: React.FC<ArticleProps> = ({
           title={title}
           description={description}
         />
-        <time
-          className={s.time}
-          dateTime={date}
-          title={date}
-        >
-          {finalDate}
-        </time>
+        {date && (
+          <time
+            className={s.time}
+            dateTime={date}
+            title={date}
+          >
+            {prettyDate(date)}
+          </time>
+        )}
       </header>
       <Separator />
       <main className={s.main}>
         <ContentBlock>
-          {children}
+          {children as string}
         </ContentBlock>
       </main>
-      <Separator />
-      <footer className={s.footer}>
-        <h3 className={s.footerHeader}>Теги:</h3>
-        <div className={s.tags}>
-          {tags.map((tag) => (
-            <Tag
-              key={tag.id}
-              href={tag.link}
-              theme="secondary"
-              className={s.tag}
-            >
-              {tag.label}
-            </Tag>
-          ))}
-        </div>
-      </footer>
+      {finalTags?.length > 0 && (
+        <>
+          <Separator />
+          <footer className={s.footer}>
+            <h3 className={s.footerHeader}>Теги:</h3>
+            <div className={s.tags}>
+              {finalTags.map((tag) => tag?.name && (
+              <Tag
+                key={tag.id}
+                theme="secondary"
+                className={s.tag}
+              >
+                {tag.name}
+              </Tag>
+              ))}
+            </div>
+          </footer>
+        </>
+      )}
     </article>
   );
 };

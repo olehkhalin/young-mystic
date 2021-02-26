@@ -2,6 +2,7 @@
 
 .root
   padding: 40px 0 60px
+  width: 100%
 
 .header
   font-weight: 500
@@ -9,32 +10,14 @@
   font-size: 1.5rem
   margin-bottom: 22px
 
-.post
-  &:not(:last-of-type)
-    margin-bottom: 12px
-
 @media (min-width: $tablet)
   .root
     padding: 67px 0 40px
   .header
     font-size: 1.625rem
-  .blog
-    max-width: 888px
-    display: grid
-    grid-template-columns: repeat(2, 1fr)
-    column-gap: 18px
-    row-gap: 14px
-  .post
-    &:not(:last-of-type)
-      margin-bottom: 0
-    &:last-of-type
-      grid-column: 1/3
 
 @media (min-width: $Ltablet)
   .root
     padding: 94px 0 40px
   .header
     font-size: 1.75rem
-  .blog
-    column-gap: 24px
-    row-gap: 20px

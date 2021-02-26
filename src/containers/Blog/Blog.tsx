@@ -12,7 +12,8 @@ import { POSTS_PER_BLOCK, POSTS_PER_PAGE } from '../../defaults';
 
 type ProductsProps = {
   className?: string
-  category?: string
+  category?: string | null
+  isSection?: boolean
   isFeatured?: boolean
   isPagination?: boolean
 };
@@ -20,6 +21,7 @@ type ProductsProps = {
 export const Blog: React.FC<ProductsProps> = ({
   category,
   isFeatured = false,
+  isSection = false,
   isPagination = false,
   className,
 }) => {
@@ -94,6 +96,7 @@ export const Blog: React.FC<ProductsProps> = ({
             title={post.node.title}
             description={post.node.excerpt}
             isFullWidth={index === (isPagination ? 4 : 2)}
+            isSection={isSection}
           />
         ))}
       </div>

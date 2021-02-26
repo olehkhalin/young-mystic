@@ -388,6 +388,26 @@ export type BlogListQuery = (
   )> }
 );
 
+export type BlogInfoQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type BlogInfoQuery = (
+  { __typename?: 'GhostQuery' }
+  & { post?: Maybe<(
+    { __typename?: 'GhostPost' }
+    & Pick<GhostPost, 'featureImage' | 'title' | 'excerpt' | 'createdAt' | 'html'>
+    & { primaryTag?: Maybe<(
+      { __typename?: 'GhostTag' }
+      & Pick<GhostTag, 'slug' | 'name'>
+    )>, tags?: Maybe<Array<Maybe<(
+      { __typename?: 'GhostTag' }
+      & Pick<GhostTag, 'id' | 'name' | 'visibility'>
+    )>>> }
+  )> }
+);
+
 export type BlogCategoriesListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -399,7 +419,7 @@ export type BlogCategoriesListQuery = (
       { __typename?: 'GhostTagsEdge' }
       & { node?: Maybe<(
         { __typename?: 'GhostTag' }
-        & Pick<GhostTag, 'id' | 'slug' | 'name'>
+        & Pick<GhostTag, 'id' | 'slug' | 'name' | 'visibility'>
       )> }
     )>>> }
   )> }
@@ -472,6 +492,52 @@ export function useBlogListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<B
 export type BlogListQueryHookResult = ReturnType<typeof useBlogListQuery>;
 export type BlogListLazyQueryHookResult = ReturnType<typeof useBlogListLazyQuery>;
 export type BlogListQueryResult = Apollo.QueryResult<BlogListQuery, BlogListQueryVariables>;
+export const BlogInfoDocument = gql`
+    query BlogInfo($slug: String!) {
+  post(slug: $slug, include: ["tags"]) {
+    primaryTag {
+      slug
+      name
+    }
+    featureImage
+    title
+    excerpt
+    createdAt
+    html
+    tags {
+      id
+      name
+      visibility
+    }
+  }
+}
+    `;
+
+/**
+ * __useBlogInfoQuery__
+ *
+ * To run a query within a React component, call `useBlogInfoQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBlogInfoQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBlogInfoQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useBlogInfoQuery(baseOptions: Apollo.QueryHookOptions<BlogInfoQuery, BlogInfoQueryVariables>) {
+        return Apollo.useQuery<BlogInfoQuery, BlogInfoQueryVariables>(BlogInfoDocument, baseOptions);
+      }
+export function useBlogInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogInfoQuery, BlogInfoQueryVariables>) {
+          return Apollo.useLazyQuery<BlogInfoQuery, BlogInfoQueryVariables>(BlogInfoDocument, baseOptions);
+        }
+export type BlogInfoQueryHookResult = ReturnType<typeof useBlogInfoQuery>;
+export type BlogInfoLazyQueryHookResult = ReturnType<typeof useBlogInfoLazyQuery>;
+export type BlogInfoQueryResult = Apollo.QueryResult<BlogInfoQuery, BlogInfoQueryVariables>;
 export const BlogCategoriesListDocument = gql`
     query BlogCategoriesList {
   tags {
@@ -480,6 +546,7 @@ export const BlogCategoriesListDocument = gql`
         id
         slug
         name
+        visibility
       }
     }
   }

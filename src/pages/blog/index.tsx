@@ -35,8 +35,8 @@ const Blog = () => {
   if (error) {
     throw error;
   }
-
-  if (!data?.tags?.edges) {
+  const finalTags = data?.tags?.edges ? data?.tags?.edges.filter((tag) => tag?.node?.visibility !== 'internal') : [];
+  if (!finalTags) {
     return <>404</>; // TODO: 404 page render
   }
 
@@ -47,8 +47,8 @@ const Blog = () => {
           <BreadCrumbs navLinks={navLinks} className={s.breadCrumbs} />
         </Row>
       </Container>
-      <FirstScreen tags={data.tags.edges} />
-      {data.tags.edges.map((category, index) => category?.node && (
+      <FirstScreen tags={finalTags} />
+      {finalTags.map((category, index) => category?.node && (
         <CategorySection
           key={category.node.id}
           className={cx(

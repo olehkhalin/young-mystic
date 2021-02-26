@@ -5,6 +5,7 @@ query BlogCategoriesList {
                 id
                 slug
                 name
+                visibility
             }
         }
     }
