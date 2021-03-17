@@ -50,8 +50,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint --fix",
-      "pre-push": "yarn tsc"
+      "pre-commit": "yarn lint --fix"
     }
   }
 }
