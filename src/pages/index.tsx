@@ -63,7 +63,7 @@ const Home = () => (
             </p>
             )}
           button={{
-            link: '/',
+            link: '/pochemu-young-living',
             label: 'Узнать подробнее',
           }}
         />
@@ -93,7 +93,7 @@ const Home = () => (
             />
           ))}
         </div>
-        <Button href="/">Перейти в магазин</Button>
+        <Button href="/products">Перейти в магазин</Button>
         <TitleDescription
           title="Статьи в блоге"
           description="В моем блоге вы узнаете, как правильно использовать эфирные масла."
@@ -113,10 +113,10 @@ const Home = () => (
             />
           ))}
         </div>
-        <Button href="/">Перейти в блог</Button>
-        <InstaScreen />
+        <Button href="/blog">Перейти в блог</Button>
       </Row>
     </Container>
+    <InstaScreen />
   </BaseLayout>
 );
 

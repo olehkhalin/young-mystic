@@ -53,6 +53,7 @@ export const CategorySection: React.FC<CategorySectionProps> = ({
       <Button
         theme="clean"
         className={s.button}
+        href={category.link}
       >
         Смотреть еще
         <ArrowRight className={s.icon} />

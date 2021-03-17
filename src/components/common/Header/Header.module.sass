@@ -77,7 +77,8 @@
   background-color: $light-100
 
 .menuBlock
-  transform: translateY(calc(-100% - 10px))
-  transition: transform ease-in-out $animationTime * 2
+  left: 0
+  transform: translateX(calc(100% + 10px))
+  transition: transform ease-in-out $animationTime * 2, left 0s $animationTime * 2
   &.shown
     transform: none

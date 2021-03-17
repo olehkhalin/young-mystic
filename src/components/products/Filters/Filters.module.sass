@@ -24,3 +24,9 @@
   margin-left: 4px
   path
     fill: $primary-100
+
+.filtersScreen
+  transform: translateY(calc(-100% - 10px))
+  transition: transform ease-in-out $animationTime * 2
+  &.open
+    transform: none
