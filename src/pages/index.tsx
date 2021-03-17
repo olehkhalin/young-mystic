@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Products } from '@containers/Products/Products';
+import { Blog } from '@containers/Blog/Blog';
 
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
@@ -10,12 +11,9 @@ import { FirstScreen } from '@components/index/FirstScreen';
 import { TitleDescription } from '@components/common/TitleDescription';
 import { ImageTextBig } from '@components/common/ImageTextBig';
 import { CTABlock } from '@components/common/CTABlock';
-import { BlogCard } from '@components/common/BlogCard';
 import { InstaScreen } from '@components/index/InstaScreen';
 
 import s from '@styles/Home.module.sass';
-
-import { POSTS } from '../content';
 
 const Home = () => (
   <BaseLayout>
@@ -89,22 +87,7 @@ const Home = () => (
           description="В моем блоге вы узнаете, как правильно использовать эфирные масла."
           className={s.titleBlog}
         />
-        <div className={s.blog}>
-          {POSTS.map((post, index) => (
-            <BlogCard
-              className={s.blogCard}
-              theme="small"
-              key={post.id}
-              image={post.image}
-              link={post.link}
-              category={post.category}
-              date={post.date}
-              title={post.title}
-              description={post.description}
-              isFullWidth={index === 2}
-            />
-          ))}
-        </div>
+        <Blog isFeatured className={s.blog} />
         <Button href="/blog">Перейти в блог</Button>
       </Row>
     </Container>

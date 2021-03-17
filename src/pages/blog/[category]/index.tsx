@@ -1,32 +1,30 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import { useBlogCategoryInfoQuery } from '@graphqlBlog';
 
-import { useCategoryInfoQuery } from '@graphql';
-import { Products } from '@containers/Products/Products';
+import { Blog } from '@containers/Blog/Blog';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
-import { Separator } from '@ui/Separator';
 import { BreadCrumbs } from '@ui/BreadCrumbs';
 import { CTABlock } from '@components/common/CTABlock';
 import { PageTitle } from '@components/common/PageTitle';
-import { Filters } from '@components/products/Filters';
 
-import s from '@styles/Products.module.sass';
+import s from '@styles/BlogCategory.module.sass';
 
-const ProductsCategoryPage = () => {
+const Index = () => {
   const router = useRouter();
   const { category } = router.query;
   if (!category) {
     return null;
   }
 
-  const { data, loading, error } = useCategoryInfoQuery({
+  const { data, loading, error } = useBlogCategoryInfoQuery({
     variables: {
       slug: category as string,
     },
     context: {
-      ghost: false,
+      ghost: true,
     },
   });
 
@@ -36,10 +34,15 @@ const ProductsCategoryPage = () => {
   if (error) {
     throw error;
   }
-  if (!data?.category) {
+  if (!data?.tag) {
     return <>404</>; // TODO: Set 404 page render
   }
-  const { title, description, image } = data.category;
+  const {
+    slug, name: title, description, featureImage,
+  } = data?.tag;
+  if (!slug || !title) {
+    return <>404</>; // TODO: Set 404 page render
+  }
 
   const navLinks = [
     {
@@ -47,8 +50,8 @@ const ProductsCategoryPage = () => {
       link: '/',
     },
     {
-      title: 'Магазин',
-      link: '/products',
+      title: 'Блог',
+      link: '/blog',
     },
     {
       title,
@@ -61,18 +64,12 @@ const ProductsCategoryPage = () => {
         <Row>
           <BreadCrumbs navLinks={navLinks} />
           <PageTitle
-            image={image}
             title={title}
             description={description}
-            className={s.title}
+            image={featureImage}
+            className={s.header}
           />
-          <Filters className={s.filter} />
-          <Separator className={s.separator} />
-          <Products
-            className={s.products}
-            categorySlug={category as string}
-            isPagination
-          />
+          <Blog category={slug} className={s.blog} isPagination />
           <CTABlock
             className={s.blockCta}
             title="Откройте мир масел вместе с Young Living!"
@@ -88,4 +85,4 @@ const ProductsCategoryPage = () => {
   );
 };
 
-export default ProductsCategoryPage;
+export default Index;

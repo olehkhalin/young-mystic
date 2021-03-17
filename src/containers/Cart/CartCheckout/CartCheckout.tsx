@@ -26,6 +26,9 @@ export const CartCheckout: React.FC<CartCheckoutProps> = ({
     variables: {
       slugs,
     },
+    context: {
+      ghost: false,
+    },
   });
 
   if (loading) {
@@ -35,7 +38,7 @@ export const CartCheckout: React.FC<CartCheckoutProps> = ({
     throw error;
   }
 
-  const sum = data?.products.reduce((prevSum, item) => prevSum
+  const sum = data?.products?.data.reduce((prevSum, item) => prevSum
       + item.price * (
         cartItems.find((itemLocal) => itemLocal.slug === item.slug)?.quantity || 1
       ), 0) || 0;
@@ -44,7 +47,7 @@ export const CartCheckout: React.FC<CartCheckoutProps> = ({
     <>
       <div className={cx(s.root, className)}>
         <h1 className={s.header}>Ваша корзина</h1>
-        {data?.products.map((item) => (
+        {data?.products?.data.map((item) => (
           <CheckoutCard
             key={item.slug}
             className={s.card}

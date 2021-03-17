@@ -5,27 +5,21 @@ import {
   NormalizedCacheObject,
   HttpLink,
 } from '@apollo/client';
-
+import { RetryLink } from '@apollo/client/link/retry';
 import { cache } from '@cache';
 
 let globalApolloClient: ApolloClient<NormalizedCacheObject>;
 
-// export const typeDefs = gql`
-//   type CartItem {
-//     slug: String!
-//     quantity: Int!
-//   }
-//   extend type Query {
-//     cartItems: [CartItem!]!
-//   }
-// `;
+const link = new RetryLink().split(
+  (operation) => operation.getContext().ghost,
+  new HttpLink({ uri: 'http://46.101.240.211:4000' }),
+  new HttpLink({ uri: process.env.NEXT_PUBLIC_APOLLO_CLIENT_ENDPOINT }),
+);
 
 function createApolloClient() {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined', // set to true for SSR
-    link: new HttpLink({
-      uri: process.env.NEXT_PUBLIC_APOLLO_CLIENT_ENDPOINT,
-    }),
+    link,
     cache,
     // typeDefs,
   });

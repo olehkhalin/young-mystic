@@ -9,6 +9,13 @@
           "user-agent": "JS GraphQL"
         },
         "introspect": false
+      },
+      "Blog GraphQL Endpoint": {
+        "url": "http://46.101.240.211:4000",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        },
+        "introspect": false
       }
     }
   }
