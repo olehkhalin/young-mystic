@@ -53,14 +53,14 @@ export const CustomCollapse: React.FC<CustomCollapseProps> = ({
   const [isDesktop, setIsDesktop] = useState<boolean>(false);
 
   useEffect(() => {
-    if (isOpenDesktop && window.innerWidth >= 1366) {
+    if (isOpenDesktop && window.innerWidth >= 768) {
       setIsDesktop(true);
     }
 
     // prevents flashing
     const debouncedHandleResize = debounce(() => {
       if (isOpenDesktop) {
-        if (window.innerWidth >= 1366) {
+        if (window.innerWidth >= 768) {
           setIsDesktop(true);
         } else {
           setIsDesktop(false);

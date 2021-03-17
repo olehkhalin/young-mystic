@@ -33,9 +33,30 @@
 .blockCta
   margin-top: 20px
 
-@media (min-width: $desktop)
+@media (min-width: $tablet)
   .products
     grid-template-columns: repeat(4, 1fr)
+    column-gap: 18px
+    row-gap: 20px
+    padding-bottom: 40px
+  .blockCta
+    margin-top: 40px
+  .title, .breadCrumbs, .separator
+    z-index: 4
+    position: relative
+  .breadCrumbs
+    margin-bottom: 20px
+    display: none
+  .breadCrumbsTablet
+    display: flex
+  .separatorTop
+    margin-top: 30px
+    margin-bottom: 13px
+  .separatorBottom
+    margin: 13px 0 20px
+
+@media (min-width: $Ltablet)
+  .products
     column-gap: 24px
     row-gap: 40px
     padding-bottom: 60px
@@ -58,12 +79,11 @@
     width: 50%
     margin-left: 12px
   .breadCrumbs
-    margin-bottom: 20px
+    display: flex
+  .breadCrumbsTablet
+    display: none
   .separatorTop
     margin-top: 40px
     margin-bottom: 26px
   .separatorBottom
     display: none
-  .title, .breadCrumbs, .separator
-    z-index: 4
-    position: relative

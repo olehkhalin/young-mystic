@@ -52,7 +52,11 @@ const navLinks = [
 
 const Blog = () => (
   <BaseLayout>
-    <BreadCrumbs navLinks={navLinks} className={s.breadCrumbs} />
+    <Container>
+      <Row>
+        <BreadCrumbs navLinks={navLinks} className={s.breadCrumbs} />
+      </Row>
+    </Container>
     <FirstScreen tags={TAGS} />
     {CATEGORIES.map((category, index) => (
       <CategorySection

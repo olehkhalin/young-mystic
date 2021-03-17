@@ -8,6 +8,10 @@
     &:not(:last-of-type)
       margin-bottom: 8px
 
+.image
+  position: relative
+  min-height: 377px
+
 .content
   display: flex
   flex-direction: column
@@ -27,19 +31,22 @@
 
 .button
   margin-top: 28px
-  max-width: none
 
-@media (min-width: $desktop)
+@media (min-width: $tablet)
   .root
     flex-direction: row
     width: 100%
+    min-height: 450px
     &:nth-child(2n)
       .content
         order: -1
         margin-left: auto
+      .image
+        padding-right: 0
+        margin-left: 18px
   .image
     width: 50%
-    padding-right: 24px
+    margin-right: 18px
   .content
     width: 50%
     justify-content: center
@@ -50,5 +57,15 @@
   .category
     margin-top: 0
   .button
-    max-width: 328px
+    margin-top: 20px
+
+@media (min-width: $Ltablet)
+  .root
+    min-height: 500px
+    &:nth-child(2n)
+      .image
+        margin-left: 24px
+  .image
+    margin-right: 24px
+  .button
     margin-top: 40px
