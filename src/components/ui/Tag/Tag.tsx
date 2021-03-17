@@ -7,7 +7,10 @@ import s from './Tag.module.sass';
 type TagProps = {
   theme?: keyof typeof themeClass
   className?: string
-} & (HTMLSpanElement | LinkProps);
+} & (
+  Omit<React.HTMLProps<HTMLSpanElement>, 'href'>
+  | LinkProps
+);
 
 const themeClass = {
   primary: s.primary,
@@ -33,7 +36,6 @@ export const Tag: React.FC<TagProps> = ({
     return (
       <Link
         {...props}
-        href={props.href}
       >
         <a className={compoundClassName}>{children}</a>
       </Link>

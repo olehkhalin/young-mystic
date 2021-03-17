@@ -1,0 +1,55 @@
+@import '@styles/variables.module'
+
+.root
+  display: flex
+  justify-content: space-between
+  align-items: center
+  width: 100%
+  padding: 20px 0
+
+.pages
+  display: flex
+  align-items: center
+
+.page
+  width: 24px
+  height: 34px
+  margin-top: -7px
+  margin-bottom: -7px
+  color: $secondary-100
+  transition: color $animationTime
+  font-weight: 500
+  display: flex
+  justify-content: center
+  align-items: center
+  &:not(:last-of-type)
+    margin-right: 8px
+  &:not(.dots):hover
+    color: $primary-80
+
+.dots
+  margin-right: 8px
+  cursor: default
+
+.currentPage
+  color: $primary-100
+  cursor: default
+
+.arrow
+  display: flex
+  justify-content: center
+  align-items: center
+  &:hover
+    .icon
+      path
+        fill: $primary-60
+  &.disabled
+    cursor: not-allowed
+    .icon
+      path
+        fill: $primary-40
+
+.icon
+  path
+    fill: $primary-100
+    transition: fill $animationTime

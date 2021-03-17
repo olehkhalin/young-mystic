@@ -44,19 +44,19 @@ export const NavLinks: NavLinksProps = [
     links: [
       {
         title: 'Истории Д. Гери Янга',
-        link: '/blog',
+        link: '/blog-category',
       },
       {
         title: 'Эфирные масла',
-        link: '/blog',
+        link: '/blog-category',
       },
       {
         title: 'Красота',
-        link: '/blog',
+        link: '/blog-category',
       },
       {
         title: 'Здоровье',
-        link: '/blog',
+        link: '/blog-category',
       },
     ],
   },
@@ -65,19 +65,19 @@ export const NavLinks: NavLinksProps = [
     links: [
       {
         title: 'Каталог',
-        link: '/blog',
+        link: '/products',
       },
       {
         title: 'Доставка и оплата',
-        link: '/blog',
+        link: '/payment-delivery',
       },
       {
         title: 'Способы и условия возврата',
-        link: '/blog',
+        link: '/replacement-and-return',
       },
       {
         title: 'Рекламации',
-        link: '/blog',
+        link: '/complaint',
       },
     ],
   },
@@ -86,19 +86,19 @@ export const NavLinks: NavLinksProps = [
     links: [
       {
         title: 'Эфирные масла',
-        link: '/blog',
+        link: '/blog-category',
       },
       {
         title: 'Сообщество Young Living',
-        link: '/blog',
+        link: '/oil-life',
       },
       {
         title: 'Присоединиться к сообществу',
-        link: '/blog',
+        link: '/wholesale-account',
       },
       {
         title: 'Начало своего бизнеса',
-        link: '/blog',
+        link: '/vozmozhnosti-young-living',
       },
     ],
   },
@@ -107,11 +107,11 @@ export const NavLinks: NavLinksProps = [
     links: [
       {
         title: 'Договор публичной оферты',
-        link: '/blog',
+        link: '/offer-agreement',
       },
       {
         title: 'Политика конфиденциальности',
-        link: '/blog',
+        link: '/privacy-policy',
       },
     ],
   },
@@ -136,11 +136,11 @@ export const MenuNavLinks: MenuNavLinksProps = [
     collapse: [
       {
         title: 'Обо мне',
-        link: '/product',
+        link: '/about',
       },
       {
         title: 'Сообщество Young Living',
-        link: '/product',
+        link: '/oil-life',
       },
     ],
   },
@@ -149,19 +149,19 @@ export const MenuNavLinks: MenuNavLinksProps = [
     collapse: [
       {
         title: 'Что такое эфирные масла, зачем их использовать и как?',
-        link: '/product',
+        link: '/chto-takoe-jefirnye-masla-voobshhe',
       },
       {
         title: 'Почему Young Living?',
-        link: '/product',
+        link: '/pochemu-young-living',
       },
       {
         title: 'Гармоничный бизнес начинается здесь',
-        link: '/product',
+        link: '/vozmozhnosti-young-living',
       },
       {
         title: 'Сообщество Young Living',
-        link: '/product',
+        link: '/oil-life',
       },
     ],
   },
@@ -170,22 +170,22 @@ export const MenuNavLinks: MenuNavLinksProps = [
     collapse: [
       {
         title: 'Эфирные масла',
-        link: '/product',
+        link: '/blog-category',
       },
       {
         title: 'Красота',
         list: [
           {
             title: 'Масла для волос',
-            link: '/product',
+            link: '/blog-category',
           },
           {
             title: 'Масла для тела',
-            link: '/product',
+            link: '/blog-category',
           },
           {
             title: 'Масла для ухода',
-            link: '/product',
+            link: '/blog-category',
           },
         ],
       },
@@ -194,25 +194,25 @@ export const MenuNavLinks: MenuNavLinksProps = [
         list: [
           {
             title: 'Для здоровья всей семьи',
-            link: '/product',
+            link: '/blog-category',
           },
           {
             title: 'Масло как витаминная добавка ',
-            link: '/product',
+            link: '/blog-category',
           },
           {
             title: 'Масла от болезней',
-            link: '/product',
+            link: '/blog-category',
           },
         ],
       },
       {
         title: 'Истории Д. Гери Янга',
-        link: '/product',
+        link: '/blog-category',
       },
       {
         title: 'Смотреть все статьи',
-        link: '/product',
+        link: '/blog',
       },
     ],
   },
@@ -221,36 +221,36 @@ export const MenuNavLinks: MenuNavLinksProps = [
     collapse: [
       {
         title: 'Новинки',
-        link: '/product',
+        link: '/product-category',
       },
       {
         title: 'Эфирные масла',
         list: [
           {
             title: 'Эфирные масла',
-            link: '/product',
+            link: '/product-category',
           },
           {
             title: 'Смеси эфирных масел',
-            link: '/product',
+            link: '/product-category',
           },
           {
             title: 'Массажные масла',
-            link: '/product',
+            link: '/product-category',
           },
         ],
       },
       {
         title: 'Диффузоры и приспособления',
-        link: '/product',
+        link: '/product-category',
       },
       {
         title: 'Личная гигиена',
-        link: '/product',
+        link: '/product-category',
       },
       {
         title: 'Стартовые наборы',
-        link: '/product',
+        link: '/product-category',
       },
       {
         title: 'Смотреть все товары',

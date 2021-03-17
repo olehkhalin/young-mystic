@@ -6,6 +6,7 @@ import cx from 'classnames';
 import { Tag } from '@components/ui/Tag';
 
 import s from './ProductCard.module.sass';
+import { prettyPrice } from '../../../functions';
 
 type ProductCardProps = {
   theme?: keyof typeof themeClass
@@ -15,6 +16,7 @@ type ProductCardProps = {
   price: number
   isNew?: boolean
   isSale?: boolean
+  isSection?: boolean
   className?: string
 };
 
@@ -31,6 +33,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   price,
   isNew = false,
   isSale = false,
+  isSection = false,
   className,
 }) => {
   const compoundClassName = cx(
@@ -51,55 +54,62 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     );
   }
 
-  if (theme === 'small') {
-    return (
-      <div className={compoundClassName}>
-        <Link href={link}>
-          <a className={s.link} />
-        </Link>
+  const content = theme === 'small' ? (
+    <Link href={link}>
+      <a className={s.link}>
         <div className={s.content}>
           <h3 className={s.header}>{title}</h3>
           <p className={s.price}>
-            {price.toLocaleString('ru-RU', { style: 'decimal', minimumFractionDigits: 2 })}
-            ₴
+            {prettyPrice(price)}
           </p>
         </div>
         <div className={s.image}>
           <Image
             src={image}
             alt={title}
-            width={53}
+            width={60}
             height={60}
             layout="responsive"
           />
         </div>
-      </div>
-    );
-  }
-
-  return (
+      </a>
+    </Link>
+  ) : (
     <Link href={link}>
-      <a className={compoundClassName}>
+      <a className={s.link}>
         {tags && (
-        <div className={s.tags}>
-          {tags}
-        </div>
+          <div className={s.tags}>
+            {tags}
+          </div>
         )}
         <div className={s.image}>
           <Image
             src={image}
             alt={title}
-            width={140}
+            width={136}
             height={160}
             layout="responsive"
           />
         </div>
         <h3 className={s.header}>{title}</h3>
         <p className={s.price}>
-          {price.toLocaleString('ru-RU', { style: 'decimal', minimumFractionDigits: 2 })}
-          ₴
+          {prettyPrice(price)}
         </p>
       </a>
     </Link>
+  );
+
+  if (isSection) {
+    return (
+      <section className={compoundClassName}>
+        {content}
+      </section>
+    );
+  }
+
+  return (
+    <article className={compoundClassName}>
+      {content}
+    </article>
   );
 };

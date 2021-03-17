@@ -2,15 +2,13 @@ import * as React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import cx from 'classnames';
-import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
+import Shiitake from 'shiitake';
 
 import { Button } from '@components/ui/Button';
-
 import ArrowRight from '@public/svg/ArrowRight.svg';
-import s from './BlogCard.module.sass';
+import { prettyDate } from '../../../functions';
 
-dayjs.extend(relativeTime);
+import s from './BlogCard.module.sass';
 
 type BlogCardProps = {
   theme?: keyof typeof themeClass
@@ -23,6 +21,7 @@ type BlogCardProps = {
   date: string
   title: string
   description?: string
+  isSection?: boolean
   className?: string
 };
 
@@ -40,6 +39,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
   date,
   title,
   description,
+  isSection = false,
   className,
 }) => {
   const compoundClassName = cx(
@@ -48,21 +48,35 @@ export const BlogCard: React.FC<BlogCardProps> = ({
     className,
   );
 
-  const newDate = dayjs(date);
-  const dayDiff = dayjs().diff(newDate, 'day');
-  const yearDiff = dayjs().diff(newDate, 'year');
+  const finalDate = prettyDate(date);
 
-  let finalDate;
-  if (dayDiff < 10) {
-    finalDate = newDate.fromNow();
-  } else {
-    finalDate = yearDiff === 0 ? newDate.format('D MMMM') : newDate.format('D MMMM YYYY');
-  }
-
-  return (
-    <div
-      className={compoundClassName}
-    >
+  const headerContent = (
+    <>
+      <Button
+        theme="clean"
+        href={category.link}
+        className={s.category}
+      >
+        {category.label}
+      </Button>
+      <time dateTime={date} title={date} className={s.date}>{finalDate}</time>
+      {theme === 'primary' ? (
+        <h3 className={s.header}>{title}</h3>
+      ) : (
+        <Shiitake
+          lines={2}
+          throttleRate={200}
+          className={s.header}
+          tagName="h3"
+        >
+          {title}
+        </Shiitake>
+      )}
+      {theme === 'primary' && <p className={s.description}>{description}</p>}
+    </>
+  );
+  const content = (
+    <>
       <Link href={link}>
         <a className={s.link} />
       </Link>
@@ -75,23 +89,32 @@ export const BlogCard: React.FC<BlogCardProps> = ({
         />
       </div>
       <div className={s.content}>
-        <Button
-          theme="clean"
-          href={category.link}
-          className={s.category}
-        >
-          {category.label}
-        </Button>
-        <span className={s.date}>{finalDate}</span>
-        <h3 className={s.header}>{title}</h3>
-        {theme === 'primary' && <p className={s.description}>{description}</p>}
+        {isSection ? headerContent : (
+          <header className={s.heading}>
+            {headerContent}
+          </header>
+        )}
         {theme === 'primary' && (
-        <span className={s.button}>
+        <footer className={s.button}>
           Читать далее
           <ArrowRight className={s.buttonArrow} />
-        </span>
+        </footer>
         )}
       </div>
-    </div>
+    </>
+  );
+
+  if (isSection) {
+    return (
+      <section className={compoundClassName}>
+        {content}
+      </section>
+    );
+  }
+
+  return (
+    <article className={compoundClassName}>
+      {content}
+    </article>
   );
 };

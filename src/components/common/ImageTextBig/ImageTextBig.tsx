@@ -27,7 +27,7 @@ export const ImageTextBig: React.FC<ImageTextBigProps> = ({
   button,
   className,
 }) => (
-  <div
+  <article
     className={cx(s.root, className)}
   >
     <Image
@@ -48,5 +48,5 @@ export const ImageTextBig: React.FC<ImageTextBigProps> = ({
     >
       {button.label}
     </Button>
-  </div>
+  </article>
 );

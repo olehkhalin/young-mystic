@@ -2,14 +2,34 @@
 
 .root
   width: 100%
+  p + div
+    margin-top: 16px !important
   h2
     font-family: $font-headers
     margin-top: 64px
     margin-bottom: 24px
     font-size: 1.5rem
-  p
-    margin-top: 16px
+  h3
+    font-weight: 500
+    font-size: 1rem
     line-height: 1.25
+    margin-top: 24px
+    margin-bottom: 16px
+  p
+    line-height: 1.25
+    &:not(:first-of-type)
+      margin-top: 16px
   ul
     margin-top: 16px
     line-height: 1.25
+  blockquote
+    padding: 28px 16px 40px
+    background: $primary-20
+    border: 1px solid $primary-100
+    border-radius: 8px
+    margin: 24px 0 0
+    h2
+      font-weight: 500
+      font-size: 1.5rem
+      margin-top: 0
+      margin-bottom: 8px
