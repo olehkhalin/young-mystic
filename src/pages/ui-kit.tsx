@@ -25,45 +25,47 @@ import Discount from '@public/svg/Discount.svg';
 import s from '@styles/UiKit.module.sass';
 
 const UiKit: React.FC = () => {
-  const [inputValue, setInputValue] = useState('');
-  const [plusMinusInputValue, setPlusMinusInputValue] = useState(1);
+  const [inputValue, setInputValue] = useState<string>('');
+  const [plusMinusInputValue, setPlusMinusInputValue] = useState<number>(1);
 
   return (
     <BaseLayout>
       <div className={s.block}>
         <Container>
           <Row>
-            <Input
-              className={s.input}
-              type="email"
-              label="Email"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-            />
-            <Input
-              className={s.input}
-              type="email"
-              label="Email"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              error="Enter valid Email"
-            />
-            <Input
-              className={s.input}
-              type="email"
-              label="Email"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              success
-            />
-            <Input
-              className={s.input}
-              type="email"
-              label="Email"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              disabled
-            />
+            <div className={s.inputs}>
+              <Input
+                className={s.input}
+                type="email"
+                label="Email"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+              />
+              <Input
+                className={s.input}
+                type="email"
+                label="Email"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                error="Enter valid Email"
+              />
+              <Input
+                className={s.input}
+                type="email"
+                label="Email"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                success
+              />
+              <Input
+                className={s.input}
+                type="email"
+                label="Email"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                disabled
+              />
+            </div>
             <Separator className={s.separator} />
             <CheckBox label="Антибактериальное" />
             <CheckBox label="Антивозрастное" checked />

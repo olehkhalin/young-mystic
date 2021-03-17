@@ -4,22 +4,38 @@ import cx from 'classnames';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
+import { Button } from '@ui/Button';
+import { Separator } from '@ui/Separator';
+import { BreadCrumbs } from '@ui/BreadCrumbs';
 import { CTABlock } from '@components/common/CTABlock';
+import { PageTitle } from '@components/common/PageTitle';
+import { Filters } from '@components/products/Filters';
+import { ProductCard } from '@components/common/ProductCard';
+import { Pagination } from '@components/common/Pagination';
 
 import s from '@styles/Products.module.sass';
 
-import { PageTitle } from '@components/common/PageTitle';
-import { Filters } from '@components/products/Filters';
-import { Separator } from '@ui/Separator';
-import { ProductCard } from '@components/common/ProductCard';
-import { Button } from '@ui/Button';
-import { Pagination } from '@components/common/Pagination';
 import { PRODUCTS_BIG } from '../content';
+
+const navLinks = [
+  {
+    title: 'Главная',
+    link: '/',
+  },
+  {
+    title: 'Магазин',
+    link: '/products',
+  },
+  {
+    title: 'Эфирные масла',
+  },
+];
 
 const ProductsCategoryPage = () => (
   <BaseLayout>
-    <Container>
+    <Container theme="small">
       <Row>
+        <BreadCrumbs navLinks={navLinks} />
         <PageTitle
           image="/images/MainFirst.jpg"
           title="Эфирные масла"
@@ -27,7 +43,7 @@ const ProductsCategoryPage = () => (
           className={s.title}
         />
         <Filters className={s.filter} />
-        <Separator />
+        <Separator className={s.separator} />
         <div className={cx(s.products)}>
           {PRODUCTS_BIG.map((product) => (
             <ProductCard

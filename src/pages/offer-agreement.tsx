@@ -3,6 +3,7 @@ import React from 'react';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
+import { BreadCrumbs } from '@ui/BreadCrumbs';
 import { ContentWithRefs } from '@components/common/ContentWithRefs';
 import { PageTitle } from '@components/common/PageTitle';
 
@@ -347,10 +348,21 @@ const CONTENT = [
   },
 ];
 
+const navLinks = [
+  {
+    title: 'Главная',
+    link: '/',
+  },
+  {
+    title: 'Договор публичной оферты',
+  },
+];
+
 const OfferAgreement = () => (
   <BaseLayout>
-    <Container>
+    <Container theme="small">
       <Row>
+        <BreadCrumbs navLinks={navLinks} />
         <PageTitle title="Договор публичной оферты" />
         <ContentWithRefs content={CONTENT} />
       </Row>

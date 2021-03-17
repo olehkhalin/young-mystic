@@ -4,6 +4,7 @@ import cx from 'classnames';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
+import { BreadCrumbs } from '@ui/BreadCrumbs';
 import { FirstScreen } from '@components/blog/FirstScreen';
 import { CategorySection } from '@components/blog/CategorySection';
 import { CTABlock } from '@components/common/CTABlock';
@@ -39,8 +40,23 @@ const CATEGORIES = [
   },
 ];
 
+const navLinks = [
+  {
+    title: 'Главная',
+    link: '/',
+  },
+  {
+    title: 'Блог',
+  },
+];
+
 const Blog = () => (
   <BaseLayout>
+    <Container>
+      <Row>
+        <BreadCrumbs navLinks={navLinks} className={s.breadCrumbs} />
+      </Row>
+    </Container>
     <FirstScreen tags={TAGS} />
     {CATEGORIES.map((category, index) => (
       <CategorySection
@@ -56,7 +72,7 @@ const Blog = () => (
         }}
       />
     ))}
-    <Container>
+    <Container theme="small">
       <Row>
         <CTABlock
           className={s.blockCta}

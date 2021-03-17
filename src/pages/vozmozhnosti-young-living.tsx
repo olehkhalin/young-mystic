@@ -3,6 +3,7 @@ import React from 'react';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
+import { BreadCrumbs } from '@ui/BreadCrumbs';
 import { ContentWithRefs } from '@components/common/ContentWithRefs';
 import { PageTitle } from '@components/common/PageTitle';
 import { SimilarPosts } from '@components/common/SimilarPosts';
@@ -130,10 +131,25 @@ const CONTENT = [
   },
 ];
 
+const navLinks = [
+  {
+    title: 'Главная',
+    link: '/',
+  },
+  {
+    title: 'Oil life',
+    link: '/oil-life',
+  },
+  {
+    title: 'Возможности Young Living',
+  },
+];
+
 const OfferAgreement = () => (
   <BaseLayout>
-    <Container>
+    <Container theme="small">
       <Row>
+        <BreadCrumbs navLinks={navLinks} />
         <PageTitle image="/images/Image_2.jpg" title="Возможности Young Living" />
         <ContentWithRefs content={CONTENT} />
         <SimilarPosts posts={POSTS} className={s.similarContent} />

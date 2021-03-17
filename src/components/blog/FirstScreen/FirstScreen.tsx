@@ -22,7 +22,7 @@ export const FirstScreen: React.FC<FirstScreenProps> = ({
   tags,
   className,
 }) => (
-  <Container className={cx(s.root, className)}>
+  <Container className={cx(s.root, className)} theme="small">
     <Row>
       <PageTitle
         title="Масла, истории, советы и рекомендации"

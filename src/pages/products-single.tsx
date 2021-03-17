@@ -1,10 +1,13 @@
 import React from 'react';
+import cx from 'classnames';
 
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
 import { Separator } from '@ui/Separator';
 import { CustomCollapse } from '@ui/CustomCollapse';
+import { BreadCrumbs } from '@ui/BreadCrumbs';
+import { ProductImage } from '@components/productsSingle/ProductImage';
 import { CTABlock } from '@components/common/CTABlock';
 import { ProductHeader } from '@components/productsSingle/ProductHeader';
 import { SimilarPosts } from '@components/common/SimilarPosts';
@@ -252,27 +255,59 @@ const CONTENT = [
   },
 ];
 
+const navLinks = [
+  {
+    title: 'Главная',
+    link: '/',
+  },
+  {
+    title: 'Магазин',
+    link: '/products',
+  },
+  {
+    title: 'Эфирные масла',
+    link: '/products-category',
+  },
+  {
+    title: 'Эфирное масло Лаванды',
+  },
+];
+
 const ProductsSinglePage = () => (
   <BaseLayout>
     <Container>
       <Row>
-        <article>
-          <ProductHeader
+        <article className={s.article}>
+          <BreadCrumbs
+            className={cx(s.breadCrumbs, s.breadCrumbsTablet)}
+            navLinks={navLinks}
+          />
+          <ProductImage
             image="/images/product_1.png"
             title="Эфирное масло Лаванды"
-            firm="Lavender"
-            capacity={15}
-            price={1040}
-            description="Прекрасный букет свежих, цветочных, чистых и успокаивающих ароматов. Идеально подойдет тем, кто только начинается знакомиться с миром эфирных масел, и станет незаменимой вещью в каждом доме"
+            className={s.image}
           />
-          <Separator className={s.separatorTop} />
-          {CONTENT.map((item) => (
-            <CustomCollapse key={item.title} title={<h2>{item.title}</h2>}>
-              {item.content}
-            </CustomCollapse>
-          ))}
-          <Separator className={s.separatorBottom} />
+          <div className={s.content}>
+            <BreadCrumbs
+              className={s.breadCrumbs}
+              navLinks={navLinks}
+            />
+            <ProductHeader
+              title="Эфирное масло Лаванды"
+              firm="Lavender"
+              capacity={15}
+              price={1040}
+              description="Прекрасный букет свежих, цветочных, чистых и успокаивающих ароматов. Идеально подойдет тем, кто только начинается знакомиться с миром эфирных масел, и станет незаменимой вещью в каждом доме"
+            />
+            <Separator className={s.separatorTop} />
+            {CONTENT.map((item) => (
+              <CustomCollapse key={item.title} title={<h2>{item.title}</h2>}>
+                {item.content}
+              </CustomCollapse>
+            ))}
+          </div>
         </article>
+        <Separator className={s.separatorBottom} />
         <SimilarPosts posts={POSTS} />
         <CTABlock
           className={s.blockCta}

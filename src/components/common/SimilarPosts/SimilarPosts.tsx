@@ -9,6 +9,7 @@ type PostProps = {
   id: number
   image: string
   title: string
+  description: string
   link: string
   category: {
     link: string
@@ -39,6 +40,7 @@ export const SimilarPosts: React.FC<SimilarPostsProps> = ({
           category={post.category}
           date={post.date}
           title={post.title}
+          description={post.description}
           isSection
         />
       ))}

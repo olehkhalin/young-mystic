@@ -12,7 +12,7 @@
 
 .header
   font-size: 1rem
-  font-weight: 400
+  font-weight: 500
 
 .subHeader
   font-size: 0.875rem
@@ -22,6 +22,7 @@
 .form
   position: relative
   width: 100%
+  max-width: 432px
 
 .input
   padding: 21px 74px 9px 20px
@@ -35,3 +36,31 @@
   display: flex
   justify-content: center
   align-items: center
+
+@media (min-width: $tablet)
+  .root
+    padding: 40px 0
+  .header
+    font-size: 1.125rem
+  .subHeader
+    font-size: 1rem
+    max-width: 375px
+
+@media (min-width: $Ltablet)
+  .root
+    text-align: left
+    padding: 55px 0
+  .row
+    flex-direction: row
+    max-width: 1116px
+    margin-left: auto
+    margin-right: auto
+  .content
+    width: 50%
+  .form
+    width: 432px
+    margin-right: auto
+    margin-left: 12px
+  .subHeader
+    margin-top: 16px
+    margin-bottom: 0

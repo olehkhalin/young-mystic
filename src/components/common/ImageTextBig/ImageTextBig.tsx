@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import Image from 'next/image';
 import cx from 'classnames';
 
@@ -30,23 +29,28 @@ export const ImageTextBig: React.FC<ImageTextBigProps> = ({
   <article
     className={cx(s.root, className)}
   >
-    <Image
-      src={image}
-      alt={title}
-      width={327}
-      height={377}
-      layout="responsive"
-    />
-    <span className={s.category}>
-      {subHeader}
-    </span>
-    <h3 className={s.header}>{title}</h3>
-    {description}
-    <Button
-      className={s.button}
-      href={button.link}
-    >
-      {button.label}
-    </Button>
+    <div className={s.image}>
+      <Image
+        src={image}
+        alt={title}
+        layout="fill"
+        objectFit="cover"
+      />
+    </div>
+    <div className={s.content}>
+      <span className={s.category}>
+        {subHeader}
+      </span>
+      <h3 className={s.header}>{title}</h3>
+      <div className={s.description}>
+        {description}
+      </div>
+      <Button
+        className={s.button}
+        href={button.link}
+      >
+        {button.label}
+      </Button>
+    </div>
   </article>
 );

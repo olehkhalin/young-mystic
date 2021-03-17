@@ -47,6 +47,7 @@
   color: $primary-100
   padding: 5px 10px
   margin: -5px -10px
+  font-weight: 500 !important
 
 .dark
   background-color: $secondary-100
@@ -59,3 +60,11 @@
       fill: $light-100
   &:hover
     background-color: $secondary-80
+
+@media (min-width: $Lphone)
+  .primary, .secondary
+    max-width: 328px
+
+@media (min-width: $desktop)
+  .clean
+    font-size: 1rem

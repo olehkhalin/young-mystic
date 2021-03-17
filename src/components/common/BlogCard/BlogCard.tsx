@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import cx from 'classnames';
@@ -22,6 +22,8 @@ type BlogCardProps = {
   title: string
   description?: string
   isSection?: boolean
+  isDescription?: boolean
+  isFullWidth?: boolean
   className?: string
 };
 
@@ -40,11 +42,15 @@ export const BlogCard: React.FC<BlogCardProps> = ({
   title,
   description,
   isSection = false,
+  isDescription = false,
+  isFullWidth = false,
   className,
 }) => {
   const compoundClassName = cx(
     s.root,
     themeClass[theme],
+    { [s.isDescription]: isDescription },
+    { [s.isFullWidth]: isFullWidth },
     className,
   );
 
@@ -72,7 +78,14 @@ export const BlogCard: React.FC<BlogCardProps> = ({
           {title}
         </Shiitake>
       )}
-      {theme === 'primary' && <p className={s.description}>{description}</p>}
+      <Shiitake
+        lines={4}
+        throttleRate={200}
+        className={s.description}
+        tagName="p"
+      >
+        {description}
+      </Shiitake>
     </>
   );
   const content = (
@@ -94,23 +107,13 @@ export const BlogCard: React.FC<BlogCardProps> = ({
             {headerContent}
           </header>
         )}
-        {theme === 'primary' && (
         <footer className={s.button}>
           Читать далее
           <ArrowRight className={s.buttonArrow} />
         </footer>
-        )}
       </div>
     </>
   );
-
-  if (isSection) {
-    return (
-      <section className={compoundClassName}>
-        {content}
-      </section>
-    );
-  }
 
   return (
     <article className={compoundClassName}>

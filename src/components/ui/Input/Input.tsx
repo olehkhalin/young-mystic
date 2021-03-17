@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import cx from 'classnames';
 
 import s from './Input.module.sass';
@@ -30,7 +29,7 @@ export const Input: React.FC<InputProps> = ({
   onBlur,
   ...props
 }) => {
-  const [isFocused, setIsFocused] = useState(value !== '');
+  const [isFocused, setIsFocused] = useState<boolean>(value !== '');
 
   const compoundClassName = cx(
     s.root,

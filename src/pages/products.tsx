@@ -6,6 +6,7 @@ import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
 import { Button } from '@ui/Button';
 import { Separator } from '@ui/Separator';
+import { BreadCrumbs } from '@ui/BreadCrumbs';
 import { CTABlock } from '@components/common/CTABlock';
 import { PageTitle } from '@components/common/PageTitle';
 import { Filters } from '@components/products/Filters';
@@ -16,17 +17,28 @@ import s from '@styles/Products.module.sass';
 
 import { PRODUCTS_BIG } from '../content';
 
+const navLinks = [
+  {
+    title: 'Главная',
+    link: '/',
+  },
+  {
+    title: 'Магазин',
+  },
+];
+
 const ProductsPage = () => (
   <BaseLayout>
-    <Container>
+    <Container theme="small">
       <Row>
+        <BreadCrumbs navLinks={navLinks} className={s.breadCrumbs} />
         <PageTitle
           title="Магазин"
           description="Подзаголовок раздела на одну, две или три строки, рассказывающий о разделе"
           className={s.title}
         />
         <Filters />
-        <Separator />
+        <Separator className={s.separator} />
         <div className={cx(s.products)}>
           {PRODUCTS_BIG.map((product) => (
             <ProductCard

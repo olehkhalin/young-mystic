@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Image from 'next/image';
 import cx from 'classnames';
 
@@ -43,6 +43,14 @@ export const InstaScreen: React.FC<InstaScreenProps> = ({
       rel="noreferrer nofollow"
       className={s.topLine}
     >
+      <span className={s.span}>@youngliving.ukraine</span>
+      <span className={s.span}>@youngliving.ukraine</span>
+      <span className={s.span}>@youngliving.ukraine</span>
+      <span className={s.span}>@youngliving.ukraine</span>
+      <span className={s.span}>@youngliving.ukraine</span>
+      <span className={s.span}>@youngliving.ukraine</span>
+      <span className={s.span}>@youngliving.ukraine</span>
+      <span className={s.span}>@youngliving.ukraine</span>
       <span className={s.span}>@youngliving.ukraine</span>
       <span className={s.span}>@youngliving.ukraine</span>
     </a>

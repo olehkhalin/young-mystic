@@ -5,6 +5,8 @@
 
 .image
   margin-bottom: 20px
+  +.blockquote
+    margin-top: -20px
 
 .header
   font-weight: 600
@@ -17,8 +19,29 @@
   font-family: $font-headers
   font-size: 1.5rem
   padding: 40px 0
+  max-width: 340px
+  margin-left: auto
+  margin-right: auto
 
 .description
   font-weight: 400
   color: $secondary-80
   margin-top: 24px
+
+@media (min-width: $tablet)
+  .image
+    margin-bottom: 30px
+    +.blockquote
+      margin-top: -30px
+  .header
+    font-size: 1.625rem
+  .description
+    font-size: 1.125rem
+
+@media (min-width: $Ltablet)
+  .image
+    margin-bottom: 40px
+    +.blockquote
+      margin-top: -40px
+  .header
+    font-size: 1.75rem

@@ -19,7 +19,7 @@ import { PRODUCTS, POSTS } from '../content';
 const Home = () => (
   <BaseLayout>
     <Container>
-      <Row>
+      <Row className={s.row}>
         <FirstScreen />
         <TitleDescription
           title="Эфирные масла"
@@ -74,6 +74,7 @@ const Home = () => (
             link: '/',
             label: 'Присоединиться',
           }}
+          className={s.ctaBlock}
         />
         <TitleDescription
           title="Популярные масла"
@@ -100,7 +101,7 @@ const Home = () => (
           className={s.titleBlog}
         />
         <div className={s.blog}>
-          {POSTS.map((post) => (
+          {POSTS.map((post, index) => (
             <BlogCard
               className={s.blogCard}
               theme="small"
@@ -110,6 +111,8 @@ const Home = () => (
               category={post.category}
               date={post.date}
               title={post.title}
+              description={post.description}
+              isFullWidth={index === 2}
             />
           ))}
         </div>

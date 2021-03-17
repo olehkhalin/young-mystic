@@ -24,7 +24,10 @@
         "layouts/*"
       ],
       "@styles/*": [
-        "styles/*",
+        "styles/*"
+      ],
+      "@api/*": [
+        "api/*"
       ],
       "@public/*": [
         "../public/*"
