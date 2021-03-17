@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import s from './BreadCrumbs.module.sass';
 
-type NavLinkProps = {
+export type NavLinkProps = {
   title: string
   link?: string
 };

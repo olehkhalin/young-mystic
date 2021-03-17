@@ -11,16 +11,18 @@ import s from './Pagination.module.sass';
 type PaginationProps = {
   size: number
   countOfElements: number
+  onPageClick?: () => void
   className?: string
 };
 
 export const Pagination: React.FC<PaginationProps> = ({
   className,
   size,
+  onPageClick,
   countOfElements,
 }) => {
   const router = useRouter();
-  const parentPath = router.pathname;
+  const parentPath = router.asPath.split('?')[0];
   const currentPage: number = router.query.page ? +router.query.page : 1;
   const countOfPages = Math.ceil(countOfElements / size);
   if (countOfPages <= 1) return null;
@@ -37,7 +39,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       } else if (pageNumber !== 1) {
         pages.push(
           <Link key={`${parentPath}/${pageNumber}`} href={`${parentPath}?page=${pageNumber}`}>
-            <a className={s.page}>
+            <a className={s.page} onClick={onPageClick}>
               {pageNumber}
             </a>
           </Link>,
@@ -45,7 +47,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       } else {
         pages.push(
           <Link key={parentPath} href={`${parentPath}`}>
-            <a className={s.page}>
+            <a className={s.page} onClick={onPageClick}>
               {pageNumber}
             </a>
           </Link>,
@@ -56,7 +58,7 @@ export const Pagination: React.FC<PaginationProps> = ({
     if (currentPage !== 1) {
       pages.push(
         <Link key={parentPath} href={parentPath}>
-          <a className={s.page}>
+          <a className={s.page} onClick={onPageClick}>
             1
           </a>
         </Link>,
@@ -70,7 +72,7 @@ export const Pagination: React.FC<PaginationProps> = ({
     if (currentPage >= 3) {
       pages.push(
         <Link key={`${parentPath}/${currentPage - 1}`} href={`${parentPath}?page=${currentPage - 1}`}>
-          <a className={s.page}>
+          <a className={s.page} onClick={onPageClick}>
             {currentPage - 1}
           </a>
         </Link>,
@@ -82,7 +84,7 @@ export const Pagination: React.FC<PaginationProps> = ({
     if (countOfPages - currentPage > 1) {
       pages.push(
         <Link key={`${parentPath}/${currentPage + 1}`} href={`${parentPath}?page=${currentPage + 1}`}>
-          <a className={s.page}>
+          <a className={s.page} onClick={onPageClick}>
             {currentPage + 1}
           </a>
         </Link>,
@@ -96,7 +98,7 @@ export const Pagination: React.FC<PaginationProps> = ({
     if (currentPage !== countOfPages) {
       pages.push(
         <Link key={`${parentPath}/${countOfPages}`} href={`${parentPath}?page=${countOfPages}`}>
-          <a className={s.page}>
+          <a className={s.page} onClick={onPageClick}>
             {countOfPages}
           </a>
         </Link>,
@@ -107,8 +109,8 @@ export const Pagination: React.FC<PaginationProps> = ({
   return (
     <div className={cx(s.root, className)}>
       {previousPage ? (
-        <Link href={`${parentPath}?page=${previousPage}`}>
-          <a className={s.arrow}>
+        <Link href={previousPage !== 1 ? `${parentPath}?page=${previousPage}` : parentPath}>
+          <a className={s.arrow} onClick={onPageClick}>
             <ChevronLeft className={s.icon} />
           </a>
         </Link>
@@ -122,7 +124,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       </div>
       {nextPage ? (
         <Link href={`${parentPath}?page=${nextPage}`}>
-          <a className={s.arrow}>
+          <a className={s.arrow} onClick={onPageClick}>
             <ChevronRight className={s.icon} />
           </a>
         </Link>

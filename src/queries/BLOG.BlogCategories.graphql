@@ -1,0 +1,12 @@
+query BlogCategoriesList {
+    tags {
+        edges {
+            node {
+                id
+                slug
+                name
+                visibility
+            }
+        }
+    }
+}

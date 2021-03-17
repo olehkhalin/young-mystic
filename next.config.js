@@ -16,4 +16,7 @@ module.exports = withReactSvg({
   publicRuntimeConfig: {
     localeSubpaths
   },
+  images: {
+    domains: ['static.ghost.org', '46.101.240.211'],
+  },
 })

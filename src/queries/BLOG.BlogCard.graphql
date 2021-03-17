@@ -1,0 +1,18 @@
+query BlogInfo($slug: String!) {
+    post (slug: $slug, include: ["tags"]) {
+        primaryTag {
+            slug
+            name
+        }
+        featureImage
+        title
+        excerpt
+        createdAt
+        html
+        tags {
+            id
+            name
+            visibility
+        }
+    }
+}

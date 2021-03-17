@@ -5,7 +5,7 @@ import cx from 'classnames';
 import s from './PageTitle.module.sass';
 
 type PageTitleProps = {
-  image?: string
+  image?: string | null
   title?: string
   blockquote?: string
   description?: string | null

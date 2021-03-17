@@ -32,6 +32,9 @@ const ProductsSinglePage = () => {
     variables: {
       slug: slug as string,
     },
+    context: {
+      ghost: false,
+    },
   });
 
   if (loading) {

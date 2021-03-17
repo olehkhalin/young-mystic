@@ -9,9 +9,12 @@ import { PageTitle } from '@components/common/PageTitle';
 import s from './FirstScreen.module.sass';
 
 type TagsProps = {
-  link: string
-  label: string
-};
+  node?: {
+    id: string
+    slug?: string | null
+    name?: string | null
+  } | null
+} | null;
 
 type FirstScreenProps = {
   tags: TagsProps[]
@@ -29,14 +32,14 @@ export const FirstScreen: React.FC<FirstScreenProps> = ({
         className={s.header}
       />
       <div className={s.tags}>
-        {tags.map((tag) => (
-          <Tag
-            className={s.tag}
-            href={tag.link}
-            key={tag.link}
-          >
-            {tag.label}
-          </Tag>
+        {tags.map((tag) => tag?.node && (
+        <Tag
+          className={s.tag}
+          href={`/blog/${tag.node.slug}/`}
+          key={tag.node.id}
+        >
+          {tag.node.name}
+        </Tag>
         ))}
       </div>
     </Row>

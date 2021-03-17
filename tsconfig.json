@@ -41,6 +41,9 @@
       "@graphql": [
         "graphql.ts"
       ],
+      "@graphqlBlog": [
+        "graphqlBlog.ts"
+      ],
       "@cache": [
         "cache.ts"
       ],

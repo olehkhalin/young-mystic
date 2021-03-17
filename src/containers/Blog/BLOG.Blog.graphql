@@ -1,0 +1,23 @@
+query BlogList ($limit: Int, $filter: [String], $page: Int) {
+    posts (include: ["tags"], limit: $limit, filter: $filter, page: $page) {
+        meta {
+            pagination {
+                total
+            }
+        }
+        edges {
+            node {
+                id
+                slug
+                primaryTag {
+                    slug
+                    name
+                }
+                createdAt
+                title
+                excerpt
+                featureImage
+            }
+        }
+    }
+}
