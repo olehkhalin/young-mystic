@@ -1,10 +1,10 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+const defaultOptions =  {}
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -36,6 +36,7 @@ export type GhostQuery = {
   tags?: Maybe<GhostTagsConnection>;
 };
 
+
 export type GhostQueryAuthorArgs = {
   fields?: Maybe<Array<Maybe<Scalars['String']>>>;
   id?: Maybe<Scalars['String']>;
@@ -44,6 +45,7 @@ export type GhostQueryAuthorArgs = {
   include?: Maybe<Array<Maybe<Scalars['String']>>>;
   slug?: Maybe<Scalars['String']>;
 };
+
 
 export type GhostQueryAuthorsArgs = {
   fields?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -55,6 +57,7 @@ export type GhostQueryAuthorsArgs = {
   page?: Maybe<Scalars['Int']>;
 };
 
+
 export type GhostQueryPageArgs = {
   fields?: Maybe<Array<Maybe<Scalars['String']>>>;
   id?: Maybe<Scalars['String']>;
@@ -63,6 +66,7 @@ export type GhostQueryPageArgs = {
   include?: Maybe<Array<Maybe<Scalars['String']>>>;
   slug?: Maybe<Scalars['String']>;
 };
+
 
 export type GhostQueryPagesArgs = {
   fields?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -74,6 +78,7 @@ export type GhostQueryPagesArgs = {
   page?: Maybe<Scalars['Int']>;
 };
 
+
 export type GhostQueryPostArgs = {
   fields?: Maybe<Array<Maybe<Scalars['String']>>>;
   id?: Maybe<Scalars['String']>;
@@ -82,6 +87,7 @@ export type GhostQueryPostArgs = {
   include?: Maybe<Array<Maybe<Scalars['String']>>>;
   slug?: Maybe<Scalars['String']>;
 };
+
 
 export type GhostQueryPostsArgs = {
   fields?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -93,6 +99,7 @@ export type GhostQueryPostsArgs = {
   page?: Maybe<Scalars['Int']>;
 };
 
+
 export type GhostQueryTagArgs = {
   fields?: Maybe<Array<Maybe<Scalars['String']>>>;
   id?: Maybe<Scalars['String']>;
@@ -101,6 +108,7 @@ export type GhostQueryTagArgs = {
   include?: Maybe<Array<Maybe<Scalars['String']>>>;
   slug?: Maybe<Scalars['String']>;
 };
+
 
 export type GhostQueryTagsArgs = {
   fields?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -137,7 +145,7 @@ export type GhostPostsCount = {
 
 export enum GhostFormat {
   Html = 'html',
-  Plaintext = 'plaintext',
+  Plaintext = 'plaintext'
 }
 
 export type GhostAuthorsConnection = {
@@ -356,6 +364,7 @@ export type BlogListQueryVariables = Exact<{
   page?: Maybe<Scalars['Int']>;
 }>;
 
+
 export type BlogListQuery = (
   { __typename?: 'GhostQuery' }
   & { posts?: Maybe<(
@@ -384,22 +393,27 @@ export type BlogInfoQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
+
 export type BlogInfoQuery = (
   { __typename?: 'GhostQuery' }
   & { post?: Maybe<(
     { __typename?: 'GhostPost' }
-    & Pick<GhostPost, 'featureImage' | 'title' | 'excerpt' | 'createdAt' | 'html'>
+    & Pick<GhostPost, 'featureImage' | 'title' | 'excerpt' | 'createdAt' | 'html' | 'metaTitle' | 'metaDescription' | 'canonicalUrl' | 'ogTitle' | 'ogDescription' | 'ogImage' | 'publishedAt' | 'updatedAt'>
     & { primaryTag?: Maybe<(
       { __typename?: 'GhostTag' }
       & Pick<GhostTag, 'slug' | 'name'>
     )>, tags?: Maybe<Array<Maybe<(
       { __typename?: 'GhostTag' }
       & Pick<GhostTag, 'id' | 'name' | 'visibility'>
-    )>>> }
+    )>>>, primaryAuthor?: Maybe<(
+      { __typename?: 'GhostAuthor' }
+      & Pick<GhostAuthor, 'name' | 'facebook' | 'twitter'>
+    )> }
   )> }
 );
 
 export type BlogCategoriesListQueryVariables = Exact<{ [key: string]: never; }>;
+
 
 export type BlogCategoriesListQuery = (
   { __typename?: 'GhostQuery' }
@@ -419,6 +433,7 @@ export type BlogCategoryInfoQueryVariables = Exact<{
   slug?: Maybe<Scalars['String']>;
 }>;
 
+
 export type BlogCategoryInfoQuery = (
   { __typename?: 'GhostQuery' }
   & { tag?: Maybe<(
@@ -426,6 +441,7 @@ export type BlogCategoryInfoQuery = (
     & Pick<GhostTag, 'slug' | 'name' | 'description' | 'featureImage'>
   )> }
 );
+
 
 export const BlogListDocument = gql`
     query BlogList($limit: Int, $filter: [String], $page: Int) {
@@ -472,17 +488,19 @@ export const BlogListDocument = gql`
  * });
  */
 export function useBlogListQuery(baseOptions?: Apollo.QueryHookOptions<BlogListQuery, BlogListQueryVariables>) {
-  return Apollo.useQuery<BlogListQuery, BlogListQueryVariables>(BlogListDocument, baseOptions);
-}
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<BlogListQuery, BlogListQueryVariables>(BlogListDocument, options);
+      }
 export function useBlogListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogListQuery, BlogListQueryVariables>) {
-  return Apollo.useLazyQuery<BlogListQuery, BlogListQueryVariables>(BlogListDocument, baseOptions);
-}
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<BlogListQuery, BlogListQueryVariables>(BlogListDocument, options);
+        }
 export type BlogListQueryHookResult = ReturnType<typeof useBlogListQuery>;
 export type BlogListLazyQueryHookResult = ReturnType<typeof useBlogListLazyQuery>;
 export type BlogListQueryResult = Apollo.QueryResult<BlogListQuery, BlogListQueryVariables>;
 export const BlogInfoDocument = gql`
     query BlogInfo($slug: String!) {
-  post(slug: $slug, include: ["tags"]) {
+  post(slug: $slug, include: ["tags", "authors"]) {
     primaryTag {
       slug
       name
@@ -496,6 +514,19 @@ export const BlogInfoDocument = gql`
       id
       name
       visibility
+    }
+    metaTitle
+    metaDescription
+    canonicalUrl
+    ogTitle
+    ogDescription
+    ogImage
+    publishedAt
+    updatedAt
+    primaryAuthor {
+      name
+      facebook
+      twitter
     }
   }
 }
@@ -518,11 +549,13 @@ export const BlogInfoDocument = gql`
  * });
  */
 export function useBlogInfoQuery(baseOptions: Apollo.QueryHookOptions<BlogInfoQuery, BlogInfoQueryVariables>) {
-  return Apollo.useQuery<BlogInfoQuery, BlogInfoQueryVariables>(BlogInfoDocument, baseOptions);
-}
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<BlogInfoQuery, BlogInfoQueryVariables>(BlogInfoDocument, options);
+      }
 export function useBlogInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogInfoQuery, BlogInfoQueryVariables>) {
-  return Apollo.useLazyQuery<BlogInfoQuery, BlogInfoQueryVariables>(BlogInfoDocument, baseOptions);
-}
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<BlogInfoQuery, BlogInfoQueryVariables>(BlogInfoDocument, options);
+        }
 export type BlogInfoQueryHookResult = ReturnType<typeof useBlogInfoQuery>;
 export type BlogInfoLazyQueryHookResult = ReturnType<typeof useBlogInfoLazyQuery>;
 export type BlogInfoQueryResult = Apollo.QueryResult<BlogInfoQuery, BlogInfoQueryVariables>;
@@ -557,11 +590,13 @@ export const BlogCategoriesListDocument = gql`
  * });
  */
 export function useBlogCategoriesListQuery(baseOptions?: Apollo.QueryHookOptions<BlogCategoriesListQuery, BlogCategoriesListQueryVariables>) {
-  return Apollo.useQuery<BlogCategoriesListQuery, BlogCategoriesListQueryVariables>(BlogCategoriesListDocument, baseOptions);
-}
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<BlogCategoriesListQuery, BlogCategoriesListQueryVariables>(BlogCategoriesListDocument, options);
+      }
 export function useBlogCategoriesListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogCategoriesListQuery, BlogCategoriesListQueryVariables>) {
-  return Apollo.useLazyQuery<BlogCategoriesListQuery, BlogCategoriesListQueryVariables>(BlogCategoriesListDocument, baseOptions);
-}
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<BlogCategoriesListQuery, BlogCategoriesListQueryVariables>(BlogCategoriesListDocument, options);
+        }
 export type BlogCategoriesListQueryHookResult = ReturnType<typeof useBlogCategoriesListQuery>;
 export type BlogCategoriesListLazyQueryHookResult = ReturnType<typeof useBlogCategoriesListLazyQuery>;
 export type BlogCategoriesListQueryResult = Apollo.QueryResult<BlogCategoriesListQuery, BlogCategoriesListQueryVariables>;
@@ -593,11 +628,13 @@ export const BlogCategoryInfoDocument = gql`
  * });
  */
 export function useBlogCategoryInfoQuery(baseOptions?: Apollo.QueryHookOptions<BlogCategoryInfoQuery, BlogCategoryInfoQueryVariables>) {
-  return Apollo.useQuery<BlogCategoryInfoQuery, BlogCategoryInfoQueryVariables>(BlogCategoryInfoDocument, baseOptions);
-}
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<BlogCategoryInfoQuery, BlogCategoryInfoQueryVariables>(BlogCategoryInfoDocument, options);
+      }
 export function useBlogCategoryInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogCategoryInfoQuery, BlogCategoryInfoQueryVariables>) {
-  return Apollo.useLazyQuery<BlogCategoryInfoQuery, BlogCategoryInfoQueryVariables>(BlogCategoryInfoDocument, baseOptions);
-}
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<BlogCategoryInfoQuery, BlogCategoryInfoQueryVariables>(BlogCategoryInfoDocument, options);
+        }
 export type BlogCategoryInfoQueryHookResult = ReturnType<typeof useBlogCategoryInfoQuery>;
 export type BlogCategoryInfoLazyQueryHookResult = ReturnType<typeof useBlogCategoryInfoLazyQuery>;
 export type BlogCategoryInfoQueryResult = Apollo.QueryResult<BlogCategoryInfoQuery, BlogCategoryInfoQueryVariables>;

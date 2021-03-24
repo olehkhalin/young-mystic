@@ -1,7 +1,9 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import { NextSeo, BreadcrumbJsonLd, ArticleJsonLd } from 'next-seo';
 import { useBlogInfoQuery } from '@graphqlBlog';
 
+import { DEFAULT_SEO } from '@constants';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
@@ -43,15 +45,24 @@ const Index = () => {
     featureImage,
     title,
     excerpt,
-    createdAt,
     tags,
     html,
     primaryTag,
+    metaTitle,
+    metaDescription,
+    canonicalUrl,
+    ogTitle,
+    ogDescription,
+    ogImage,
+    publishedAt,
+    updatedAt,
+    primaryAuthor,
   } = data.post;
-  if (!title || !html) {
+  if (!title || !html || !primaryTag?.name || !primaryTag.slug) {
     return <>404</>; // TODO: 404 page
   }
 
+  const websiteUrl = DEFAULT_SEO.WEBSITE_URL;
   const navLinks: NavLinkProps[] = [
     {
       title: 'Главная',
@@ -61,17 +72,99 @@ const Index = () => {
       title: 'Блог',
       link: '/blog',
     },
-  ];
-  if (primaryTag && primaryTag.name && primaryTag.slug) {
-    navLinks.push({
+    {
       title: primaryTag.name,
       link: `/blog/${primaryTag.slug}`,
-    });
-  }
-  navLinks.push({ title });
+    },
+    {
+      title,
+    },
+  ];
+
+  const navLinksSeo = [
+    {
+      position: 1,
+      name: 'Главная',
+      item: `${websiteUrl}`,
+    },
+    {
+      position: 2,
+      name: 'Блог',
+      item: `${websiteUrl}blog/`,
+    },
+    {
+      position: 3,
+      name: primaryTag.name,
+      item: `${websiteUrl}blog/${primaryTag.slug}/`,
+    },
+    {
+      position: 4,
+      name: title,
+      item: `${websiteUrl}blog/${primaryTag.slug}/${slug}/`,
+    },
+  ];
+
+  // Tags for open graph article
+  const tempOgTags: string[] = [];
+  tags?.forEach((tag) => {
+    if (tag?.name && tag?.name !== primaryTag.name) {
+      tempOgTags.push(tag.name.replace('#', ''));
+    }
+  });
+  const ogTags = tempOgTags.length > 0 ? tempOgTags : undefined;
+  const images = (!!ogImage || !!featureImage ? [
+    {
+      url: (ogImage || featureImage) as string,
+      alt: ogTitle || metaTitle || title,
+    },
+  ] : undefined);
 
   return (
     <BaseLayout>
+      {/* SEO */}
+      <NextSeo
+        title={metaTitle || title}
+        description={metaDescription || excerpt || undefined}
+        canonical={canonicalUrl || undefined}
+        openGraph={{
+          url: `${websiteUrl}blog/${primaryTag.slug}/${slug}/`,
+          title: ogTitle || metaTitle || title,
+          description: (
+            ogDescription || metaDescription || excerpt || undefined
+          ),
+          images,
+          type: 'article',
+          article: {
+            publishedTime: publishedAt || undefined,
+            modifiedTime: updatedAt || undefined,
+            section: primaryTag?.name || undefined,
+            authors: primaryAuthor?.facebook ? [`https://www.facebook.com/${primaryAuthor?.facebook}`] : undefined,
+            tags: ogTags,
+          },
+        }}
+        twitter={{
+          handle: primaryAuthor?.twitter || undefined,
+        }}
+      />
+      <BreadcrumbJsonLd
+        itemListElements={navLinksSeo}
+      />
+      {featureImage && publishedAt && updatedAt && primaryAuthor?.name && excerpt && (
+      <ArticleJsonLd
+        url={`${websiteUrl}blog/${primaryTag.slug}/${slug}/`}
+        title={title}
+        images={[
+          featureImage,
+        ]}
+        datePublished={publishedAt}
+        dateModified={updatedAt}
+        authorName={[primaryAuthor?.name]}
+        publisherName={DEFAULT_SEO.OG.SITE_NAME}
+        publisherLogo="https://www.example.com/photos/logo.jpg" // TODO: Change to the logo then
+        description={excerpt}
+      />
+      )}
+      {/* Content */}
       <Container theme="small">
         <Row>
           <BreadCrumbs navLinks={navLinks} />
@@ -79,45 +172,10 @@ const Index = () => {
             image={featureImage}
             title={title}
             description={excerpt}
-            date={createdAt}
+            date={publishedAt}
             tags={tags}
           >
             {html}
-            {/* <p> */}
-            {/* Головная боль — одна из самых распространенных болезней и часто возникает даже у */}
-            {/* здоровых людей. */}
-            {/* </p> */}
-            {/* <ul> */}
-            {/* <li>из-за изменения перепадов погоды;</li> */}
-            {/* <li>из-за переутомления;</li> */}
-            {/* <li>при повышении артериального давления;</li> */}
-            {/* <li>из-за перенапряжения, особенно мышц спины и плеч;</li> */}
-            {/* <li> */}
-            {/*  эмоциональные головные боли, связанные со стрессом, тревогой, */}
-            {/*  депрессией; */}
-            {/* </li> */}
-            {/* </ul> */}
-            {/* <p> */}
-            {/* Такие боли могут проходить без принятия лекарств, или после приема каких-либо */}
-            {/* обезболивающих таблеток. Женщины страдают головными болями чаще, чем мужчины. В */}
-            {/* большинстве случаев нужно дать приток крови к голове, и отток от неё. */}
-            {/* Избавиться от стресса. Со всем этим могут справиться эфирные масла. */}
-            {/* </p> */}
-            {/* <p>Попробуйте составить следующую смесь:</p> */}
-            {/* <blockquote> */}
-            {/* <h2>Рецепт смеси от головной боли</h2> */}
-            {/* <p>Общий объем - 15 мл.</p> */}
-            {/* <ul> */}
-            {/*   <li>17 капель э.м. Ладана</li> */}
-            {/*   <li>17 капель э.м. Лаванды</li> */}
-            {/*   <li>17 капель э.м. Эвкалипта</li> */}
-            {/*   <li>13 мл базисного растительного масла (абрикосового, кокосового и др.)</li> */}
-            {/* </ul> */}
-            {/* <p> */}
-            {/*   Смешайте масла комнатной температуры и принимайте не знаю как, может нужно */}
-            {/*   мазать на виски или еще куда. */}
-            {/* </p> */}
-            {/* </blockquote> */}
           </Article>
           <ProductsInArticle products={PRODUCTS} />
           <SimilarPosts category={primaryTag?.slug} />
