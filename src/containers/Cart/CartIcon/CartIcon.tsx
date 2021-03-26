@@ -25,7 +25,7 @@ export const CartIcon: React.FC<CartIconProps> = ({
 
   return (
     <a href="/basket" type="button" className={cx(s.cart, { [s.active]: isNotEmpty }, className)}>
-      <ShoppingCart />
+      <ShoppingCart className={s.icon} />
     </a>
   );
 };

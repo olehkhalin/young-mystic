@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import cx from 'classnames';
+import { motion } from 'framer-motion';
 
 import { prettyPrice } from '@functions';
 
@@ -109,8 +110,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   }
 
   return (
-    <article className={compoundClassName}>
+    <motion.article
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className={compoundClassName}
+    >
       {content}
-    </article>
+    </motion.article>
   );
 };

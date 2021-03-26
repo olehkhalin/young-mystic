@@ -32,8 +32,28 @@
   margin-top: 24px
 
 .socialLink
+  position: relative
+  z-index: 2
+  white-space: nowrap
+  > svg
+    margin-bottom: -4px
   &:not(:last-of-type)
     margin-right: 10px
+  &::after
+    content: ''
+    position: absolute
+    top: 8px
+    left: 8px
+    bottom: 8px
+    right: 8px
+    transform: scale(0)
+    background-color: $secondary-80
+    border-radius: 50%
+    z-index: -1
+    transition: transform $animationTime
+  &:hover
+    &::after
+      transform: scale(1)
 
 .seperator
   margin: 3px 0 20px

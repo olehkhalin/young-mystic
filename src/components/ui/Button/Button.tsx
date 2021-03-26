@@ -2,6 +2,9 @@
 import React from 'react';
 import Link, { LinkProps } from 'next/link';
 import cx from 'classnames';
+import {
+  motion,
+} from 'framer-motion';
 
 import s from './Button.module.sass';
 
@@ -40,35 +43,44 @@ export const Button: React.FC<ButtonProps> = ({
   if ('href' in props) {
     if (external) {
       return (
-        <a
+        <motion.a
           target="_blank"
           rel="noreferrer noopener"
           className={compoundClassName}
           {...(props as React.HTMLProps<HTMLAnchorElement>)}
+          whileHover={theme !== 'clean' ? { scale: 1.05 } : {}}
+          whileTap={theme !== 'clean' ? { scale: 0.95 } : {}}
         >
           {children}
-        </a>
+        </motion.a>
       );
     }
     return (
       <Link
         {...(props as LinkProps)}
+        passHref
       >
-        <a className={compoundClassName}>
+        <motion.a
+          className={compoundClassName}
+          whileHover={theme !== 'clean' ? { scale: 1.05 } : {}}
+          whileTap={theme !== 'clean' ? { scale: 0.95 } : {}}
+        >
           {children}
-        </a>
+        </motion.a>
       </Link>
     );
   }
 
   return (
-    <button
+    <motion.button
       // @ts-ignore
       type={type}
       {...(props as React.HTMLProps<HTMLButtonElement>)}
       className={compoundClassName}
+      whileHover={theme !== 'clean' ? { scale: 1.05 } : {}}
+      whileTap={theme !== 'clean' ? { scale: 0.95 } : {}}
     >
       {children}
-    </button>
+    </motion.button>
   );
 };

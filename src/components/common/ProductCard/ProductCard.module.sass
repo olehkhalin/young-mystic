@@ -28,6 +28,7 @@
     background: $surface-white
     border: 1px solid $primary-20
     border-radius: 8px
+    transition: box-shadow $animationTime
   .header
     margin-top: 10px
     color: $secondary-100
@@ -35,6 +36,9 @@
     margin-top: 4px
     font-size: 0.75rem
     color: $secondary-80
+  &:hover
+    .image
+      box-shadow: 0px 8px 36px rgba(200, 155, 85, 0.16)
 
 .small
   .link

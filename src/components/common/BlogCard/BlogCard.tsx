@@ -99,12 +99,14 @@ export const BlogCard: React.FC<BlogCardProps> = ({
       </Link>
       <div className={s.image}>
         {image && (
-          <Image
-            src={image}
-            alt={title}
-            layout="fill"
-            objectFit="cover"
-          />
+          <div className={s.imageInner}>
+            <Image
+              src={image}
+              alt={title}
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
         )}
       </div>
       <div className={s.content}>
