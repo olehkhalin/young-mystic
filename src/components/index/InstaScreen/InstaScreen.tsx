@@ -1,14 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  useEffect, useRef, useState,
+} from 'react';
 import Image from 'next/image';
 import cx from 'classnames';
-import {
-  motion,
-  useTransform,
-  useViewportScroll,
-} from 'framer-motion';
+import { motion, useTransform, useViewportScroll } from 'framer-motion';
 
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
+import { CursorTypes } from '@components/common/CursorProvider';
+import { CursorWrapper } from '@components/common/CursorWrapper';
+
 import s from './InstaScreen.module.sass';
 
 const IMAGES = [
@@ -75,35 +76,37 @@ export const InstaScreen: React.FC<InstaScreenProps> = ({
       className={cx(s.root, className)}
       ref={lineContainerRef}
     >
-      <motion.a
+      <CursorWrapper
         href="https://www.instagram.com/youngliving.ukraine/"
-        target="_blank"
-        rel="noreferrer nofollow"
-        className={s.topLine}
-        style={{ x: textLineTransform }}
+        external
+        type={CursorTypes.insta}
       >
-        <span className={s.span}>@youngliving.ukraine</span>
-        <span className={s.span}>@youngliving.ukraine</span>
-        <span className={s.span}>@youngliving.ukraine</span>
-        <span className={s.span}>@youngliving.ukraine</span>
-        <span className={s.span}>@youngliving.ukraine</span>
-        <span className={s.span}>@youngliving.ukraine</span>
-        <span className={s.span}>@youngliving.ukraine</span>
-        <span className={s.span}>@youngliving.ukraine</span>
-        <span className={s.span}>@youngliving.ukraine</span>
-        <span className={s.span}>@youngliving.ukraine</span>
-      </motion.a>
+        <motion.div
+          className={s.topLine}
+          style={{ x: textLineTransform }}
+        >
+          <span className={s.span}>@youngliving.ukraine</span>
+          <span className={s.span}>@youngliving.ukraine</span>
+          <span className={s.span}>@youngliving.ukraine</span>
+          <span className={s.span}>@youngliving.ukraine</span>
+          <span className={s.span}>@youngliving.ukraine</span>
+          <span className={s.span}>@youngliving.ukraine</span>
+          <span className={s.span}>@youngliving.ukraine</span>
+          <span className={s.span}>@youngliving.ukraine</span>
+          <span className={s.span}>@youngliving.ukraine</span>
+          <span className={s.span}>@youngliving.ukraine</span>
+        </motion.div>
+      </CursorWrapper>
       <Container>
         <Row>
           <div className={s.images}>
             {IMAGES.map((image) => (
-              <a
+              <CursorWrapper
                 key={image.link}
                 className={s.image}
                 href={image.link}
-                target="_blank"
-                rel="noreferrer nofollow"
-                title={image.title}
+                external
+                type={CursorTypes.insta}
               >
                 <motion.span
                   className={s.imageInner}
@@ -111,6 +114,7 @@ export const InstaScreen: React.FC<InstaScreenProps> = ({
                   animate={{
                     transition: { ...transition },
                   }}
+                  title={image.title}
                 >
                   <Image
                     src={image.image}
@@ -120,7 +124,7 @@ export const InstaScreen: React.FC<InstaScreenProps> = ({
                     alt={image.title}
                   />
                 </motion.span>
-              </a>
+              </CursorWrapper>
             ))}
           </div>
         </Row>

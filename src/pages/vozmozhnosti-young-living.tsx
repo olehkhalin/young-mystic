@@ -10,7 +10,6 @@ import { SimilarPosts } from '@components/common/SimilarPosts';
 import { CTABlock } from '@components/common/CTABlock';
 
 import s from '@styles/SecondaryPages.module.sass';
-import { POSTS } from '../content';
 
 const CONTENT = [
   {
@@ -152,7 +151,7 @@ const OfferAgreement = () => (
         <BreadCrumbs navLinks={navLinks} />
         <PageTitle image="/images/Image_2.jpg" title="Возможности Young Living" />
         <ContentWithRefs content={CONTENT} />
-        <SimilarPosts posts={POSTS} className={s.similarContent} />
+        <SimilarPosts className={s.similarContent} />
         <CTABlock
           title="Откройте мир масел вместе с Young Living!"
           description="Станьте частью нашего сообщества и покупайте товары со скидкой 24% от розничной цены"

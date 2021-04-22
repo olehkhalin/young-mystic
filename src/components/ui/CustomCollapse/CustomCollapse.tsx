@@ -1,7 +1,10 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, {
+  ReactNode, useContext, useEffect, useState,
+} from 'react';
 import { UnmountClosed } from 'react-collapse';
 import cx from 'classnames';
 
+import { CursorContext, CursorTypes } from '@components/common/CursorProvider';
 import ChewronDown from '@public/svg/ChewronDown.svg';
 
 import s from './CustomCollapse.module.sass';
@@ -52,6 +55,8 @@ export const CustomCollapse: React.FC<CustomCollapseProps> = ({
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isDesktop, setIsDesktop] = useState<boolean>(false);
 
+  const { toggleCursorType } = useContext(CursorContext);
+
   useEffect(() => {
     if (isOpenDesktop && window.innerWidth >= 768) {
       setIsDesktop(true);
@@ -81,6 +86,8 @@ export const CustomCollapse: React.FC<CustomCollapseProps> = ({
         type="button"
         onClick={() => !isDesktop && setIsOpen(!isOpen)}
         className={cx(s.title, { [s.active]: isOpen }, buttonClassName)}
+        onMouseEnter={(e) => toggleCursorType(e.target as HTMLElement, CursorTypes.discover)}
+        onMouseLeave={(e) => toggleCursorType(e.target as HTMLElement, CursorTypes.default)}
       >
         {title}
         {!isDesktop && <ChewronDown className={cx(s.icon, { [s.active]: isOpen })} />}

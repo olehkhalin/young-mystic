@@ -12,8 +12,6 @@
     box-shadow: 0px 8px 36px rgba(200, 155, 85, 0.16)
     .imageInner
       transform: scale(1.1)
-    .buttonArrow
-      transform: translateX(5px)
 
 .link
   position: absolute
@@ -26,6 +24,7 @@
 .image
   overflow: hidden
   position: relative
+  z-index: 5
 
 .imageInner
   width: 100%
@@ -61,6 +60,10 @@
   font-size: 0.75rem
   display: flex
   align-items: center
+  z-index: 3
+  &:hover
+    .buttonArrow
+      transform: translateX(5px)
 
 .buttonArrow
   width: 20px

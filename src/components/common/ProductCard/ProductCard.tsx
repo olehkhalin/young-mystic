@@ -1,12 +1,12 @@
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import cx from 'classnames';
 import { motion } from 'framer-motion';
 
 import { prettyPrice } from '@functions';
-
-import { Tag } from '@components/ui/Tag';
+import { Tag } from '@ui/Tag';
+import { CursorTypes } from '@components/common/CursorProvider';
+import { CursorWrapper } from '@components/common/CursorWrapper';
 
 import s from './ProductCard.module.sass';
 
@@ -57,48 +57,44 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   }
 
   const content = theme === 'small' ? (
-    <Link href={link}>
-      <a className={s.link}>
-        <div className={s.content}>
-          <h3 className={s.header}>{title}</h3>
-          <p className={s.price}>
-            {prettyPrice(price)}
-          </p>
-        </div>
-        <div className={s.image}>
-          <Image
-            src={image}
-            alt={title}
-            width={60}
-            height={60}
-            layout="responsive"
-          />
-        </div>
-      </a>
-    </Link>
-  ) : (
-    <Link href={link}>
-      <a className={s.link}>
-        {tags && (
-          <div className={s.tags}>
-            {tags}
-          </div>
-        )}
-        <div className={s.image}>
-          <Image
-            src={image}
-            alt={title}
-            width={136}
-            height={160}
-            layout="responsive"
-          />
-        </div>
+    <CursorWrapper href={link} className={s.link} type={CursorTypes.product}>
+      <div className={s.content}>
         <h3 className={s.header}>{title}</h3>
         <p className={s.price}>
           {prettyPrice(price)}
         </p>
-      </a>
-    </Link>
+      </div>
+      <div className={s.image}>
+        <Image
+          src={image}
+          alt={title}
+          width={60}
+          height={60}
+          layout="responsive"
+        />
+      </div>
+    </CursorWrapper>
+  ) : (
+    <CursorWrapper href={link} className={s.link} type={CursorTypes.product}>
+      {tags && (
+        <div className={s.tags}>
+          {tags}
+        </div>
+      )}
+      <div className={s.image}>
+        <Image
+          src={image}
+          alt={title}
+          width={136}
+          height={160}
+          layout="responsive"
+        />
+      </div>
+      <h3 className={s.header}>{title}</h3>
+      <p className={s.price}>
+        {prettyPrice(price)}
+      </p>
+    </CursorWrapper>
   );
 
   if (isSection) {

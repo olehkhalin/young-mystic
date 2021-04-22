@@ -33,13 +33,13 @@ export const FirstScreen: React.FC<FirstScreenProps> = ({
       />
       <div className={s.tags}>
         {tags.map((tag) => tag?.node && (
-        <Tag
-          className={s.tag}
-          href={`/blog/${tag.node.slug}/`}
-          key={tag.node.id}
-        >
-          {tag.node.name}
-        </Tag>
+          <Tag
+            className={s.tag}
+            href={`/blog/${tag.node.slug}/`}
+            key={tag.node.id}
+          >
+            {tag.node.name}
+          </Tag>
         ))}
       </div>
     </Row>

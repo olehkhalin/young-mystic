@@ -35,25 +35,8 @@
   position: relative
   z-index: 2
   white-space: nowrap
-  > svg
-    margin-bottom: -4px
   &:not(:last-of-type)
     margin-right: 10px
-  &::after
-    content: ''
-    position: absolute
-    top: 8px
-    left: 8px
-    bottom: 8px
-    right: 8px
-    transform: scale(0)
-    background-color: $secondary-80
-    border-radius: 50%
-    z-index: -1
-    transition: transform $animationTime
-  &:hover
-    &::after
-      transform: scale(1)
 
 .seperator
   margin: 3px 0 20px
@@ -113,6 +96,8 @@
   .navBlock
     width: calc(25% - 24px)
     margin-right: 24px
+  .navLinks
+    align-items: flex-start
   .navBlockButtonSocials
     display: block
   .socialsWrapper
@@ -125,6 +110,6 @@
     &:first-of-type
       margin-left: -16px
     &:not(:last-of-type)
-      margin-right: 0
+      margin-right: 5px
   .seperator
     margin: 28px 0 20px
