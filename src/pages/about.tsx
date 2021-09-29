@@ -1,4 +1,5 @@
 import React from 'react';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
@@ -10,7 +11,7 @@ import { RecentBlog } from '@components/common/RecentBlog';
 import s from '@styles/About.module.sass';
 import { POSTS } from '../content';
 
-const About = () => (
+const About: React.FC = () => (
   <BaseLayout>
     <Container>
       <Row>
@@ -61,5 +62,11 @@ const About = () => (
     </Container>
   </BaseLayout>
 );
+
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common', 'about']),
+  },
+});
 
 export default About;

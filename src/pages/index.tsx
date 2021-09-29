@@ -1,4 +1,5 @@
 import React from 'react';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { Products } from '@containers/Products/Products';
 import { Blog } from '@containers/Blog/Blog';
@@ -15,7 +16,7 @@ import { InstaScreen } from '@components/index/InstaScreen';
 
 import s from '@styles/Home.module.sass';
 
-const Home = () => (
+const Home: React.FC = () => (
   <BaseLayout>
     <Container>
       <Row className={s.row}>
@@ -95,8 +96,10 @@ const Home = () => (
   </BaseLayout>
 );
 
-Home.getInitialProps = async () => ({
-  namespacesRequired: ['common', 'index'],
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common', 'home']),
+  },
 });
 
 export default Home;

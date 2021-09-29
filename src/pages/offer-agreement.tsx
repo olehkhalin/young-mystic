@@ -1,4 +1,5 @@
 import React from 'react';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
@@ -358,7 +359,7 @@ const navLinks = [
   },
 ];
 
-const OfferAgreement = () => (
+const OfferAgreement: React.FC = () => (
   <BaseLayout>
     <Container theme="small">
       <Row>
@@ -369,5 +370,11 @@ const OfferAgreement = () => (
     </Container>
   </BaseLayout>
 );
+
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common', 'offer-agreement']),
+  },
+});
 
 export default OfferAgreement;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import cx from 'classnames';
 
 import { useReactiveVar } from '@apollo/client';
@@ -27,7 +28,7 @@ const navLinks = [
   },
 ];
 
-const Blog = () => {
+const Basket: React.FC = () => {
   const [isClient, setIsClient] = useState(false);
   useEffect(() => {
     setIsClient(true);
@@ -54,4 +55,10 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common', 'basket']),
+  },
+});
+
+export default Basket;

@@ -194,21 +194,25 @@ export const CursorProvider: React.FC = ({ children }) => {
         .getPropertyValue('padding-left')
         .replace('px', '');
 
-      cursorType === CursorTypes.link ? setCursor({
-        ...cursors.link,
-        size: {
-          width: width - pad,
-          height: 1,
-          borderRadius: '2px',
-        },
-      }) : setCursor({
-        ...cursors.linkLight,
-        size: {
-          width: width - pad,
-          height: 1,
-          borderRadius: '2px',
-        },
-      });
+      if (cursorType === CursorTypes.link) {
+        setCursor({
+          ...cursors.link,
+          size: {
+            width: width - pad,
+            height: 1,
+            borderRadius: '2px',
+          },
+        });
+      } else {
+        setCursor({
+          ...cursors.linkLight,
+          size: {
+            width: width - pad,
+            height: 1,
+            borderRadius: '2px',
+          },
+        });
+      }
     } else {
       setCursor(cursors.default);
     }
