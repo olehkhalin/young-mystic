@@ -4,23 +4,25 @@ import Link from 'next/link';
 import cx from 'classnames';
 import Shiitake from 'shiitake';
 
+import { prettyDate } from '@functions';
 import { Button } from '@components/ui/Button';
+import { CursorTypes } from '@components/common/CursorProvider';
+import { CursorWrapper } from '@components/common/CursorWrapper';
 import ArrowRight from '@public/svg/ArrowRight.svg';
-import { prettyDate } from '../../../functions';
 
 import s from './BlogCard.module.sass';
 
 type BlogCardProps = {
   theme?: keyof typeof themeClass
-  image: string
-  link: string
+  image?: string | null
+  slug?: string | null
   category: {
-    link: string
-    label: string
+    slug?: string | null
+    label?: string | null
   }
-  date: string
-  title: string
-  description?: string
+  date?: string | null
+  title?: string | null
+  description?: string | null
   isSection?: boolean
   isDescription?: boolean
   isFullWidth?: boolean
@@ -36,7 +38,7 @@ const themeClass = {
 export const BlogCard: React.FC<BlogCardProps> = ({
   theme = 'primary',
   image,
-  link,
+  slug,
   category,
   date,
   title,
@@ -46,6 +48,10 @@ export const BlogCard: React.FC<BlogCardProps> = ({
   isFullWidth = false,
   className,
 }) => {
+  if (!title || !slug) {
+    return <></>;
+  }
+
   const compoundClassName = cx(
     s.root,
     themeClass[theme],
@@ -54,18 +60,18 @@ export const BlogCard: React.FC<BlogCardProps> = ({
     className,
   );
 
-  const finalDate = prettyDate(date);
+  const finalDate = date && prettyDate(date);
 
   const headerContent = (
     <>
       <Button
         theme="clean"
-        href={category.link}
+        href={`/blog/${category.slug}`}
         className={s.category}
       >
         {category.label}
       </Button>
-      <time dateTime={date} title={date} className={s.date}>{finalDate}</time>
+      {date && <time dateTime={date} title={date} className={s.date}>{finalDate}</time>}
       {theme === 'primary' ? (
         <h3 className={s.header}>{title}</h3>
       ) : (
@@ -90,17 +96,25 @@ export const BlogCard: React.FC<BlogCardProps> = ({
   );
   const content = (
     <>
-      <Link href={link}>
+      <Link href={`/blog/${category.slug}/${slug}`}>
         <a className={s.link} />
       </Link>
-      <div className={s.image}>
-        <Image
-          src={image}
-          alt={title}
-          layout="fill"
-          objectFit="cover"
-        />
-      </div>
+      <CursorWrapper
+        href={`/blog/${category.slug}/${slug}`}
+        className={s.image}
+        type={CursorTypes.blog}
+      >
+        {image && (
+          <div className={s.imageInner}>
+            <Image
+              src={image}
+              alt={title}
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
+        )}
+      </CursorWrapper>
       <div className={s.content}>
         {isSection ? headerContent : (
           <header className={s.heading}>
@@ -108,7 +122,12 @@ export const BlogCard: React.FC<BlogCardProps> = ({
           </header>
         )}
         <footer className={s.button}>
-          Читать далее
+          <CursorWrapper
+            href={`/blog/${category.slug}/${slug}`}
+            type={CursorTypes.link}
+          >
+            Читать далее
+          </CursorWrapper>
           <ArrowRight className={s.buttonArrow} />
         </footer>
       </div>

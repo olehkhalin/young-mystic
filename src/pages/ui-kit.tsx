@@ -241,9 +241,9 @@ const UiKit: React.FC = () => {
             <BlogCard
               className={s.blogCard}
               image="/images/blog.jpg"
-              link="/"
+              slug="/"
               category={{
-                link: '/',
+                slug: '/',
                 label: 'Эфирные масла',
               }}
               date="2020-11-20"
@@ -254,9 +254,9 @@ const UiKit: React.FC = () => {
               className={s.blogCard}
               theme="small"
               image="/images/blog.jpg"
-              link="/"
+              slug="/"
               category={{
-                link: '/',
+                slug: '/',
                 label: 'Эфирные масла',
               }}
               date="2020-11-20"
@@ -271,6 +271,7 @@ const UiKit: React.FC = () => {
               title="Эфирное масло Эвкалипта Шаровидного (Eucalyptus Globulus), 15 ml"
               price={2110.00}
               onAmountChange={(value) => setPlusMinusInputValue(value)}
+              onRequestDelete={() => {}}
             />
             <Separator className={s.separator} />
             <ContentBlock>
@@ -459,9 +460,9 @@ const UiKit: React.FC = () => {
               className={s.blogCard}
               theme="dark"
               image="/images/blog.jpg"
-              link="/"
+              slug="/"
               category={{
-                link: '/',
+                slug: '/',
                 label: 'Эфирные масла',
               }}
               date="2020-12-10"

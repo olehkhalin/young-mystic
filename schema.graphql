@@ -1,0 +1,246 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: GhostQuery
+}
+
+type GhostAuthor {
+    bio: String
+    count: GhostPostsCount
+    coverImage: String
+    facebook: String
+    id: String!
+    location: String
+    metaDescription: String
+    metaTitle: String
+    name: String
+    profileImage: String
+    slug: String
+    twitter: String
+    url: String
+    website: String
+}
+
+type GhostAuthorsConnection {
+    edges: [GhostAuthorsEdge]
+    meta: GhostMeta
+    pageInfo: GhostPageInfo!
+}
+
+type GhostAuthorsEdge {
+    cursor: String
+    node: GhostAuthor
+}
+
+type GhostMeta {
+    "https://ghost.org/docs/content-api/#pagination"
+    pagination: GhostPagination
+}
+
+type GhostNavigation {
+    label: String
+    url: String
+}
+
+type GhostPage {
+    access: Boolean
+    authors: [GhostAuthor]
+    canonicalUrl: String
+    codeinjectionFoot: String
+    codeinjectionHead: String
+    commentId: String
+    createdAt: String
+    customExcerpt: String
+    customTemplate: String
+    emailSubject: String
+    excerpt: String
+    featureImage: String
+    html: String
+    id: String!
+    metaDescription: String
+    metaTitle: String
+    ogDescription: String
+    ogImage: String
+    ogTitle: String
+    page: Boolean
+    primaryAuthor: GhostAuthor
+    primaryTag: GhostTag
+    publishedAt: String
+    readingTime: Int
+    sendEmailWhenPublished: Boolean
+    slug: String
+    tags: [GhostTag]
+    title: String
+    twitterDescription: String
+    twitterImage: String
+    twitterTitle: String
+    updatedAt: String
+    url: String
+    uuid: String
+    visibility: String
+}
+
+type GhostPageInfo {
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+}
+
+type GhostPagesConnection {
+    edges: [GhostPagesEdge]
+    meta: GhostMeta
+    pageInfo: GhostPageInfo!
+}
+
+type GhostPagesEdge {
+    cursor: String
+    node: GhostPage
+}
+
+type GhostPagination {
+    limit: Int
+    next: Int
+    page: Int
+    pages: Int
+    prev: Int
+    total: Int
+}
+
+type GhostPost {
+    access: Boolean
+    authors: [GhostAuthor]
+    canonicalUrl: String
+    codeinjectionFoot: String
+    codeinjectionHead: String
+    commentId: String
+    createdAt: String
+    customExcerpt: String
+    customTemplate: String
+    emailSubject: String
+    excerpt: String
+    featureImage: String
+    html: String
+    id: String!
+    metaDescription: String
+    metaTitle: String
+    ogDescription: String
+    ogImage: String
+    ogTitle: String
+    page: Boolean
+    plaintext: String
+    primaryAuthor: GhostAuthor
+    primaryTag: GhostTag
+    publishedAt: String
+    readingTime: Int
+    sendEmailWhenPublished: Boolean
+    slug: String
+    tags: [GhostTag]
+    title: String
+    twitterDescription: String
+    twitterImage: String
+    twitterTitle: String
+    updatedAt: String
+    url: String
+    uuid: String
+    visibility: String
+}
+
+type GhostPostsConnection {
+    edges: [GhostPostsEdge]
+    meta: GhostMeta
+    pageInfo: GhostPageInfo!
+}
+
+type GhostPostsCount {
+    posts: Int
+}
+
+type GhostPostsEdge {
+    cursor: String
+    node: GhostPost
+}
+
+type GhostQuery {
+    "https://ghost.org/docs/api/v3/content/#authors"
+    author(fields: [String], filter: [String], formats: [GhostFormat], id: String, include: [String], slug: String): GhostAuthor
+    "https://ghost.org/docs/api/v3/content/#authors"
+    authors(fields: [String], filter: [String], formats: [GhostFormat], include: [String], limit: Int, order: String, page: Int): GhostAuthorsConnection
+    "https://ghost.org/docs/api/v3/content/#pages"
+    page(fields: [String], filter: [String], formats: [GhostFormat], id: String, include: [String], slug: String): GhostPage
+    "https://ghost.org/docs/api/v3/content/#pages"
+    pages(fields: [String], filter: [String], formats: [GhostFormat], include: [String], limit: Int, order: String, page: Int): GhostPagesConnection
+    "https://ghost.org/docs/api/v3/content/#posts"
+    post(fields: [String], filter: [String], formats: [GhostFormat], id: String, include: [String], slug: String): GhostPost
+    "https://ghost.org/docs/api/v3/content/#posts"
+    posts(fields: [String], filter: [String], formats: [GhostFormat], include: [String], limit: Int, order: String, page: Int): GhostPostsConnection
+    "https://ghost.org/docs/api/v3/content/#settings"
+    settings: GhostSettings
+    "https://ghost.org/docs/api/v3/content/#tags"
+    tag(fields: [String], filter: [String], formats: [GhostFormat], id: String, include: [String], slug: String): GhostTag
+    "https://ghost.org/docs/api/v3/content/#tags"
+    tags(fields: [String], filter: [String], formats: [GhostFormat], include: [String], limit: Int, order: String, page: Int): GhostTagsConnection
+}
+
+type GhostSettings {
+    codeinjectionFoot: String
+    codeinjectionHead: String
+    coverImage: String
+    description: String
+    facebook: String
+    icon: String
+    lang: String
+    logo: String
+    membersSupportAddress: String
+    metaDescription: String
+    metaTitle: String
+    navigation: [GhostNavigation]
+    ogDescription: String
+    ogImage: String
+    ogTitle: String
+    secondaryNavigation: [GhostNavigation]
+    timezone: String
+    title: String
+    twitter: String
+    twitterDescription: String
+    twitterImage: String
+    twitterTitle: String
+    url: String
+}
+
+type GhostTag {
+    accentColor: String
+    canonicalUrl: String
+    codeinjectionFoot: String
+    codeinjectionHead: String
+    count: GhostPostsCount
+    description: String
+    featureImage: String
+    id: String!
+    metaDescription: String
+    metaTitle: String
+    name: String
+    ogDescription: String
+    ogImage: String
+    ogTitle: String
+    slug: String
+    twitterDescription: String
+    twitterImage: String
+    twitterTitle: String
+    url: String
+    visibility: String
+}
+
+type GhostTagsConnection {
+    edges: [GhostTagsEdge]
+    meta: GhostMeta
+    pageInfo: GhostPageInfo!
+}
+
+type GhostTagsEdge {
+    cursor: String
+    node: GhostTag
+}
+
+enum GhostFormat {
+    html
+    plaintext
+}

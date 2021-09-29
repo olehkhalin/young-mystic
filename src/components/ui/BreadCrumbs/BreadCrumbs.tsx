@@ -1,10 +1,12 @@
 import React, { ReactNode } from 'react';
 import cx from 'classnames';
-import Link from 'next/link';
+
+import { CursorWrapper } from '@components/common/CursorWrapper';
+import { CursorTypes } from '@components/common/CursorProvider';
 
 import s from './BreadCrumbs.module.sass';
 
-type NavLinkProps = {
+export type NavLinkProps = {
   title: string
   link?: string
 };
@@ -24,9 +26,14 @@ export const BreadCrumbs: React.FC<ContainerProps> = ({
     content.push(
       link.link
         ? (
-          <Link href={link.link} key={link.title}>
-            <a className={s.link}>{link.title}</a>
-          </Link>
+          <CursorWrapper
+            href={link.link}
+            key={link.link}
+            className={s.link}
+            type={CursorTypes.link}
+          >
+            {link.title}
+          </CursorWrapper>
         )
         : (
           <span className={s.current} key={link.title}>
@@ -36,7 +43,8 @@ export const BreadCrumbs: React.FC<ContainerProps> = ({
     );
     if (index !== navLinks.length - 1) {
       content.push(
-        <span className={s.separator}>/</span>,
+        // eslint-disable-next-line react/no-array-index-key
+        <span key={`seperator-${index}`} className={s.separator}>/</span>,
       );
     }
   });

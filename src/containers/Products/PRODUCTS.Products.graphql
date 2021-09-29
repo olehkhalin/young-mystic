@@ -1,0 +1,16 @@
+query ProductsList($offset: Int, $limit: Int, $category: String) {
+    products(offset: $offset, limit: $limit, category: $category) {
+        count
+        data {
+            slug
+            title
+            description
+            image
+            price
+            category {
+                slug
+                title
+            }
+        }
+    }
+}

@@ -3,6 +3,7 @@ import cx from 'classnames';
 
 import { ContentBlock } from '@components/common/ContentBlock';
 
+import { Button } from '@ui/Button';
 import s from './ContentWithRefs.module.sass';
 
 type ContentProps = {
@@ -34,15 +35,16 @@ export const ContentWithRefs: React.FC<ContentWithRefsProps> = ({
   return (
     <>
       <nav className={cx(s.nav, className)}>
-        {content.map((section, index) => (
-          <button
+        {content.map((section, index) => section.title && (
+          <Button
             key={section.title || `button-${index}`}
             type="button"
             onClick={() => scrollToSection(index)}
-            className={cx(s.link, { [s.empty]: !section.title })}
+            className={cx(s.link)}
+            theme="clean"
           >
             {section.title || ''}
-          </button>
+          </Button>
         ))}
       </nav>
       {content.map((section, index) => (

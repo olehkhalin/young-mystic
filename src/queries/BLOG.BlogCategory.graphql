@@ -1,0 +1,8 @@
+query BlogCategoryInfo ($slug: String) {
+    tag (slug: $slug) {
+        slug
+        name
+        description
+        featureImage
+    }
+}

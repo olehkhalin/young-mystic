@@ -40,6 +40,18 @@
       ],
       "@graphql": [
         "graphql.ts"
+      ],
+      "@graphqlBlog": [
+        "graphqlBlog.ts"
+      ],
+      "@cache": [
+        "cache.ts"
+      ],
+      "@functions": [
+        "functions.ts"
+      ],
+      "@constants": [
+        "constants.ts"
       ]
     },
     "lib": [

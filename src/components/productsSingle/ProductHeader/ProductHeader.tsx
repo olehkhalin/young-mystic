@@ -1,23 +1,28 @@
 import React from 'react';
 import cx from 'classnames';
 
+import { prettyPrice } from '@functions';
+import { AddToCartButton } from '@containers/Cart/AddToCartButton';
 import { Button } from '@ui/Button';
 import Discount from '@public/svg/Discount.svg';
-import { prettyPrice } from '../../../functions';
 
 import s from './ProductHeader.module.sass';
 
 type ProductHeaderProps = {
+  slug: string
   title: string
-  firm?: string
-  capacity?: number
+  image: string
+  firm?: string | null
+  capacity?: number | null
   price: number
   description: string
   className?: string
 };
 
 export const ProductHeader: React.FC<ProductHeaderProps> = ({
+  slug,
   title,
+  image,
   firm,
   capacity,
   price,
@@ -33,7 +38,15 @@ export const ProductHeader: React.FC<ProductHeaderProps> = ({
     <p className={s.price}>{prettyPrice(price)}</p>
     <p className={s.description}>{description}</p>
     <div className={s.buttons}>
-      <Button className={s.button}>В корзину</Button>
+      <AddToCartButton
+        slug={slug}
+        title={title}
+        image={image}
+        firm={firm || undefined}
+        capacity={capacity || undefined}
+        price={price}
+        className={s.button}
+      />
       <Button theme="secondary" className={s.buttonSale}>
         <Discount className={s.icon} />
         Купить со скидкой

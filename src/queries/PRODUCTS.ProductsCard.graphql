@@ -1,0 +1,18 @@
+query ProductInfo($slug: String!) {
+    product(slug: $slug) {
+        title
+        description
+        firm
+        capacity
+        price
+        image
+        content {
+            title
+            content
+        }
+        category {
+            slug
+            title
+        }
+    }
+}

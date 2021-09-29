@@ -1,0 +1,27 @@
+@import "@styles/variables.module"
+
+.root
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  column-gap: 12px
+  row-gap: 24px
+
+.buttons
+  padding: 30px 0 40px
+  display: flex
+  flex-direction: column
+  align-items: center
+  width: 100%
+
+.loadMore
+  margin-bottom: 5px
+  font-weight: 600
+
+@media (min-width: $tablet)
+  .root
+    grid-template-columns: repeat(4, 1fr)
+    column-gap: 18px
+
+@media (min-width: $Ltablet)
+  .root
+    column-gap: 24px

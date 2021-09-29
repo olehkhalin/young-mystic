@@ -1,8 +1,12 @@
 /* eslint-disable react/button-has-type */
-import React from 'react';
+import React, { useContext } from 'react';
 import Link, { LinkProps } from 'next/link';
 import cx from 'classnames';
+import {
+  motion,
+} from 'framer-motion';
 
+import { CursorContext, CursorTypes } from '@components/common/CursorProvider';
 import s from './Button.module.sass';
 
 type ButtonProps = {
@@ -37,38 +41,64 @@ export const Button: React.FC<ButtonProps> = ({
     className,
   );
 
+  const { toggleCursorType } = useContext(CursorContext);
+
   if ('href' in props) {
     if (external) {
       return (
-        <a
+        <motion.a
           target="_blank"
           rel="noreferrer noopener"
           className={compoundClassName}
           {...(props as React.HTMLProps<HTMLAnchorElement>)}
+          whileHover={theme !== 'clean' ? { scale: 1.05 } : {}}
+          whileTap={theme !== 'clean' ? { scale: 0.95 } : {}}
+          onMouseEnter={(e) => toggleCursorType(
+            e.target as HTMLElement,
+            theme === 'clean' ? CursorTypes.link : CursorTypes.button,
+          )}
+          onMouseLeave={(e) => toggleCursorType(e.target as HTMLElement, CursorTypes.default)}
         >
           {children}
-        </a>
+        </motion.a>
       );
     }
     return (
       <Link
         {...(props as LinkProps)}
+        passHref
       >
-        <a className={compoundClassName}>
+        <motion.a
+          className={compoundClassName}
+          whileHover={theme !== 'clean' ? { scale: 1.05 } : {}}
+          whileTap={theme !== 'clean' ? { scale: 0.95 } : {}}
+          onMouseEnter={(e) => toggleCursorType(
+            e.target as HTMLElement,
+            theme === 'clean' ? CursorTypes.link : CursorTypes.button,
+          )}
+          onMouseLeave={(e) => toggleCursorType(e.target as HTMLElement, CursorTypes.default)}
+        >
           {children}
-        </a>
+        </motion.a>
       </Link>
     );
   }
 
   return (
-    <button
+    <motion.button
       // @ts-ignore
       type={type}
       {...(props as React.HTMLProps<HTMLButtonElement>)}
       className={compoundClassName}
+      whileHover={theme !== 'clean' ? { scale: 1.05 } : {}}
+      whileTap={theme !== 'clean' ? { scale: 0.95 } : {}}
+      onMouseEnter={(e) => toggleCursorType(
+        e.target as HTMLElement,
+        theme === 'clean' ? CursorTypes.link : CursorTypes.button,
+      )}
+      onMouseLeave={(e) => toggleCursorType(e.target as HTMLElement, CursorTypes.default)}
     >
       {children}
-    </button>
+    </motion.button>
   );
 };

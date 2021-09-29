@@ -1,21 +1,17 @@
 import React from 'react';
-import cx from 'classnames';
+
+import { Products } from '@containers/Products/Products';
 
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
-import { Button } from '@ui/Button';
 import { Separator } from '@ui/Separator';
 import { BreadCrumbs } from '@ui/BreadCrumbs';
 import { CTABlock } from '@components/common/CTABlock';
 import { PageTitle } from '@components/common/PageTitle';
 import { Filters } from '@components/products/Filters';
-import { ProductCard } from '@components/common/ProductCard';
-import { Pagination } from '@components/common/Pagination';
 
 import s from '@styles/Products.module.sass';
-
-import { PRODUCTS_BIG } from '../content';
 
 const navLinks = [
   {
@@ -39,29 +35,10 @@ const ProductsPage = () => (
         />
         <Filters />
         <Separator className={s.separator} />
-        <div className={cx(s.products)}>
-          {PRODUCTS_BIG.map((product) => (
-            <ProductCard
-              key={product.id}
-              image={product.image}
-              link={product.link}
-              title={product.title}
-              price={product.price}
-              isSale={product.isSale}
-              isNew={product.isNew}
-            />
-          ))}
-        </div>
-        <div className={s.buttons}>
-          <Button className={s.loadMore} theme="clean">Показать еще</Button>
-          <Pagination
-            parentPath="/blog-caregory"
-            nextPage="/blog-caregory/3"
-            previousPage="/blog-caregory/1"
-            countOfPages={15}
-            currentPage={2}
-          />
-        </div>
+        <Products
+          className={s.products}
+          isPagination
+        />
         <CTABlock
           className={s.blockCta}
           title="Откройте мир масел вместе с Young Living!"

@@ -32,6 +32,9 @@
   margin-top: 24px
 
 .socialLink
+  position: relative
+  z-index: 2
+  white-space: nowrap
   &:not(:last-of-type)
     margin-right: 10px
 
@@ -93,6 +96,8 @@
   .navBlock
     width: calc(25% - 24px)
     margin-right: 24px
+  .navLinks
+    align-items: flex-start
   .navBlockButtonSocials
     display: block
   .socialsWrapper
@@ -105,6 +110,6 @@
     &:first-of-type
       margin-left: -16px
     &:not(:last-of-type)
-      margin-right: 0
+      margin-right: 5px
   .seperator
     margin: 28px 0 20px

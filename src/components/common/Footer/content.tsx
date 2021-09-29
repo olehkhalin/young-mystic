@@ -43,19 +43,19 @@ export const NavLinks: NavLinksProps = [
     links: [
       {
         title: 'Истории Д. Гери Янга',
-        link: '/blog-category',
+        link: '/blog-category-1',
       },
       {
         title: 'Эфирные масла',
-        link: '/blog-category',
+        link: '/blog-category-2',
       },
       {
         title: 'Красота',
-        link: '/blog-category',
+        link: '/blog-category-3',
       },
       {
         title: 'Здоровье',
-        link: '/blog-category',
+        link: '/blog-category-4',
       },
     ],
   },
@@ -172,22 +172,22 @@ export const MenuNavLinks: MenuNavLinksProps = [
     collapse: [
       {
         title: 'Эфирные масла',
-        link: '/blog-category',
+        link: '/blog-category-1',
       },
       {
         title: 'Красота',
         list: [
           {
             title: 'Масла для волос',
-            link: '/blog-category',
+            link: '/blog-category-2',
           },
           {
             title: 'Масла для тела',
-            link: '/blog-category',
+            link: '/blog-category-3',
           },
           {
             title: 'Масла для ухода',
-            link: '/blog-category',
+            link: '/blog-category-4',
           },
         ],
       },
@@ -196,21 +196,21 @@ export const MenuNavLinks: MenuNavLinksProps = [
         list: [
           {
             title: 'Для здоровья всей семьи',
-            link: '/blog-category',
+            link: '/blog-category-5',
           },
           {
             title: 'Масло как витаминная добавка ',
-            link: '/blog-category',
+            link: '/blog-category-6',
           },
           {
             title: 'Масла от болезней',
-            link: '/blog-category',
+            link: '/blog-category-7',
           },
         ],
       },
       {
         title: 'Истории Д. Гери Янга',
-        link: '/blog-category',
+        link: '/blog-category-8',
       },
       {
         title: 'Смотреть все статьи',
@@ -220,49 +220,49 @@ export const MenuNavLinks: MenuNavLinksProps = [
   },
   {
     title: 'Магазин',
-    link: '/product',
+    link: '/products',
     collapse: [
       {
         title: 'Новинки',
-        link: '/product-category',
+        link: '/products/monomasla',
       },
       {
         title: 'Эфирные масла',
         list: [
           {
             title: 'Эфирные масла',
-            link: '/product-category',
+            link: '/products/monomasla',
           },
           {
             title: 'Смеси эфирных масел',
-            link: '/product-category',
+            link: '/products/smesi-jefirnyh-masel',
           },
           {
             title: 'Массажные масла',
-            link: '/product-category',
+            link: '/products/smesi-dlja-zhivotnyh',
           },
         ],
       },
       {
         title: 'Диффузоры и приспособления',
-        link: '/product-category',
+        link: '/products/masla-dlja-kuhni',
       },
       {
         title: 'Личная гигиена',
-        link: '/product-category',
+        link: '/products/diffuzory-i-prisposoblenija',
       },
       {
         title: 'Стартовые наборы',
-        link: '/product-category',
+        link: '/products/kollekcii-masel',
       },
       {
         title: 'Смотреть все товары',
-        link: '/product',
+        link: '/products',
       },
     ],
   },
   {
     title: 'Контакты',
-    link: '/about',
+    link: '/contacts',
   },
 ];

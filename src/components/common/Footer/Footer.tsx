@@ -1,14 +1,15 @@
 import React from 'react';
 import cx from 'classnames';
 import dayjs from 'dayjs';
-import Link from 'next/link';
 
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
 import { Separator } from '@ui/Separator';
 import { CustomCollapse } from '@ui/CustomCollapse';
+import { CursorTypes } from '@components/common/CursorProvider';
+import { CursorWrapper } from '@components/common/CursorWrapper';
 
-import { SocialLinks, NavLinks } from './content';
+import { NavLinks, SocialLinks } from './content';
 import s from './Footer.module.sass';
 
 export const Footer: React.FC = () => (
@@ -18,7 +19,7 @@ export const Footer: React.FC = () => (
         <nav className={s.nav}>
           {NavLinks.map((navItem) => (
             <CustomCollapse
-              key={navItem.title}
+              key={`footer-nav-${navItem.title}`}
               theme="dark"
               title={navItem.title}
               isOpenDesktop
@@ -27,14 +28,14 @@ export const Footer: React.FC = () => (
             >
               <div className={s.navLinks}>
                 {navItem.links.map((navLink) => (
-                  <Link
+                  <CursorWrapper
                     key={`${navItem.title}-${navLink.link}`}
+                    className={s.navItem}
                     href={navLink.link}
+                    type={CursorTypes.linkLight}
                   >
-                    <a className={s.navItem}>
-                      {navLink.title}
-                    </a>
-                  </Link>
+                    {navLink.title}
+                  </CursorWrapper>
                 ))}
               </div>
             </CustomCollapse>
@@ -44,15 +45,15 @@ export const Footer: React.FC = () => (
           <div className={cx(s.navBlockButton, s.navBlockButtonSocials)}>Социальные сети</div>
           <div className={s.socials}>
             {SocialLinks.map((social) => (
-              <a
+              <CursorWrapper
                 key={social.link}
                 className={s.socialLink}
                 href={social.link}
-                target="_blank"
-                rel="noreferrer nofollow"
+                external
+                type={CursorTypes.pointerLight}
               >
                 {social.icon}
-              </a>
+              </CursorWrapper>
             ))}
           </div>
         </div>

@@ -1,8 +1,15 @@
 overwrite: true
-schema: "https://countries.trevorblades.com/"
-documents: "src/**/*.graphql"
 generates:
   src/graphql.ts:
+    documents: "src/**/PRODUCTS.*.graphql"
+    schema: "http://localhost:8000/graphql"
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+  src/graphqlBlog.ts:
+    documents: "src/**/BLOG.*.graphql"
+    schema: "http://46.101.240.211:4000"
     plugins:
       - "typescript"
       - "typescript-operations"
