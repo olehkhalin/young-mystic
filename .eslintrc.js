@@ -1,6 +1,6 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'react-hooks', 'import'],
   extends: ['airbnb-typescript', 'plugin:react/recommended'],
   rules: {
     'react/display-name': 0,
