@@ -4,7 +4,6 @@ body,
 html
   padding: 0
   margin: 0
-  //overscroll-behavior: none
   font-family: $font
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
@@ -15,6 +14,8 @@ html
 
 *
   box-sizing: border-box
+  ::selection
+    background-color: $primary-40
 
 a
   text-decoration: none
@@ -28,7 +29,6 @@ button
   box-shadow: none
   cursor: pointer
   padding: 0
-
 
 h1, h2, h3, h4, h5, h6, p
   margin: 0

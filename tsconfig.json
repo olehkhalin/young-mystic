@@ -49,6 +49,9 @@
       ],
       "@functions": [
         "functions.ts"
+      ],
+      "@constants": [
+        "constants.ts"
       ]
     },
     "lib": [

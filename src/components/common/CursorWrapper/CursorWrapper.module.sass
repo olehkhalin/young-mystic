@@ -1,0 +1,50 @@
+@import "@styles/variables.module"
+
+.root
+  background-color: transparent
+  border: none
+  box-shadow: none
+  cursor: pointer
+
+.pointer
+  display: flex
+  justify-content: center
+  align-items: center
+  padding: 15px
+  margin: -15px
+  outline: none
+  position: relative
+  z-index: 2
+  &::before
+    content: ''
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%) scale(0)
+    border-radius: 50%
+    background-color: $primary-20
+    width: 44px
+    height: 44px
+    z-index: -1
+    opacity: 0
+    transition: transform $animationTime*1.5 $animationTime*.75, opacity $animationTime*1.5 $animationTime*.75
+  &:hover
+    &::before
+      opacity: 1
+      transition: transform $animationTime*1.5, opacity $animationTime*1.5
+      transform: translate(-50%, -50%) scale(1)
+
+.pointerLight
+  padding: 0
+  margin: 0
+  &::before
+    width: 40px
+    height: 40px
+    background-color: $secondary-80
+
+.pointerSmall
+  padding: 0
+  margin: 0
+  &::before
+    width: 28px
+    height: 28px

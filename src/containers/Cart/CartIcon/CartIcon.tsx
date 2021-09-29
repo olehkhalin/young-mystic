@@ -3,6 +3,7 @@ import cx from 'classnames';
 import { useReactiveVar } from '@apollo/client';
 
 import { cartItemsVar } from '@cache';
+import { CursorWrapper } from '@components/common/CursorWrapper';
 
 import ShoppingCart from '@public/svg/ShoppingCart.svg';
 
@@ -24,8 +25,11 @@ export const CartIcon: React.FC<CartIconProps> = ({
   const isNotEmpty = isClient ? cartItems.length !== 0 : false;
 
   return (
-    <a href="/basket" type="button" className={cx(s.cart, { [s.active]: isNotEmpty }, className)}>
-      <ShoppingCart />
-    </a>
+    <CursorWrapper
+      href="/basket"
+      className={cx(s.cart, { [s.active]: isNotEmpty }, className)}
+    >
+      <ShoppingCart className={s.icon} />
+    </CursorWrapper>
   );
 };
