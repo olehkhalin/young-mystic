@@ -1,9 +1,9 @@
 import React, { ReactNode, useRef } from 'react';
 import cx from 'classnames';
 
+import { Button } from '@ui/Button';
 import { ContentBlock } from '@components/common/ContentBlock';
 
-import { Button } from '@ui/Button';
 import s from './ContentWithRefs.module.sass';
 
 type ContentProps = {
@@ -29,7 +29,18 @@ export const ContentWithRefs: React.FC<ContentWithRefsProps> = ({
   };
 
   const scrollToSection = (index: number) => {
-    sectionsRef?.current[index]?.scrollIntoView({ behavior: 'smooth' });
+    const element = sectionsRef?.current[index];
+    if (element) {
+      let customOffset = -56;
+      if (window.innerWidth >= 768) {
+        customOffset = -102;
+      }
+      if (window.innerWidth >= 1024) {
+        customOffset = -138;
+      }
+      const y = element.getBoundingClientRect().top + window.pageYOffset + customOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -50,6 +61,7 @@ export const ContentWithRefs: React.FC<ContentWithRefsProps> = ({
       {content.map((section, index) => (
         <ContentBlock
           key={section.title || `section-${index}`}
+          className={s.content}
           ref={addToRefs}
         >
           {section.content}
