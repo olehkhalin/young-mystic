@@ -179,7 +179,7 @@ const BlogSinglePage: React.FC = () => {
             {html}
           </Article>
           <ProductsInArticle products={PRODUCTS} />
-          <SimilarPosts category={primaryTag?.slug} />
+          <SimilarPosts category={primaryTag?.slug} currentSlug={slug as string} />
           <CTABlock
             title="Откройте мир масел вместе с Young Living!"
             description="Станьте частью нашего сообщества и покупайте товары со скидкой 24% от розничной цены"

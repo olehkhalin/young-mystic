@@ -13,6 +13,7 @@ import { POSTS_PER_BLOCK, POSTS_PER_PAGE } from '../../defaults';
 type ProductsProps = {
   className?: string
   category?: string | null
+  ommitSlug?: string
   isSection?: boolean
   isFeatured?: boolean
   isPagination?: boolean
@@ -20,6 +21,7 @@ type ProductsProps = {
 
 export const Blog: React.FC<ProductsProps> = ({
   category,
+  ommitSlug,
   isFeatured = false,
   isSection = false,
   isPagination = false,
@@ -31,6 +33,9 @@ export const Blog: React.FC<ProductsProps> = ({
   }
   if (category) {
     filter.push(`tag:${category}`);
+  }
+  if (ommitSlug) {
+    filter.push(`slug:-${ommitSlug}`);
   }
 
   const router = useRouter();
@@ -46,7 +51,7 @@ export const Blog: React.FC<ProductsProps> = ({
     variables: {
       page: isPagination && !isLoadMoreClicked ? currentPage : 1,
       limit: isPagination ? limit : POSTS_PER_BLOCK,
-      filter,
+      filter: filter.join('+'),
     },
     context: { ghost: true },
   });
