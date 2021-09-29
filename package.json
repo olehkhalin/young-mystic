@@ -14,7 +14,7 @@
     "@apollo/client": "^3.3.12",
     "@apollo/react-ssr": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
-    "classnames": "^2.2.6",
+    "classnames": "^2.3.1",
     "dayjs": "^1.10.4",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-plugin-import": "^2.22.1",
@@ -32,7 +32,7 @@
     "react-collapse": "^5.1.0",
     "react-dom": "17.0.2",
     "react-toastify": "^7.0.3",
-    "sass": "^1.32.8",
+    "sass": "^1.42.1",
     "shiitake": "^3.0.2"
   },
   "devDependencies": {
