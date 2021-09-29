@@ -5,6 +5,7 @@ import cx from 'classnames';
 import parse from 'html-react-parser';
 
 import { CursorContext, CursorTypes } from '@components/common/CursorProvider';
+
 import s from './ContentBlock.module.sass';
 
 export type ContentBlockRef = HTMLDivElement;
