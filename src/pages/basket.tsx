@@ -4,7 +4,6 @@ import cx from 'classnames';
 
 import { useReactiveVar } from '@apollo/client';
 import { cartItemsVar } from '@cache';
-
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
@@ -43,12 +42,12 @@ const Basket: React.FC = () => {
       className={cx(s.wrapper, { [s.notEmpty]: isNotEmpty })}
     >
       <Container>
-        <Row>
+        <Row className={s.row}>
           <BreadCrumbs
             navLinks={navLinks}
             className={s.breadCrumbs}
           />
-          {isNotEmpty ? <BasketContent /> : <BasketEmpty /> }
+          {isNotEmpty ? <BasketContent /> : <BasketEmpty className={s.empty} /> }
         </Row>
       </Container>
     </BaseLayout>
