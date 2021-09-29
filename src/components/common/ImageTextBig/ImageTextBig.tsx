@@ -45,7 +45,7 @@ export const ImageTextBig: React.FC<ImageTextBigProps> = ({
 
   useEffect(() => {
     const setValues = () => {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth >= 768) {
         setIsMobile(false);
       } else {
         setIsMobile(true);
@@ -76,10 +76,15 @@ export const ImageTextBig: React.FC<ImageTextBigProps> = ({
     elementBottom - clientHeight * 0.5 + 100,
     elementTop + clientHeight - 300,
   ];
+  const imageAnimationRangeMobile = [
+    elementBottom - clientHeight,
+    elementTop + clientHeight - 300,
+  ];
 
   const textTransform = useTransform(scrollY, textAnimationRange, [-80, 100]);
   const imageScale = useTransform(scrollY, textAnimationRange, [1.3, 1]);
   const imageOpacity = useTransform(scrollY, imageAnimationRange, [1, 0]);
+  const imageOpacityMobile = useTransform(scrollY, imageAnimationRangeMobile, [1, 0]);
 
   return (
     <article
@@ -88,7 +93,10 @@ export const ImageTextBig: React.FC<ImageTextBigProps> = ({
     >
       <div className={s.image}>
         <motion.div
-          style={{ scale: imageScale, opacity: imageOpacity }}
+          style={{
+            scale: imageScale,
+            opacity: !isMobile ? imageOpacity : imageOpacityMobile,
+          }}
           className={s.imageInner}
         >
           <Image
