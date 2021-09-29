@@ -46,7 +46,7 @@ const Basket: React.FC = () => {
         <Row>
           <BreadCrumbs
             navLinks={navLinks}
-            // className={s.breadCrumbs}
+            className={s.breadCrumbs}
           />
           {isNotEmpty ? <BasketContent /> : <BasketEmpty /> }
         </Row>

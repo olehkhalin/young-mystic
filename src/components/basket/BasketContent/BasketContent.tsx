@@ -14,14 +14,19 @@ export const BasketContent: React.FC<BasketContentProps> = ({
   className,
 }) => (
   <div className={cx(s.root, className)}>
-    <CartItems />
-    <div className={s.guaranty}>
-      <h2 className={s.header}>Наша гарантия</h2>
-      <p className={s.description}>
-        Если по какой-то причине вам не понравится ваш заказ, просто верните неиспользованный товар
-        нам и мы будем рады помочь вам его обменять или вернём деньги.
-      </p>
+    <div className={s.content}>
+      <CartItems />
+      <div className={s.guaranty}>
+        <h2 className={s.header}>Наша гарантия</h2>
+        <p className={s.description}>
+          Если по какой-то причине вам не понравится ваш заказ, просто верните неиспользованный товар
+          нам и мы будем рады помочь вам его обменять или вернём деньги.
+        </p>
+      </div>
     </div>
-    <CartCheckout classNameBottom={s.bottom} />
+    <CartCheckout
+      className={s.checkout}
+      classNameBottom={s.bottom}
+    />
   </div>
 );

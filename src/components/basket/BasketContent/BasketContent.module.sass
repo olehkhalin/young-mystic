@@ -6,6 +6,7 @@
   flex-direction: column
   width: 100%
   position: relative
+  max-width: 1000px
 
 .guaranty
   margin: 45px 0 80px
@@ -23,3 +24,16 @@
   position: sticky
   bottom: 0
 
+@media (min-width: $Ltablet)
+  .root
+    flex-direction: row
+    margin-bottom: 120px
+  .bottom
+    position: relative
+  .checkout
+    position: sticky
+    top: 158px
+    min-width: 328px
+    margin-left: 120px
+  .guaranty
+    margin-bottom: 0
