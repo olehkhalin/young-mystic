@@ -6,6 +6,8 @@ import Shiitake from 'shiitake';
 
 import { prettyDate } from '@functions';
 import { Button } from '@components/ui/Button';
+import { CursorTypes } from '@components/common/CursorProvider';
+import { CursorWrapper } from '@components/common/CursorWrapper';
 import ArrowRight from '@public/svg/ArrowRight.svg';
 
 import s from './BlogCard.module.sass';
@@ -97,16 +99,22 @@ export const BlogCard: React.FC<BlogCardProps> = ({
       <Link href={`/blog/${category.slug}/${slug}`}>
         <a className={s.link} />
       </Link>
-      <div className={s.image}>
+      <CursorWrapper
+        href={`/blog/${category.slug}/${slug}`}
+        className={s.image}
+        type={CursorTypes.blog}
+      >
         {image && (
-          <Image
-            src={image}
-            alt={title}
-            layout="fill"
-            objectFit="cover"
-          />
+          <div className={s.imageInner}>
+            <Image
+              src={image}
+              alt={title}
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
         )}
-      </div>
+      </CursorWrapper>
       <div className={s.content}>
         {isSection ? headerContent : (
           <header className={s.heading}>
@@ -114,7 +122,12 @@ export const BlogCard: React.FC<BlogCardProps> = ({
           </header>
         )}
         <footer className={s.button}>
-          Читать далее
+          <CursorWrapper
+            href={`/blog/${category.slug}/${slug}`}
+            type={CursorTypes.link}
+          >
+            Читать далее
+          </CursorWrapper>
           <ArrowRight className={s.buttonArrow} />
         </footer>
       </div>

@@ -66,6 +66,7 @@ export const FilterScreen: React.FC<FilterScreenProps> = ({
                 <CheckBox
                   key={filter}
                   label={filter}
+                  className={s.checkBox}
                 />
               ))}
             </div>

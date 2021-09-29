@@ -6,6 +6,7 @@ import { DefaultSeo } from 'next-seo';
 import { appWithTranslation } from 'next-i18next';
 import { withApollo } from '@client';
 import { DEFAULT_SEO } from '@constants';
+import { CursorProvider } from '@components/common/CursorProvider';
 
 import '@styles/globals.sass';
 
@@ -13,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   return (
-    <>
+    <CursorProvider>
       <DefaultSeo
         title={undefined}
         titleTemplate={`%s | ${DEFAULT_SEO.TITLE}`}
@@ -119,7 +120,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <Component {...pageProps} />
-    </>
+    </CursorProvider>
   );
 }
 
