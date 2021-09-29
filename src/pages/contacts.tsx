@@ -4,6 +4,7 @@ import cx from 'classnames';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
+import { Button } from '@ui/Button';
 import { Separator } from '@ui/Separator';
 import { ContactForm } from '@components/common/ContactForm';
 
@@ -21,28 +22,34 @@ const ProductsPage = () => (
         <Separator className={s.separator} />
         <div>
           <h2 className={s.title}>По телефону:</h2>
-          <a
+          <Button
+            theme="clean"
             href="tel:+380678287171"
+            external
             className={s.link}
           >
             +38 (067) 828 71 71 — Андрей
-          </a>
-          <a
+          </Button>
+          <Button
+            theme="clean"
             href="tel:+380977568431"
+            external
             className={s.link}
           >
             +38 (097) 756 84 31 —  Анна
-          </a>
+          </Button>
         </div>
         <Separator className={s.separator} />
         <div>
           <h2 className={s.title}>По почте:</h2>
-          <a
+          <Button
+            theme="clean"
             href="mailto:youngliving.ua@outlook.com"
+            external
             className={s.link}
           >
             youngliving.ua@outlook.com
-          </a>
+          </Button>
         </div>
         <Separator className={cx(s.separator, s.separatorBottom)} />
         <h2 className={s.title}>Через форму обратной связи:</h2>

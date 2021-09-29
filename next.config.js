@@ -1,22 +1,14 @@
 const path = require('path');
-
 const withReactSvg = require('next-react-svg');
-const { nextI18NextRewrites } = require('next-i18next/rewrites')
-
-const localeSubpaths = {
-  uk: 'uk'
-};
+const { i18n } = require('./next-i18next.config');
 
 module.exports = withReactSvg({
   include: path.resolve(__dirname, 'public/svg'),
-  webpack(config, options) {
-    return config
+  webpack(config) {
+    return config;
   },
-  rewrites: async () => nextI18NextRewrites(localeSubpaths),
-  publicRuntimeConfig: {
-    localeSubpaths
-  },
+  i18n,
   images: {
     domains: ['static.ghost.org', '46.101.240.211'],
   },
-})
+});

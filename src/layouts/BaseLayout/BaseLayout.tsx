@@ -1,5 +1,4 @@
 import React from 'react';
-import Head from 'next/head';
 import cx from 'classnames';
 
 import { Header } from '@components/common/Header';
@@ -31,32 +30,6 @@ export const BaseLayout: React.FC<BaseLayoutProps> = ({
 
   return (
     <>
-      <Head>
-        <link
-          rel="preload"
-          href="/fonts/Montserrat/Montserrat-Regular.ttf"
-          as="font"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/Montserrat/Montserrat-SemiBold.ttf"
-          as="font"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/Cormorant/Cormorant-Regular.ttf"
-          as="font"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/Cormorant/Cormorant-Medium.ttf"
-          as="font"
-          crossOrigin=""
-        />
-      </Head>
       <Header theme={theme} />
       <main className={compoundClassName}>
         {children}

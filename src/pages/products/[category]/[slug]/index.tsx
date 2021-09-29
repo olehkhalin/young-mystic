@@ -19,7 +19,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import s from '@styles/Products.module.sass';
 
 import { useProductInfoQuery } from '@graphql';
-import { POSTS } from '../../../../content';
 
 const ProductsSinglePage = () => {
   const router = useRouter();
@@ -113,7 +112,7 @@ const ProductsSinglePage = () => {
               </div>
             </article>
             <Separator className={s.separatorBottom} />
-            <SimilarPosts posts={POSTS} />
+            <SimilarPosts />
             <CTABlock
               className={s.blockCta}
               title="Откройте мир масел вместе с Young Living!"

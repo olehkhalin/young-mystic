@@ -1,16 +1,8 @@
 @import "@styles/variables.module"
 
 .cart
-  background-color: transparent
-  border: none
-  box-shadow: none
-  cursor: pointer
-  display: flex
-  justify-content: center
-  align-items: center
-  padding: 5px
-  margin: -5px
-  outline: none
+  position: relative
+  z-index: 2
 
 .cart
   &.active
@@ -18,8 +10,8 @@
     &::after
       content: ''
       position: absolute
-      top: 5px
-      right: 5px
+      top: 15px
+      right: 15px
       width: 8px
       height: 8px
       border-radius: 50%

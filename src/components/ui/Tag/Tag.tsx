@@ -1,6 +1,10 @@
 import React from 'react';
-import Link, { LinkProps } from 'next/link';
+import { LinkProps } from 'next/link';
 import cx from 'classnames';
+import { motion } from 'framer-motion';
+
+import { CursorWrapper } from '@components/common/CursorWrapper';
+import { CursorTypes } from '@components/common/CursorProvider';
 
 import s from './Tag.module.sass';
 
@@ -34,11 +38,18 @@ export const Tag: React.FC<TagProps> = ({
 
   if ('href' in props) {
     return (
-      <Link
-        {...props}
+      <CursorWrapper
+        href={props.href as string}
+        type={CursorTypes.button}
       >
-        <a className={compoundClassName}>{children}</a>
-      </Link>
+        <motion.span
+          className={compoundClassName}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {children}
+        </motion.span>
+      </CursorWrapper>
     );
   }
 

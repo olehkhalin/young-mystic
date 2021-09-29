@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react';
 import cx from 'classnames';
-import Link from 'next/link';
+
+import { CursorWrapper } from '@components/common/CursorWrapper';
+import { CursorTypes } from '@components/common/CursorProvider';
 
 import s from './BreadCrumbs.module.sass';
 
@@ -24,9 +26,14 @@ export const BreadCrumbs: React.FC<ContainerProps> = ({
     content.push(
       link.link
         ? (
-          <Link href={link.link} key={link.link}>
-            <a className={s.link}>{link.title}</a>
-          </Link>
+          <CursorWrapper
+            href={link.link}
+            key={link.link}
+            className={s.link}
+            type={CursorTypes.link}
+          >
+            {link.title}
+          </CursorWrapper>
         )
         : (
           <span className={s.current} key={link.title}>
