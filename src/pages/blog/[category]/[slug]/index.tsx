@@ -1,8 +1,9 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { NextSeo, BreadcrumbJsonLd, ArticleJsonLd } from 'next-seo';
-import { useBlogInfoQuery } from '@graphqlBlog';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
+import { useBlogInfoQuery } from '@graphqlBlog';
 import { DEFAULT_SEO } from '@constants';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
@@ -17,7 +18,7 @@ import s from '@styles/BlogSingle.module.sass';
 
 import { PRODUCTS } from '../../../../content';
 
-const Index = () => {
+const BlogSinglePage: React.FC = () => {
   const router = useRouter();
   const { slug } = router.query;
   if (!slug) {
@@ -194,4 +195,10 @@ const Index = () => {
   );
 };
 
-export default Index;
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common', 'blog']),
+  },
+});
+
+export default BlogSinglePage;

@@ -1,7 +1,7 @@
 import React from 'react';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { Products } from '@containers/Products/Products';
-
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
@@ -23,7 +23,7 @@ const navLinks = [
   },
 ];
 
-const ProductsPage = () => (
+const ProductsPage: React.FC = () => (
   <BaseLayout>
     <Container theme="small">
       <Row>
@@ -52,5 +52,11 @@ const ProductsPage = () => (
     </Container>
   </BaseLayout>
 );
+
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common', 'products']),
+  },
+});
 
 export default ProductsPage;

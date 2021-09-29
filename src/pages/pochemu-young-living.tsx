@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
@@ -11,7 +12,6 @@ import { SimilarPosts } from '@components/common/SimilarPosts';
 import { CTABlock } from '@components/common/CTABlock';
 
 import s from '@styles/SecondaryPages.module.sass';
-import { POSTS } from '../content';
 
 const CONTENT = [
   {
@@ -177,14 +177,14 @@ const navLinks = [
   },
 ];
 
-const OfferAgreement = () => (
+const Secondary: React.FC = () => (
   <BaseLayout>
     <Container theme="small">
       <Row>
         <BreadCrumbs navLinks={navLinks} />
         <PageTitle image="/images/Image_2.jpg" title="Почему Young Living" />
         <ContentWithRefs content={CONTENT} className={s.paymentContent} />
-        <SimilarPosts posts={POSTS} className={s.similarContent} />
+        <SimilarPosts className={s.similarContent} />
         <CTABlock
           title="Откройте мир масел вместе с Young Living!"
           description="Станьте частью нашего сообщества и покупайте товары со скидкой 24% от розничной цены"
@@ -198,4 +198,10 @@ const OfferAgreement = () => (
   </BaseLayout>
 );
 
-export default OfferAgreement;
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common', 'secondary']),
+  },
+});
+
+export default Secondary;

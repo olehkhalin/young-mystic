@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
@@ -10,7 +11,7 @@ import { ContactForm } from '@components/common/ContactForm';
 
 import s from '@styles/Contacts.module.sass';
 
-const ProductsPage = () => (
+const Contacts: React.FC = () => (
   <BaseLayout>
     <Container theme="small">
       <Row className={s.row}>
@@ -59,4 +60,10 @@ const ProductsPage = () => (
   </BaseLayout>
 );
 
-export default ProductsPage;
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common', 'contacts']),
+  },
+});
+
+export default Contacts;

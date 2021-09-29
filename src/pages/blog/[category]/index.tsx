@@ -1,7 +1,8 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { useBlogCategoryInfoQuery } from '@graphqlBlog';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
+import { useBlogCategoryInfoQuery } from '@graphqlBlog';
 import { Blog } from '@containers/Blog/Blog';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
@@ -12,7 +13,7 @@ import { PageTitle } from '@components/common/PageTitle';
 
 import s from '@styles/BlogCategory.module.sass';
 
-const Index = () => {
+const BlogCategoryPage: React.FC = () => {
   const router = useRouter();
   const { category } = router.query;
   if (!category) {
@@ -85,4 +86,10 @@ const Index = () => {
   );
 };
 
-export default Index;
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common', 'blog']),
+  },
+});
+
+export default BlogCategoryPage;

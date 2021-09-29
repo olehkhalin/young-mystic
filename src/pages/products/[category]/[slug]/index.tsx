@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import cx from 'classnames';
 import parse from 'html-react-parser';
 import { ToastContainer, Slide } from 'react-toastify';
@@ -20,7 +21,7 @@ import s from '@styles/Products.module.sass';
 
 import { useProductInfoQuery } from '@graphql';
 
-const ProductsSinglePage = () => {
+const ProductsSinglePage: React.FC = () => {
   const router = useRouter();
   const { slug } = router.query;
   if (!slug) {
@@ -142,5 +143,11 @@ const ProductsSinglePage = () => {
     </>
   );
 };
+
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common', 'products']),
+  },
+});
 
 export default ProductsSinglePage;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { useCategoryInfoQuery } from '@graphql';
 import { Products } from '@containers/Products/Products';
@@ -14,7 +15,7 @@ import { Filters } from '@components/products/Filters';
 
 import s from '@styles/Products.module.sass';
 
-const ProductsCategoryPage = () => {
+const ProductsCategoryPage: React.FC = () => {
   const router = useRouter();
   const { category } = router.query;
   if (!category) {
@@ -87,5 +88,11 @@ const ProductsCategoryPage = () => {
     </BaseLayout>
   );
 };
+
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common', 'products']),
+  },
+});
 
 export default ProductsCategoryPage;

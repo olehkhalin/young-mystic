@@ -10,6 +10,7 @@ import { SimilarPosts } from '@components/common/SimilarPosts';
 import { CTABlock } from '@components/common/CTABlock';
 
 import s from '@styles/SecondaryPages.module.sass';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const CONTENT = [
   {
@@ -144,7 +145,7 @@ const navLinks = [
   },
 ];
 
-const OfferAgreement = () => (
+const Secondary: React.FC = () => (
   <BaseLayout>
     <Container theme="small">
       <Row>
@@ -165,4 +166,10 @@ const OfferAgreement = () => (
   </BaseLayout>
 );
 
-export default OfferAgreement;
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common', 'secondary']),
+  },
+});
+
+export default Secondary;
