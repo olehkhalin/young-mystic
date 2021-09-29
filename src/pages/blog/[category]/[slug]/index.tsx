@@ -13,6 +13,7 @@ import { Article } from '@components/blogSingle/Article';
 import { ProductsInArticle } from '@components/blogSingle/ProductsInArticle';
 import { CTABlock } from '@components/common/CTABlock';
 import { SimilarPosts } from '@components/common/SimilarPosts';
+import { Share } from '@components/common/Share';
 
 import s from '@styles/BlogSingle.module.sass';
 
@@ -178,6 +179,10 @@ const BlogSinglePage: React.FC = () => {
           >
             {html}
           </Article>
+          <Share
+            className={s.share}
+            link={`${websiteUrl}blog/${primaryTag.slug}/${slug}`}
+          />
           <ProductsInArticle products={PRODUCTS} />
           <SimilarPosts category={primaryTag?.slug} currentSlug={slug as string} />
           <CTABlock
