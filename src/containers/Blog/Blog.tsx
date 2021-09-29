@@ -57,7 +57,7 @@ export const Blog: React.FC<ProductsProps> = ({
     throw error;
   }
   if (!data?.posts?.edges) {
-    return <>404</>; // TODO: 404 page render
+    return <></>;
   }
 
   const loadMore = () => {
