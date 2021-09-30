@@ -52,6 +52,9 @@
       ],
       "@constants": [
         "constants.ts"
+      ],
+      "@animations/*": [
+        "animations/*"
       ]
     },
     "lib": [

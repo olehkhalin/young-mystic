@@ -1,0 +1,74 @@
+@import "../styles/variables.module"
+
+.main
+  padding-top: 56px
+  padding-bottom: 24px
+
+.main, .container
+  display: flex
+  flex-direction: column
+
+.container, .row
+  flex-grow: 1
+
+.container
+  height: 100%
+
+.row
+  justify-content: center
+
+.animation
+  max-width: 430px
+
+.content
+  display: flex
+  flex-direction: column
+  text-align: center
+  align-items: center
+  max-width: 430px
+
+.header
+  font-size: 40px
+  font-weight: 400
+  font-family: $font-headers
+  color: $primary-100
+  margin-bottom: 10px
+
+.description
+  font-size: 0.875rem
+
+.buttons
+  display: flex
+  flex-direction: column
+  margin-top: 40px
+  width: 100%
+
+.button
+  width: 100%
+  &:last-child
+    margin-top: 8px
+
+@media (min-width: $Lphone)
+  .buttons
+    flex-direction: row
+  .button
+    min-width: auto
+    width: calc(50% - 12px)
+    &:last-child
+      margin-top: 0
+      margin-left: 24px
+
+@media (min-width: $tablet)
+  .main
+    padding-top: 62px
+  .header
+    font-size: 52px
+
+@media (min-width: $Ltablet)
+  .main
+    padding-top: 88px
+  .header
+    font-size: 64px
+    margin-bottom: 0
+  .description
+    font-size: 1rem
