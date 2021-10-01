@@ -25,9 +25,8 @@ export const PageTitle: React.FC<PageTitleProps> = ({
         <Image
           src={image}
           alt={title}
-          width={158}
-          height={158}
-          layout="responsive"
+          layout="fill"
+          objectFit="contain"
         />
       </div>
     )}

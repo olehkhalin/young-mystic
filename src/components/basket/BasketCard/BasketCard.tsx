@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import cx from 'classnames';
 
-import { prettyPrice } from '@functions';
+import { prettyPrice } from '@utils/helpers';
 import { PlusMinusInput } from '@ui/PlusMinusInput';
 import { Button } from '@ui/Button';
 
@@ -36,7 +36,7 @@ export const BasketCard: React.FC<BasketCardProps> = ({
   className,
 }) => (
   <article className={cx(s.root, className)}>
-    <div className={s.top}>
+    {/*<div className={s.top}>*/}
       <div className={s.image}>
         <Image
           src={image}
@@ -47,29 +47,31 @@ export const BasketCard: React.FC<BasketCardProps> = ({
         />
       </div>
       <header className={s.content}>
-        <h3 className={s.header}>
-          {title}
-          {' '}
-          {firm && `(${firm}),`}
-        </h3>
-        {capacity && (
-        <p className={s.capacity}>
-          {capacity}
-          {' '}
-          ml
-        </p>
-        )}
+        <div className={s.headerWrapper}>
+          <h3 className={s.header}>
+            {title}
+            {firm ? ` (${firm}),` : ','}
+          </h3>
+          {capacity && (
+            <p className={s.capacity}>
+              {capacity}
+              {' '}
+              ml
+            </p>
+          )}
+        </div>
         <p className={s.price}>
           {prettyPrice(price)}
         </p>
       </header>
-    </div>
+    {/*</div>*/}
     <footer className={s.bottom}>
       <PlusMinusInput
         minValue={minValue}
         maxValue={maxValue}
         onValueChange={(value) => onAmountChange(value)}
         value={amount}
+        className={s.plusMinus}
       />
       <Button
         theme="clean"

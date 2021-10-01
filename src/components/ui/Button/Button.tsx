@@ -46,6 +46,7 @@ export const Button: React.FC<ButtonProps> = ({
   if ('href' in props) {
     if (external) {
       return (
+        // @ts-ignore
         <motion.a
           target="_blank"
           rel="noreferrer noopener"

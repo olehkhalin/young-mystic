@@ -43,3 +43,13 @@
   display: block
   &:last-child
     margin-top: 4px
+
+@media (min-width: $Lphone)
+  .buttons
+    flex-direction: row
+  .button
+    width: calc(50% - 12px)
+    max-width: 318px
+    &:last-child
+      margin-top: 0
+      margin-left: 24px

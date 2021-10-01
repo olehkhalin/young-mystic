@@ -26,7 +26,7 @@ export const BasketEmpty: React.FC<BasketEmptyProps> = ({
       href="/products"
       className={s.button}
     >
-      Перейти в магазин
+      Перейти к покупкам
     </Button>
   </div>
 );

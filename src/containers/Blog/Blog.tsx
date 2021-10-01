@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
-import { useBlogListQuery } from '@graphqlBlog';
 
+import { useBlogListQuery } from '@graphqlBlog';
+import {
+  POSTS_PER_BLOCK,
+  POSTS_PER_PAGE,
+} from '@utils/constants';
 import { Button } from '@ui/Button';
 import { BlogCard } from '@components/common/BlogCard';
 import { Pagination } from '@components/common/Pagination';
 
 import s from './Blog.module.sass';
-import { POSTS_PER_BLOCK, POSTS_PER_PAGE } from '../../defaults';
 
 type ProductsProps = {
   className?: string
   category?: string | null
+  ommitSlug?: string
   isSection?: boolean
   isFeatured?: boolean
   isPagination?: boolean
@@ -20,6 +24,7 @@ type ProductsProps = {
 
 export const Blog: React.FC<ProductsProps> = ({
   category,
+  ommitSlug,
   isFeatured = false,
   isSection = false,
   isPagination = false,
@@ -31,6 +36,9 @@ export const Blog: React.FC<ProductsProps> = ({
   }
   if (category) {
     filter.push(`tag:${category}`);
+  }
+  if (ommitSlug) {
+    filter.push(`slug:-${ommitSlug}`);
   }
 
   const router = useRouter();
@@ -46,7 +54,7 @@ export const Blog: React.FC<ProductsProps> = ({
     variables: {
       page: isPagination && !isLoadMoreClicked ? currentPage : 1,
       limit: isPagination ? limit : POSTS_PER_BLOCK,
-      filter,
+      filter: filter.join('+'),
     },
     context: { ghost: true },
   });
@@ -57,7 +65,7 @@ export const Blog: React.FC<ProductsProps> = ({
     throw error;
   }
   if (!data?.posts?.edges) {
-    return <>404</>; // TODO: 404 page render
+    return <></>;
   }
 
   const loadMore = () => {

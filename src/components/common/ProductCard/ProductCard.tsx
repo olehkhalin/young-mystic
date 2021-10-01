@@ -3,7 +3,7 @@ import Image from 'next/image';
 import cx from 'classnames';
 import { motion } from 'framer-motion';
 
-import { prettyPrice } from '@functions';
+import { prettyPrice } from '@utils/helpers';
 import { Tag } from '@ui/Tag';
 import { CursorTypes } from '@components/common/CursorProvider';
 import { CursorWrapper } from '@components/common/CursorWrapper';

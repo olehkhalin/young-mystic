@@ -1,6 +1,6 @@
 @import "@styles/variables.module"
 
-.root
+.inner
   border-bottom: 1px solid $secondary-20
 
 .header
@@ -26,3 +26,17 @@
 .sumHeader, .sumAmount
   font-size: 1rem
   font-weight: 500
+
+.desktop
+  display: none
+
+@media (min-width: $Ltablet)
+  .root
+    display: flex
+    flex-direction: column
+  .mobile
+    display: none
+  .desktop
+    display: flex
+  .bottom
+    padding-bottom: 0

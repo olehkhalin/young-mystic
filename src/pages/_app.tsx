@@ -4,11 +4,13 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
 import { appWithTranslation } from 'next-i18next';
+
 import { withApollo } from '@client';
-import { DEFAULT_SEO } from '@constants';
+import { DEFAULT_SEO } from '@utils/constants';
 import { CursorProvider } from '@components/common/CursorProvider';
 
 import '@styles/globals.sass';
+import { CookiePopup } from '@components/common/CookiePopup';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -120,6 +122,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <Component {...pageProps} />
+      <CookiePopup />
     </CursorProvider>
   );
 }

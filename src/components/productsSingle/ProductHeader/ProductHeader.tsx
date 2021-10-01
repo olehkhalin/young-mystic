@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-import { prettyPrice } from '@functions';
+import { prettyPrice } from '@utils/helpers';
 import { AddToCartButton } from '@containers/Cart/AddToCartButton';
 import { Button } from '@ui/Button';
 import Discount from '@public/svg/Discount.svg';

@@ -5,6 +5,7 @@ import cx from 'classnames';
 import parse from 'html-react-parser';
 import { ToastContainer, Slide } from 'react-toastify';
 
+import { useProductInfoQuery } from '@graphql';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
@@ -18,8 +19,6 @@ import { SimilarPosts } from '@components/common/SimilarPosts';
 
 import 'react-toastify/dist/ReactToastify.css';
 import s from '@styles/Products.module.sass';
-
-import { useProductInfoQuery } from '@graphql';
 
 const ProductsSinglePage: React.FC = () => {
   const router = useRouter();
@@ -144,7 +143,7 @@ const ProductsSinglePage: React.FC = () => {
   );
 };
 
-export const getStaticProps = async ({ locale }: { locale: string }) => ({
+export const getServerSideProps = async ({ locale }: { locale: string }) => ({
   props: {
     ...await serverSideTranslations(locale, ['common', 'products']),
   },

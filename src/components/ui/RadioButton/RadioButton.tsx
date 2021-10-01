@@ -17,7 +17,6 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
     {label}
     <input
       id={id}
-      type="radio"
       className={s.input}
       {...props}
     />

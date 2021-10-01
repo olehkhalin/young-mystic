@@ -11,7 +11,6 @@ import { PageTitle } from '@components/common/PageTitle';
 import { ContentBlock } from '@components/common/ContentBlock';
 
 import s from '@styles/About.module.sass';
-import { POSTS } from '../content';
 
 const navLinks = [
   {
@@ -80,7 +79,7 @@ const Secondary: React.FC = () => (
             label: 'Присоединиться',
           }}
         />
-        <RecentBlog posts={POSTS} />
+        <RecentBlog />
       </Row>
     </Container>
   </BaseLayout>

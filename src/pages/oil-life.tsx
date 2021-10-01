@@ -10,7 +10,6 @@ import { CTABlock } from '@components/common/CTABlock';
 import { RecentBlog } from '@components/common/RecentBlog';
 
 import s from '@styles/About.module.sass';
-import { POSTS } from '../content';
 
 const navLinks = [
   {
@@ -110,7 +109,7 @@ const OilLife: React.FC = () => (
             label: 'Присоединиться',
           }}
         />
-        <RecentBlog posts={POSTS} />
+        <RecentBlog />
       </Row>
     </Container>
   </BaseLayout>

@@ -4,7 +4,7 @@ import { NextSeo, BreadcrumbJsonLd, ArticleJsonLd } from 'next-seo';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { useBlogInfoQuery } from '@graphqlBlog';
-import { DEFAULT_SEO } from '@constants';
+import { DEFAULT_SEO } from '@utils/constants';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
@@ -13,6 +13,7 @@ import { Article } from '@components/blogSingle/Article';
 import { ProductsInArticle } from '@components/blogSingle/ProductsInArticle';
 import { CTABlock } from '@components/common/CTABlock';
 import { SimilarPosts } from '@components/common/SimilarPosts';
+import { Share } from '@components/common/Share';
 
 import s from '@styles/BlogSingle.module.sass';
 
@@ -178,8 +179,12 @@ const BlogSinglePage: React.FC = () => {
           >
             {html}
           </Article>
+          <Share
+            className={s.share}
+            link={`${websiteUrl}blog/${primaryTag.slug}/${slug}`}
+          />
           <ProductsInArticle products={PRODUCTS} />
-          <SimilarPosts category={primaryTag?.slug} />
+          <SimilarPosts category={primaryTag?.slug} currentSlug={slug as string} />
           <CTABlock
             title="Откройте мир масел вместе с Young Living!"
             description="Станьте частью нашего сообщества и покупайте товары со скидкой 24% от розничной цены"
@@ -195,7 +200,7 @@ const BlogSinglePage: React.FC = () => {
   );
 };
 
-export const getStaticProps = async ({ locale }: { locale: string }) => ({
+export const getServerSideProps = async ({ locale }: { locale: string }) => ({
   props: {
     ...await serverSideTranslations(locale, ['common', 'blog']),
   },

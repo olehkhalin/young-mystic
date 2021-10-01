@@ -1,0 +1,68 @@
+@import "@styles/variables.module"
+
+.root
+  width: 100%
+  max-width: 888px
+
+.form
+  display: flex
+  flex-direction: column
+  max-width: 546px
+  margin-right: auto
+
+.header
+  margin-bottom: 20px
+  &:first-of-type
+    margin-bottom: 14px
+
+.post
+  padding-left: 32px
+  margin-bottom: 14px
+
+.description
+  margin-top: 8px
+  color: $secondary-60
+  font-size: 0.875rem
+  line-height: 1.14
+  margin-bottom: 10px
+
+.headerInfo
+  margin-top: 40px
+
+.input
+  margin-bottom: 16px
+
+.textarea
+  max-width: 432px
+
+.button
+  margin-top: 64px
+
+.buttonDescription
+  text-align: center
+  margin-top: 16px
+  font-size: 0.75rem
+  margin-bottom: 40px
+  max-width: 328px
+
+.address
+  line-height: 1.25
+  &:not(:last-child)
+    margin-bottom: 16px
+
+.link
+  color: $secondary-100
+  transition: text-transform $animationTime
+  &:hover
+    text-transform: uppercase
+
+@media (min-width: $tablet)
+  .description
+    font-size: 1rem
+  .buttonDescription
+    font-size: 0.75rem
+    margin-bottom: 80px
+
+@media (min-width: $Ltablet)
+  .buttonDescription
+    margin-bottom: 120px

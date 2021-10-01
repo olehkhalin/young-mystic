@@ -1,21 +1,23 @@
 import React from 'react';
 import cx from 'classnames';
-import { useReactiveVar } from '@apollo/client';
 
+import { useReactiveVar } from '@apollo/client';
 import { cartItemsVar } from '@cache';
 import { useCartItemsListQuery } from '@graphql';
+import { prettyPrice } from '@utils/helpers';
+import { Button } from '@ui/Button';
 import { CheckoutCard } from '@components/basket/CheckoutCard';
 
-import { prettyPrice } from '@functions';
-import { Button } from '@ui/Button';
 import s from './CartCheckout.module.sass';
 
 type CartCheckoutProps = {
+  onCheckout: () => void
   className?: string
   classNameBottom?: string
 };
 
 export const CartCheckout: React.FC<CartCheckoutProps> = ({
+  onCheckout,
   className,
   classNameBottom,
 }) => {
@@ -46,28 +48,42 @@ export const CartCheckout: React.FC<CartCheckoutProps> = ({
   return (
     <>
       <div className={cx(s.root, className)}>
-        <h1 className={s.header}>Ваша корзина</h1>
-        {data?.products?.data.map((item) => (
-          <CheckoutCard
-            key={item.slug}
-            className={s.card}
-            title={item.title}
-            amount={
-            cartItems.find((itemLocal) => itemLocal.slug === item.slug)?.quantity
-            || 1
-          }
-            price={item.price}
-          />
-        ))}
+        <div className={s.inner}>
+          <h1 className={s.header}>Ваша корзина</h1>
+          {data?.products?.data.map((item) => (
+            <CheckoutCard
+              key={item.slug}
+              className={s.card}
+              title={item.title}
+              amount={
+              cartItems.find((itemLocal) => itemLocal.slug === item.slug)?.quantity
+              || 1
+            }
+              price={item.price}
+            />
+          ))}
+        </div>
+        <div className={cx(s.bottom, s.desktop, classNameBottom)}>
+          <div className={s.sum}>
+            <h3 className={s.sumHeader}>Общая стоимость</h3>
+            <span className={s.sumAmount}>{prettyPrice(sum)}</span>
+          </div>
+          <Button
+            className={s.button}
+            onClick={onCheckout}
+          >
+            Перейти к оформлению
+          </Button>
+        </div>
       </div>
-      <div className={cx(s.bottom, classNameBottom)}>
+      <div className={cx(s.bottom, s.mobile, classNameBottom)}>
         <div className={s.sum}>
           <h3 className={s.sumHeader}>Общая стоимость</h3>
           <span className={s.sumAmount}>{prettyPrice(sum)}</span>
         </div>
         <Button
-          href="/products"
           className={s.button}
+          onClick={onCheckout}
         >
           Перейти к оформлению
         </Button>
