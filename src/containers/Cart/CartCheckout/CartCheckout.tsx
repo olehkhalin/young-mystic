@@ -1,13 +1,13 @@
 import React from 'react';
 import cx from 'classnames';
-import { useReactiveVar } from '@apollo/client';
 
+import { useReactiveVar } from '@apollo/client';
 import { cartItemsVar } from '@cache';
 import { useCartItemsListQuery } from '@graphql';
+import { prettyPrice } from '@utils/helpers';
+import { Button } from '@ui/Button';
 import { CheckoutCard } from '@components/basket/CheckoutCard';
 
-import { prettyPrice } from '@functions';
-import { Button } from '@ui/Button';
 import s from './CartCheckout.module.sass';
 
 type CartCheckoutProps = {

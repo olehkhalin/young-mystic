@@ -29,6 +29,9 @@
       "@api/*": [
         "api/*"
       ],
+      "@utils/*": [
+        "utils/*"
+      ],
       "@public/*": [
         "../public/*"
       ],
@@ -46,12 +49,6 @@
       ],
       "@cache": [
         "cache.ts"
-      ],
-      "@functions": [
-        "functions.ts"
-      ],
-      "@constants": [
-        "constants.ts"
       ],
       "@animations/*": [
         "animations/*"

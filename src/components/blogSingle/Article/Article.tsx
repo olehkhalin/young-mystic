@@ -1,11 +1,11 @@
 import React from 'react';
 import cx from 'classnames';
 
+import { prettyDate } from '@utils/helpers';
 import { Separator } from '@ui/Separator';
 import { Tag } from '@ui/Tag';
 import { PageTitle } from '@components/common/PageTitle';
 import { ContentBlock } from '@components/common/ContentBlock';
-import { prettyDate } from '../../../functions';
 
 import s from './Article.module.sass';
 

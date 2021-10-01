@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-import { prettyPrice } from '@functions';
+import { prettyPrice } from '@utils/helpers';
 
 import s from './CheckoutCard.module.sass';
 

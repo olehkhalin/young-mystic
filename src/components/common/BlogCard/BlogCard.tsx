@@ -4,7 +4,7 @@ import Link from 'next/link';
 import cx from 'classnames';
 import Shiitake from 'shiitake';
 
-import { prettyDate } from '@functions';
+import { prettyDate } from '@utils/helpers';
 import { Button } from '@components/ui/Button';
 import { CursorTypes } from '@components/common/CursorProvider';
 import { CursorWrapper } from '@components/common/CursorWrapper';

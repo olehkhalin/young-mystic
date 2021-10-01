@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
-import { useBlogListQuery } from '@graphqlBlog';
 
+import { useBlogListQuery } from '@graphqlBlog';
+import {
+  POSTS_PER_BLOCK,
+  POSTS_PER_PAGE,
+} from '@utils/constants';
 import { Button } from '@ui/Button';
 import { BlogCard } from '@components/common/BlogCard';
 import { Pagination } from '@components/common/Pagination';
 
 import s from './Blog.module.sass';
-import { POSTS_PER_BLOCK, POSTS_PER_PAGE } from '../../defaults';
 
 type ProductsProps = {
   className?: string

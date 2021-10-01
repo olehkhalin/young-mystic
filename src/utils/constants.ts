@@ -1,6 +1,3 @@
-// export const PUBLISHER_NAME = 'Young Mystic';
-// export const COMPANY_TWITTER = '@YoungMystic';
-
 export const DEFAULT_SEO = {
   TITLE: 'Young Mystic',
   DESCRIPTION: 'Young Mystic Description',
@@ -16,3 +13,8 @@ export const DEFAULT_SEO = {
   },
   WEBSITE_URL: 'https://young-mystic.vercel.app/',
 };
+
+export const PRODUCTS_PER_PAGE = 12;
+export const PRODUCTS_PER_BLOCK = 4;
+export const POSTS_PER_PAGE = 7;
+export const POSTS_PER_BLOCK = 3;

@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import cx from 'classnames';
 
-import { prettyPrice } from '@functions';
+import { prettyPrice } from '@utils/helpers';
 import { PlusMinusInput } from '@ui/PlusMinusInput';
 import { Button } from '@ui/Button';
 

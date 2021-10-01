@@ -4,7 +4,7 @@ import { NextSeo, BreadcrumbJsonLd, ArticleJsonLd } from 'next-seo';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { useBlogInfoQuery } from '@graphqlBlog';
-import { DEFAULT_SEO } from '@constants';
+import { DEFAULT_SEO } from '@utils/constants';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';

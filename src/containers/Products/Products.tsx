@@ -3,10 +3,13 @@ import { useRouter } from 'next/router';
 import cx from 'classnames';
 
 import { useProductsListQuery } from '@graphql';
+import {
+  PRODUCTS_PER_PAGE,
+  PRODUCTS_PER_BLOCK,
+} from '@utils/constants';
 import { Button } from '@ui/Button';
 import { Pagination } from '@components/common/Pagination';
 import { ProductCard } from '@components/common/ProductCard';
-import { PRODUCTS_PER_PAGE, PRODUCTS_PER_BLOCK } from '../../defaults';
 
 import s from './Products.module.sass';
 
