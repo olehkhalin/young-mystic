@@ -7,13 +7,14 @@ import {
 } from '@apollo/client';
 import { RetryLink } from '@apollo/client/link/retry';
 import { cache } from '@cache';
+import { BLOG_API_URL, ECOMMERCE_API_URL } from '@utils/constants';
 
 let globalApolloClient: ApolloClient<NormalizedCacheObject>;
 
 const link = new RetryLink().split(
   (operation) => operation.getContext().ghost,
-  new HttpLink({ uri: 'http://46.101.240.211:4000' }),
-  new HttpLink({ uri: process.env.NEXT_PUBLIC_APOLLO_CLIENT_ENDPOINT }),
+  new HttpLink({ uri: BLOG_API_URL }),
+  new HttpLink({ uri: ECOMMERCE_API_URL }),
 );
 
 function createApolloClient() {
