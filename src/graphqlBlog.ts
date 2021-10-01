@@ -14,117 +14,11 @@ export type Scalars = {
   Float: number;
 };
 
-export type GhostQuery = {
-  __typename?: 'GhostQuery';
-  /** https://ghost.org/docs/api/v3/content/#authors */
-  author?: Maybe<GhostAuthor>;
-  /** https://ghost.org/docs/api/v3/content/#authors */
-  authors?: Maybe<GhostAuthorsConnection>;
-  /** https://ghost.org/docs/api/v3/content/#pages */
-  page?: Maybe<GhostPage>;
-  /** https://ghost.org/docs/api/v3/content/#pages */
-  pages?: Maybe<GhostPagesConnection>;
-  /** https://ghost.org/docs/api/v3/content/#posts */
-  post?: Maybe<GhostPost>;
-  /** https://ghost.org/docs/api/v3/content/#posts */
-  posts?: Maybe<GhostPostsConnection>;
-  /** https://ghost.org/docs/api/v3/content/#settings */
-  settings?: Maybe<GhostSettings>;
-  /** https://ghost.org/docs/api/v3/content/#tags */
-  tag?: Maybe<GhostTag>;
-  /** https://ghost.org/docs/api/v3/content/#tags */
-  tags?: Maybe<GhostTagsConnection>;
-};
-
-
-export type GhostQueryAuthorArgs = {
-  fields?: Maybe<Array<Maybe<Scalars['String']>>>;
-  id?: Maybe<Scalars['String']>;
-  filter?: Maybe<Array<Maybe<Scalars['String']>>>;
-  formats?: Maybe<Array<Maybe<GhostFormat>>>;
-  include?: Maybe<Array<Maybe<Scalars['String']>>>;
-  slug?: Maybe<Scalars['String']>;
-};
-
-
-export type GhostQueryAuthorsArgs = {
-  fields?: Maybe<Array<Maybe<Scalars['String']>>>;
-  filter?: Maybe<Array<Maybe<Scalars['String']>>>;
-  formats?: Maybe<Array<Maybe<GhostFormat>>>;
-  include?: Maybe<Array<Maybe<Scalars['String']>>>;
-  limit?: Maybe<Scalars['Int']>;
-  order?: Maybe<Scalars['String']>;
-  page?: Maybe<Scalars['Int']>;
-};
-
-
-export type GhostQueryPageArgs = {
-  fields?: Maybe<Array<Maybe<Scalars['String']>>>;
-  id?: Maybe<Scalars['String']>;
-  filter?: Maybe<Array<Maybe<Scalars['String']>>>;
-  formats?: Maybe<Array<Maybe<GhostFormat>>>;
-  include?: Maybe<Array<Maybe<Scalars['String']>>>;
-  slug?: Maybe<Scalars['String']>;
-};
-
-
-export type GhostQueryPagesArgs = {
-  fields?: Maybe<Array<Maybe<Scalars['String']>>>;
-  filter?: Maybe<Array<Maybe<Scalars['String']>>>;
-  formats?: Maybe<Array<Maybe<GhostFormat>>>;
-  include?: Maybe<Array<Maybe<Scalars['String']>>>;
-  limit?: Maybe<Scalars['Int']>;
-  order?: Maybe<Scalars['String']>;
-  page?: Maybe<Scalars['Int']>;
-};
-
-
-export type GhostQueryPostArgs = {
-  fields?: Maybe<Array<Maybe<Scalars['String']>>>;
-  id?: Maybe<Scalars['String']>;
-  filter?: Maybe<Array<Maybe<Scalars['String']>>>;
-  formats?: Maybe<Array<Maybe<GhostFormat>>>;
-  include?: Maybe<Array<Maybe<Scalars['String']>>>;
-  slug?: Maybe<Scalars['String']>;
-};
-
-
-export type GhostQueryPostsArgs = {
-  fields?: Maybe<Array<Maybe<Scalars['String']>>>;
-  filter?: Maybe<Array<Maybe<Scalars['String']>>>;
-  formats?: Maybe<Array<Maybe<GhostFormat>>>;
-  include?: Maybe<Array<Maybe<Scalars['String']>>>;
-  limit?: Maybe<Scalars['Int']>;
-  order?: Maybe<Scalars['String']>;
-  page?: Maybe<Scalars['Int']>;
-};
-
-
-export type GhostQueryTagArgs = {
-  fields?: Maybe<Array<Maybe<Scalars['String']>>>;
-  id?: Maybe<Scalars['String']>;
-  filter?: Maybe<Array<Maybe<Scalars['String']>>>;
-  formats?: Maybe<Array<Maybe<GhostFormat>>>;
-  include?: Maybe<Array<Maybe<Scalars['String']>>>;
-  slug?: Maybe<Scalars['String']>;
-};
-
-
-export type GhostQueryTagsArgs = {
-  fields?: Maybe<Array<Maybe<Scalars['String']>>>;
-  filter?: Maybe<Array<Maybe<Scalars['String']>>>;
-  formats?: Maybe<Array<Maybe<GhostFormat>>>;
-  include?: Maybe<Array<Maybe<Scalars['String']>>>;
-  limit?: Maybe<Scalars['Int']>;
-  order?: Maybe<Scalars['String']>;
-  page?: Maybe<Scalars['Int']>;
-};
-
 export type GhostAuthor = {
   __typename?: 'GhostAuthor';
   bio?: Maybe<Scalars['String']>;
-  coverImage?: Maybe<Scalars['String']>;
   count?: Maybe<GhostPostsCount>;
+  coverImage?: Maybe<Scalars['String']>;
   facebook?: Maybe<Scalars['String']>;
   id: Scalars['String'];
   location?: Maybe<Scalars['String']>;
@@ -137,16 +31,6 @@ export type GhostAuthor = {
   url?: Maybe<Scalars['String']>;
   website?: Maybe<Scalars['String']>;
 };
-
-export type GhostPostsCount = {
-  __typename?: 'GhostPostsCount';
-  posts?: Maybe<Scalars['Int']>;
-};
-
-export enum GhostFormat {
-  Html = 'html',
-  Plaintext = 'plaintext'
-}
 
 export type GhostAuthorsConnection = {
   __typename?: 'GhostAuthorsConnection';
@@ -161,26 +45,21 @@ export type GhostAuthorsEdge = {
   node?: Maybe<GhostAuthor>;
 };
 
+export enum GhostFormat {
+  Html = 'html',
+  Plaintext = 'plaintext'
+}
+
 export type GhostMeta = {
   __typename?: 'GhostMeta';
   /** https://ghost.org/docs/content-api/#pagination */
   pagination?: Maybe<GhostPagination>;
 };
 
-export type GhostPagination = {
-  __typename?: 'GhostPagination';
-  limit?: Maybe<Scalars['Int']>;
-  next?: Maybe<Scalars['Int']>;
-  page?: Maybe<Scalars['Int']>;
-  pages?: Maybe<Scalars['Int']>;
-  prev?: Maybe<Scalars['Int']>;
-  total?: Maybe<Scalars['Int']>;
-};
-
-export type GhostPageInfo = {
-  __typename?: 'GhostPageInfo';
-  hasNextPage: Scalars['Boolean'];
-  hasPreviousPage: Scalars['Boolean'];
+export type GhostNavigation = {
+  __typename?: 'GhostNavigation';
+  label?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
 };
 
 export type GhostPage = {
@@ -222,28 +101,10 @@ export type GhostPage = {
   visibility?: Maybe<Scalars['String']>;
 };
 
-export type GhostTag = {
-  __typename?: 'GhostTag';
-  accentColor?: Maybe<Scalars['String']>;
-  canonicalUrl?: Maybe<Scalars['String']>;
-  codeinjectionFoot?: Maybe<Scalars['String']>;
-  codeinjectionHead?: Maybe<Scalars['String']>;
-  count?: Maybe<GhostPostsCount>;
-  description?: Maybe<Scalars['String']>;
-  featureImage?: Maybe<Scalars['String']>;
-  id: Scalars['String'];
-  metaDescription?: Maybe<Scalars['String']>;
-  metaTitle?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  ogDescription?: Maybe<Scalars['String']>;
-  ogImage?: Maybe<Scalars['String']>;
-  ogTitle?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
-  twitterDescription?: Maybe<Scalars['String']>;
-  twitterImage?: Maybe<Scalars['String']>;
-  twitterTitle?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-  visibility?: Maybe<Scalars['String']>;
+export type GhostPageInfo = {
+  __typename?: 'GhostPageInfo';
+  hasNextPage: Scalars['Boolean'];
+  hasPreviousPage: Scalars['Boolean'];
 };
 
 export type GhostPagesConnection = {
@@ -257,6 +118,16 @@ export type GhostPagesEdge = {
   __typename?: 'GhostPagesEdge';
   cursor?: Maybe<Scalars['String']>;
   node?: Maybe<GhostPage>;
+};
+
+export type GhostPagination = {
+  __typename?: 'GhostPagination';
+  limit?: Maybe<Scalars['Int']>;
+  next?: Maybe<Scalars['Int']>;
+  page?: Maybe<Scalars['Int']>;
+  pages?: Maybe<Scalars['Int']>;
+  prev?: Maybe<Scalars['Int']>;
+  total?: Maybe<Scalars['Int']>;
 };
 
 export type GhostPost = {
@@ -306,10 +177,121 @@ export type GhostPostsConnection = {
   pageInfo: GhostPageInfo;
 };
 
+export type GhostPostsCount = {
+  __typename?: 'GhostPostsCount';
+  posts?: Maybe<Scalars['Int']>;
+};
+
 export type GhostPostsEdge = {
   __typename?: 'GhostPostsEdge';
   cursor?: Maybe<Scalars['String']>;
   node?: Maybe<GhostPost>;
+};
+
+export type GhostQuery = {
+  __typename?: 'GhostQuery';
+  /** https://ghost.org/docs/api/v3/content/#authors */
+  author?: Maybe<GhostAuthor>;
+  /** https://ghost.org/docs/api/v3/content/#authors */
+  authors?: Maybe<GhostAuthorsConnection>;
+  /** https://ghost.org/docs/api/v3/content/#pages */
+  page?: Maybe<GhostPage>;
+  /** https://ghost.org/docs/api/v3/content/#pages */
+  pages?: Maybe<GhostPagesConnection>;
+  /** https://ghost.org/docs/api/v3/content/#posts */
+  post?: Maybe<GhostPost>;
+  /** https://ghost.org/docs/api/v3/content/#posts */
+  posts?: Maybe<GhostPostsConnection>;
+  /** https://ghost.org/docs/api/v3/content/#settings */
+  settings?: Maybe<GhostSettings>;
+  /** https://ghost.org/docs/api/v3/content/#tags */
+  tag?: Maybe<GhostTag>;
+  /** https://ghost.org/docs/api/v3/content/#tags */
+  tags?: Maybe<GhostTagsConnection>;
+};
+
+
+export type GhostQueryAuthorArgs = {
+  fields?: Maybe<Array<Maybe<Scalars['String']>>>;
+  filter?: Maybe<Array<Maybe<Scalars['String']>>>;
+  formats?: Maybe<Array<Maybe<GhostFormat>>>;
+  id?: Maybe<Scalars['String']>;
+  include?: Maybe<Array<Maybe<Scalars['String']>>>;
+  slug?: Maybe<Scalars['String']>;
+};
+
+
+export type GhostQueryAuthorsArgs = {
+  fields?: Maybe<Array<Maybe<Scalars['String']>>>;
+  filter?: Maybe<Array<Maybe<Scalars['String']>>>;
+  formats?: Maybe<Array<Maybe<GhostFormat>>>;
+  include?: Maybe<Array<Maybe<Scalars['String']>>>;
+  limit?: Maybe<Scalars['Int']>;
+  order?: Maybe<Scalars['String']>;
+  page?: Maybe<Scalars['Int']>;
+};
+
+
+export type GhostQueryPageArgs = {
+  fields?: Maybe<Array<Maybe<Scalars['String']>>>;
+  filter?: Maybe<Array<Maybe<Scalars['String']>>>;
+  formats?: Maybe<Array<Maybe<GhostFormat>>>;
+  id?: Maybe<Scalars['String']>;
+  include?: Maybe<Array<Maybe<Scalars['String']>>>;
+  slug?: Maybe<Scalars['String']>;
+};
+
+
+export type GhostQueryPagesArgs = {
+  fields?: Maybe<Array<Maybe<Scalars['String']>>>;
+  filter?: Maybe<Array<Maybe<Scalars['String']>>>;
+  formats?: Maybe<Array<Maybe<GhostFormat>>>;
+  include?: Maybe<Array<Maybe<Scalars['String']>>>;
+  limit?: Maybe<Scalars['Int']>;
+  order?: Maybe<Scalars['String']>;
+  page?: Maybe<Scalars['Int']>;
+};
+
+
+export type GhostQueryPostArgs = {
+  fields?: Maybe<Array<Maybe<Scalars['String']>>>;
+  filter?: Maybe<Array<Maybe<Scalars['String']>>>;
+  formats?: Maybe<Array<Maybe<GhostFormat>>>;
+  id?: Maybe<Scalars['String']>;
+  include?: Maybe<Array<Maybe<Scalars['String']>>>;
+  slug?: Maybe<Scalars['String']>;
+};
+
+
+export type GhostQueryPostsArgs = {
+  fields?: Maybe<Array<Maybe<Scalars['String']>>>;
+  filter?: Maybe<Array<Maybe<Scalars['String']>>>;
+  formats?: Maybe<Array<Maybe<GhostFormat>>>;
+  include?: Maybe<Array<Maybe<Scalars['String']>>>;
+  limit?: Maybe<Scalars['Int']>;
+  order?: Maybe<Scalars['String']>;
+  page?: Maybe<Scalars['Int']>;
+};
+
+
+export type GhostQueryTagArgs = {
+  fields?: Maybe<Array<Maybe<Scalars['String']>>>;
+  filter?: Maybe<Array<Maybe<Scalars['String']>>>;
+  formats?: Maybe<Array<Maybe<GhostFormat>>>;
+  id?: Maybe<Scalars['String']>;
+  include?: Maybe<Array<Maybe<Scalars['String']>>>;
+  slug?: Maybe<Scalars['String']>;
+};
+
+
+export type GhostQueryTagsArgs = {
+  fields?: Maybe<Array<Maybe<Scalars['String']>>>;
+  filter?: Maybe<Array<Maybe<Scalars['String']>>>;
+  formats?: Maybe<Array<Maybe<GhostFormat>>>;
+  include?: Maybe<Array<Maybe<Scalars['String']>>>;
+  limit?: Maybe<Scalars['Int']>;
+  order?: Maybe<Scalars['String']>;
+  page?: Maybe<Scalars['Int']>;
 };
 
 export type GhostSettings = {
@@ -339,10 +321,28 @@ export type GhostSettings = {
   url?: Maybe<Scalars['String']>;
 };
 
-export type GhostNavigation = {
-  __typename?: 'GhostNavigation';
-  label?: Maybe<Scalars['String']>;
+export type GhostTag = {
+  __typename?: 'GhostTag';
+  accentColor?: Maybe<Scalars['String']>;
+  canonicalUrl?: Maybe<Scalars['String']>;
+  codeinjectionFoot?: Maybe<Scalars['String']>;
+  codeinjectionHead?: Maybe<Scalars['String']>;
+  count?: Maybe<GhostPostsCount>;
+  description?: Maybe<Scalars['String']>;
+  featureImage?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  metaDescription?: Maybe<Scalars['String']>;
+  metaTitle?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  ogDescription?: Maybe<Scalars['String']>;
+  ogImage?: Maybe<Scalars['String']>;
+  ogTitle?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
+  twitterDescription?: Maybe<Scalars['String']>;
+  twitterImage?: Maybe<Scalars['String']>;
+  twitterTitle?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
+  visibility?: Maybe<Scalars['String']>;
 };
 
 export type GhostTagsConnection = {
@@ -365,82 +365,26 @@ export type BlogListQueryVariables = Exact<{
 }>;
 
 
-export type BlogListQuery = (
-  { __typename?: 'GhostQuery' }
-  & { posts?: Maybe<(
-    { __typename?: 'GhostPostsConnection' }
-    & { meta?: Maybe<(
-      { __typename?: 'GhostMeta' }
-      & { pagination?: Maybe<(
-        { __typename?: 'GhostPagination' }
-        & Pick<GhostPagination, 'total'>
-      )> }
-    )>, edges?: Maybe<Array<Maybe<(
-      { __typename?: 'GhostPostsEdge' }
-      & { node?: Maybe<(
-        { __typename?: 'GhostPost' }
-        & Pick<GhostPost, 'id' | 'slug' | 'createdAt' | 'title' | 'excerpt' | 'featureImage'>
-        & { primaryTag?: Maybe<(
-          { __typename?: 'GhostTag' }
-          & Pick<GhostTag, 'slug' | 'name'>
-        )> }
-      )> }
-    )>>> }
-  )> }
-);
+export type BlogListQuery = { __typename?: 'GhostQuery', posts?: Maybe<{ __typename?: 'GhostPostsConnection', meta?: Maybe<{ __typename?: 'GhostMeta', pagination?: Maybe<{ __typename?: 'GhostPagination', total?: Maybe<number> }> }>, edges?: Maybe<Array<Maybe<{ __typename?: 'GhostPostsEdge', node?: Maybe<{ __typename?: 'GhostPost', id: string, slug?: Maybe<string>, createdAt?: Maybe<string>, title?: Maybe<string>, excerpt?: Maybe<string>, featureImage?: Maybe<string>, primaryTag?: Maybe<{ __typename?: 'GhostTag', slug?: Maybe<string>, name?: Maybe<string> }> }> }>>> }> };
 
 export type BlogInfoQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-export type BlogInfoQuery = (
-  { __typename?: 'GhostQuery' }
-  & { post?: Maybe<(
-    { __typename?: 'GhostPost' }
-    & Pick<GhostPost, 'featureImage' | 'title' | 'excerpt' | 'createdAt' | 'html' | 'metaTitle' | 'metaDescription' | 'canonicalUrl' | 'ogTitle' | 'ogDescription' | 'ogImage' | 'publishedAt' | 'updatedAt'>
-    & { primaryTag?: Maybe<(
-      { __typename?: 'GhostTag' }
-      & Pick<GhostTag, 'slug' | 'name'>
-    )>, tags?: Maybe<Array<Maybe<(
-      { __typename?: 'GhostTag' }
-      & Pick<GhostTag, 'id' | 'name' | 'visibility'>
-    )>>>, primaryAuthor?: Maybe<(
-      { __typename?: 'GhostAuthor' }
-      & Pick<GhostAuthor, 'name' | 'facebook' | 'twitter'>
-    )> }
-  )> }
-);
+export type BlogInfoQuery = { __typename?: 'GhostQuery', post?: Maybe<{ __typename?: 'GhostPost', featureImage?: Maybe<string>, title?: Maybe<string>, excerpt?: Maybe<string>, createdAt?: Maybe<string>, html?: Maybe<string>, metaTitle?: Maybe<string>, metaDescription?: Maybe<string>, canonicalUrl?: Maybe<string>, ogTitle?: Maybe<string>, ogDescription?: Maybe<string>, ogImage?: Maybe<string>, publishedAt?: Maybe<string>, updatedAt?: Maybe<string>, primaryTag?: Maybe<{ __typename?: 'GhostTag', slug?: Maybe<string>, name?: Maybe<string> }>, tags?: Maybe<Array<Maybe<{ __typename?: 'GhostTag', id: string, name?: Maybe<string>, visibility?: Maybe<string> }>>>, primaryAuthor?: Maybe<{ __typename?: 'GhostAuthor', name?: Maybe<string>, facebook?: Maybe<string>, twitter?: Maybe<string> }> }> };
 
 export type BlogCategoriesListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type BlogCategoriesListQuery = (
-  { __typename?: 'GhostQuery' }
-  & { tags?: Maybe<(
-    { __typename?: 'GhostTagsConnection' }
-    & { edges?: Maybe<Array<Maybe<(
-      { __typename?: 'GhostTagsEdge' }
-      & { node?: Maybe<(
-        { __typename?: 'GhostTag' }
-        & Pick<GhostTag, 'id' | 'slug' | 'name' | 'visibility'>
-      )> }
-    )>>> }
-  )> }
-);
+export type BlogCategoriesListQuery = { __typename?: 'GhostQuery', tags?: Maybe<{ __typename?: 'GhostTagsConnection', edges?: Maybe<Array<Maybe<{ __typename?: 'GhostTagsEdge', node?: Maybe<{ __typename?: 'GhostTag', id: string, slug?: Maybe<string>, name?: Maybe<string>, visibility?: Maybe<string> }> }>>> }> };
 
 export type BlogCategoryInfoQueryVariables = Exact<{
   slug?: Maybe<Scalars['String']>;
 }>;
 
 
-export type BlogCategoryInfoQuery = (
-  { __typename?: 'GhostQuery' }
-  & { tag?: Maybe<(
-    { __typename?: 'GhostTag' }
-    & Pick<GhostTag, 'slug' | 'name' | 'description' | 'featureImage'>
-  )> }
-);
+export type BlogCategoryInfoQuery = { __typename?: 'GhostQuery', tag?: Maybe<{ __typename?: 'GhostTag', slug?: Maybe<string>, name?: Maybe<string>, description?: Maybe<string>, featureImage?: Maybe<string> }> };
 
 
 export const BlogListDocument = gql`

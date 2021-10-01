@@ -14,11 +14,50 @@ export type Scalars = {
   Float: number;
 };
 
+export type Category = {
+  __typename?: 'Category';
+  description?: Maybe<Scalars['String']>;
+  image: Scalars['String'];
+  slug: Scalars['String'];
+  title: Scalars['String'];
+};
+
+export type Content = {
+  __typename?: 'Content';
+  content: Scalars['String'];
+  id: Scalars['ID'];
+  title: Scalars['String'];
+};
+
+export type Product = {
+  __typename?: 'Product';
+  capacity?: Maybe<Scalars['Int']>;
+  category: Category;
+  content: Array<Content>;
+  description: Scalars['String'];
+  firm?: Maybe<Scalars['String']>;
+  image: Scalars['String'];
+  price: Scalars['Int'];
+  slug: Scalars['String'];
+  title: Scalars['String'];
+};
+
+export type ProductsResult = {
+  __typename?: 'ProductsResult';
+  count: Scalars['Int'];
+  data: Array<Product>;
+};
+
 export type Query = {
   __typename?: 'Query';
+  category?: Maybe<Category>;
   product?: Maybe<Product>;
   products?: Maybe<ProductsResult>;
-  category?: Maybe<Category>;
+};
+
+
+export type QueryCategoryArgs = {
+  slug: Scalars['String'];
 };
 
 
@@ -28,49 +67,10 @@ export type QueryProductArgs = {
 
 
 export type QueryProductsArgs = {
-  offset?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
   category?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
   slugs?: Maybe<Array<Scalars['String']>>;
-};
-
-
-export type QueryCategoryArgs = {
-  slug: Scalars['String'];
-};
-
-export type ProductsResult = {
-  __typename?: 'ProductsResult';
-  count: Scalars['Int'];
-  data: Array<Product>;
-};
-
-export type Product = {
-  __typename?: 'Product';
-  slug: Scalars['String'];
-  title: Scalars['String'];
-  description: Scalars['String'];
-  firm?: Maybe<Scalars['String']>;
-  capacity?: Maybe<Scalars['Int']>;
-  price: Scalars['Int'];
-  image: Scalars['String'];
-  content: Array<Content>;
-  category: Category;
-};
-
-export type Category = {
-  __typename?: 'Category';
-  slug: Scalars['String'];
-  title: Scalars['String'];
-  description?: Maybe<Scalars['String']>;
-  image: Scalars['String'];
-};
-
-export type Content = {
-  __typename?: 'Content';
-  id: Scalars['ID'];
-  title: Scalars['String'];
-  content: Scalars['String'];
 };
 
 export type CartItemsListQueryVariables = Exact<{
@@ -78,16 +78,7 @@ export type CartItemsListQueryVariables = Exact<{
 }>;
 
 
-export type CartItemsListQuery = (
-  { __typename?: 'Query' }
-  & { products?: Maybe<(
-    { __typename?: 'ProductsResult' }
-    & { data: Array<(
-      { __typename?: 'Product' }
-      & Pick<Product, 'slug' | 'title' | 'description' | 'image' | 'price' | 'firm' | 'capacity'>
-    )> }
-  )> }
-);
+export type CartItemsListQuery = { __typename?: 'Query', products?: Maybe<{ __typename?: 'ProductsResult', data: Array<{ __typename?: 'Product', slug: string, title: string, description: string, image: string, price: number, firm?: Maybe<string>, capacity?: Maybe<number> }> }> };
 
 export type ProductsListQueryVariables = Exact<{
   offset?: Maybe<Scalars['Int']>;
@@ -96,54 +87,21 @@ export type ProductsListQueryVariables = Exact<{
 }>;
 
 
-export type ProductsListQuery = (
-  { __typename?: 'Query' }
-  & { products?: Maybe<(
-    { __typename?: 'ProductsResult' }
-    & Pick<ProductsResult, 'count'>
-    & { data: Array<(
-      { __typename?: 'Product' }
-      & Pick<Product, 'slug' | 'title' | 'description' | 'image' | 'price'>
-      & { category: (
-        { __typename?: 'Category' }
-        & Pick<Category, 'slug' | 'title'>
-      ) }
-    )> }
-  )> }
-);
+export type ProductsListQuery = { __typename?: 'Query', products?: Maybe<{ __typename?: 'ProductsResult', count: number, data: Array<{ __typename?: 'Product', slug: string, title: string, description: string, image: string, price: number, category: { __typename?: 'Category', slug: string, title: string } }> }> };
 
 export type ProductInfoQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-export type ProductInfoQuery = (
-  { __typename?: 'Query' }
-  & { product?: Maybe<(
-    { __typename?: 'Product' }
-    & Pick<Product, 'title' | 'description' | 'firm' | 'capacity' | 'price' | 'image'>
-    & { content: Array<(
-      { __typename?: 'Content' }
-      & Pick<Content, 'title' | 'content'>
-    )>, category: (
-      { __typename?: 'Category' }
-      & Pick<Category, 'slug' | 'title'>
-    ) }
-  )> }
-);
+export type ProductInfoQuery = { __typename?: 'Query', product?: Maybe<{ __typename?: 'Product', title: string, description: string, firm?: Maybe<string>, capacity?: Maybe<number>, price: number, image: string, content: Array<{ __typename?: 'Content', title: string, content: string }>, category: { __typename?: 'Category', slug: string, title: string } }> };
 
 export type CategoryInfoQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-export type CategoryInfoQuery = (
-  { __typename?: 'Query' }
-  & { category?: Maybe<(
-    { __typename?: 'Category' }
-    & Pick<Category, 'title' | 'description' | 'image'>
-  )> }
-);
+export type CategoryInfoQuery = { __typename?: 'Query', category?: Maybe<{ __typename?: 'Category', title: string, description?: Maybe<string>, image: string }> };
 
 
 export const CartItemsListDocument = gql`

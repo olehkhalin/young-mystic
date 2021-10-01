@@ -18,3 +18,6 @@ export const PRODUCTS_PER_PAGE = 12;
 export const PRODUCTS_PER_BLOCK = 4;
 export const POSTS_PER_PAGE = 7;
 export const POSTS_PER_BLOCK = 3;
+
+export const BLOG_API_URL = process.env.NEXT_PUBLIC_BLOG_API_URL;
+export const ECOMMERCE_API_URL = process.env.NEXT_PUBLIC_ECOMMERCE_API_URL;
