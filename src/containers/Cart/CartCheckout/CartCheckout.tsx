@@ -11,11 +11,13 @@ import { Button } from '@ui/Button';
 import s from './CartCheckout.module.sass';
 
 type CartCheckoutProps = {
+  onCheckout: () => void
   className?: string
   classNameBottom?: string
 };
 
 export const CartCheckout: React.FC<CartCheckoutProps> = ({
+  onCheckout,
   className,
   classNameBottom,
 }) => {
@@ -67,8 +69,8 @@ export const CartCheckout: React.FC<CartCheckoutProps> = ({
             <span className={s.sumAmount}>{prettyPrice(sum)}</span>
           </div>
           <Button
-            href="/products"
             className={s.button}
+            onClick={onCheckout}
           >
             Перейти к оформлению
           </Button>
@@ -80,8 +82,8 @@ export const CartCheckout: React.FC<CartCheckoutProps> = ({
           <span className={s.sumAmount}>{prettyPrice(sum)}</span>
         </div>
         <Button
-          href="/products"
           className={s.button}
+          onClick={onCheckout}
         >
           Перейти к оформлению
         </Button>

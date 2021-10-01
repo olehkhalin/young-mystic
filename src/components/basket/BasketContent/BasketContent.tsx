@@ -7,10 +7,12 @@ import { CartCheckout } from '@containers/Cart/CartCheckout';
 import s from './BasketContent.module.sass';
 
 type BasketContentProps = {
+  onCheckout: () => void
   className?: string
 };
 
 export const BasketContent: React.FC<BasketContentProps> = ({
+  onCheckout,
   className,
 }) => (
   <div className={cx(s.root, className)}>
@@ -25,6 +27,7 @@ export const BasketContent: React.FC<BasketContentProps> = ({
       </div>
     </div>
     <CartCheckout
+      onCheckout={onCheckout}
       className={s.checkout}
       classNameBottom={s.bottom}
     />
