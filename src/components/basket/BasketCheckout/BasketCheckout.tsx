@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import cx from 'classnames';
 import {
   Field,
   withTypes,
 } from 'react-final-form';
 import { OnChange } from 'react-final-form-listeners';
+import ApiNovaPochta from 'yz-react-deliveri-newpochta';
 
 import { RadioButton } from '@ui/RadioButton';
 import { Input } from '@ui/Input';
@@ -27,10 +28,29 @@ type BasketCheckoutProps = {
   className?: string
 };
 
+const getCities = () => {
+
+  const apiKey = '9e9c690f7a49f1426cb3384bc7a5a528';
+
+  const cb = (data) => {
+    console.log(data);
+    // тут должен быть обработчик полученого результата
+  };
+
+  const np = new ApiNovaPochta;
+  np.getWarehouses(cb, apiKey, { 'CityName': 'Киев' });
+
+};
+
+
 export const BasketCheckout: React.FC<BasketCheckoutProps> = ({
   className,
 }) => {
   const { Form } = withTypes<FormValues>();
+
+  useEffect(() => {
+    getCities();
+  }, []);
 
   return (
     <div className={s.root}>

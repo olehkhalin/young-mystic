@@ -57,14 +57,14 @@ const Basket: React.FC = () => {
     if (checkoutState === CheckoutStage.Empty) {
       return <BasketEmpty className={s.empty} />;
     }
-    if (checkoutState === CheckoutStage.Checkout) {
-      return <BasketCheckout/>;
-    }
-    return (
-      <BasketContent
-        onCheckout={() => setCheckoutState(CheckoutStage.Checkout)}
-      />
-    );
+    // if (checkoutState === CheckoutStage.Checkout) {
+    return <BasketCheckout/>;
+    // }
+    // return (
+    //   <BasketContent
+    //     onCheckout={() => setCheckoutState(CheckoutStage.Checkout)}
+    //   />
+    // );
   }, [checkoutState]);
 
   return (

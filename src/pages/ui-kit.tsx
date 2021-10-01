@@ -67,6 +67,39 @@ const UiKit: React.FC = () => {
                 disabled
               />
             </div>
+            <div className={s.inputs}>
+              <Input
+                className={s.input}
+                type="email"
+                label="Email"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+              />
+              <Input
+                className={s.input}
+                type="email"
+                label="Email"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                error="Enter valid Email"
+              />
+              <Input
+                className={s.input}
+                type="email"
+                label="Email"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                success
+              />
+              <Input
+                className={s.input}
+                type="email"
+                label="Email"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                disabled
+              />
+            </div>
             <Separator className={s.separator} />
             <CheckBox label="Антибактериальное" />
             <CheckBox label="Антивозрастное" checked />
