@@ -30,7 +30,37 @@
   margin-top: 40px
 
 .input
-  margin-bottom: 16px
+  &:not(.lastInput)
+    margin-bottom: 16px
+
+.doubleInputs
+  display: flex
+  max-width: 432px
+
+.halfInput
+  width: calc(50% - 6px)
+  &:last-child
+    margin-left: 12px
+
+.arrayOfCities
+  display: flex
+  margin-top: 4px
+  margin-bottom: 8px
+  margin-left: -8px
+
+.city
+  padding: 8px
+  font-size: 0.875rem
+  color: $primary-100
+  line-height: 1.14
+  position: relative
+  &:after
+    content: ''
+    position: absolute
+    bottom: 5px
+    left: 8px
+    width: calc(100% - 16px)
+    border-bottom: 1px dashed $primary-100
 
 .textarea
   max-width: 432px

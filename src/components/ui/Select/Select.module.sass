@@ -1,121 +1,99 @@
-//@import '@styles/variables'
-//
-//.root
-//  position: relative
-//  font-size: 1rem
-//  font-weight: 700
-//
-//.arrow
-//  position: absolute
-//  top: 14px
-//  right: 16px
-//  transition: all $animationTime
-//  pointer-events: none
-//.open
-//  transform: rotate(180deg)
-//  fill: $yellow
-//
-//.root
-//  \:global(.customSelect__control)
-//    width: 216px
-//    min-height: 32px
-//    padding: 0
-//    background-color: $navy-blue
-//    cursor: pointer
-//    outline: none
-//    box-shadow: none
-//  \:global(.customSelect__option)
-//    display: flex
-//    justify-content: center
-//    background-color: $navy-blue
-//    transition: color $animationTime
-//    padding: 8px 0
-//    color: $white
-//    cursor: pointer
-//    &:active
-//      background-color: $navy-blue
-//    &:first-of-type
-//      padding-top: 6px
-//    &:last-of-type
-//      padding-bottom: 16px
-//  \:global(.customSelect__menu)
-//    padding-top: 0
-//    margin-top: 0
-//    margin-bottom: 0
-//    border: 1px solid $yellow
-//    border-top: none
-//    background-color: $navy-blue
-//    box-shadow: none
-//    border-top-right-radius: 0
-//    border-top-left-radius: 0
-//    &:hover
-//      \:global(.customSelect__option--is-focused)
-//        color: #5b61f6
-//  \:global(.customSelect__menu-list)
-//    padding-top: 0
-//    padding-bottom: 0
-//    border-radius: 4px
-//  \:global(.customSelect__value-container)
-//    padding: 0
-//    min-height: 32px
-//  \:global(.customSelect__single-value)
-//    display: flex
-//    justify-content: center
-//    align-items: center
-//    max-width: 100%
-//    width: 100%
-//    height: 100%
-//    margin-left: 0
-//    margin-right: 0
-//    transition: color $animationTime
-//  \:global(.customSelect__indicators)
-//    display: none
-//
-//.primary
-//  &:hover
-//    .arrow
-//      fill: $yellow
-//  \:global(.customSelect__control)
-//    border: 1px solid $white
-//    &:hover
-//      border-color: $yellow
-//      \:global(.customSelect__single-value)
-//        color: $yellow
-//  \:global(.customSelect__single-value)
-//    color: $white
-//  \:global(.customSelect__control--menu-is-open)
-//    border: 1px solid $yellow
-//    border-bottom: 1px solid $navy-blue
-//    border-bottom-left-radius: 0
-//    border-bottom-right-radius: 0
-//    &:hover
-//      border-bottom: 1px solid $navy-blue
-//    \:global(.customSelect__single-value)
-//      color: $yellow
-//
-//.secondary
-//  .arrow
-//    fill: $yellow
-//  &:hover
-//    .arrow
-//      fill: $blue
-//  \:global(.customSelect__control)
-//    border: 1px solid $yellow
-//    &:hover
-//      border-color: $blue
-//      \:global(.customSelect__single-value)
-//        color: $blue
-//  \:global(.customSelect__single-value)
-//    color: $yellow
-//  \:global(.customSelect__control--menu-is-open)
-//    &:hover
-//      border: 1px solid $yellow
-//  \:global(.customSelect__control--menu-is-open)
-//    border: 1px solid $yellow
-//    border-bottom: 1px solid $navy-blue
-//    border-bottom-left-radius: 0
-//    border-bottom-right-radius: 0
-//    &:hover
-//      border-bottom: 1px solid $navy-blue
-//    \:global(.customSelect__single-value)
-//      color: $yellow
+@import "@styles/variables.module"
+
+.root
+  position: relative
+  width: 100%
+  max-width: 432px
+
+.label
+  position: absolute
+  top: 50%
+  left: 20px
+  transform: translateY(-50%)
+  transform-origin: left 50%
+  transition: top $animationTime, transform $animationTime, color $animationTime
+  color: $primary-100
+
+.focused
+  .label
+    transform: scale(.6)
+    top: 5px
+    color: $primary-40
+
+.root
+  \:global(.customSelect__indicator-separator)
+    display: none
+  \:global(.customSelect__control)
+    cursor: pointer
+    outline: none
+    box-shadow: none
+    min-height: 48px
+    background-color: $light-100
+    border-radius: 8px
+    border: 1px solid $primary-80
+    transition: box-shadow $animationTime
+    &:hover
+      box-shadow: $shadow-input-primary
+      border: 1px solid $primary-80
+  \:global(.customSelect__value-container)
+    padding-top: 0
+    padding-bottom: 0
+    padding-left: 19px
+    margin-top: auto
+    margin-bottom: 6px
+    font-size: 1rem
+    line-height: normal
+    color: $secondary-100
+    font-weight: 400
+  \:global(.customSelect__input-container)
+    margin: 0
+    padding: 0
+    color: $secondary-100
+  \:global(.customSelect__indicators)
+    margin-right: 11px
+  \:global(.customSelect__indicator)
+    > svg
+      transition: transform $animationTime
+      path
+        fill: $primary-100
+        transition: fill $animationTime
+  \:global(.customSelect__control--menu-is-open)
+    \:global(.customSelect__indicator)
+      > svg
+        transform: rotate(180deg)
+        path
+          fill: $secondary-100
+  \:global(.customSelect__menu)
+    padding-top: 0
+    margin-top: 12px
+    margin-bottom: 0
+    border: 1px solid $primary-80
+    background-color: $light-100
+    box-shadow: none
+    border-radius: 8px
+    overflow: hidden
+  \:global(.customSelect__menu-list)
+    padding-top: 0
+    padding-bottom: 0
+  \:global(.customSelect__option)
+    padding: 12px 20px
+    transition: background-color $animationTime
+    color: $secondary-100
+  \:global(.customSelect__option--is-focused)
+    background-color: $primary-20
+  \:global(.customSelect__option--is-selected)
+    background-color: $primary-80
+    color: $light-100
+  \:global(.customSelect__single-value)
+    margin-left: -1px
+  \:global(.customSelect--is-disabled)
+    \:global(.customSelect__control)
+      border-color: $secondary-10
+    \:global(.customSelect__indicator)
+      > svg
+        path
+          fill: $secondary-10
+
+.disabled
+  .label
+    color: $secondary-10

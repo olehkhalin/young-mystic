@@ -1,18 +1,44 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import cx from 'classnames';
 import {
   Field,
   withTypes,
 } from 'react-final-form';
 import { OnChange } from 'react-final-form-listeners';
+// @ts-ignore
 import ApiNovaPochta from 'yz-react-deliveri-newpochta';
 
+import { NOVA_POCHTA_API_KEY } from '@utils/constants';
 import { RadioButton } from '@ui/RadioButton';
 import { Input } from '@ui/Input';
 import { Textarea } from '@ui/Textarea';
 import { Button } from '@ui/Button';
+import { SelectUI } from '@ui/Select';
 
 import s from './BasketCheckout.module.sass';
+
+const WhitelistedCities = [
+  {
+    label: 'Киев',
+    value: '8d5a980d-391c-11dd-90d9-001a92567626',
+  },
+  {
+    label: 'Одесса',
+    value: 'db5c88d0-391c-11dd-90d9-001a92567626',
+  },
+  {
+    label: 'Харьков',
+    value: 'db5c88e0-391c-11dd-90d9-001a92567626',
+  },
+  {
+    label: 'Днепр',
+    value: 'db5c88f0-391c-11dd-90d9-001a92567626',
+  },
+  {
+    label: 'Львов',
+    value: 'db5c88f5-391c-11dd-90d9-001a92567626',
+  },
+];
 
 type FormValues = {
   option: 'post' | 'pickup'
@@ -28,29 +54,60 @@ type BasketCheckoutProps = {
   className?: string
 };
 
-const getCities = () => {
-
-  const apiKey = '9e9c690f7a49f1426cb3384bc7a5a528';
-
-  const cb = (data) => {
-    console.log(data);
-    // тут должен быть обработчик полученого результата
-  };
-
-  const np = new ApiNovaPochta;
-  np.getWarehouses(cb, apiKey, { 'CityName': 'Киев' });
-
-};
-
-
 export const BasketCheckout: React.FC<BasketCheckoutProps> = ({
   className,
 }) => {
   const { Form } = withTypes<FormValues>();
 
+  const [selectedDeliveryOption, setSelectedDeliveryOption] = useState<'department' | 'courier' | 'parcel-machine'>('department');
+
+  const [citiesList, setCitiesList] = useState<{ label: string, value: string }[]>();
+  const [selectedCity, setSelectedCity] = useState<{ label: string, value: string }>();
+  const [warehousesList, setWarehousesList] = useState<{ label: string, value: string, CategoryOfWarehouse: string }[]>();
+
+  const np = new ApiNovaPochta;
+
+  const getCities = useCallback(() => {
+    return np.getCities((data: any) => {
+      const finalArray = data.data.map((el: { DescriptionRu: string, Ref: string }) => ({
+        label: el.DescriptionRu,
+        value: el.Ref,
+      }));
+
+      setCitiesList(finalArray);
+    }, NOVA_POCHTA_API_KEY);
+  }, [np]);
+
+  const getWarehouses = useCallback(() => {
+    if (selectedCity) {
+      return np.getWarehouses((data: any) => {
+        const finalArray = data.data.map((el: { DescriptionRu: string, Ref: string, CategoryOfWarehouse: string }) => ({
+          label: el.DescriptionRu,
+          value: el.Ref,
+          CategoryOfWarehouse: el.CategoryOfWarehouse,
+        }));
+
+        setWarehousesList(finalArray);
+      }, NOVA_POCHTA_API_KEY, { CityName: selectedCity.label, CityRef: selectedCity.value });
+    }
+  }, [np, selectedCity]);
+
   useEffect(() => {
     getCities();
   }, []);
+  useEffect(() => {
+    getWarehouses();
+  }, [selectedCity]);
+
+  const warehousesListFiltered = useMemo(() => {
+    if (selectedDeliveryOption === 'department' || selectedDeliveryOption === 'parcel-machine') {
+      return warehousesList?.filter(el => el.CategoryOfWarehouse === (
+        selectedDeliveryOption === 'department' ? 'Branch' : 'Postomat'
+      ));
+    } else {
+      return [];
+    }
+  }, [warehousesList, selectedDeliveryOption]);
 
   return (
     <div className={s.root}>
@@ -143,11 +200,14 @@ export const BasketCheckout: React.FC<BasketCheckoutProps> = ({
               </Field>
               <OnChange name="post">
                 {() => {
-                  if (values.post !== null) {
+                  if (values.post) {
+                    setSelectedDeliveryOption(values.post);
                     form.mutators.setValue(
                       'option',
                       'post',
                     );
+                  } else {
+                    setSelectedDeliveryOption('department');
                   }
                 }}
               </OnChange>
@@ -171,6 +231,67 @@ export const BasketCheckout: React.FC<BasketCheckoutProps> = ({
                   <h2 className={cx(s.header, s.headerInfo)}>
                     Адреса Доставки
                   </h2>
+                  <SelectUI
+                    label='Выберите город'
+                    options={citiesList}
+                    value={selectedCity}
+                    // @ts-ignore
+                    onChange={(value) => setSelectedCity(value)}
+                  />
+                  <div className={s.arrayOfCities}>
+                    {WhitelistedCities.map((city) => (
+                      <button key={city.value} className={s.city} onClick={() => setSelectedCity(city)}>
+                        {city.label}
+                      </button>
+                    ))}
+                  </div>
+                  {(values.post === 'department' ||  values.post === 'parcel-machine') && (
+                    <SelectUI
+                      label={values.post === 'department' ? 'Отделение' : 'Почтомат'}
+                      options={warehousesListFiltered}
+                      isDisabled={!selectedCity}
+                      className={cx(s.input, s.lastInput)}
+                    />
+                  )}
+                  {values.post === 'courier' && (
+                    <>
+                      <Field
+                        name="street"
+                      >
+                        {({ input }) => (
+                          <Input
+                            {...input}
+                            className={s.input}
+                            label="Улица"
+                          />
+                        )}
+                      </Field>
+                      <div className={s.doubleInputs}>
+                        <Field
+                          name="flat"
+                        >
+                          {({ input }) => (
+                            <Input
+                              {...input}
+                              className={cx(s.input, s.halfInput)}
+                              label="Квартира"
+                            />
+                          )}
+                        </Field>
+                        <Field
+                          name="house"
+                        >
+                          {({ input }) => (
+                            <Input
+                              {...input}
+                              className={cx(s.input, s.halfInput)}
+                              label="Номер дома"
+                            />
+                          )}
+                        </Field>
+                      </div>
+                    </>
+                  )}
                 </>
               )
             }
