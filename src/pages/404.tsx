@@ -1,5 +1,5 @@
 import React from 'react';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Lottie from 'react-lottie';
 
 import { BaseLayout } from '@layouts/BaseLayout';
@@ -52,10 +52,10 @@ const Page404: React.FC = () => (
   </BaseLayout>
 );
 
-export const getStaticProps = async ({ locale }: { locale: string }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['common', 'error-page']),
-  },
-});
+// export const getStaticProps = async ({ locale }: { locale: string }) => ({
+//   props: {
+//     ...await serverSideTranslations(locale, ['common', 'error-page']),
+//   },
+// });
 
 export default Page404;

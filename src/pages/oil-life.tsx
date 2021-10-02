@@ -1,5 +1,5 @@
 import React from 'react';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
@@ -115,10 +115,10 @@ const OilLife: React.FC = () => (
   </BaseLayout>
 );
 
-export const getStaticProps = async ({ locale }: { locale: string }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['common', 'oil-life']),
-  },
-});
+// export const getStaticProps = async ({ locale }: { locale: string }) => ({
+//   props: {
+//     ...await serverSideTranslations(locale, ['common', 'oil-life']),
+//   },
+// });
 
 export default OilLife;

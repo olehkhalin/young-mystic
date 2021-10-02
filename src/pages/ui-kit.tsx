@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import cx from 'classnames';
 
 import { BaseLayout } from '@layouts/BaseLayout';
@@ -485,10 +485,10 @@ const UiKit: React.FC = () => {
   );
 };
 
-export const getStaticProps = async ({ locale }: { locale: string }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['common', 'ui-kit']),
-  },
-});
+// export const getStaticProps = async ({ locale }: { locale: string }) => ({
+//   props: {
+//     ...await serverSideTranslations(locale, ['common', 'ui-kit']),
+//   },
+// });
 
 export default UiKit;

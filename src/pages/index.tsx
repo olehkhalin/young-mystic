@@ -1,5 +1,5 @@
 import React from 'react';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { Products } from '@containers/Products/Products';
 import { Blog } from '@containers/Blog/Blog';
@@ -96,10 +96,10 @@ const Home: React.FC = () => (
   </BaseLayout>
 );
 
-export const getStaticProps = async ({ locale }: { locale: string }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['common', 'home']),
-  },
-});
+// export const getStaticProps = async ({ locale }: { locale: string }) => ({
+//   props: {
+//     ...await serverSideTranslations(locale, ['common', 'home']),
+//   },
+// });
 
 export default Home;

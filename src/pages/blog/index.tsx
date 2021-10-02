@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { useBlogCategoriesListQuery } from '@graphqlBlog';
 import { BaseLayout } from '@layouts/BaseLayout';
@@ -79,10 +79,10 @@ const BlogPage: React.FC = () => {
   );
 };
 
-export const getStaticProps = async ({ locale }: { locale: string }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['common', 'blog']),
-  },
-});
+// export const getStaticProps = async ({ locale }: { locale: string }) => ({
+//   props: {
+//     ...await serverSideTranslations(locale, ['common', 'blog']),
+//   },
+// });
 
 export default BlogPage;
