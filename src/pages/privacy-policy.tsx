@@ -1,5 +1,6 @@
 import React from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
@@ -71,23 +72,27 @@ const navLinks = [
   },
 ];
 
-const PrivacyPolicy: React.FC = () => (
-  <BaseLayout>
-    <Container theme="small">
-      <Row>
-        <BreadCrumbs navLinks={navLinks} />
-        <PageTitle title="Политика конфиденциальности" />
-        <ContentBlock className={s.content}>
-          {CONTENT}
-        </ContentBlock>
-      </Row>
-    </Container>
-  </BaseLayout>
-);
+const PrivacyPolicy: React.FC = () => {
+  const { t } = useTranslation(['privacy-policy']);
 
-export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  return (
+    <BaseLayout>
+      <Container theme="small">
+        <Row>
+          <BreadCrumbs navLinks={navLinks} />
+          <PageTitle title={t('privacy-policy:Политика конфиденциальности')} />
+          <ContentBlock className={s.content}>
+            {CONTENT}
+          </ContentBlock>
+        </Row>
+      </Container>
+    </BaseLayout>
+  );
+};
+
+export const getServerSideProps = async ({ locale }: { locale: string }) => ({
   props: {
-    ...await serverSideTranslations(locale, ['common', 'privacy-policy']),
+    ...(await serverSideTranslations(locale, ['common', 'privacy-policy'])),
   },
 });
 

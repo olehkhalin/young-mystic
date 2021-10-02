@@ -1,5 +1,6 @@
 import React from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 
 import { Products } from '@containers/Products/Products';
 import { BaseLayout } from '@layouts/BaseLayout';
@@ -23,39 +24,43 @@ const navLinks = [
   },
 ];
 
-const ProductsPage: React.FC = () => (
-  <BaseLayout>
-    <Container theme="small">
-      <Row>
-        <BreadCrumbs navLinks={navLinks} className={s.breadCrumbs} />
-        <PageTitle
-          title="Магазин"
-          description="Подзаголовок раздела на одну, две или три строки, рассказывающий о разделе"
-          className={s.title}
-        />
-        <Filters />
-        <Separator className={s.separator} />
-        <Products
-          className={s.products}
-          isPagination
-        />
-        <CTABlock
-          className={s.blockCta}
-          title="Откройте мир масел вместе с Young Living!"
-          description="Станьте частью нашего сообщества и покупайте товары со скидкой 24% от розничной цены"
-          button={{
-            link: '/',
-            label: 'Присоединиться',
-          }}
-        />
-      </Row>
-    </Container>
-  </BaseLayout>
-);
+const ProductsPage: React.FC = () => {
+  const { t } = useTranslation(['products']);
 
-export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  return (
+    <BaseLayout>
+      <Container theme="small">
+        <Row>
+          <BreadCrumbs navLinks={navLinks} className={s.breadCrumbs} />
+          <PageTitle
+            title="Магазин"
+            description={t('products:Подзаголовок раздела на одну, две или три строки, рассказывающий о разделе')}
+            className={s.title}
+          />
+          <Filters />
+          <Separator className={s.separator} />
+          <Products
+            className={s.products}
+            isPagination
+          />
+          <CTABlock
+            className={s.blockCta}
+            title="Откройте мир масел вместе с Young Living!"
+            description="Станьте частью нашего сообщества и покупайте товары со скидкой 24% от розничной цены"
+            button={{
+              link: '/',
+              label: 'Присоединиться',
+            }}
+          />
+        </Row>
+      </Container>
+    </BaseLayout>
+  );
+};
+
+export const getServerSideProps = async ({ locale }: { locale: string }) => ({
   props: {
-    ...await serverSideTranslations(locale, ['common', 'products']),
+    ...(await serverSideTranslations(locale, ['common', 'products'])),
   },
 });
 

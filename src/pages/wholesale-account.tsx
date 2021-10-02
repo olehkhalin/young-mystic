@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
@@ -234,21 +235,25 @@ const navLinks = [
   },
 ];
 
-const WholesaleAccount: React.FC = () => (
-  <BaseLayout>
-    <Container theme="small">
-      <Row>
-        <BreadCrumbs navLinks={navLinks} />
-        <PageTitle title="Присоединяйтесь к сообществу Young Living!" />
-        <ContentWithRefs content={CONTENT} />
-      </Row>
-    </Container>
-  </BaseLayout>
-);
+const WholesaleAccount: React.FC = () => {
+  const { t } = useTranslation(['wholesale-account']);
 
-export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  return (
+    <BaseLayout>
+      <Container theme="small">
+        <Row>
+          <BreadCrumbs navLinks={navLinks} />
+          <PageTitle title={t('wholesale-account:Присоединяйтесь к сообществу Young Living!')} />
+          <ContentWithRefs content={CONTENT} />
+        </Row>
+      </Container>
+    </BaseLayout>
+  );
+};
+
+export const getServerSideProps = async ({ locale }: { locale: string }) => ({
   props: {
-    ...await serverSideTranslations(locale, ['common', 'wholesale-account']),
+    ...(await serverSideTranslations(locale, ['common', 'wholesale-account'])),
   },
 });
 

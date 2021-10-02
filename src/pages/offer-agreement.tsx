@@ -1,5 +1,6 @@
 import React from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
@@ -359,21 +360,25 @@ const navLinks = [
   },
 ];
 
-const OfferAgreement: React.FC = () => (
-  <BaseLayout>
-    <Container theme="small">
-      <Row>
-        <BreadCrumbs navLinks={navLinks} />
-        <PageTitle title="Договор публичной оферты" />
-        <ContentWithRefs content={CONTENT} />
-      </Row>
-    </Container>
-  </BaseLayout>
-);
+const OfferAgreement: React.FC = () => {
+  const { t } = useTranslation(['offer-agreement']);
+  
+  return (
+    <BaseLayout>
+      <Container theme="small">
+        <Row>
+          <BreadCrumbs navLinks={navLinks} />
+          <PageTitle title={t('offer-agreement:Договор публичной оферты')} />
+          <ContentWithRefs content={CONTENT} />
+        </Row>
+      </Container>
+    </BaseLayout>
+  );
+};
 
-export const getStaticProps = async ({ locale }: { locale: string }) => ({
+export const getServerSideProps = async ({ locale }: { locale: string }) => ({
   props: {
-    ...await serverSideTranslations(locale, ['common', 'offer-agreement']),
+    ...(await serverSideTranslations(locale, ['common', 'offer-agreement'])),
   },
 });
 

@@ -91,7 +91,7 @@ const ProductsCategoryPage: React.FC = () => {
 
 export const getServerSideProps = async ({ locale }: { locale: string }) => ({
   props: {
-    ...await serverSideTranslations(locale, ['common', 'products']),
+    ...(await serverSideTranslations(locale, ['common', 'products'])),
   },
 });
 

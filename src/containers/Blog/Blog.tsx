@@ -81,6 +81,7 @@ export const Blog: React.FC<ProductsProps> = ({
         ghost: true,
       },
     }).then((fetchMoreResults) => (
+      // @ts-ignore
       setLimit(currentLength + fetchMoreResults.data.posts?.edges?.length)
     ));
     router.replace(`${parentPath}?page=${currentPage + 1}`, undefined, { shallow: true });
