@@ -13,6 +13,8 @@ import { CheckBox } from '@ui/CheckBox';
 import { RadioButton } from '@ui/RadioButton';
 import { PlusMinusInput } from '@ui/PlusMinusInput';
 import { CustomCollapse } from '@ui/CustomCollapse';
+import { SelectUI } from '@ui/Select';
+import { selectPrimaryInitialValue } from '@ui/Select/content';
 import { TitleDescription } from '@components/common/TitleDescription';
 import { ImageTextBig } from '@components/common/ImageTextBig';
 import { CTABlock } from '@components/common/CTABlock';
@@ -34,6 +36,13 @@ const UiKit: React.FC = () => {
       <div className={s.block}>
         <Container>
           <Row>
+            <div className={s.inputs}>
+              <SelectUI
+                className={s.input}
+                options={selectPrimaryInitialValue}
+                label='Выберите город'
+              />
+            </div>
             <div className={s.inputs}>
               <Input
                 className={s.input}

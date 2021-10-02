@@ -34,9 +34,11 @@
     "react-final-form": "^6.5.7",
     "react-final-form-listeners": "^1.0.3",
     "react-lottie": "^1.2.3",
+    "react-select": "^5.0.0",
     "react-toastify": "^8.0.3",
     "sass": "^1.42.1",
-    "shiitake": "^3.0.2"
+    "shiitake": "^3.0.2",
+    "yz-react-deliveri-newpochta": "^1.0.33"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "2.2.0",

@@ -21,3 +21,5 @@ export const POSTS_PER_BLOCK = 3;
 
 export const BLOG_API_URL = process.env.NEXT_PUBLIC_BLOG_API_URL;
 export const ECOMMERCE_API_URL = process.env.NEXT_PUBLIC_ECOMMERCE_API_URL;
+
+export const NOVA_POCHTA_API_KEY = process.env.NEXT_PUBLIC_NOVA_POCHTA_API_KEY;
