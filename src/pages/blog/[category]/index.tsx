@@ -88,7 +88,7 @@ const BlogCategoryPage: React.FC = () => {
 
 export const getServerSideProps = async ({ locale }: { locale: string }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ['common', 'blog'])),
+    ...await serverSideTranslations(locale, ['common', 'blog']),
   },
 });
 

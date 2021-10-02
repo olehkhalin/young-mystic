@@ -1,6 +1,5 @@
 import React from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
 
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
@@ -80,39 +79,35 @@ const navLinks = [
   },
 ];
 
-const Secondary: React.FC = () => {
-  const { t } = useTranslation(['secondary']);
+const Secondary: React.FC = () => (
+  <BaseLayout>
+    <Container theme="small">
+      <Row>
+        <BreadCrumbs navLinks={navLinks} />
+        <PageTitle
+          image="/images/Image_2.jpg"
+          blockquote="Может показаться, что эфирные масла — это всего лишь масла."
+        />
+        <ContentBlock className={s.chtoContent}>
+          {CONTENT}
+        </ContentBlock>
+        <SimilarPosts className={s.similarContent} />
+        <CTABlock
+          title="Откройте мир масел вместе с Young Living!"
+          description="Станьте частью нашего сообщества и покупайте товары со скидкой 24% от розничной цены"
+          button={{
+            label: 'Присоединиться',
+            link: '/',
+          }}
+        />
+      </Row>
+    </Container>
+  </BaseLayout>
+);
 
-  return (
-    <BaseLayout>
-      <Container theme="small">
-        <Row>
-          <BreadCrumbs navLinks={navLinks} />
-          <PageTitle
-            image="/images/Image_2.jpg"
-            blockquote={t('secondary:Может показаться, что эфирные масла — это всего лишь масла.')}
-          />
-          <ContentBlock className={s.chtoContent}>
-            {CONTENT}
-          </ContentBlock>
-          <SimilarPosts className={s.similarContent} />
-          <CTABlock
-            title="Откройте мир масел вместе с Young Living!"
-            description="Станьте частью нашего сообщества и покупайте товары со скидкой 24% от розничной цены"
-            button={{
-              label: 'Присоединиться',
-              link: '/',
-            }}
-          />
-        </Row>
-      </Container>
-    </BaseLayout>
-  );
-};
-
-export const getServerSideProps = async ({ locale }: { locale: string }) => ({
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ['common', 'secondary'])),
+    ...await serverSideTranslations(locale, ['common', 'secondary']),
   },
 });
 

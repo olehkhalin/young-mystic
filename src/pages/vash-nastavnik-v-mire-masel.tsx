@@ -85,9 +85,9 @@ const Secondary: React.FC = () => (
   </BaseLayout>
 );
 
-export const getServerSideProps = async ({ locale }: { locale: string }) => ({
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ['common', 'secondary'])),
+    ...await serverSideTranslations(locale, ['common', 'secondary']),
   },
 });
 
