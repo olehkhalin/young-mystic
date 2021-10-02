@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import cx from 'classnames';
 import parse from 'html-react-parser';
 import { ToastContainer, Slide } from 'react-toastify';
@@ -143,10 +143,10 @@ const ProductsSinglePage: React.FC = () => {
   );
 };
 
-export const getServerSideProps = async ({ locale }: { locale: string }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['common', 'products']),
-  },
-});
+// export const getServerSideProps = async ({ locale }: { locale: string }) => ({
+//   props: {
+//     ...await serverSideTranslations(locale, ['common', 'products']),
+//   },
+// });
 
 export default ProductsSinglePage;

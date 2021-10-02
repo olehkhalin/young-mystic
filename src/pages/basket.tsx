@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import cx from 'classnames';
 
 import { useReactiveVar } from '@apollo/client';
@@ -85,10 +85,10 @@ const Basket: React.FC = () => {
   );
 };
 
-export const getStaticProps = async ({ locale }: { locale: string }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['common', 'basket']),
-  },
-});
+// export const getStaticProps = async ({ locale }: { locale: string }) => ({
+//   props: {
+//     ...await serverSideTranslations(locale, ['common', 'basket']),
+//   },
+// });
 
 export default Basket;

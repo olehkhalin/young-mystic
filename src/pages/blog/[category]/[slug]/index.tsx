@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { NextSeo, BreadcrumbJsonLd, ArticleJsonLd } from 'next-seo';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { useBlogInfoQuery } from '@graphqlBlog';
 import { DEFAULT_SEO } from '@utils/constants';
@@ -200,10 +200,10 @@ const BlogSinglePage: React.FC = () => {
   );
 };
 
-export const getServerSideProps = async ({ locale }: { locale: string }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['common', 'blog']),
-  },
-});
+// export const getServerSideProps = async ({ locale }: { locale: string }) => ({
+//   props: {
+//     ...await serverSideTranslations(locale, ['common', 'blog']),
+//   },
+// });
 
 export default BlogSinglePage;

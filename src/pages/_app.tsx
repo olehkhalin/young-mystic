@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
-import { appWithTranslation } from 'next-i18next';
+// import { appWithTranslation } from 'next-i18next';
 
 import { withApollo } from '@client';
 import { DEFAULT_SEO } from '@utils/constants';
@@ -127,4 +127,5 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default withApollo()(appWithTranslation(MyApp));
+export default withApollo()(MyApp);
+// export default withApollo()(appWithTranslation(MyApp));

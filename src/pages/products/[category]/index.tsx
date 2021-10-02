@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { useCategoryInfoQuery } from '@graphql';
 import { Products } from '@containers/Products/Products';
@@ -89,10 +89,10 @@ const ProductsCategoryPage: React.FC = () => {
   );
 };
 
-export const getServerSideProps = async ({ locale }: { locale: string }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['common', 'products']),
-  },
-});
+// export const getServerSideProps = async ({ locale }: { locale: string }) => ({
+//   props: {
+//     ...await serverSideTranslations(locale, ['common', 'products']),
+//   },
+// });
 
 export default ProductsCategoryPage;
