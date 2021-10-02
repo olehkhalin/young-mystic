@@ -126,7 +126,7 @@ export const Blog: React.FC<ProductsProps> = ({
             )}
             <Pagination
               countOfElements={data?.posts.meta?.pagination?.total}
-              size={2}
+              size={POSTS_PER_PAGE}
               onPageClick={() => {
                 setIsLoadMoreClicked(false);
                 setLimit(POSTS_PER_PAGE);
