@@ -1,6 +1,5 @@
 import React from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
 
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
@@ -104,25 +103,21 @@ const navLinks = [
   },
 ];
 
-const PaymentDelivery: React.FC = () => {
-  const { t } = useTranslation(['payment-delivery']);
+const PaymentDelivery: React.FC = () => (
+  <BaseLayout>
+    <Container theme="small">
+      <Row>
+        <BreadCrumbs navLinks={navLinks} />
+        <PageTitle title="Договор публичной оферты" />
+        <ContentWithRefs content={CONTENT} />
+      </Row>
+    </Container>
+  </BaseLayout>
+);
 
-  return (
-    <BaseLayout>
-      <Container theme="small">
-        <Row>
-          <BreadCrumbs navLinks={navLinks} />
-          <PageTitle title={t('payment-delivery:Договор публичной оферты')} />
-          <ContentWithRefs content={CONTENT} />
-        </Row>
-      </Container>
-    </BaseLayout>
-  );
-};
-
-export const getServerSideProps = async ({ locale }: { locale: string }) => ({
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ['common', 'payment-delivery'])),
+    ...await serverSideTranslations(locale, ['common', 'payment-delivery']),
   },
 });
 

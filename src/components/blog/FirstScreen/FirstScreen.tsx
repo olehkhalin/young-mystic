@@ -1,6 +1,5 @@
 import React from 'react';
 import cx from 'classnames';
-import { useTranslation } from 'next-i18next';
 
 import { Container } from '@ui/Container';
 import { Row } from '@ui/Row';
@@ -25,28 +24,24 @@ type FirstScreenProps = {
 export const FirstScreen: React.FC<FirstScreenProps> = ({
   tags,
   className,
-}) => {
-  const { t } = useTranslation(['blog']);
-
-  return (
-    <Container className={cx(s.root, className)} theme="small">
-      <Row>
-        <PageTitle
-          title={t('blog:Масла, истории, советы и рекомендации')}
-          className={s.header}
-        />
-        <div className={s.tags}>
-          {tags.map((tag) => tag?.node && (
-            <Tag
-              className={s.tag}
-              href={`/blog/${tag.node.slug}/`}
-              key={tag.node.id}
-            >
-              {tag.node.name}
-            </Tag>
-          ))}
-        </div>
-      </Row>
-    </Container>
-  );
-};
+}) => (
+  <Container className={cx(s.root, className)} theme="small">
+    <Row>
+      <PageTitle
+        title="Масла, истории, советы и рекомендации"
+        className={s.header}
+      />
+      <div className={s.tags}>
+        {tags.map((tag) => tag?.node && (
+          <Tag
+            className={s.tag}
+            href={`/blog/${tag.node.slug}/`}
+            key={tag.node.id}
+          >
+            {tag.node.name}
+          </Tag>
+        ))}
+      </div>
+    </Row>
+  </Container>
+);

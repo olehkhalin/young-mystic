@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
 
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@ui/Container';
@@ -162,25 +161,21 @@ const navLinks = [
   },
 ];
 
-const ReplacementReturn: React.FC = () => {
-  const { t } = useTranslation(['replacement-return']);
+const ReplacementReturn: React.FC = () => (
+  <BaseLayout>
+    <Container theme="small">
+      <Row>
+        <BreadCrumbs navLinks={navLinks} />
+        <PageTitle title="Способы и условия возврата" />
+        <ContentWithRefs content={CONTENT} />
+      </Row>
+    </Container>
+  </BaseLayout>
+);
 
-  return (
-    <BaseLayout>
-      <Container theme="small">
-        <Row>
-          <BreadCrumbs navLinks={navLinks} />
-          <PageTitle title={t('replacement-return:Способы и условия возврата')} />
-          <ContentWithRefs content={CONTENT} />
-        </Row>
-      </Container>
-    </BaseLayout>
-  );
-};
-
-export const getServerSideProps = async ({ locale }: { locale: string }) => ({
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ['common', 'replacement-return'])),
+    ...await serverSideTranslations(locale, ['common', 'replacement-return']),
   },
 });
 
