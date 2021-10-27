@@ -82,10 +82,10 @@ const CONTENT = [
           терапевтическое воздействие на наш организм.
         </p>
         <Image
-          src="/images/Image_2.jpg"
+          src="/images/oilLife7.jpg"
           alt="Image"
-          width={158}
-          height={158}
+          width={1200}
+          height={800}
           layout="responsive"
         />
         <p>
@@ -147,6 +147,13 @@ const CONTENT = [
           Нет никакой сертификации для эфирных масел, поэтому любое масло, которое вы видите в этих
           утверждениях, просто использует это слово, равно как и “100% натуральное”.
         </p>
+        <Image
+          src="/images/oilLife8.jpg"
+          alt="Image"
+          width={1200}
+          height={800}
+          layout="responsive"
+        />
         <p>
           Так почему же тогда верить Young Living?! Логичный вопрос… Это семейная компания, которая
           начинала с кусочка земли в США и человека, которым двигало только желание донести
@@ -182,7 +189,7 @@ const Secondary: React.FC = () => (
     <Container theme="small">
       <Row>
         <BreadCrumbs navLinks={navLinks} />
-        <PageTitle image="/images/Image_2.jpg" title="Почему Young Living" />
+        <PageTitle image="/images/oilLife6.jpg" title="Почему Young Living" />
         <ContentWithRefs content={CONTENT} className={s.paymentContent} />
         <SimilarPosts className={s.similarContent} />
         <CTABlock

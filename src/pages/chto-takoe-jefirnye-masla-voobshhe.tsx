@@ -85,7 +85,7 @@ const Secondary: React.FC = () => (
       <Row>
         <BreadCrumbs navLinks={navLinks} />
         <PageTitle
-          image="/images/Image_2.jpg"
+          image="/images/oilLife5.jpg"
           blockquote="Может показаться, что эфирные масла — это всего лишь масла."
         />
         <ContentBlock className={s.chtoContent}>

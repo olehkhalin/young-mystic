@@ -16,7 +16,7 @@ const About: React.FC = () => (
       <Row>
         <ImageTextBig
           className={s.blockImage}
-          image="/images/Image_1.jpg"
+          image="/images/about1.jpg"
           subHeader="Обо мне"
           title="Ваш наставник в мире масел"
           description={(
@@ -33,7 +33,7 @@ const About: React.FC = () => (
         />
         <ImageTextBig
           className={s.blockImage}
-          image="/images/Image_1.jpg"
+          image="/images/oilLife4.jpg"
           subHeader="Наше сообщество"
           title="Одна большая семья"
           description={(
