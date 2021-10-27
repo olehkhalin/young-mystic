@@ -34,6 +34,7 @@ const Secondary: React.FC = () => (
         <PageTitle
           className={s.imageTitle}
           title="Одна большая семья"
+          image='/images/oilLife4.jpg'
         />
         <ContentBlock className={s.content}>
           <p>

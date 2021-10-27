@@ -29,7 +29,7 @@ const OilLife: React.FC = () => (
         <div className={s.blocks}>
           <ImageTextBig
             className={s.blockImage}
-            image="/images/Image_1.jpg"
+            image="/images/oilLife1.jpg"
             subHeader="Эфирные масла"
             title="Что такое эфирные масла, зачем ими пользоваться и как?"
             description={(
@@ -47,7 +47,7 @@ const OilLife: React.FC = () => (
           />
           <ImageTextBig
             className={s.blockImage}
-            image="/images/Image_1.jpg"
+            image="/images/oilLife2.jpg"
             subHeader="Мир масел Young Living?"
             title="Почему Young Living?"
             description={(
@@ -64,7 +64,7 @@ const OilLife: React.FC = () => (
           />
           <ImageTextBig
             className={s.blockImage}
-            image="/images/Image_1.jpg"
+            image="/images/oilLife3.jpg"
             subHeader="Возможности young living"
             title="Гармоничный бизнес начинается здесь"
             description={(
@@ -80,7 +80,7 @@ const OilLife: React.FC = () => (
           />
           <ImageTextBig
             className={s.blockImage}
-            image="/images/Image_1.jpg"
+            image="/images/oilLife4.jpg"
             subHeader="Наше сообщество"
             title="Большой заголовок на две строки"
             description={(

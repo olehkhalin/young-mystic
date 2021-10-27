@@ -150,7 +150,7 @@ const Secondary: React.FC = () => (
     <Container theme="small">
       <Row>
         <BreadCrumbs navLinks={navLinks} />
-        <PageTitle image="/images/Image_2.jpg" title="Возможности Young Living" />
+        <PageTitle image="/images/oilLife9.jpg" title="Возможности Young Living" />
         <ContentWithRefs content={CONTENT} />
         <SimilarPosts className={s.similarContent} />
         <CTABlock

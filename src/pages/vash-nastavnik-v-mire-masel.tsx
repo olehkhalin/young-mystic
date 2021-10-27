@@ -33,7 +33,7 @@ const Secondary: React.FC = () => (
         <BreadCrumbs navLinks={navLinks} />
         <PageTitle
           className={s.imageTitle}
-          image="/images/Image_1.jpg"
+          image="/images/about1.jpg"
           title="Ваш наставник в мире масел"
         />
         <ContentBlock className={s.content}>
