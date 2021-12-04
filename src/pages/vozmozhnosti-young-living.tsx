@@ -10,7 +10,7 @@ import { SimilarPosts } from '@components/common/SimilarPosts';
 import { CTABlock } from '@components/common/CTABlock';
 
 import s from '@styles/SecondaryPages.module.sass';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const CONTENT = [
   {
@@ -166,10 +166,10 @@ const Secondary: React.FC = () => (
   </BaseLayout>
 );
 
-export const getStaticProps = async ({ locale }: { locale: string }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['common', 'secondary']),
-  },
-});
+// export const getStaticProps = async ({ locale }: { locale: string }) => ({
+//   props: {
+//     ...await serverSideTranslations(locale, ['common', 'secondary']),
+//   },
+// });
 
 export default Secondary;

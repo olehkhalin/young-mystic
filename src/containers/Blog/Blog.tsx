@@ -48,7 +48,7 @@ export const Blog: React.FC<ProductsProps> = ({
   const currentPage: number = router.query.page ? +router.query.page : 1;
 
   const [isLoadMoreClicked, setIsLoadMoreClicked] = useState(false);
-  const [limit, setLimit] = useState(2);
+  const [limit, setLimit] = useState(POSTS_PER_PAGE);
 
   const {
     data, loading, error, fetchMore,
@@ -76,7 +76,7 @@ export const Blog: React.FC<ProductsProps> = ({
     fetchMore({
       variables: {
         page: currentPage + 1,
-        limit: 2,
+        limit: POSTS_PER_PAGE,
         filter,
       },
       context: {
@@ -128,10 +128,10 @@ export const Blog: React.FC<ProductsProps> = ({
             )}
             <Pagination
               countOfElements={data?.posts.meta?.pagination?.total}
-              size={2}
+              size={POSTS_PER_PAGE}
               onPageClick={() => {
                 setIsLoadMoreClicked(false);
-                setLimit(2);
+                setLimit(POSTS_PER_PAGE);
               }}
             />
           </div>

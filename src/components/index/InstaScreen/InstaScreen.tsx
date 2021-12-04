@@ -15,23 +15,23 @@ import s from './InstaScreen.module.sass';
 const IMAGES = [
   {
     image: '/images/Insta1.jpg',
-    link: 'https://www.instagram.com/p/CIWJk8XnrhR/',
-    title: 'Вечерний ритуал 🌜',
+    link: 'https://www.instagram.com/p/CUXRtVoMe1H/',
+    title: 'Цветочный цвет цветка цветков',
   },
   {
     image: '/images/Insta2.jpg',
-    link: 'https://www.instagram.com/p/CIaKXKCn2mm/',
-    title: 'Вот и закончилось еще одно испытание для меня - практика в аптеке 😌',
+    link: 'https://www.instagram.com/p/CUIE-zYMRt5/',
+    title: 'Эфирный лайфхак ✌🏼',
   },
   {
     image: '/images/Insta3.jpg',
-    link: 'https://www.instagram.com/p/CIgMdseHcpd/',
-    title: 'Арома-лампы или диффузоры. Есть ли смысл переплачивать? 🤔',
+    link: 'https://www.instagram.com/p/CTxLM8doISW/',
+    title: 'Грызть гранит науки 🪨, или как поддержать ребенка',
   },
   {
     image: '/images/Insta4.jpg',
-    link: 'https://www.instagram.com/p/CIksbV4Hr8Z/',
-    title: 'Друзья, еще одна праздничная новость 🎁',
+    link: 'https://www.instagram.com/p/CTe8lftIsFn/',
+    title: 'Самое уникальное масло в мире!',
   },
 ];
 
