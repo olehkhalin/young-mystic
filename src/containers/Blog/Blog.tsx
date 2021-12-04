@@ -36,6 +36,8 @@ export const Blog: React.FC<ProductsProps> = ({
   }
   if (category) {
     filter.push(`tag:${category}`);
+  } else {
+    filter.push('tag:-[secondary-oil-life,secondary-about-me]');
   }
   if (ommitSlug) {
     filter.push(`slug:-${ommitSlug}`);

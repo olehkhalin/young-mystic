@@ -1,0 +1,21 @@
+query OilLifePage($slug: String!) {
+    post(slug: $slug, include: ["authors"]) {
+        featureImage
+        title
+        excerpt
+        html
+        metaTitle
+        metaDescription
+        canonicalUrl
+        ogTitle
+        ogDescription
+        ogImage
+        publishedAt
+        updatedAt
+        primaryAuthor {
+            name
+            facebook
+            twitter
+        }
+    }
+}

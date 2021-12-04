@@ -367,6 +367,13 @@ export type BlogListQueryVariables = Exact<{
 
 export type BlogListQuery = { __typename?: 'GhostQuery', posts?: Maybe<{ __typename?: 'GhostPostsConnection', meta?: Maybe<{ __typename?: 'GhostMeta', pagination?: Maybe<{ __typename?: 'GhostPagination', total?: Maybe<number> }> }>, edges?: Maybe<Array<Maybe<{ __typename?: 'GhostPostsEdge', node?: Maybe<{ __typename?: 'GhostPost', id: string, slug?: Maybe<string>, createdAt?: Maybe<string>, title?: Maybe<string>, excerpt?: Maybe<string>, featureImage?: Maybe<string>, primaryTag?: Maybe<{ __typename?: 'GhostTag', slug?: Maybe<string>, name?: Maybe<string> }> }> }>>> }> };
 
+export type OilLifeAboutPagesQueryVariables = Exact<{
+  filter?: Maybe<Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>>;
+}>;
+
+
+export type OilLifeAboutPagesQuery = { __typename?: 'GhostQuery', posts?: Maybe<{ __typename?: 'GhostPostsConnection', edges?: Maybe<Array<Maybe<{ __typename?: 'GhostPostsEdge', node?: Maybe<{ __typename?: 'GhostPost', id: string, featureImage?: Maybe<string>, slug?: Maybe<string>, title?: Maybe<string>, excerpt?: Maybe<string>, tags?: Maybe<Array<Maybe<{ __typename?: 'GhostTag', name?: Maybe<string>, visibility?: Maybe<string> }>>> }> }>>> }> };
+
 export type BlogInfoQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
@@ -385,6 +392,18 @@ export type BlogCategoryInfoQueryVariables = Exact<{
 
 
 export type BlogCategoryInfoQuery = { __typename?: 'GhostQuery', tag?: Maybe<{ __typename?: 'GhostTag', slug?: Maybe<string>, name?: Maybe<string>, description?: Maybe<string>, featureImage?: Maybe<string> }> };
+
+export type OilLifePageQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type OilLifePageQuery = { __typename?: 'GhostQuery', post?: Maybe<{ __typename?: 'GhostPost', featureImage?: Maybe<string>, title?: Maybe<string>, excerpt?: Maybe<string>, html?: Maybe<string>, metaTitle?: Maybe<string>, metaDescription?: Maybe<string>, canonicalUrl?: Maybe<string>, ogTitle?: Maybe<string>, ogDescription?: Maybe<string>, ogImage?: Maybe<string>, publishedAt?: Maybe<string>, updatedAt?: Maybe<string>, primaryAuthor?: Maybe<{ __typename?: 'GhostAuthor', name?: Maybe<string>, facebook?: Maybe<string>, twitter?: Maybe<string> }> }> };
+
+export type OilLifePagesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type OilLifePagesQuery = { __typename?: 'GhostQuery', posts?: Maybe<{ __typename?: 'GhostPostsConnection', edges?: Maybe<Array<Maybe<{ __typename?: 'GhostPostsEdge', node?: Maybe<{ __typename?: 'GhostPost', id: string, featureImage?: Maybe<string>, slug?: Maybe<string>, title?: Maybe<string>, excerpt?: Maybe<string>, tags?: Maybe<Array<Maybe<{ __typename?: 'GhostTag', name?: Maybe<string>, visibility?: Maybe<string> }>>> }> }>>> }> };
 
 
 export const BlogListDocument = gql`
@@ -442,6 +461,53 @@ export function useBlogListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<B
 export type BlogListQueryHookResult = ReturnType<typeof useBlogListQuery>;
 export type BlogListLazyQueryHookResult = ReturnType<typeof useBlogListLazyQuery>;
 export type BlogListQueryResult = Apollo.QueryResult<BlogListQuery, BlogListQueryVariables>;
+export const OilLifeAboutPagesDocument = gql`
+    query OilLifeAboutPages($filter: [String]) {
+  posts(include: ["tags"], filter: $filter) {
+    edges {
+      node {
+        id
+        featureImage
+        tags {
+          name
+          visibility
+        }
+        slug
+        title
+        excerpt
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useOilLifeAboutPagesQuery__
+ *
+ * To run a query within a React component, call `useOilLifeAboutPagesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useOilLifeAboutPagesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useOilLifeAboutPagesQuery({
+ *   variables: {
+ *      filter: // value for 'filter'
+ *   },
+ * });
+ */
+export function useOilLifeAboutPagesQuery(baseOptions?: Apollo.QueryHookOptions<OilLifeAboutPagesQuery, OilLifeAboutPagesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<OilLifeAboutPagesQuery, OilLifeAboutPagesQueryVariables>(OilLifeAboutPagesDocument, options);
+      }
+export function useOilLifeAboutPagesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<OilLifeAboutPagesQuery, OilLifeAboutPagesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<OilLifeAboutPagesQuery, OilLifeAboutPagesQueryVariables>(OilLifeAboutPagesDocument, options);
+        }
+export type OilLifeAboutPagesQueryHookResult = ReturnType<typeof useOilLifeAboutPagesQuery>;
+export type OilLifeAboutPagesLazyQueryHookResult = ReturnType<typeof useOilLifeAboutPagesLazyQuery>;
+export type OilLifeAboutPagesQueryResult = Apollo.QueryResult<OilLifeAboutPagesQuery, OilLifeAboutPagesQueryVariables>;
 export const BlogInfoDocument = gql`
     query BlogInfo($slug: String!) {
   post(slug: $slug, include: ["tags", "authors"]) {
@@ -505,7 +571,7 @@ export type BlogInfoLazyQueryHookResult = ReturnType<typeof useBlogInfoLazyQuery
 export type BlogInfoQueryResult = Apollo.QueryResult<BlogInfoQuery, BlogInfoQueryVariables>;
 export const BlogCategoriesListDocument = gql`
     query BlogCategoriesList {
-  tags {
+  tags(filter: "slug:-[secondary-about-me,secondary-oil-life]") {
     edges {
       node {
         id
@@ -582,3 +648,100 @@ export function useBlogCategoryInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookO
 export type BlogCategoryInfoQueryHookResult = ReturnType<typeof useBlogCategoryInfoQuery>;
 export type BlogCategoryInfoLazyQueryHookResult = ReturnType<typeof useBlogCategoryInfoLazyQuery>;
 export type BlogCategoryInfoQueryResult = Apollo.QueryResult<BlogCategoryInfoQuery, BlogCategoryInfoQueryVariables>;
+export const OilLifePageDocument = gql`
+    query OilLifePage($slug: String!) {
+  post(slug: $slug, include: ["authors"]) {
+    featureImage
+    title
+    excerpt
+    html
+    metaTitle
+    metaDescription
+    canonicalUrl
+    ogTitle
+    ogDescription
+    ogImage
+    publishedAt
+    updatedAt
+    primaryAuthor {
+      name
+      facebook
+      twitter
+    }
+  }
+}
+    `;
+
+/**
+ * __useOilLifePageQuery__
+ *
+ * To run a query within a React component, call `useOilLifePageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useOilLifePageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useOilLifePageQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useOilLifePageQuery(baseOptions: Apollo.QueryHookOptions<OilLifePageQuery, OilLifePageQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<OilLifePageQuery, OilLifePageQueryVariables>(OilLifePageDocument, options);
+      }
+export function useOilLifePageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<OilLifePageQuery, OilLifePageQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<OilLifePageQuery, OilLifePageQueryVariables>(OilLifePageDocument, options);
+        }
+export type OilLifePageQueryHookResult = ReturnType<typeof useOilLifePageQuery>;
+export type OilLifePageLazyQueryHookResult = ReturnType<typeof useOilLifePageLazyQuery>;
+export type OilLifePageQueryResult = Apollo.QueryResult<OilLifePageQuery, OilLifePageQueryVariables>;
+export const OilLifePagesDocument = gql`
+    query OilLifePages {
+  posts(include: ["tags"], filter: "tag:secondary-oil-life") {
+    edges {
+      node {
+        id
+        featureImage
+        tags {
+          name
+          visibility
+        }
+        slug
+        title
+        excerpt
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useOilLifePagesQuery__
+ *
+ * To run a query within a React component, call `useOilLifePagesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useOilLifePagesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useOilLifePagesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useOilLifePagesQuery(baseOptions?: Apollo.QueryHookOptions<OilLifePagesQuery, OilLifePagesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<OilLifePagesQuery, OilLifePagesQueryVariables>(OilLifePagesDocument, options);
+      }
+export function useOilLifePagesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<OilLifePagesQuery, OilLifePagesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<OilLifePagesQuery, OilLifePagesQueryVariables>(OilLifePagesDocument, options);
+        }
+export type OilLifePagesQueryHookResult = ReturnType<typeof useOilLifePagesQuery>;
+export type OilLifePagesLazyQueryHookResult = ReturnType<typeof useOilLifePagesLazyQuery>;
+export type OilLifePagesQueryResult = Apollo.QueryResult<OilLifePagesQuery, OilLifePagesQueryVariables>;

@@ -70,6 +70,40 @@ export const ContentBlock = forwardRef<ContentBlockRef, ContentBlockProps>(
       });
     }, []);
 
+    useEffect(() => {
+      const offsetAnchor = () => {
+        if (location.hash.length !== 0) {
+          let customOffset = -56;
+          if (window.innerWidth >= 768) {
+            customOffset = -102;
+          }
+          if (window.innerWidth >= 1024) {
+            customOffset = -138;
+          }
+          window.scrollTo({ top: window.scrollY + customOffset, behavior: 'smooth' });
+        }
+      };
+
+      const scrollOnClick = () => {
+        window.setTimeout(() => {
+          offsetAnchor();
+        }, 1);
+      };
+
+      const links = document.querySelectorAll('a[href^="#"]');
+
+      links.forEach(link => (
+        link.addEventListener('click', scrollOnClick)
+      ));
+
+      return () => {
+        links.forEach(link => (
+          link.removeEventListener('click', scrollOnClick)
+        ));
+        window.clearTimeout();
+      };
+    }, []);
+
     return (
       <div
         className={cx(s.root, className)}

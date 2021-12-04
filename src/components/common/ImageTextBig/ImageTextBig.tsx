@@ -17,9 +17,9 @@ import { Button } from '@components/ui/Button';
 import s from './ImageTextBig.module.sass';
 
 type ImageTextBigProps = {
-  image: string
-  subHeader: string
-  title: string
+  image?: string | null
+  subHeader?: string | null
+  title?: string | null
   description: ReactNode
   button: {
     link: string
@@ -86,6 +86,10 @@ export const ImageTextBig: React.FC<ImageTextBigProps> = ({
   const imageOpacity = useTransform(scrollY, imageAnimationRange, [1, 0]);
   const imageOpacityMobile = useTransform(scrollY, imageAnimationRangeMobile, [1, 0]);
 
+  if (!image || !title) {
+    return <></>;
+  }
+
   return (
     <article
       className={cx(s.root, className)}
@@ -112,9 +116,11 @@ export const ImageTextBig: React.FC<ImageTextBigProps> = ({
         initial={{ y: 0 }}
         className={s.content}
       >
-        <span className={s.category}>
-          {subHeader}
-        </span>
+        {subHeader && (
+          <span className={s.category}>
+            {subHeader}
+          </span>
+        )}
         <h3 className={s.header}>{title}</h3>
         <div className={s.description}>
           {description}
