@@ -207,6 +207,22 @@
   *:first-child
     margin-top: 0
 
+.root
+  \:global(#navigation)
+    padding: 16px 0 0
+    display: flex
+    flex-direction: column
+    width: 100%
+    margin-bottom: 32px
+    align-items: flex-start
+    > a
+      display: inline-block
+      padding: 8px
+      margin: 0 -8px
+      font-size: 1rem
+      cursor: pointer
+      text-align: left
+
 @media (min-width: $Lphone)
   .root
     \:global(.kg-bookmark-thumbnail)
@@ -221,6 +237,9 @@
     \:global(.kg-bookmark-thumbnail)
       max-height: none
       max-width: 40%
+    \:global(#navigation)
+      > a
+        font-size: 1.125rem
 
 @media (min-width: $tablet)
   .root

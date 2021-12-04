@@ -1,0 +1,17 @@
+query OilLifeAboutPages($filter: [String]) {
+    posts(include:["tags"],filter: $filter) {
+        edges {
+            node {
+                id
+                featureImage
+                tags {
+                    name
+                    visibility
+                }
+                slug
+                title
+                excerpt
+            }
+        }
+    }
+}

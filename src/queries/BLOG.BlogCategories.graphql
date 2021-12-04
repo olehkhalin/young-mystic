@@ -1,5 +1,5 @@
 query BlogCategoriesList {
-    tags {
+    tags(filter:"slug:-[secondary-about-me,secondary-oil-life]") {
         edges {
             node {
                 id
