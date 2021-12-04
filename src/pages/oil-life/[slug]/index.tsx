@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { BreadcrumbJsonLd, NextSeo } from 'next-seo';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { useOilLifePageQuery } from '@graphqlBlog';
 import { DEFAULT_SEO } from '@utils/constants';
@@ -152,10 +152,10 @@ const Secondary: React.FC = () => {
   );
 };
 
-export const getServerSideProps = async ({ locale }: { locale: string }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['common', 'secondary']),
-  },
-});
+// export const getServerSideProps = async ({ locale }: { locale: string }) => ({
+//   props: {
+//     ...await serverSideTranslations(locale, ['common', 'secondary']),
+//   },
+// });
 
 export default Secondary;
