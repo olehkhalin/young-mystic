@@ -36,6 +36,7 @@
     "react-lottie": "^1.2.3",
     "react-select": "^5.0.0",
     "react-toastify": "^8.0.3",
+    "react-window": "^1.8.6",
     "sass": "^1.42.1",
     "shiitake": "^3.0.2",
     "yz-react-deliveri-newpochta": "^1.0.33"
