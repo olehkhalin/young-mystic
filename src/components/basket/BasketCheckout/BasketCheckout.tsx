@@ -5,8 +5,14 @@ import {
   withTypes,
 } from 'react-final-form';
 import { OnChange } from 'react-final-form-listeners';
+
+import { FixedSizeList } from 'react-window';
 // @ts-ignore
 import ApiNovaPochta from 'yz-react-deliveri-newpochta';
+import {
+  createFilter,
+  components,
+} from 'react-select';
 
 import { NOVA_POCHTA_API_KEY } from '@utils/constants';
 import { RadioButton } from '@ui/RadioButton';
@@ -39,6 +45,37 @@ const WhitelistedCities = [
     value: 'db5c88f5-391c-11dd-90d9-001a92567626',
   },
 ];
+
+function OptimizedOption(props: any) {
+  delete props.innerProps.onMouseMove;
+  delete props.innerProps.onMouseOver;
+  return <components.Option {...props}>{props.children}</components.Option>;
+}
+
+function OptimizedMenuList(props: any) {
+  const { options, children, maxHeight, getValue } = props;
+  if (!children || !Array.isArray(children)) return null;
+
+  const height = 40;
+  const selectedValues = getValue();
+  const initialOffset = selectedValues[0] ? options.indexOf(selectedValues[0]) * height : 0;
+
+  return (
+    <FixedSizeList
+      width={''}
+      itemSize={height}
+      height={maxHeight}
+      itemCount={children.length}
+      initialScrollOffset={initialOffset}
+    >
+      {({ index, style }: any) => (
+        <div className="option-wrapper" style={style}>
+          {children[index]}
+        </div>
+      )}
+    </FixedSizeList>
+  );
+}
 
 type FormValues = {
   option: 'post' | 'pickup'
@@ -232,6 +269,11 @@ export const BasketCheckout: React.FC<BasketCheckoutProps> = ({
                     Адреса Доставки
                   </h2>
                   <SelectUI
+                    components={{
+                      Option: OptimizedOption,
+                      MenuList: OptimizedMenuList,
+                    }}
+                    filterOption={createFilter({ ignoreAccents: false })}
                     label='Выберите город'
                     options={citiesList}
                     value={selectedCity}
